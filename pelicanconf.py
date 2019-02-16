@@ -43,3 +43,4 @@ DEFAULT_METADATA = {
     'status': 'draft',
     }
 IGNORE_FILES = ['.ipynb_checkpoints']
+USE_FOLDER_AS_CATEGORY = True
