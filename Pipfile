@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+pelican = "==4.0.1"
+beautifulsoup4 = "==4.7.1"
+ghp-import = "==0.5.5"
+ipython = "==7.2.0"
+jupyter = "==1.0.0"
+matplotlib = "==3.0.2"
+nbconvert = "==5.4.1"
+Markdown = "==3.0.1"
+
+[requires]
+python_version = "3.6"
