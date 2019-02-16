@@ -69,6 +69,7 @@ else
 endif
 
 publish:
+	ghp-import output -b master -p -n -c computable.ai
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
 
 

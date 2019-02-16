@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 
 AUTHOR = 'Daniel Cox'
 SITENAME = 'Computable AI'
-SITEURL = 'http://computable.ai'
+SITEURL = ''
 
 PATH = 'content'
 
@@ -35,9 +35,11 @@ DEFAULT_PAGINATION = 10
 #RELATIVE_URLS = True
 
 MARKUP = ('md', 'ipynb')
-PLUGIN_PATHS = ['./plugins', './pelican-plugins']
-PLUGINS = ['ipynb.markup', 'render_math', 'better_codeblock_line_numbering']
-MD_EXTENSIONS = [
-    'codehilite(css_class=highlight,linenums=False)',
-    'extra'
-    ]
+PLUGIN_PATHS = ['./plugins']
+PLUGINS = ['ipynb.markup']
+IPYNB_USE_METACELL = True
+#ARTICLE_URL = 'articles/{date:%Y}/{date:%b}/{date:%d}/{slug}/'
+DEFAULT_METADATA = {
+    'status': 'draft',
+    }
+IGNORE_FILES = ['.ipynb_checkpoints']
