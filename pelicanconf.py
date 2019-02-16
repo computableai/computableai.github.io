@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = 'Daniel Cox'
 SITENAME = 'Computable AI'
 SITEURL = ''
+DESCRIPTION = 'Computable AI is a learning resource for aspiring AI researchers and practitioners specializing in Deep Reinforcement Learning.'
 
 PATH = 'content'
 
