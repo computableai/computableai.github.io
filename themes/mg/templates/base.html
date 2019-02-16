@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+{% if article %}
+<!--[if lt IE 7]>      <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if IE 7]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if IE 8]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ DEFAULT_LANG }}" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <!--<![endif]-->
+{% elif page %}
+<!--[if lt IE 7]>      <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if IE 7]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if IE 8]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ DEFAULT_LANG }}" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <!--<![endif]-->
+{% else %}
+<!--[if lt IE 7]>      <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if IE 7]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if IE 8]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ DEFAULT_LANG }}" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <!--<![endif]-->
+{% endif %}
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="{% block description %}{{ DESCRIPTION }}{% endblock %}">
+<link rel="shortcut icon" href="{{ SITEURL }}/{{ FAVICON }}" type="{{ FAVICON_TYPE }}">
+<meta name="author" content="{{ AUTHOR }}">
+<meta name="copyright" content="{{ AUTHOR }}">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@{{ TWITTER_USERNAME }}" />
+<meta property="og:site_name" content="{{ SITENAME }}" />
+{% block seo %}
+<meta property="og:title" content="{{ SITENAME }}" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ SITEURL }}" />
+<meta name="twitter:url" content="{{ SITEURL }}" />
+<meta itemprop="name" content="{{ SITENAME }}" />
+<meta itemprop="url" content="{{ SITEURL }}"/>
+{% if DESCRIPTION %}
+<meta property="og:description" content="{{ DESCRIPTION }}" />
+<meta name="twitter:description" content="{{ DESCRIPTION }}" />
+<meta itemprop="description" content="{{ DESCRIPTION  }}" />
+{% endif %}
+{% if META_IMAGE %}
+<meta property="og:image" content="{{ META_IMAGE }}" />
+<meta property="og:image:type" content="{{ META_IMAGE_TYPE }}" />
+<meta name="twitter:image" content="{{ META_IMAGE }}" />
+<meta itemprop="image" content="{{ META_IMAGE }}" />
+{% endif %}
+{% endblock %}
+<link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed"/>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/css/uikit.min.css">
+{% if not DISABLE_SEARCH %}
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/css/components/search.min.css">
+<link rel="stylesheet" href="{{ SITEURL }}/theme/css/tipuesearch.css">
+{% endif %}
+<link rel="stylesheet" href="{{ SITEURL }}/theme/css/solarized.css">
+<link rel="stylesheet" href="{{ SITEURL }}/theme/css/main.css">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+</head>
+<body>
+<!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+<header class=" mg-header uk-navbar uk-navbar-attached">
+
+    <div class="uk-container uk-container-center">
+
+        <a class="mg-brand uk-navbar-brand uk-hidden-small" href="{{ SITEURL }}">{% if ALT_NAME %}{{ ALT_NAME }}{% else %}{{ SITENAME }}{% endif %}</a>
+        <div class="mg-tagline uk-navbar-content uk-hidden-small">{% if SITESUBTITLE %}{{ SITESUBTITLE }}{% endif %}</div>
+        <a class="uk-navbar-toggle uk-visible-small" href="#mg-offcanvas" data-uk-offcanvas></a>
+        <a class="mg-brand uk-navbar-brand uk-navbar-center uk-visible-small" href="{{ SITEURL }}">{% if ALT_NAME %}{{ ALT_NAME }}{% else %}{{ SITENAME }}{% endif %}</a>
+
+    </div>
+</header>
+
+<main class="mg-main">
+
+<div class="uk-container uk-container-center">
+
+    <div class="uk-grid" data-uk-grid-margin>
+
+        {% block content %}
+        {% endblock %}
+
+        <div class="uk-width-medium-1-5 uk-hidden-small">
+
+            {% if not DISABLE_SEARCH %}
+            <div class="uk-panel uk-panel-box">
+                <form class="uk-search" action="search.html" data-uk-search>
+                    <input class="uk-search-field tipue_search" type="search" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+                </form>
+            </div>
+            {% endif %}
+
+            <div class="uk-panel uk-panel-box">
+                <ul class="uk-nav uk-nav-side">
+                    <li class="uk-nav-header">Categories</li>
+                    {% for cat, _ in categories %}
+                    <li {% if cat == category %}class="uk-active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                    {% endfor %}
+                    {% if DISPLAY_PAGES_ON_MENU != False %}
+                    <li class="uk-nav-header">Pages</li>
+
+                    {% for p in pages %}
+                    <li {% if p == page %}class="uk-active"{% endif %}>
+                        <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                    </li>
+                    {% endfor %}
+
+                    {% endif %}
+
+                    <li class="uk-nav-divider"></li>
+                    <li {% if page_name == 'archives' %}class="uk-active"{% endif %}><a href="{{ SITEURL }}/archives.html">Archives</a></li>
+                </ul>
+            </div>
+
+            <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title">Receive Updates</h3>
+                <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" class="mg-feed"><i class="uk-icon-rss uk-icon-medium"></i> ATOM</a>
+            </div>
+
+            {% if SOCIAL %}
+            <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title">Contacts</h3>
+                {% for icon, link in SOCIAL %}
+                <a class="mg-icon-link" href="{{ link }}">
+                    <i class="uk-icon-{{ icon }} uk-icon-medium"></i>
+                </a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+
+<footer class="mg-footer">
+    <div class="uk-container uk-container-center uk-text-center">
+
+        <div class="mg-icons-small uk-subnav uk-visible-small">
+            <li><a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" class="uk-icon-button uk-icon-rss"></a></li>
+            {% if SOCIAL %}
+            {% for icon, link in SOCIAL %}
+            <li>
+                <a href="{{ link }}" class="uk-icon-button uk-icon-{{ icon.replace("-square", "") }}"></a>
+            </li>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="mg-author uk-panel">
+            <p>{{ FOOTER }}</p>
+
+            <p>Powered by <a href="http://blog.getpelican.com">Pelican</a>.<br class="uk-visible-small"> Theme <a href="https://github.com/lucachr/pelican-mg">mg</a> by <a href="https://github.com/lucachr">Luca Chiricozzi</a>.</p>
+        </div>
+    </div>
+</footer>
+
+<div id="mg-offcanvas" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar">
+
+        {% if not DISABLE_SEARCH %}
+        <form class="uk-search" action="search.html" data-uk-search>
+            <input class="uk-search-field" type="search" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+        </form>
+        {% endif %}
+
+        <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+            <li class="uk-nav-header">Categories</li>
+            {% for cat, _ in categories %}
+            <li {% if cat == category %}class="uk-active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+            {% endfor %}
+            {% if DISPLAY_PAGES_ON_MENU != False %}
+            <li class="uk-nav-header">Pages</li>
+            {% for p in pages %}
+            <li {% if p == page %}class="uk-active"{% endif %}>
+                <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+            </li>
+            {% endfor %}
+
+            {% endif %}
+
+            <li class="uk-nav-divider"></li>
+            <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Archives</a></li>
+        </ul>
+    </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/js/uikit.min.js"></script>
+{% if not DISABLE_SEARCH %}
+<script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/js/components/search.min.js"></script>
+<script src="{{ SITEURL }}/theme/js/tipuesearch_set.js"></script>
+<script src="{{ SITEURL }}/theme/js/tipuesearch.js"></script>
+{% endif %}
+<script src="{{ SITEURL }}/theme/js/jquery.sticky-kit.js"></script>
+<script src="{{ SITEURL }}/theme/js/plugins.js"></script>
+{% if DISABLE_SEARCH %}
+<script src="{{ SITEURL }}/theme/js/main.js"></script>
+{% else %}
+<script src="{{ SITEURL }}/theme/js/main-search.js"></script>
+{% endif %}
+
+{% include 'disqus_count.html' %}
+{% include 'analytics.html' %}
+</body>
+</html>
+

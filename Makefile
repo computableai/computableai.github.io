@@ -69,8 +69,8 @@ else
 endif
 
 publish:
-	ghp-import output -b master -p -n -m 'Publish' -c computable.ai
 	$(PELICAN) $(INPUTDIR) -o $(OUTPUTDIR) -s $(PUBLISHCONF) $(PELICANOPTS)
+	ghp-import output -b master -p -n -m 'Publish' -c computable.ai
 
 
 .PHONY: html help clean regenerate serve serve-global devserver stopserver publish 

@@ -1,34 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <!--<![endif]-->
 <head>
-        <meta charset="utf-8" />
-        <title>Computable AI - Daniel Cox</title>
-        <link rel="stylesheet" href="http://computable.ai/theme/css/main.css" />
-        <link href="http://computable.ai/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Computable AI Atom Feed" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Computable AI - Articles by Daniel Cox</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<link rel="shortcut icon" href="/" type="">
+<meta name="author" content="Daniel Cox">
+<meta name="copyright" content="Daniel Cox">
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:site" content="@" />
+<meta property="og:site_name" content="Computable AI" />
+<meta property="og:title" content="Computable AI" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="" />
+<meta name="twitter:url" content="" />
+<meta itemprop="name" content="Computable AI" />
+<meta itemprop="url" content=""/>
+<link href="/None" type="application/atom+xml" rel="alternate" title="Computable AI ATOM Feed"/>
+<link href='//fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
+<link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/css/uikit.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/css/components/search.min.css">
+<link rel="stylesheet" href="/theme/css/tipuesearch.css">
+<link rel="stylesheet" href="/theme/css/solarized.css">
+<link rel="stylesheet" href="/theme/css/main.css">
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
 </head>
+<body>
+<!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="http://computable.ai/">Computable AI </a></h1>
-                <nav><ul>
-                    <li><a href="http://computable.ai/category/reinforcement-learning.html">Reinforcement Learning</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<header class=" mg-header uk-navbar uk-navbar-attached">
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="http://computable.ai/pong-preprocessing.html">Pong Preprocessing</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2019-02-15T06:00:00-05:00">
-                Published: Fri 15 February 2019
-        </abbr>
+    <div class="uk-container uk-container-center">
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="http://computable.ai/author/daniel-cox.html">Daniel Cox</a>
-        </address>
-<p>In <a href="http://computable.ai/category/reinforcement-learning.html">Reinforcement Learning</a>.</p>
-<p>tags: <a href="http://computable.ai/tag/pelican.html">pelican</a> <a href="http://computable.ai/tag/test.html">test</a> </p>
-</footer><!-- /.post-info --><style type="text/css">/*!
+        <a class="mg-brand uk-navbar-brand uk-hidden-small" href="">Computable AI</a>
+        <div class="mg-tagline uk-navbar-content uk-hidden-small"></div>
+        <a class="uk-navbar-toggle uk-visible-small" href="#mg-offcanvas" data-uk-offcanvas></a>
+        <a class="mg-brand uk-navbar-brand uk-navbar-center uk-visible-small" href="">Computable AI</a>
+
+    </div>
+</header>
+
+<main class="mg-main">
+
+<div class="uk-container uk-container-center">
+
+    <div class="uk-grid" data-uk-grid-margin>
+
+<div class="uk-width-medium-4-5">
+
+
+            <article class="uk-article" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
+                <a href="/articles/2019/Feb/15/pong-preprocessing.html" class="uk-article-title uk-link-muted" itemprop="name">Pong Preprocessing</a>
+                <p class="uk-article-meta"><time datetime="2019-02-15" itemprop="datePublished">Fri 15 February 2019</time> • <a href="/category/rl.html">RL</a></p>
+</p>
+                <p class="uk-article-lead" itemprop="description">An example of ALE preprocessing</p>
+                <section itemprop="articleBody"><style type="text/css">/*!
 *
 * IPython notebook
 *
@@ -1616,36 +1651,115 @@ h6:hover .anchor-link {
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 </script>
-                </article>
-            </aside><!-- /#featured -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                            <li><a href="#">You can modify those links in your config file</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-                <div class="social">
-                        <h2>social</h2>
-                        <ul>
-                            <li><a href="http://computable.ai/feeds/all.atom.xml" type="application/atom+xml" rel="alternate">atom feed</a></li>
+</section>
+                <a href="/articles/2019/Feb/15/pong-preprocessing.html#disqus_thread"></a>
+                <hr class="uk-article-divider">
+            </article>
 
-                            <li><a href="#">You can add links in your config file</a></li>
-                            <li><a href="#">Another social link</a></li>
-                        </ul>
-                </div><!-- /.social -->
-        </section><!-- /#extras -->
 
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
+</div>
 
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
+        <div class="uk-width-medium-1-5 uk-hidden-small">
+
+            <div class="uk-panel uk-panel-box">
+                <form class="uk-search" action="search.html" data-uk-search>
+                    <input class="uk-search-field tipue_search" type="search" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+                </form>
+            </div>
+
+            <div class="uk-panel uk-panel-box">
+                <ul class="uk-nav uk-nav-side">
+                    <li class="uk-nav-header">Categories</li>
+                    <li ><a href="/category/rl.html">RL</a></li>
+                    <li class="uk-nav-header">Pages</li>
+
+                    <li >
+                        <a href="/pages/about-this-site.html">About This Site</a>
+                    </li>
+
+
+                    <li class="uk-nav-divider"></li>
+                    <li ><a href="/archives.html">Archives</a></li>
+                </ul>
+            </div>
+
+            <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title">Receive Updates</h3>
+                <a rel="alternate" type="application/atom+xml" href="/None" class="mg-feed"><i class="uk-icon-rss uk-icon-medium"></i> ATOM</a>
+            </div>
+
+            <div class="uk-panel uk-panel-box">
+                <h3 class="uk-panel-title">Contacts</h3>
+                <a class="mg-icon-link" href="https://twitter.com/computableai">
+                    <i class="uk-icon-Twitter uk-icon-medium"></i>
+                </a>
+                <a class="mg-icon-link" href="https://github.com/computableai">
+                    <i class="uk-icon-GitHub uk-icon-medium"></i>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</main>
+
+<footer class="mg-footer">
+    <div class="uk-container uk-container-center uk-text-center">
+
+        <div class="mg-icons-small uk-subnav uk-visible-small">
+            <li><a rel="alternate" type="application/atom+xml" href="/None" class="uk-icon-button uk-icon-rss"></a></li>
+            <li>
+                <a href="https://twitter.com/computableai" class="uk-icon-button uk-icon-Twitter"></a>
+            </li>
+            <li>
+                <a href="https://github.com/computableai" class="uk-icon-button uk-icon-GitHub"></a>
+            </li>
+        </div>
+
+        <div class="mg-author uk-panel">
+            <p></p>
+
+            <p>Powered by <a href="http://blog.getpelican.com">Pelican</a>.<br class="uk-visible-small"> Theme <a href="https://github.com/lucachr/pelican-mg">mg</a> by <a href="https://github.com/lucachr">Luca Chiricozzi</a>.</p>
+        </div>
+    </div>
+</footer>
+
+<div id="mg-offcanvas" class="uk-offcanvas">
+    <div class="uk-offcanvas-bar">
+
+        <form class="uk-search" action="search.html" data-uk-search>
+            <input class="uk-search-field" type="search" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+        </form>
+
+        <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
+            <li class="uk-nav-header">Categories</li>
+            <li ><a href="/category/rl.html">RL</a></li>
+            <li class="uk-nav-header">Pages</li>
+            <li >
+                <a href="/pages/about-this-site.html">About This Site</a>
+            </li>
+
+
+            <li class="uk-nav-divider"></li>
+            <li><a href="/">Archives</a></li>
+        </ul>
+    </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/js/uikit.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/js/components/search.min.js"></script>
+<script src="/theme/js/tipuesearch_set.js"></script>
+<script src="/theme/js/tipuesearch.js"></script>
+<script src="/theme/js/jquery.sticky-kit.js"></script>
+<script src="/theme/js/plugins.js"></script>
+<script src="/theme/js/main-search.js"></script>
+
+
 
 </body>
 </html>

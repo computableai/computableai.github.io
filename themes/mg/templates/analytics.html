@@ -1,0 +1,49 @@
+{% if PIWIK_URL and PIWIK_SITE_ID %}
+<!-- Piwik -->
+<script type="text/javascript">
+var _paq = _paq || [];
+(function(){ {% if PIWIK_SSL_URL %}
+ var u=(("https:" == document.location.protocol) ? "https://{{ PIWIK_SSL_URL }}/" : "http://{{ PIWIK_URL }}/");
+ {% else %}
+var u=(("https:" == document.location.protocol) ? "https://{{ PIWIK_URL }}/" : "http://{{ PIWIK_URL }}/");
+{% endif %}
+ _paq.push(['setSiteId', {{ PIWIK_SITE_ID }}]);
+ _paq.push(['setTrackerUrl', u+'piwik.php']);
+ _paq.push(['trackPageView']);
+ _paq.push(['enableLinkTracking']);
+ var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript'; g.defer=true; g.async=true; g.src=u+'piwik.js';
+ s.parentNode.insertBefore(g,s); })();
+</script>
+<!-- End Piwik Code -->
+{% endif %}
+
+{% if GOOGLE_ANALYTICS %}
+<script>
+(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
+                                                        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
+ e=o.createElement(i);r=o.getElementsByTagName(i)[0];
+ e.src='//www.google-analytics.com/analytics.js';
+ r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
+ga('create','{{ GOOGLE_ANALYTICS }}');ga('send','pageview');
+</script>
+{% endif %}
+
+{% if SC_PROJECT and SC_SECURITY %}
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project={{ SC_PROJECT }}; 
+var sc_invisible=1; 
+var sc_security="{{ SC_SECURITY }}"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+        "https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+        scJsHost+
+        "statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="site stats"
+            href="http://statcounter.com/" target="_blank"><img
+            class="statcounter"
+            src="http://c.statcounter.com/{{ SC_PROJECT }}/0/{{ SC_SECURITY }}/1/"
+            alt="site stats"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+{% endif %}
