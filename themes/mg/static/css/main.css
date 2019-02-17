@@ -2,9 +2,9 @@ html {
   font: 400 14px / 20px "Helvetica Neue",Helvetica,Arial,sans-serif; }
 
 a {
-  color: #33b5e5; }
+  color: #00967b; }
   a:hover {
-    color: #0099cc; }
+    color: #0d544e; }
 
 .uk-navbar-brand {
   text-transform: uppercase; }
@@ -32,10 +32,10 @@ a {
   color: #444; }
 
 .uk-nav-side > li.uk-active > a {
-  background: #28D1B2; }
+  background: #00967b; }
 
 .uk-pagination > .uk-active > span {
-  background: #28D1B2; }
+  background: #00967b; }
 
 .uk-icon-medium {
   margin-right: 0.3em; }
@@ -67,7 +67,7 @@ a {
 
 .mg-header {
   padding: 1em 0;
-  background-color: #39B39D; }
+  background-color: #0d544e; }
 
 .mg-brand {
   font-family: "Open Sans", sans-serif;
