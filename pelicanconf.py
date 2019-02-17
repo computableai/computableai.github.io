@@ -56,3 +56,5 @@ TIPUE_SEARCH_SAVE_AS = 'tipue_search.json'
 SOCIAL = (('twitter', 'https://twitter.com/computableai'),
 	  ('github', 'https://github.com/computableai'),)
 SHARE = True
+
+FOOTER = 'Copyright © 2019 Daniel Cox. All rights reserved.'
