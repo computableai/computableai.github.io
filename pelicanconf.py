@@ -5,6 +5,7 @@ from __future__ import unicode_literals
 AUTHOR = 'Daniel Cox'
 SITENAME = 'Computable AI'
 SITEURL = ''
+SITESUBTITLE = 'A Machine Intelligence Blog'
 DESCRIPTION = 'Computable AI is a learning resource for aspiring AI researchers and practitioners specializing in Deep Reinforcement Learning.'
 
 PATH = 'content'
@@ -56,6 +57,9 @@ TIPUE_SEARCH_SAVE_AS = 'tipue_search.json'
 
 SOCIAL = (('twitter', 'https://twitter.com/computableai'),
 	  ('github', 'https://github.com/computableai'),)
+GITHUB_URL = 'https://github.com/computableai/computableai.github.io'
+TWITTER_URL = 'https://twitter.com/computableai'
+TWITTER_USERNAME = 'computableai'
 SHARE = True
 
 FOOTER = 'Copyright © 2019 Daniel Cox. All rights reserved.'
