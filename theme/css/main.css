@@ -98,6 +98,10 @@ a {
   margin-bottom: 3em;
   min-height: 100%; }
 
+.mg-container-social {
+  font-family: "Oswald";
+}
+
 .mg-feed {
   color: #FF6600; }
   .mg-feed:hover {

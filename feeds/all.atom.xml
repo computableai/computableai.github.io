@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-02-16T00:00:00-05:00</updated><entry><title>Inaugural Post</title><link href="https://computable.ai/articles/2019/Feb/16/inaugural-post.html" rel="alternate"></link><published>2019-02-16T00:00:00-05:00</published><updated>2019-02-16T00:00:00-05:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-02-16:/articles/2019/Feb/16/inaugural-post.html</id><summary type="html">&lt;p&gt;A purpose statement and introduction to this blog&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-02-16T00:00:00-05:00</updated><entry><title>Inaugural Post</title><link href="https://computable.ai/articles/2019/Feb/16/inaugural-post.html" rel="alternate"></link><published>2019-02-16T00:00:00-05:00</published><updated>2019-02-16T00:00:00-05:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-02-16:/articles/2019/Feb/16/inaugural-post.html</id><summary type="html">&lt;p&gt;A purpose statement and introduction&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -1151,12 +1151,11 @@ h6:hover .anchor-link {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;This post inaugurates the Computable AI blog, a learning resource, research tool, and (eventually) a community for machine learning researchers and practitioners, as well as anyone who wants to become one of those in any capacity. My focus is generally on the most promising avenues to grant machines human-like intelligence, with a special focus on artificial neural networks and deep reinforcement learning.&lt;/p&gt;
-&lt;p&gt;The Morning Paper, by Adrian Colyer, is one of the inspirations for this blog. Like him, I wanted to crystalize and share what I’ve learned, and work it into my bones by engaging with it every day. His daily post schedule isn’t sustainable for me right now, but I think I can get many of the same benefits by posting regularly, with an eye towards daily contributions.&lt;/p&gt;
-&lt;p&gt;I also wanted to make a contribution to this field, and since I had a hard time finding beginner resources in Deep Reinforcement Learning myself when I first began, this seemed like a good place for me to make a sizable dent. I’ll spend a lot of time dissecting papers, videos, blog posts, and individual concepts to help make sense of what’s going on. I also believe that intermediate and advanced enthusiasts and professionals will be improved by a firmer grasp not only of the basics, but of each new development as well. I mean to be as clear as possible, and I resolve now never to hide a lack of understanding behind jargon or other obscurity. If you find yourself confused, please say so in the comments or tell me on Twitter, and I’ll try to clarify.&lt;/p&gt;
-&lt;p&gt;To this end, the posts each have Jupyter notebook source code, and I’m making the repository available for interaction using Binder. I’ll call attention to posts that require extra resources or explanations to run.
-This entire site is public on GitHub under the MIT license, so please feel free to correct me, suggest improvements, and otherwise contribute.&lt;/p&gt;
-&lt;p&gt;By the way, I speak only English, but I would love to make the content here available to speakers of other languages. Pelican (the static site generator I’m using) supports this, so please feel free to fork and submit translation PRs.&lt;/p&gt;
+&lt;p&gt;This post begins the Computable AI blog, a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I (Daniel Cox) have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.&lt;/p&gt;
+&lt;p&gt;I found few beginner resources for DRL when I began, and since I have a passion for teaching, I intend to make some dent there.&lt;/p&gt;
+&lt;p&gt;I also work as the "Director of Applied Sciences" for a startup software company, and the machine learning team must occasionally indoctrinate new members. This provides me with a convenient target audience.&lt;/p&gt;
+&lt;p&gt;Finally, my own education in DRL is incomplete, so this will serve partly as a record of my own journey.&lt;/p&gt;
+&lt;p&gt;I hope it helps you.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
