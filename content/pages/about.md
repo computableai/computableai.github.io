@@ -5,7 +5,7 @@ Computable AI is a personal journal on machine intelligence intended to crystali
 
 I found few beginner resources for DRL when I began, and since I have a passion for teaching, I intend to make some dent there.
 
-I also work as the "Director of Applied Sciences" for a startup software company, and the machine learning team must occasionally indoctrinate new members. This provides me with a convenient target audience.
+I also serve as the "Director of Applied Sciences" for a startup software company, and the machine learning team must occasionally indoctrinate new members. This provides me with a convenient target audience.
 
 Finally, my own education in DRL is incomplete, so this will serve partly as a record of my own journey.
 
