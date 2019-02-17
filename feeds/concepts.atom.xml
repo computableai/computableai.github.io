@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - RL</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/rl.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-02-15T06:00:00-05:00</updated><entry><title>Pong Preprocessing</title><link href="https://computable.ai/articles/2019/Feb/15/pong-preprocessing.html" rel="alternate"></link><published>2019-02-15T06:00:00-05:00</published><updated>2019-02-15T06:00:00-05:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-02-15:/articles/2019/Feb/15/pong-preprocessing.html</id><summary type="html">&lt;p&gt;An example of ALE preprocessing&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - Concepts</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/concepts.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-02-16T00:00:00-05:00</updated><entry><title>Pong Preprocessing</title><link href="https://computable.ai/articles/2019/Feb/16/pong-preprocessing.html" rel="alternate"></link><published>2019-02-16T00:00:00-05:00</published><updated>2019-02-16T00:00:00-05:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-02-16:/articles/2019/Feb/16/pong-preprocessing.html</id><summary type="html">&lt;p&gt;An example of ALE preprocessing&lt;/p&gt;</summary><content type="html">&lt;style type="text/css"&gt;/*!
 *
 * IPython notebook
 *
@@ -1587,4 +1587,4 @@ h6:hover .anchor-link {
     (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
 }
 &lt;/script&gt;
-</content><category term="pelican"></category><category term="test"></category></entry></feed>
+</content></entry></feed>
