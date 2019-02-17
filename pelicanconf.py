@@ -41,9 +41,10 @@ PLUGINS = ['ipynb.markup']
 IPYNB_USE_METACELL = True
 ARTICLE_URL = 'articles/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
 ARTICLE_SAVE_AS = 'articles/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
-DEFAULT_METADATA = {
-    'status': 'draft',
-    }
+#DEFAULT_METADATA = {
+#    'status': 'draft',
+#    }
+WITH_FUTURE_DATES = False
 IGNORE_FILES = ['.ipynb_checkpoints']
 USE_FOLDER_AS_CATEGORY = True
 

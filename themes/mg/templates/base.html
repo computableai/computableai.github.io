@@ -117,19 +117,15 @@
                 </ul>
             </div>
 
-            <div class="uk-panel uk-panel-box">
-                <h3 class="uk-panel-title">Receive Updates</h3>
-                <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" class="mg-feed"><i class="uk-icon-rss uk-icon-medium"></i> ATOM</a>
-            </div>
-
             {% if SOCIAL %}
             <div class="uk-panel uk-panel-box">
-                <h3 class="uk-panel-title">Contacts</h3>
+                <h3 class="uk-panel-title">External</h3>
                 {% for icon, link in SOCIAL %}
                 <a class="mg-icon-link" href="{{ link }}">
                     <i class="uk-icon-{{ icon }} uk-icon-medium"></i>
                 </a>
                 {% endfor %}
+                <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" class="mg-feed"><i class="uk-icon-rss uk-icon-medium"></i></a>
             </div>
             {% endif %}
 
