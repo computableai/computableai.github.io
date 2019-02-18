@@ -6,7 +6,7 @@ AUTHOR = 'Daniel Cox'
 SITENAME = 'Computable AI'
 SITEURL = ''
 SITESUBTITLE = 'A Machine Intelligence Blog'
-DESCRIPTION = 'Computable AI is a learning resource for aspiring AI researchers and practitioners specializing in Deep Reinforcement Learning.'
+DESCRIPTION = 'Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.'
 
 PATH = 'content'
 
