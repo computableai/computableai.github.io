@@ -1246,7 +1246,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[84]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>     <span class="c1"># numpy lets us do vector math fast</span>
@@ -1270,7 +1270,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[85]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># pluck it off the Internet</span>
@@ -1290,7 +1290,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[85]:</div>
+    <div class="prompt output_prompt">Out[2]:</div>
 
 
 
@@ -1317,7 +1317,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[86]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">kitten_nums</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">kitten</span><span class="p">)</span>
@@ -1334,7 +1334,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[86]:</div>
+    <div class="prompt output_prompt">Out[3]:</div>
 
 
 
@@ -1400,21 +1400,25 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This is an array of an array of an array of numbers. If it's not jagged (for example, it doesn't have inconsistent column lengths), then we're talking about a <em>tensor</em>. A tensor is just a boxy nested array of numbers, and it represents the kitten just as well as the picture form that you can admire. (You may have heard the term <em>matrix</em>. Well, a matrix is just a two-dimensional tensor. Tensors can have as many dimensions as you like.)</p>
+<p>This is an array of an array of an array of numbers. (NumPy leaves out bits to save screen space, so there are ...s.) If a nested array is not jagged (for example, it doesn't have inconsistent column lengths), then we're talking about a <em>tensor</em>.</p>
+<p>A tensor is just a boxy nested array of numbers, and it represents the kitten just as well as the picture form that you can admire. (You may have heard the term <em>matrix</em>. Well, a matrix is just a _two-_dimensional tensor. Tensors can have as many dimensions as you like.)</p>
 <p>To take a closer look at this particular tensor above:</p>
 <ul>
 <li>This representation is an array of each of the <em>rows</em> of pixels in the image.</li>
 <li>Each one of those rows is actually another array, this time an array of all of the <em>pixels</em> in that row.</li>
 <li>Each pixel is also actually another array, containing <em>three color intensities</em> between 0 and 255: Red, Green, and Blue (RGB).</li>
 </ul>
-<p>Have a look at how many items are in each of those nested arrays.</p>
+<p>Here's a drawing of the tensor representation of a much smaller (nine-pixel) image so you can have the whole picture in your head:</p>
+<p><img src="../images/tensor.jpeg" alt="Tensor Kitten"></p>
+<p>See how it's an array of rows, and each row contains pixels, and each pixel is an array of RGB values?</p>
+<p>But back to the kitten. Have a look at how many items are in each of those nested arrays:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[87]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">kitten_nums</span><span class="o">.</span><span class="n">shape</span>
@@ -1430,7 +1434,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[87]:</div>
+    <div class="prompt output_prompt">Out[4]:</div>
 
 
 
@@ -1449,14 +1453,14 @@ h6:hover .anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The outermost array has 213 items in it. Each item is an array with 320 items in it. Each of <em>those</em> items is an array with three items in it. This makes sense because the kitten image is 213 pixels high by 320 pixels wide, and each pixel is composed of three colors.</p>
-<p>Would you say there's a lot of red in that lower-right pixel of the image? Let's see.</p>
+<p>Would you say there's a lot of red in that lower-right pixel of the kitten image? Let's see:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[88]:</div>
+<div class="prompt input_prompt">In&nbsp;[5]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">kitten_nums</span><span class="p">[</span><span class="mi">212</span><span class="p">,</span><span class="mi">319</span><span class="p">]</span>
@@ -1472,7 +1476,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[88]:</div>
+    <div class="prompt output_prompt">Out[5]:</div>
 
 
 
@@ -1490,14 +1494,14 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>233 out of 255 is a pretty high intensity of red. More red than in the upper-left pixel, which looks kinda brownish to me.</p>
+<p>233 out of 255 is a pretty high intensity of red. More red than in the upper-left pixel, which looks kinda brownish to me:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[89]:</div>
+<div class="prompt input_prompt">In&nbsp;[6]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">kitten_nums</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
@@ -1513,7 +1517,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[89]:</div>
+    <div class="prompt output_prompt">Out[6]:</div>
 
 
 
@@ -1531,14 +1535,14 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I would expect almost no red from that nearly-black dark patch of the background, half way down on the far left.</p>
+<p>I would expect almost no red from that nearly-black dark patch of the background, half way down on the far left:</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[90]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">kitten_nums</span><span class="p">[</span><span class="mi">106</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
@@ -1554,7 +1558,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[90]:</div>
+    <div class="prompt output_prompt">Out[7]:</div>
 
 
 
@@ -1572,14 +1576,15 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I can play around with the tensor representation, and then turn it back into an image again. For instance, let's slice out 100 rows from the middle of the image and display that.</p>
+<p>You get the idea.</p>
+<p>Now, I can play around with the tensor representation, and then turn it back into an image again. For instance, let's slice out 100 rows from the middle of the image and display that.</p>
 
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[91]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">kitten_nums</span><span class="p">[</span><span class="mi">100</span><span class="p">:</span><span class="mi">200</span><span class="p">])</span>
@@ -1595,7 +1600,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[91]:</div>
+    <div class="prompt output_prompt">Out[8]:</div>
 
 
 
@@ -1622,7 +1627,7 @@ h6:hover .anchor-link {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[92]:</div>
+<div class="prompt input_prompt">In&nbsp;[9]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">kitten_nums</span><span class="p">[</span><span class="mi">60</span><span class="p">:</span><span class="mi">160</span><span class="p">,</span><span class="mi">100</span><span class="p">:</span><span class="mi">200</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># remove red in range of rows and columns</span>
@@ -1640,7 +1645,7 @@ h6:hover .anchor-link {
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[92]:</div>
+    <div class="prompt output_prompt">Out[9]:</div>
 
 
 
