@@ -15,5 +15,11 @@ matplotlib = "==3.0.2"
 nbconvert = "==5.4.1"
 Markdown = "==3.0.1"
 
+numpy = "*"
+pillow = "*"
+torch = "*"
+torchvision = "*"
+requests = "*"
+
 [requires]
 python_version = "3.6"

@@ -37,7 +37,7 @@ DEFAULT_PAGINATION = 10
 #RELATIVE_URLS = True
 
 MARKUP = ('md', 'ipynb')
-PLUGIN_PATHS = ['./plugins', './plugins/pelican-plugins']
+PLUGIN_PATHS = ['./plugins']
 PLUGINS = ['ipynb.markup']
 IPYNB_USE_METACELL = True
 ARTICLE_URL = 'articles/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
