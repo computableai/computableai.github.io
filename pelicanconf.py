@@ -46,7 +46,7 @@ ARTICLE_SAVE_AS = 'articles/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
 #    'status': 'draft',
 #    }
 WITH_FUTURE_DATES = False
-IGNORE_FILES = ['.ipynb_checkpoints']
+IGNORE_FILES = ['.ipynb_checkpoints', '{static}']
 USE_FOLDER_AS_CATEGORY = True
 
 THEME = 'themes/mg'
@@ -63,3 +63,5 @@ TWITTER_USERNAME = 'computableai'
 SHARE = True
 
 FOOTER = 'Copyright © 2019 Daniel Cox. All rights reserved.'
+
+DELETE_OUTPUT_DIRECTORY = True
