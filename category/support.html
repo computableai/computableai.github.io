@@ -1227,7 +1227,7 @@ h6:hover .anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This post begins a series on how artificial neural networks work, from scratch, with code. (Python)</p>
 <p>I will assume only that you don't vomit at the sight of an unfamiliar equation, and that you have some high school math and a little programming experience. We'll approach neural networks in small steps. This time, we're talking about how <em>everything can be represented as numbers</em>.</p>
-<h1 id="Computers-see-differently">Computers see differently<a class="anchor-link" href="#Computers-see-differently">&#182;</a></h1>
+<h2 id="Computers-see-differently">Computers see differently<a class="anchor-link" href="#Computers-see-differently">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -1294,14 +1294,14 @@ h6:hover .anchor-link {
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The computer sees it differently, though. The computer sees a nested array of numbers, like this:</p>
 <p><img src="https://computable.ai/images/tensor.jpeg" alt="Tensor Kitten"></p>
-<h1 id="Tensors">Tensors<a class="anchor-link" href="#Tensors">&#182;</a></h1><p>A nested array of numbers like that is called a <em>tensor</em>. What we're looking at here is</p>
+<h2 id="Tensors">Tensors<a class="anchor-link" href="#Tensors">&#182;</a></h2><p>A nested array of numbers like that is called a <em>tensor</em>. What we're looking at here is</p>
 <ul>
 <li>an array of each of the <em>rows</em> of pixels in the image,</li>
 <li>where each one of those rows is actually another array, this time an array of all of the <em>pixels</em> in that row, </li>
 <li>and each pixel is also actually another array containing three numbers between 0 and 255, Red, Green, and Blue. (So R, G, and B in the drawing would actually be numbers representing <em>how</em> red, <em>how much</em> green, <em>what intensity</em> of blue, for a given pixel).</li>
 </ul>
 <p>A tensor is just a boxy (no inconsistent array lengths) nested array of numbers, and it represents the kitten just as well as the picture that you can admire. You may have heard the term <em>matrix</em>. Well, a matrix is just a <em>two</em>-dimensional tensor. Tensors can have as many dimensions as you like.</p>
-<h1 id="How-the-computer-sees-the-kitten">How the computer sees the kitten<a class="anchor-link" href="#How-the-computer-sees-the-kitten">&#182;</a></h1><p>Back to the kitten. Here is the tensor representation of the same kitten we saw earlier:</p>
+<h2 id="How-the-computer-sees-the-kitten">How the computer sees the kitten<a class="anchor-link" href="#How-the-computer-sees-the-kitten">&#182;</a></h2><p>Back to the kitten. Here is the tensor representation of the same kitten we saw earlier:</p>
 
 </div>
 </div>
@@ -1434,7 +1434,7 @@ h6:hover .anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The outermost array has 213 items in it. Each of those items is an array with 320 items in it. Each of <em>those</em> items is an array with 3 items in it. This makes sense because the kitten image is 213 pixels high by 320 pixels wide, and each pixel is composed of three colors.</p>
-<h1 id="Inspecting-the-tensor">Inspecting the tensor<a class="anchor-link" href="#Inspecting-the-tensor">&#182;</a></h1><p>Would you say there's a lot of red in that lower-right pixel of the kitten image? Let's see:</p>
+<h2 id="Inspecting-the-tensor">Inspecting the tensor<a class="anchor-link" href="#Inspecting-the-tensor">&#182;</a></h2><p>Would you say there's a lot of red in that lower-right pixel of the kitten image? Let's see:</p>
 
 </div>
 </div>
@@ -1558,7 +1558,7 @@ h6:hover .anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You get the idea.</p>
-<h1 id="Going-back-and-forth-for-convenience">Going back and forth for convenience<a class="anchor-link" href="#Going-back-and-forth-for-convenience">&#182;</a></h1><p>We can play around with the tensor representation, and then turn it back into an image again. For instance, let's slice out 100 rows from the middle of the image and display that.</p>
+<h2 id="Going-back-and-forth-for-convenience">Going back and forth for convenience<a class="anchor-link" href="#Going-back-and-forth-for-convenience">&#182;</a></h2><p>We can play around with the tensor representation, and then turn it back into an image again. For instance, let's slice out 100 rows from the middle of the image and display that.</p>
 
 </div>
 </div>
