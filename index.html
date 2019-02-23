@@ -1231,6 +1231,8 @@ h6:hover .anchor-link {
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">PIL</span> <span class="k">import</span> <span class="n">Image</span>  <span class="c1"># Pillow, a Python Image Library fork</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>     <span class="c1"># NumPy lets us do vector math fast</span>
+<span class="kn">import</span> <span class="nn">requests</span>        <span class="c1"># for downloading kittens</span>
+<span class="kn">from</span> <span class="nn">io</span> <span class="k">import</span> <span class="n">BytesIO</span> <span class="c1"># for processing kittens</span>
 </pre></div>
 
     </div>
@@ -1251,7 +1253,9 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">kitten</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;../images/kitten.jpg&#39;</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://computable.ai/static/images/kitten.jpg&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">kitten</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">BytesIO</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">))</span>
 <span class="n">kitten</span>
 </pre></div>
 
@@ -1286,7 +1290,7 @@ h6:hover .anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The computer sees it differently, though. The computer sees a nested array of numbers, like this:</p>
-<p><img src="https://computable.ai/images/tensor.jpeg" alt="Tensor Kitten"></p>
+<p><img src="https://computable.ai/static/images/tensor.jpeg" alt="Tensor Kitten"></p>
 <h2 id="Tensors">Tensors<a class="anchor-link" href="#Tensors">&#182;</a></h2><p>A nested array of numbers like that is called a <em>tensor</em>. What we're looking at here is</p>
 <ul>
 <li>an array of each of the <em>rows</em> of pixels in the image,</li>
