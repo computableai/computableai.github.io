@@ -1360,7 +1360,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;The outermost array has 213 items in it. Each of those items is an array with 320 items in it. Each of &lt;em&gt;those&lt;/em&gt; items is an array with 3 items in it. This makes sense because the kitten image is 213 pixels high by 320 pixels wide, and each pixel is composed of three colors.&lt;/p&gt;
-&lt;p&gt;Would you say there's a lot of red in that lower-right pixel of the kitten image? Let's see:&lt;/p&gt;
+&lt;h1 id="Inspecting-the-tensor"&gt;Inspecting the tensor&lt;a class="anchor-link" href="#Inspecting-the-tensor"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Would you say there's a lot of red in that lower-right pixel of the kitten image? Let's see:&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
