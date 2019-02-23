@@ -46,6 +46,7 @@ ARTICLE_SAVE_AS = 'articles/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
 #    'status': 'draft',
 #    }
 WITH_FUTURE_DATES = False
+STATIC_PATHS = ['static']
 IGNORE_FILES = ['.ipynb_checkpoints', '{static}']
 USE_FOLDER_AS_CATEGORY = True
 
