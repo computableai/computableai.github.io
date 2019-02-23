@@ -38,8 +38,21 @@ DEFAULT_PAGINATION = 10
 
 MARKUP = ('md', 'ipynb')
 PLUGIN_PATHS = ['./plugins']
-PLUGINS = ['ipynb.markup']
+PLUGINS = ['ipynb.markup', 'sitemap']
 IPYNB_USE_METACELL = True
+SITEMAP = {
+        'format': 'xml',
+        'priorities': {
+            'articles': 0.5,
+            'indexes': 0.5,
+            'pages': 0.5
+            },
+        'changefreqs': {
+            'articles': 'daily',
+            'indexes': 'daily',
+            'pages': 'monthly'
+            },
+        }
 ARTICLE_URL = 'articles/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
 ARTICLE_SAVE_AS = 'articles/{date:%Y}/{date:%b}/{date:%d}/{slug}.html'
 #DEFAULT_METADATA = {
