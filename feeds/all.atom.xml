@@ -1151,21 +1151,19 @@ h6:hover .anchor-link {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Let's begin at the beginning so there's no confusion from the start. I'm going to explain how artificial neural networks work, from scratch, with code. I will assume only that you don't vomit at the sight of an unfamiliar equation, and that you have some high school math and a little programming experience. We'll approach neural networks in small steps. This time, we're talking about how everything can be represented as numbers.&lt;/p&gt;
-&lt;p&gt;So let's get cooking.&lt;/p&gt;
+&lt;p&gt;This post begins a series on how artificial neural networks work, from scratch, with code. (Python)&lt;/p&gt;
+&lt;p&gt;I will assume only that you don't vomit at the sight of an unfamiliar equation, and that you have some high school math and a little programming experience. We'll approach neural networks in small steps. This time, we're talking about how &lt;em&gt;everything can be represented as numbers&lt;/em&gt;.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[1]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[11]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;     &lt;span class="c1"&gt;# numpy lets us do vector math fast&lt;/span&gt;
-&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;requests&lt;/span&gt;        &lt;span class="c1"&gt;# requests let&amp;#39;s us make Internet requests&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PIL&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;  &lt;span class="c1"&gt;# PILlow is a better Python Image Library&lt;/span&gt;
-&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;io&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;BytesIO&lt;/span&gt; &lt;span class="c1"&gt;# useful for grabbing the image out of a response&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="kn"&gt;from&lt;/span&gt; &lt;span class="nn"&gt;PIL&lt;/span&gt; &lt;span class="k"&gt;import&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;  &lt;span class="c1"&gt;# Pillow, a Python Image Library fork&lt;/span&gt;
+&lt;span class="kn"&gt;import&lt;/span&gt; &lt;span class="nn"&gt;numpy&lt;/span&gt; &lt;span class="k"&gt;as&lt;/span&gt; &lt;span class="nn"&gt;np&lt;/span&gt;     &lt;span class="c1"&gt;# NumPy lets us do vector math fast&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1176,7 +1174,7 @@ h6:hover .anchor-link {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;Here is one representation of a kitten:&lt;/p&gt;
+&lt;p&gt;Here is one way to represent a kitten:&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
@@ -1186,10 +1184,7 @@ h6:hover .anchor-link {
 &lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[2]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="c1"&gt;# pluck it off the Internet&lt;/span&gt;
-&lt;span class="n"&gt;response&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;requests&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;get&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Cute_grey_kitten.jpg/320px-Cute_grey_kitten.jpg&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="c1"&gt;# turn the response into an image&lt;/span&gt;
-&lt;span class="n"&gt;kitten&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;BytesIO&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;response&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;content&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;kitten&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;open&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;../images/kitten.jpg&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
 &lt;span class="n"&gt;kitten&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -1223,18 +1218,27 @@ h6:hover .anchor-link {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;But here is another perfectly good representation of the same kitten.&lt;/p&gt;
+&lt;p&gt;The computer sees it differently, though. The computer sees a nested array of numbers, like this:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://computable.ai/images/tensor.jpeg" alt="Tensor Kitten"&gt;&lt;/p&gt;
+&lt;p&gt;A nested array of numbers is called a &lt;em&gt;tensor&lt;/em&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This representation is an array of each of the &lt;em&gt;rows&lt;/em&gt; of pixels in the image.&lt;/li&gt;
+&lt;li&gt;Each one of those rows is actually another array, this time an array of all of the &lt;em&gt;pixels&lt;/em&gt; in that row.&lt;/li&gt;
+&lt;li&gt;Each pixel is also actually another array, containing &lt;em&gt;three color intensities&lt;/em&gt; between 0 and 255: Red, Green, and Blue (So R, G, and B in the drawing would actually be numbers representing &lt;em&gt;how&lt;/em&gt; red, &lt;em&gt;how much&lt;/em&gt; green, &lt;em&gt;what intensity&lt;/em&gt; of blue, for a given pixel).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A tensor is just a boxy nested array of numbers, and it represents the kitten just as well as the picture form that you can admire. (You may have heard the term &lt;em&gt;matrix&lt;/em&gt;. Well, a matrix is just a _two-_dimensional tensor. Tensors can have as many dimensions as you like.)&lt;/p&gt;
+&lt;p&gt;Back to the kitten. Here is the tensor representation of the same kitten we saw earlier:&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[3]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[12]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;kitten_nums&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;kitten&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
-&lt;span class="n"&gt;kitten_nums&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;np&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;array&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;kitten&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;span class="n"&gt;tensor&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1247,7 +1251,7 @@ h6:hover .anchor-link {
 
 &lt;div class="output_area"&gt;
 
-    &lt;div class="prompt output_prompt"&gt;Out[3]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[12]:&lt;/div&gt;
 
 
 
@@ -1313,28 +1317,18 @@ h6:hover .anchor-link {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;This is an array of an array of an array of numbers. (NumPy leaves out bits to save screen space, so there are ...s.) If a nested array is not jagged (for example, it doesn't have inconsistent column lengths), then we're talking about a &lt;em&gt;tensor&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;A tensor is just a boxy nested array of numbers, and it represents the kitten just as well as the picture form that you can admire. (You may have heard the term &lt;em&gt;matrix&lt;/em&gt;. Well, a matrix is just a _two-_dimensional tensor. Tensors can have as many dimensions as you like.)&lt;/p&gt;
-&lt;p&gt;To take a closer look at this particular tensor above:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;This representation is an array of each of the &lt;em&gt;rows&lt;/em&gt; of pixels in the image.&lt;/li&gt;
-&lt;li&gt;Each one of those rows is actually another array, this time an array of all of the &lt;em&gt;pixels&lt;/em&gt; in that row.&lt;/li&gt;
-&lt;li&gt;Each pixel is also actually another array, containing &lt;em&gt;three color intensities&lt;/em&gt; between 0 and 255: Red, Green, and Blue (RGB).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Here's a drawing of the tensor representation of a much smaller (nine-pixel) image so you can have the whole picture in your head:&lt;/p&gt;
-&lt;p&gt;&lt;img src="/images/tensor.jpeg" alt="Tensor Kitten"&gt;&lt;/p&gt;
-&lt;p&gt;See how it's an array of rows, and each row contains pixels, and each pixel is an array of RGB values?&lt;/p&gt;
-&lt;p&gt;But back to the kitten. Have a look at how many items are in each of those nested arrays:&lt;/p&gt;
+&lt;p&gt;NumPy saves screen space by leaving out bits of it, (hence the ...s) but the structure is the same as in the drawing. You're still seeing an array of arrays of arrays of numbers, only there are more of them in the kitten tensor because there are more pixels in the kitten image.&lt;/p&gt;
+&lt;p&gt;How many more?&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[4]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[13]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;kitten_nums&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;shape&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1347,7 +1341,7 @@ h6:hover .anchor-link {
 
 &lt;div class="output_area"&gt;
 
-    &lt;div class="prompt output_prompt"&gt;Out[4]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[13]:&lt;/div&gt;
 
 
 
@@ -1365,7 +1359,7 @@ h6:hover .anchor-link {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;The outermost array has 213 items in it. Each item is an array with 320 items in it. Each of &lt;em&gt;those&lt;/em&gt; items is an array with three items in it. This makes sense because the kitten image is 213 pixels high by 320 pixels wide, and each pixel is composed of three colors.&lt;/p&gt;
+&lt;p&gt;The outermost array has 213 items in it. Each of those items is an array with 320 items in it. Each of &lt;em&gt;those&lt;/em&gt; items is an array with 3 items in it. This makes sense because the kitten image is 213 pixels high by 320 pixels wide, and each pixel is composed of three colors.&lt;/p&gt;
 &lt;p&gt;Would you say there's a lot of red in that lower-right pixel of the kitten image? Let's see:&lt;/p&gt;
 
 &lt;/div&gt;
@@ -1373,10 +1367,10 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[5]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[14]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;kitten_nums&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;212&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;319&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;212&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;319&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1389,7 +1383,7 @@ h6:hover .anchor-link {
 
 &lt;div class="output_area"&gt;
 
-    &lt;div class="prompt output_prompt"&gt;Out[5]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[14]:&lt;/div&gt;
 
 
 
@@ -1414,10 +1408,10 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[6]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[15]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;kitten_nums&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1430,7 +1424,7 @@ h6:hover .anchor-link {
 
 &lt;div class="output_area"&gt;
 
-    &lt;div class="prompt output_prompt"&gt;Out[6]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[15]:&lt;/div&gt;
 
 
 
@@ -1455,10 +1449,10 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[7]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[16]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;kitten_nums&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;106&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;106&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1471,7 +1465,7 @@ h6:hover .anchor-link {
 
 &lt;div class="output_area"&gt;
 
-    &lt;div class="prompt output_prompt"&gt;Out[7]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[16]:&lt;/div&gt;
 
 
 
@@ -1490,17 +1484,17 @@ h6:hover .anchor-link {
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;You get the idea.&lt;/p&gt;
-&lt;p&gt;Now, I can play around with the tensor representation, and then turn it back into an image again. For instance, let's slice out 100 rows from the middle of the image and display that.&lt;/p&gt;
+&lt;p&gt;We can play around with the tensor representation, and then turn it back into an image again. For instance, let's slice out 100 rows from the middle of the image and display that.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[8]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[17]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromarray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;kitten_nums&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromarray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1513,7 +1507,7 @@ h6:hover .anchor-link {
 
 &lt;div class="output_area"&gt;
 
-    &lt;div class="prompt output_prompt"&gt;Out[8]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[17]:&lt;/div&gt;
 
 
 
@@ -1540,12 +1534,12 @@ h6:hover .anchor-link {
 &lt;/div&gt;
 &lt;div class="cell border-box-sizing code_cell rendered"&gt;
 &lt;div class="input"&gt;
-&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[9]:&lt;/div&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[19]:&lt;/div&gt;
 &lt;div class="inner_cell"&gt;
     &lt;div class="input_area"&gt;
-&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;kitten_nums&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;60&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;160&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="c1"&gt;# remove red in range of rows and columns&lt;/span&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;60&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;160&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;200&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="c1"&gt;# remove red in range of rows and columns&lt;/span&gt;
 
-&lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromarray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;kitten_nums&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;240&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="c1"&gt;# crop whole image and display&lt;/span&gt;
+&lt;span class="n"&gt;Image&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;fromarray&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;tensor&lt;/span&gt;&lt;span class="p"&gt;[:,&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;240&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="c1"&gt;# crop whole image and display&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
     &lt;/div&gt;
@@ -1558,7 +1552,7 @@ h6:hover .anchor-link {
 
 &lt;div class="output_area"&gt;
 
-    &lt;div class="prompt output_prompt"&gt;Out[9]:&lt;/div&gt;
+    &lt;div class="prompt output_prompt"&gt;Out[19]:&lt;/div&gt;
 
 
 
