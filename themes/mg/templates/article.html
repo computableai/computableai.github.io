@@ -69,7 +69,10 @@
         <a href="https://twitter.com/intent/tweet?text={{ article.title|striptags|urlencode }}&url={{ SITEURL }}/{{ article.url }}&via={{ TWITTER_USERNAME }}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=600,width=600');return false;" class="uk-button uk-visible-small" target="_blank"><i class="uk-icon-twitter"></i> Tweet</a>
         {% endif %}
 
-        <section itemprop="articleBody">{{ article.content }}<a href="https://mybinder.org/v2/gh/computableai/computableai.github.io/dev?filepath={{article.source_path.split('/')[-3:] | join('/') }}"><img src="https://mybinder.org/badge_logo.svg" alt="Launch in Binder" /></a></section>
+        <section itemprop="articleBody">{{ article.content }}
+          <a href="https://mybinder.org/v2/gh/computableai/computableai.github.io/dev?filepath={{article.source_path.split('/')[-3:] | join('/') }}"><img src="https://mybinder.org/badge_logo.svg" alt="Launch in Binder" title="Launch in Jupyter Binder" /></a>
+          <a href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/{{article.source_path.split('/')[-3:] | join('/') }}"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a>
+        </section>
         <hr class="uk-article-divider">
     </article>
 
