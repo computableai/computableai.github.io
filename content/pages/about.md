@@ -1,5 +1,4 @@
 title: About
-status: published
 
 Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.
 
