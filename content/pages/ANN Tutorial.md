@@ -4,4 +4,4 @@ This is a table of contents for posts explaining artificial neural networks (ANN
 
 This tutorial is a **work in progress** until all of the posts are published.
 
-1. [See the Matrix (Everything is Numbers)]({filename}/Support/Everything Is Numbers.ipynb)
+1. [See the Matrix (Everything is Numbers)]({filename}/Concepts/See the Matrix.ipynb)
