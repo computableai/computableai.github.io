@@ -1,19 +1,12 @@
-<meta property="og:title" content="Computable AI" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://computable.ai" />
-<meta name="twitter:url" content="https://computable.ai" />
-<meta itemprop="name" content="Computable AI">
-<meta itemprop="url" content="https://computable.ai">
-
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <!--<![endif]-->
 <head>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Categories</title>
+<title>DRL Tutorial</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <link rel="shortcut icon" href="https://computable.ai/" type="">
@@ -22,15 +15,14 @@
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:site" content="@computableai" />
 <meta property="og:site_name" content="Computable AI" />
-<meta property="og:title" content="Computable AI" />
+<meta property="og:title" content="DRL Tutorial" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://computable.ai" />
-<meta name="twitter:url" content="https://computable.ai" />
-<meta itemprop="name" content="Computable AI" />
-<meta itemprop="url" content="https://computable.ai"/>
-<meta property="og:description" content="Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning." />
-<meta name="twitter:description" content="Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning." />
-<meta itemprop="description" content="Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning." />
+<meta property="og:url" content="https://computable.ai/drafts/pages/drl-tutorial.html" />
+<meta name="twitter:url" content="https://computable.ai/drafts/pages/drl-tutorial.html" />
+<meta itemprop="url" content="https://computable.ai/drafts/pages/drl-tutorial.html"/>
+<meta property="og:description" content="Deep Reinforcement Learning TOC This is a table of contents for posts explaining deep reinforcement learning, arranged as a tutorial. If you understand everything in the ANN Tutorial, this should bring you to a practical understanding of what DRL is, how it works, and how to use it." />
+<meta name="twitter:description" content="Deep Reinforcement Learning TOC This is a table of contents for posts explaining deep reinforcement learning, arranged as a tutorial. If you understand everything in the ANN Tutorial, this should bring you to a practical understanding of what DRL is, how it works, and how to use it." />
+<meta itemprop="description" content="Deep Reinforcement Learning TOC This is a table of contents for posts explaining deep reinforcement learning, arranged as a tutorial. If you understand everything in the ANN Tutorial, this should bring you to a practical understanding of what DRL is, how it works, and how to use it."/>
 <link href="https://computable.ai/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Computable AI ATOM Feed"/>
 <link href='//fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
 <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
@@ -65,34 +57,13 @@
 
     <div class="uk-grid" data-uk-grid-margin>
 
+        
 <div class="uk-width-medium-4-5">
-    <h1 class="uk-heading-large">Categories</h1>
-    <h2><a href="https://computable.ai/category/news.html" class="uk-link-muted">News</a></h2>
+    <h1 class="uk-heading-large" itemprop="name">DRL Tutorial</h1>
+    
 
-        <article class="uk-article">
-            <a href="https://computable.ai/articles/2019/Feb/16/inaugural-post.html" class="uk-article-title uk-link-muted mg-list-title">Inaugural Post</a>
-            <p class="uk-article-meta">
-                <time datetime="2019-02-16">Sat 16 February 2019</time>
-            </p>
-            <p>/*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight and http://www.xcolors.net/dl/euphrasia */ .ansi-black-fg { color: #3E424D; } .ansi-black-bg { background-color: #3E424D; } .ansi-black-intense-fg { color: #282C36; } .ansi-black-intense-bg { background-color: #282C36; } .ansi-red-fg { color: #E75C58; } .ansi-red-bg { background-color: #E75C58; } .ansi-red-intense-fg { color: #B22B31; } .ansi-red-intense-bg { background-color: #B22B31; } .ansi-green-fg { color: #00A250; } .ansi-green-bg { background-color: #00A250; } .ansi-green-intense-fg { color: #007427; } .ansi-green-intense-bg { background-color:...</p>
-        </article>
-        
-
-        <hr>
-
-    <h2><a href="https://computable.ai/category/support.html" class="uk-link-muted">Support</a></h2>
-
-        <article class="uk-article">
-            <a href="https://computable.ai/articles/2019/Feb/21/see-the-matrix.html" class="uk-article-title uk-link-muted mg-list-title">See the Matrix</a>
-            <p class="uk-article-meta">
-                <time datetime="2019-02-21">Thu 21 February 2019</time>
-            </p>
-            <p>/*! * * IPython notebook * */ /* CSS font colors for translated ANSI escape sequences */ /* The color values are a mix of http://www.xcolors.net/dl/baskerville-ivorylight and http://www.xcolors.net/dl/euphrasia */ .ansi-black-fg { color: #3E424D; } .ansi-black-bg { background-color: #3E424D; } .ansi-black-intense-fg { color: #282C36; } .ansi-black-intense-bg { background-color: #282C36; } .ansi-red-fg { color: #E75C58; } .ansi-red-bg { background-color: #E75C58; } .ansi-red-intense-fg { color: #B22B31; } .ansi-red-intense-bg { background-color: #B22B31; } .ansi-green-fg { color: #00A250; } .ansi-green-bg { background-color: #00A250; } .ansi-green-intense-fg { color: #007427; } .ansi-green-intense-bg { background-color:...</p>
-        </article>
-        
-
-        <hr>
-
+    <h2>Deep Reinforcement Learning TOC</h2>
+<p>This is a table of contents for posts explaining deep reinforcement learning, arranged as a tutorial. If you understand everything in the ANN Tutorial, this should bring you to a practical understanding of what DRL is, how it works, and how to use it.</p>
 </div>
 
         <div class="uk-width-medium-1-5 uk-hidden-small">

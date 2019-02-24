@@ -1577,7 +1577,7 @@ h6:hover .anchor-link {
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;I've barely scratched the surface here, but I hope it has clicked that images are really just these nested arrays of numbers (tensors), and that you can manipulate them however you want. We'll be building upon these facts shortly.&lt;/p&gt;
-&lt;p&gt;Feel free to click the Binder badge to play around with this notebook yourself to experiment with numpy and PIL images. Next time we'll talk about how neural networks work.&lt;/p&gt;
+&lt;p&gt;Feel free to click the Binder or Colab badges to play around with this notebook yourself to experiment with numpy and PIL images. Next time we'll talk about how neural networks work.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
