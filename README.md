@@ -10,6 +10,8 @@ Coming soon: Each of the posts in the blog will have a Binder badge as well, rem
 
 The `dev` branch (default) contains all of the source files. The `master` branch is published by GitHub Pages, and only contains the output.
 
+Start with `pipenv shell` to enter the virtualenv shell for this repo.
+
 I run `make devserver` to start an auto-refreshing local server, then I run `jupyter notebook` and use Jupyter to write site content, occasionally checking the Pelican-built version of the article to make sure things look right.
 
 When I'm done, `make publish` publishes the site (by generating a production build and using ghp-import to extract the `output/` into `master`).

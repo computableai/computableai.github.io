@@ -3,10 +3,10 @@
 {% block description %}{{ article.summary|striptags }}{% endblock %}
 {% block seo %}
 
-<meta property="og:title" content="{{ article.title|capitalize }}" />
+<meta property="og:title" content="{{ article.title }}" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}" />
-<meta name="twitter:title" content="{{ article.title|capitalize }}" />
+<meta name="twitter:title" content="{{ article.title }}" />
 <meta name="twitter:url" content="{{ SITEURL }}/{{ article.url }}" />
 <meta itemprop="url" content="{{ SITEURL }}/{{ article.url }}" />
 {% if article.summary %}
