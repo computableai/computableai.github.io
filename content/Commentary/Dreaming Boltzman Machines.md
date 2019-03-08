@@ -11,7 +11,7 @@ It may surprise you to hear that although artificial neural networks take inspir
 
 ## Boltzmann Machines
 
-![Boltzmann Machine >](https://upload.wikimedia.org/wikipedia/commons/7/7a/Boltzmannexamplev1.png)
+![Boltzmann Machine](https://upload.wikimedia.org/wikipedia/commons/7/7a/Boltzmannexamplev1.png#right)
 
 Boltzmann machines (BMs) are a kind of neural network that comes with a biologically plausible training algorithm. There are some caveats to this, of course, which is why it's only a _model_ of how the brain might work, but I think you'll agree that BMs share some remarkable similarities to animal brains. Namely, they sleep, they dream, and then they forget their dreams.
 

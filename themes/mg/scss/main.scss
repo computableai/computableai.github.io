@@ -255,21 +255,20 @@ em {
 }
 
 /* Cool hack for choosing image alignment in pure markdown */
-img[alt$=">"] {
+img[src*="#right"] {
   float: right;
   clear: right;
 }
 
-img[alt$="<"] {
+img[src*="#left"] {
   float: left;
   clear: left;
 }
 
-img[alt$="><"] {
+img[src*="#center"] {
   display: block;
   max-width: 100%;
   height: auto;
   margin: auto;
   float: none!important;
 }
-
