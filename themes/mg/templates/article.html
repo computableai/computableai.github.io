@@ -62,7 +62,7 @@
     <article class="uk-article">
         <h1 class="uk-heading-large uk-article-title" itemprop="name">{{ article.title }}</h1>
         <p class="uk-article-lead" itemprop="description">{{ article.summary|striptags }}</p>
-        <p class="uk-article-meta"><time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time> in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% if DISQUS_SITENAME %}, <br class="uk-visible-small"><a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"><i class="uk-icon-comment"></i> </a>{% endif %}</p>
+        <p class="uk-article-meta"><time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time> in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% if DISQUS_SITENAME %} • <br class="uk-visible-small"> <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"></a>{% endif %}</p>
 
         {% if SHARE %}
         <a href="https://www.facebook.com/sharer/sharer.php?u={{ SITEURL }}/{{ article.url }}" onclick="javascript:window.open(this.href,'', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;" taget="_blank" class="uk-button uk-visible-small"><i class="uk-icon-facebook-square"></i> Share</a>
