@@ -254,3 +254,22 @@ em {
   color:black !important;
 }
 
+/* Cool hack for choosing image alignment in pure markdown */
+img[alt$=">"] {
+  float: right;
+  clear: right;
+}
+
+img[alt$="<"] {
+  float: left;
+  clear: left;
+}
+
+img[alt$="><"] {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  float: none!important;
+}
+
