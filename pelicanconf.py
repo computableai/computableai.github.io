@@ -38,7 +38,7 @@ DEFAULT_PAGINATION = 10
 
 MARKUP = ('md', 'ipynb')
 PLUGIN_PATHS = ['./plugins']
-PLUGINS = ['ipynb.markup', 'sitemap']
+PLUGINS = ['ipynb.markup', 'sitemap', 'representative_image']
 IPYNB_USE_METACELL = True
 SITEMAP = {
         'format': 'xml',

@@ -18,27 +18,16 @@
 {% if articles %}
 {% for article in (articles_page.object_list if articles_page else articles) %}
 
-    {% if loop.index == 1 %}
-      <article class="uk-article" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-          <a href="{{ SITEURL }}/{{ article.url }}" class="uk-article-title uk-link-muted" itemprop="name">{{ article.title }}</a>
-          <p class="uk-article-lead" itemprop="description">{{ article.summary|striptags }}</p>
-          <p class="uk-article-meta"><time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time> in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% if DISQUS_SITENAME %} • <br class="uk-visible-small"><a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"><i class="uk-icon-comment"></i> </a>{% endif %}</p>
-  </p>
-          <section itemprop="articleBody">{{ article.content }}
-            <a href="https://mybinder.org/v2/gh/computableai/computableai.github.io/dev?filepath={{article.source_path.split('/')[-3:] | join('/') }}"><img src="https://mybinder.org/badge_logo.svg" alt="Launch in Binder" /></a>
-            <a href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/{{article.source_path.split('/')[-3:] | join('/') }}"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a>
-          </section>
-          <hr class="uk-article-divider">
-      </article>
-    {% else %}
-        <article class="uk-article" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-                <a href="{{ SITEURL }}/{{ article.url }}" class="uk-article-title uk-link-muted" itemprop="name">{{ article.title }}</a>
-                <p class="uk-article-meta"><time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time> in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% if DISQUS_SITENAME %} • <br class="uk-visible-small"><i class="uk-icon-comment"></i> <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"></a>{% endif %}</p>
-</p>
-                <p class="uk-article-lead" itemprop="description">{{ article.summary|striptags }}</p>
-                <hr class="uk-article-divider">
-        </article>
+  <article class="uk-article" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
+    {% if  article.featured_image %}
+    <img src="{{ article.featured_image }}" style="float:right; height:100px;">
     {% endif %}
+    <a href="{{ SITEURL }}/{{ article.url }}" class="uk-article-title uk-link-muted" itemprop="name">{{ article.title }}</a>
+    <p class="uk-article-meta"><time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time> in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% if DISQUS_SITENAME %} • <br class="uk-visible-small"><i class="uk-icon-comment"></i> <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"></a>{% endif %}</p>
+    </p>
+    <p class="uk-article-lead" itemprop="description">{{ article.summary|striptags }}</p>
+    <hr class="uk-article-divider">
+  </article>
 
 {% endfor %}
 {% if DEFAULT_PAGINATION  and articles_paginator.num_pages > 1 %}
