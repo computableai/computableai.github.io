@@ -24,15 +24,17 @@ a:hover {
 }
 
 .uk-icon-twitter {
-  color: #00B0ED;
+  color: #00b0ed;
 }
 
-.uk-icon-facebook, .uk-icon-facebook-square {
-  color: #3B5999;
+.uk-icon-facebook,
+.uk-icon-facebook-square {
+  color: #3b5999;
 }
 
-.uk-icon-google-plus, .uk-icon-google-plus-square {
-  color: #D34836;
+.uk-icon-google-plus,
+.uk-icon-google-plus-square {
+  color: #d34836;
 }
 
 .uk-icon-github {
@@ -76,7 +78,8 @@ a:hover {
 .uk-navbar-toggle {
   color: white;
 }
-.uk-navbar-toggle:hover, .uk-navbar-toggle:focus {
+.uk-navbar-toggle:hover,
+.uk-navbar-toggle:focus {
   color: white;
 }
 
@@ -117,7 +120,8 @@ a:hover {
   color: white;
   text-decoration: none;
 }
-.mg-brand:hover, .mg-brand:focus {
+.mg-brand:hover,
+.mg-brand:focus {
   color: white;
 }
 @media (max-width: 767px) {
@@ -151,11 +155,11 @@ a:hover {
 }
 
 .mg-feed {
-  color: #FF6600;
+  color: #ff6600;
 }
 .mg-feed:hover {
   text-decoration: none;
-  color: #FF6600;
+  color: #ff6600;
 }
 
 .mg-list-title {
@@ -189,16 +193,16 @@ a:hover {
   color: white;
 }
 .mg-icons-small .uk-icon-rss {
-  background-color: #FF6600;
+  background-color: #ff6600;
 }
 .mg-icons-small .uk-icon-twitter {
-  background-color: #00B0ED;
+  background-color: #00b0ed;
 }
 .mg-icons-small .uk-icon-facebook {
-  background-color: #3B5999;
+  background-color: #3b5999;
 }
 .mg-icons-small .uk-icon-google-plus {
-  background-color: #D34836;
+  background-color: #d34836;
 }
 .mg-icons-small .uk-icon-github {
   background-color: #333;
