@@ -1264,22 +1264,76 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>I recently read <a href="https://theneural.wordpress.com/2011/07/08/the-miracle-of-the-boltzmann-machine/">The Miracle of the Boltzmann Machine</a>, and it was so compelling that I've been thinking about it ever since. The original post is quite beautifully succinct, but rather inaccessible on that account. I'd like to invite you into my excitement, and although this is not a beginner post, I hope to help you understand it by showing more of my work.</p>
 <h2 id="Biological-plausibility">Biological plausibility<a class="anchor-link" href="#Biological-plausibility">&#182;</a></h2><p>If a machine learning algorithm doesn't violate any of the constraints neuroscience tells us the brain probably has to obey, then that algorithm is "biologically plausible". It means it's a candidate model for how the brain may actually work.</p>
 <p>It may surprise you to hear that although artificial neural networks take inspiration from animal brains, most algorithms that work well for training ANNs are <em>not</em> biologically plausible, and are therefore not how the brain actually works.</p>
 <h2 id="Boltzmann-Machines">Boltzmann Machines<a class="anchor-link" href="#Boltzmann-Machines">&#182;</a></h2><p><img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Boltzmannexamplev1.png#right" alt="Figure 1: Boltzmann Machine"></p>
 <p>A Boltzmann machine (BM) is a kind of neural network that comes with a biologically plausible training algorithm. There are some caveats to this, of course, which is why it's only a <em>model</em> of how the brain might work, but I think you'll agree that BMs share some remarkable similarities to animal brains: they sleep, they dream, and then they forget their dreams.</p>
-<p>BMs are a kind of recurrent neural network, meaning that their connections can loop back on themselves. They have some "visible" units (neurons) which can be directly connected to the outside world (eyes, ears, etc.), and some "hidden" units which are not directly connected to the outside world. The example BM pictured here has four visible units and three hidden units.</p>
-<ol>
-<li>Hebbian</li>
-<li>Impractical unless connectivity constrained</li>
-</ol>
-
+<h2 id="Punchline-up-front">Punchline up front<a class="anchor-link" href="#Punchline-up-front">&#182;</a></h2><p>We can set whatever learning objective we want, so let's define ours to be "produce as well as possible the patterns we see in the world". We can think of this as minimizing surprise, since the ability to predict everything we see means we're not surprised by anything. This seems like a plausible goal, since it will yield us an accurate model of the world which we can build upon for planning and other useful things.</p>
+<p>Here's how we can set that objective mathematically (sticking with the notation from the original blog post):</p>
+$$L(W)=\mathbb{E}_{D(V)} [log P(V)]$$<blockquote><p>In other words, the goal of learning is to find a BM that assigns high log probability to the kind of data we typically observe in the world.</p>
+</blockquote>
+<p>To maximize $L$ we need to know what weights $W$ to use, and we can find out by differentiating $L$ with respect to $W$.</p>
+<p>The first really amazing thing turns out to be that when we do this, all of the non-local information drops out, and what remains can be used as an optimization rule that only uses local information. Each pair of neurons can adjust their own connection weights, and this ends up optimizing the BM globally. This is what makes the BM training algorithm biologically plausible, because animal brains don't seem to have access to (much) non-local information.</p>
+$$\frac{\partial L}{\partial w_{ij}} = \mathbb{E}_{D(V)P(H|V)}[x_ix_j]-\mathbb{E}_{P(V,H)}[x_ix_j]$$<p>The second amazing thing has to do with the <em>shape</em> of this equation. The value $\frac{\partial L}{\partial w_{ij}}$ we need to optimize $L$ is just the subtraction of two terms. The one on the left is the expected value of neurons $i$ and $j$ activating at the same time while V is "clamped" to some real world values, and the one on the right is the expected value when it's not (and the BM is free to generate whatever it wants. This lends itself to a surprising interpretation: The left term is the average co-activation when the BM is <em>awake</em>, and the right term is the average co-activation when the BM is <em>asleep</em> (and dreaming!).</p>
+<h2 id="Mathematical-Definition">Mathematical Definition<a class="anchor-link" href="#Mathematical-Definition">&#182;</a></h2><p>BMs are a kind of recurrent neural network, meaning that their connections can loop back on themselves. They have some "visible" neurons which can be directly connected to the outside world (eyes, ears, etc.), and some "hidden" neurons which are not directly connected to the outside world. The example BM pictured here has four visible neurons ($V=[v_1, v_2, v_3, v_4]$) and three hidden neurons ($H=[h_1, h_2, h_3]$).</p>
+<p>Each neuron can either be <em>off</em> (0) or <em>on</em> (1), with some probability. We can express the probability of a given entire configuration $X$ of neurons at once with</p>
+$$P(X) := {e^{X^TWX/2}\over \sum\limits_{X'} e^{X'^TWX'/2}}$$<p>where $X$ is the binary column vector of the on/off, 1/0 states of all neurons (so $X=(V,H)$), which in our example is</p>
+$$X=
+  \begin{bmatrix}
+    x_1 \\
+    x_2 \\
+    x_3 \\
+    x_4 \\
+    x_5 \\
+    x_6 \\
+    x_7
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    v_1 \\
+    v_2 \\
+    v_3 \\
+    v_4 \\
+    h_1 \\
+    h_2 \\
+    h_3
+  \end{bmatrix}
+$$<p>and W is the matrix of weights $w_{ij}$ on each connection between neurons $x_i$ and $x_j$. So</p>
+$$X^TWX/2 =
+  \begin{bmatrix}
+    x_1 &amp; x_2 &amp; x_3 &amp; x_4 &amp; x_5 &amp; x_6 &amp; x_7 \\
+  \end{bmatrix}
+  \begin{bmatrix}
+    0 &amp; w_{12} &amp; w_{13} &amp; w_{14} &amp; w_{15} &amp; w_{16} &amp; w_{17} \\
+    w_{21} &amp; 0 &amp; w_{23} &amp; w_{24} &amp; w_{25} &amp; w_{26} &amp; w_{27} \\
+    w_{31} &amp; w_{32} &amp; 0 &amp; w_{34} &amp; w_{35} &amp; w_{36} &amp; w_{37} \\
+    w_{41} &amp; w_{42} &amp; w_{43} &amp; 0 &amp; w_{45} &amp; w_{46} &amp; w_{47} \\
+    w_{51} &amp; w_{52} &amp; w_{53} &amp; w_{54} &amp; 0 &amp; w_{56} &amp; w_{57} \\
+    w_{61} &amp; w_{62} &amp; w_{63} &amp; w_{64} &amp; w_{65} &amp; 0 &amp; w_{67} \\
+    w_{71} &amp; w_{72} &amp; w_{73} &amp; w_{74} &amp; w_{75} &amp; w_{76} &amp; 0
+  \end{bmatrix}
+    \begin{bmatrix}
+    x_1/2 \\
+    x_2/2 \\
+    x_3/2 \\
+    x_4/2 \\
+    x_5/2 \\
+    x_6/2 \\
+    x_7/2
+  \end{bmatrix}$$<p>which I won't expand all the way, but I'd like to point out that each connection between two neurons $i$ and $j$ is going to be represented by a single pair of terms in the expansion like this:</p>
+$$...+{x_ix_jw_{ij}\over 2}+...+{x_ix_jw_{ji}\over 2}+...$$<p>and since $w_{ij}=w_{ji}$, these will add together to make a single ${x_ix_jw_{ij}}$. In other words, the expansion of $X^TWX/2$ is just the sum of all ${x_ix_jw_{ij}}$:</p>
+$$X^TWX/2=\sum\limits_{i&lt;j} x_ix_jw_{ij}$$
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<ol>
+<li>Hebbian</li>
+<li>Impractical unless connectivity constrained</li>
+</ol>
 
 </div>
 </div>
@@ -1348,6 +1402,10 @@ h6:hover .anchor-link {
             <div class="uk-panel uk-panel-box">
                 <ul class="uk-nav uk-nav-side">
                     <li class="uk-nav-header">Categories</li>
+                    <li class="uk-active">
+                      <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/commentary.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
+                      <a href="https://computable.ai/category/commentary.html">Commentary</a>
+                    </li>
                     <li >
                       <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/meta.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                       <a href="https://computable.ai/category/meta.html">Meta</a>
@@ -1416,6 +1474,10 @@ h6:hover .anchor-link {
 
         <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
             <li class="uk-nav-header">Categories</li>
+            <li class="uk-active">
+              <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/commentary.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
+              <a href="https://computable.ai/category/commentary.html">Commentary</a>
+            </li>
             <li >
               <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/meta.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
               <a href="https://computable.ai/category/meta.html">Meta</a>
