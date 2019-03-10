@@ -5,34 +5,34 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://computable.ai/</loc>
-<lastmod>2019-03-10T14:28:06-00:00</lastmod>
+<lastmod>2019-03-10T14:29:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/archives.html</loc>
-<lastmod>2019-03-10T14:28:06-00:00</lastmod>
+<lastmod>2019-03-10T14:29:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/categories.html</loc>
-<lastmod>2019-03-10T14:28:06-00:00</lastmod>
+<lastmod>2019-03-10T14:29:05-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/pages/about.html</loc>
-<lastmod>2019-03-10T14:28:06-00:00</lastmod>
+<lastmod>2019-03-10T14:29:05-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://computable.ai/articles/2019/Mar/10/the-miracle-of-the-boltzmann-machine-differentiation-work.html</loc>
+<loc>https://computable.ai/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html</loc>
 <lastmod>2019-03-10T00:00:00-05:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
