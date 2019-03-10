@@ -43,6 +43,24 @@ a:hover {
   color: #444;
 }
 
+.uk-nav-side > li {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.uk-nav-side > li a {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.uk-nav-side > li a[class*="mg-feed"] {
+  flex: 0 0 auto;
+}
+
 .uk-nav-side > li.uk-active > a {
   background: #00967b;
 }

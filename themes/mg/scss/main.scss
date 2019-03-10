@@ -67,6 +67,24 @@ a {
     background: $accentGreen;
 }
 
+.uk-nav-side > li {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+
+  a {
+    flex: 1 1 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    &[class*="mg-feed"] {
+      flex: 0 0 auto;
+    }
+  }
+}
+
 .uk-pagination>.uk-active>span {
     background: $accentGreen;
 }
