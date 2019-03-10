@@ -126,10 +126,12 @@
                 <ul class="uk-nav uk-nav-side">
                     <li class="uk-nav-header">Categories</li>
                     {% for cat, _ in categories %}
+
                     <li {% if cat == category %}class="uk-active"{% endif %}>
-                      <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/feeds/{{ cat.slug }}.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                       <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
+                      <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/feeds/{{ cat.slug }}.atom.xml" class="mg-feed"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                     </li>
+
                     {% endfor %}
                     {% if DISPLAY_PAGES_ON_MENU != False %}
                     <li class="uk-nav-header">Pages</li>
