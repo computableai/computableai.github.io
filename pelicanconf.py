@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*- #
 from __future__ import unicode_literals
 
-AUTHOR = 'Daniel Cox'
+AUTHOR = 'the Computable AI authors'
 SITENAME = 'Computable AI'
 SITEURL = 'http://localhost:8000'
 SITESUBTITLE = 'A Machine Intelligence Blog'
@@ -79,6 +79,6 @@ TWITTER_URL = 'https://twitter.com/computableai'
 TWITTER_USERNAME = 'computableai'
 SHARE = True
 
-FOOTER = 'Copyright © 2019 Daniel Cox. All rights reserved.'
+FOOTER = 'Copyright © 2019 the Computable AI authors. All rights reserved.'
 
 DELETE_OUTPUT_DIRECTORY = True
