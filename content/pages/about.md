@@ -1,12 +1,11 @@
 title: About
 
-Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.
+Welcome to Computable AI blog, a machine intelligence blog from a handful of DRL practitioners, intended to crystalize, internalize, share, and explain.
 
-I found few beginner resources for DRL when I began, and since I have a passion for teaching, I intend to make some dent there.
+I found few beginner resources for DRL when I began, and since I have a passion for teaching, this seemed a likely area in which to make a dent.
 
-I also serve as the "Director of Applied Sciences" for a startup software company, and the machine learning team must occasionally indoctrinate new members. This provides me with a convenient target audience.
+I also serve as the "Director of Applied Sciences" for a startup software company, and the AI team must occasionally indoctrinate new members. This provides us with a convenient target audience, as well as an expanding pool of co-authors.
 
 Finally, my own education in DRL is incomplete, so this will serve partly as a record of my own journey.
 
 I hope it helps you.
-
