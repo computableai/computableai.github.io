@@ -85,16 +85,9 @@ endblock %} {% block description %}{{ article.summary | striptags }}{% endblock
       {{ article.summary | striptags }}
     </p>
     <p class="uk-article-meta">
-      {% if article.author %}
-      <span class="uk-text-emphasis">
-        {{ article.author }}
-      </span>
-      {% endif %}
-      <time
-        datetime="{{ article.date.strftime('%Y-%m-%d') }}"
-        itemprop="datePublished"
-        >{{ article.locale_date }}</time
-      >
+
+      {% if article.author %}<span>{{ article.author }} •</span>{% endif %}
+      <time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time>
       in
       <a href="{{ SITEURL }}/{{ article.category.url }}">{{
         article.category

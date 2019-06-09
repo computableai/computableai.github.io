@@ -8,19 +8,18 @@
 <div class="uk-width-medium-4-5">
     <h1 class="uk-heading-large">Archives</h1>
 
-    {% for article in dates %}
-    <article class="uk-article">
-        <a href="{{ article.url }}" class="uk-article-title uk-link-muted mg-list-title">{{ article.title }}</a>
-        <p class="uk-article-meta">
-            <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time>
-        </p>
-        <p>{{ ' '.join(article.content.split(' ')[0:75])|striptags }}...</p>
+  {% for article in dates %}
+  <article class="uk-article">
+    <a href="{{ article.url }}" class="uk-article-title uk-link-muted mg-list-title">{{ article.title }}</a>
 
-    </article>
-    {% endfor %}
+    <p class="uk-article-meta">
+      {% if article.author %}<span>{{ article.author }} •</span>{% endif %}
+      <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time>
+    </p>
+    <p>{{ ' '.join(article.content.split(' ')[0:75])|striptags }}...</p>
+
+  </article>
+  {% endfor %}
 
 </div>
 {% endblock %}
-
-
-
