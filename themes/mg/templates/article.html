@@ -129,13 +129,6 @@ endblock %} {% block description %}{{ article.summary | striptags }}{% endblock
           alt="Open in Colab"
           title="Open in Google Colaboratory"
       /></a>
-      <a
-        href="https://mybinder.org/v2/gh/computableai/computableai.github.io/dev?filepath={{article.source_path.split('/')[-3:] | join('/') }}"
-        ><img
-          src="https://mybinder.org/badge_logo.svg"
-          alt="Launch in Binder"
-          title="Launch in Jupyter Binder"
-      /></a>
       {{ article.content }}
     </section>
     <hr class="uk-article-divider" />
