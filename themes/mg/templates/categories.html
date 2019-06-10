@@ -11,15 +11,15 @@
     <h2><a href="{{ SITEURL}}/{{ category.url}}" class="uk-link-muted">{{ category|capitalize }}</a></h2>
         {% for article in articles %}
 
-  <article class="uk-article">
-    <a href="{{ SITEURL }}/{{ article.url }}"
-      class="uk-article-title uk-link-muted mg-list-title">{{ article.title }}</a>
-    <p class="uk-article-meta">
-      {% if article.author %}<span>{{ article.author }} •</span>{% endif %} <time
-        datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time>
-    </p>
-    <p>{{ ' '.join(article.content.split(' ')[0:75])|striptags }}...</p>
-  </article>
+        <article class="uk-article">
+            <a href="{{ SITEURL }}/{{ article.url }}" class="uk-article-title uk-link-muted mg-list-title">{{ article.title }}</a>
+            <p class="uk-article-meta">
+                <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time>
+            </p>
+            <p>{{ ' '.join(article.content.split(' ')[0:75])|striptags }}...</p>
+        </article>
+        
+        {% endfor %}
 
         <hr>
 
