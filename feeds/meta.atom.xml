@@ -1151,9 +1151,9 @@ h6:hover .anchor-link {
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;This post begins the Computable AI blog, a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I (Daniel Cox) have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.&lt;/p&gt;
-&lt;p&gt;I found few beginner resources for DRL when I began, and since I have a passion for teaching I intend to make some dent there.&lt;/p&gt;
-&lt;p&gt;I also serve as the "Director of Applied Sciences" for a startup software company, and the machine learning team must occasionally indoctrinate new members. This provides me with a convenient target audience.&lt;/p&gt;
+&lt;p&gt;This post begins the Computable AI blog, a machine intelligence blog from a handful of DRL practitioners, intended to crystalize, internalize, share, and explain.&lt;/p&gt;
+&lt;p&gt;I found few beginner resources for DRL when I began, and since I have a passion for teaching, this seemed a likely area in which to make a dent.&lt;/p&gt;
+&lt;p&gt;I also serve as the "Director of Applied Sciences" for a startup software company, and the AI team must occasionally indoctrinate new members. This provides us with a convenient target audience, as well as an expanding pool of co-authors.&lt;/p&gt;
 &lt;p&gt;Finally, my own education in DRL is incomplete, so this will serve partly as a record of my own journey.&lt;/p&gt;
 &lt;p&gt;I hope it helps you.&lt;/p&gt;
 
