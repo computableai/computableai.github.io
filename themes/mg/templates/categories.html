@@ -14,6 +14,7 @@
         <article class="uk-article">
             <a href="{{ SITEURL }}/{{ article.url }}" class="uk-article-title uk-link-muted mg-list-title">{{ article.title }}</a>
             <p class="uk-article-meta">
+                {% if article.author %}<span class="uk-article-author">{{ article.author }}</span> • {% endif %}
                 <time datetime="{{ article.date.strftime('%Y-%m-%d') }}">{{ article.locale_date }}</time>
             </p>
             <p>{{ ' '.join(article.content.split(' ')[0:75])|striptags }}...</p>

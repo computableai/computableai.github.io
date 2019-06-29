@@ -46,7 +46,10 @@
     <article class="uk-article">
         <h1 class="uk-heading-large uk-article-title" itemprop="name">{{ article.title }}</h1>
         <p class="uk-article-lead" itemprop="description">{{ article.summary|striptags }}</p>
-        <p class="uk-article-meta"><time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time> in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% if DISQUS_SITENAME %} • <br class="uk-visible-small"> <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"></a>{% endif %}</p>
+        <p class="uk-article-meta">
+          {% if article.author %}<span class="uk-article-author">{{ article.author }}</span> • {% endif %}
+          <time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time> in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% if DISQUS_SITENAME %} • <br class="uk-visible-small"> <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"></a>{% endif %}
+        </p>
 
         <section itemprop="articleBody">
           <a href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/{{article.source_path.split('/')[-3:] | join('/') }}"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a>
