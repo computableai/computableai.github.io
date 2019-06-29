@@ -1,0 +1,58 @@
+/* Nav Side */
+
+.uk-nav-side > li {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.uk-nav-side > li a {
+  flex: 1 1 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.uk-nav-side > li a[class*="mg-feed"] {
+  flex: 0 0 auto;
+}
+
+.uk-nav-side > li.uk-active > a {
+  background: #00967b;
+}
+
+/* Navbar */
+
+.uk-navbar-toggle {
+  color: white;
+}
+.uk-navbar-toggle:hover, .uk-navbar-toggle:focus {
+  color: white;
+}
+
+/* Off-Canvas Nav */
+
+.uk-nav-offcanvas > li > a {
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}
+.uk-nav-offcanvas > li > a:last-child {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.uk-nav-offcanvas .uk-nav-divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.01);
+  margin: 0;
+  height: 4px;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.uk-nav-offcanvas .uk-nav-header {
+  margin-top: 0;
+  background: #404040;
+  border-top: 1px solid rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+}

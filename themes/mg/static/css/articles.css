@@ -1,0 +1,40 @@
+/* Article Meta */
+
+.uk-article-meta {
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: .05ch;
+}
+
+.uk-article-meta > a {
+  color: var(--color-content-muted);
+}
+
+.uk-article-meta > a:hover {
+  color: var(--color-content-contrast);
+}
+
+.uk-article-meta > .uk-icon-comment {
+  color: var(--color-content-default);
+}
+
+/* Cool hack for choosing image alignment in pure markdown */
+img[src*="#right"] {
+  float: right;
+  clear: right;
+}
+
+img[src*="#left"] {
+  float: left;
+  clear: left;
+}
+
+img[src*="#center"] {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  float: none !important;
+}
+
+/*# sourceMappingURL=main.css.map */
