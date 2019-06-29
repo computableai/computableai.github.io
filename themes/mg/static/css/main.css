@@ -1,26 +1,77 @@
+
+:root {
+  --color-brand-primary: #00967b;
+  --color-brand-secondary: #0d544e;
+
+  --color-background-default: hsl(0,0%,100%);
+  --color-background-2: hsl(0,0%,97%);
+  --color-background-3: hsl(0,0%,94%);
+
+  --color-content-default: rgba(0,0,0,0.85);
+  --color-content-contrast: rgba(0,0,0,1);
+  --color-content-muted: rgba(0,0,0,0.6);
+  --color-content-nonessential: rgba(0,0,0,0.3);
+
+  --color-intent-highlight: var(--color-brand-primary);
+
+  --color-keyline-default: hsla(0,0%,0%,8%);
+
+  --font-stack-default: system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-stack-code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace`;
+
+  --line-height-looses: 1.6;
+  --line-height-default: 1.4;
+  --line-height-tight: 1.2;
+
+  --font-weight-default: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  --font-size-text-xl: 18px;
+  --font-size-text-lg: 16px;
+  --font-size-text-default: 14px;
+  --font-size-text-sm: 12px;
+  --font-size-text-xs: 10px;
+}
+
+/* Base style */
+
 html {
-  font: 400 14px/20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: var(--font-weight-default);
+  line-height: var(--line-height-default);
+  font-size: var(--font-size-text-default);
+  font-family: var(--font-stack-default);
 }
 
 a {
-  color: #00967b;
+  color: var(--color-intent-highlight);
 }
+
 a:hover {
-  color: #0d544e;
+  color: var(--color-intent-highlight);
 }
+
 
 .uk-navbar-brand {
   text-transform: uppercase;
 }
 
+
+.uk-article-meta {
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: .05ch;
+}
+
 .uk-article-meta > a {
-  color: #444;
+  color: var(--color-content-muted);
 }
 .uk-article-meta > a:hover {
-  color: #444;
+  color: var(--color-content-contrast);
 }
 .uk-article-meta > .uk-icon-comment {
-  color: #444;
+  color: var(--color-content-default);
 }
 
 .uk-icon-twitter {
