@@ -1,0 +1,23 @@
+
+
+<footer class="mg-footer">
+  <div class="uk-container uk-container-center uk-text-center">
+
+      <div class="mg-icons-small uk-subnav uk-visible-small">
+          <li><a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" class="uk-icon-button uk-icon-rss"></a></li>
+          {% if SOCIAL %}
+          {% for icon, link in SOCIAL %}
+          <li>
+              <a href="{{ link }}" class="uk-icon-button uk-icon-{{ icon.replace("-square", "") }}"></a>
+          </li>
+          {% endfor %}
+          {% endif %}
+      </div>
+
+      <div class="mg-author uk-panel">
+          <p>{{ FOOTER }}</p>
+
+          <p>Powered by <a href="http://blog.getpelican.com">Pelican</a>.<br class="uk-visible-small"> Theme based on <a href="https://github.com/lucachr/pelican-mg">mg</a>.</p>
+      </div>
+  </div>
+</footer>
