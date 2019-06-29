@@ -1,0 +1,16 @@
+{% if article %}
+<!--[if lt IE 7]>      <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if IE 7]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if IE 8]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ DEFAULT_LANG }}" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <!--<![endif]-->
+{% elif page %}
+<!--[if lt IE 7]>      <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if IE 7]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if IE 8]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ DEFAULT_LANG }}" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/WebPage"> <!--<![endif]-->
+{% else %}
+<!--[if lt IE 7]>      <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if IE 7]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if IE 8]>         <html lang="{{ DEFAULT_LANG }}" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="{{ DEFAULT_LANG }}" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <!--<![endif]-->
+{% endif %}

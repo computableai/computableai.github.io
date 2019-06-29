@@ -1,12 +1,13 @@
+@import "site-header.css";
+@import "site-footer.css";
+@import "site-navigation.css";
+@import "nav.css";
 @import "layout.css";
 @import "articles.css";
-@import "footer.css";
-@import "header.css";
-@import "nav.css";
 @import "pagination.css";
 
 :root {
-  --color-brand-primary: #42937C;
+  --color-brand-primary: #5AB031;
   --color-brand-secondary: #0d544e;
 
   --color-background-default: hsl(0,0%,100%);
@@ -19,10 +20,12 @@
   --color-content-nonessential: rgba(0,0,0,0.3);
 
   --color-intent-highlight: var(--color-brand-primary);
+  --color-special-rss: #FF6600;
 
   --color-keyline-default: hsla(0,0%,0%,8%);
 
   --font-stack-default: system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-stack-brand: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
   --font-stack-code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace`;
 
   --line-height-looses: 1.6;
@@ -50,6 +53,33 @@ html {
   font-family: var(--font-stack-default);
 }
 
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+* {
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+*:hover,
+*:focus {
+  transition-duration: 0.15s;
+}
+
+*:active {
+  transition-duration: 0;
+}
+
+*:before,
+*:after {
+  transition: inherit;
+}
+
 a {
   color: var(--color-intent-highlight);
 }
@@ -58,82 +88,12 @@ a:hover {
   color: var(--color-intent-highlight);
 }
 
-
-.uk-icon-twitter {
-  color: #00B0ED;
-}
-
-.uk-icon-facebook, .uk-icon-facebook-square {
-  color: #3B5999;
-}
-
-.uk-icon-google-plus, .uk-icon-google-plus-square {
-  color: #D34836;
-}
-
-.uk-icon-github {
-  color: #333;
-}
-
-.uk-icon-envelope {
-  color: #444;
-}
-
-
-
-.uk-icon-medium {
-  margin-right: 0.3em;
-}
-
-
-
-.mg-brand {
-  font-family: "Open Sans", sans-serif;
-  font-style: italic;
-  font-size: 2.5em;
-  padding-left: 0;
-  color: white;
-  text-decoration: none;
-}
-.mg-brand:hover, .mg-brand:focus {
-  color: white;
-}
-@media (max-width: 767px) {
-  .mg-brand {
-    padding: 0;
-    max-width: 100%;
-    font-size: 2em;
-  }
-}
-
-.mg-tagline {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 800;
-  padding: 1em 0 0;
-  color: white;
-}
-@media (min-width: 1220px) {
-  .mg-tagline {
-    padding-left: 0 !important;
-  }
-}
-
-.mg-main {
-  margin-top: 4em;
-  margin-bottom: 3em;
-  min-height: 100%;
-}
-
-.mg-container-social {
-  font-family: "Oswald";
-}
-
 .mg-feed {
-  color: #FF6600;
+  color: var(--color-special-rss);
 }
 .mg-feed:hover {
   text-decoration: none;
-  color: #FF6600;
+  color: var(--color-special-rss);
 }
 
 .mg-list-title {
@@ -142,10 +102,6 @@ a:hover {
   font-weight: 400;
   text-transform: none;
   margin-top: 0.5em;
-}
-
-.mg-author {
-  margin-top: 1em;
 }
 
 .mg-icon-link:hover {
@@ -163,22 +119,7 @@ a:hover {
   color: white;
 }
 .mg-icons-small .uk-icon-rss {
-  background-color: #FF6600;
-}
-.mg-icons-small .uk-icon-twitter {
-  background-color: #00B0ED;
-}
-.mg-icons-small .uk-icon-facebook {
-  background-color: #3B5999;
-}
-.mg-icons-small .uk-icon-google-plus {
-  background-color: #D34836;
-}
-.mg-icons-small .uk-icon-github {
-  background-color: #333;
-}
-.mg-icons-small .uk-icon-envelope {
-  background-color: #059;
+  background-color: var(--color-special-rss);
 }
 
 .mg-badges li {
@@ -191,8 +132,4 @@ a:hover {
   background: #ccc;
   color: #000;
   padding: 0.2em 0;
-}
-
-em {
-  color: black !important;
 }

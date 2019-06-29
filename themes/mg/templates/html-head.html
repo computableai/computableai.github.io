@@ -1,0 +1,65 @@
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>{% block title %}{{ SITENAME }}{% endblock %}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{% block description %}{{ DESCRIPTION }}{% endblock %}">
+  <link rel="shortcut icon" href="{{ SITEURL }}/{{ FAVICON }}" type="{{ FAVICON_TYPE }}">
+  <meta name="author" content="{{ AUTHOR }}">
+  <meta name="copyright" content="{{ AUTHOR }}">
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@{{ TWITTER_USERNAME }}" />
+  <meta property="og:site_name" content="{{ SITENAME }}" />
+
+  {% block favicons %}
+  <link rel="apple-touch-icon" sizes="57x57"      href="/static/images/favicons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60"      href="/static/images/favicons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72"      href="/static/images/favicons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76"      href="/static/images/favicons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114"    href="/static/images/favicons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120"    href="/static/images/favicons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144"    href="/static/images/favicons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152"    href="/static/images/favicons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180"    href="/static/images/favicons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/static/images/favicons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/images/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/static/images/favicons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/static/images/favicons/favicon-16x16.png">
+  <link rel="manifest"                            href="/static/images/favicons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/static/images/favicons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+  {% endblock %}
+
+  {% block seo %}
+  <meta property="og:title" content="{{ SITENAME }}" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="{{ SITEURL }}" />
+  <meta name="twitter:url" content="{{ SITEURL }}" />
+  <meta itemprop="name" content="{{ SITENAME }}" />
+  <meta itemprop="url" content="{{ SITEURL }}"/>
+  {% if DESCRIPTION %}
+  <meta property="og:description" content="{{ DESCRIPTION }}" />
+  <meta name="twitter:description" content="{{ DESCRIPTION }}" />
+  <meta itemprop="description" content="{{ DESCRIPTION  }}" />
+  {% endif %}
+  {% if META_IMAGE %}
+  <meta property="og:image" content="{{ META_IMAGE }}" />
+  <meta property="og:image:type" content="{{ META_IMAGE_TYPE }}" />
+  <meta name="twitter:image" content="{{ META_IMAGE }}" />
+  <meta itemprop="image" content="{{ META_IMAGE }}" />
+  {% endif %}
+  {% endblock %}
+  <link href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed"/>
+  <link href='//fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/css/uikit.min.css">
+  {% if not DISABLE_SEARCH %}
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/css/components/search.min.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/tipuesearch.css">
+  {% endif %}
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/solarized.css">
+  <link rel="stylesheet" href="{{ SITEURL }}/theme/css/main.css">
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+

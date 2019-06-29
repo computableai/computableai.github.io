@@ -1,0 +1,44 @@
+<div class="uk-width-medium-1-5 uk-hidden-small">
+
+    <!-- {% if not DISABLE_SEARCH %}
+    <div class="uk-panel">
+        <form class="uk-search" action="/search.html" data-uk-search>
+            <input class="uk-search-field tipue_search" type="search" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
+        </form>
+    </div>
+    {% endif %} -->
+
+    <nav class="site-navigation">
+        <ul>
+            <h2>Categories</h2>
+            {% for cat, _ in categories %}
+                <li {% if cat == category %}class="active"{% endif %}>
+                    <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
+                    <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/feeds/{{ cat.slug }}.atom.xml" class="mg-feed"><i class="uk-icon-rss uk-icon-tiny"></i></a>
+                </li>
+            {% endfor %}
+            {% if DISPLAY_PAGES_ON_MENU != False %}
+                <h2>Pages</h2>
+                {% for p in pages %}
+                <li {% if p == page %}class="active"{% endif %}>
+                    <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
+                </li>
+                {% endfor %}
+            {% endif %}
+            <hr />
+            <li {% if page_name == 'archives' %}class="active"{% endif %}><a href="{{ SITEURL }}/archives.html">Archives</a></li>
+        </ul>
+    </nav>
+
+    <!-- {% if SOCIAL %}
+    <div class="uk-panel uk-panel-box">
+        <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" class="mg-feed"><i class="uk-icon-rss uk-icon-medium"></i></a>
+        {% for icon, link in SOCIAL %}
+        <a class="mg-icon-link" href="{{ link }}">
+            <i class="uk-icon-{{ icon }} uk-icon-medium"></i>
+        </a>
+        {% endfor %}
+    </div>
+    {% endif %} -->
+
+</div>

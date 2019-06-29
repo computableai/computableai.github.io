@@ -1,5 +1,6 @@
 /* Layout */
 
-.uk-navbar-brand {
-  text-transform: uppercase;
+.mg-main {
+  margin-top: 4rem;
+  margin-bottom: 3rem;
 }
