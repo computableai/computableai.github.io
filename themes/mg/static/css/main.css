@@ -4,6 +4,7 @@
 @import "nav.css";
 @import "layout.css";
 @import "articles.css";
+@import "content-page.css";
 @import "pagination.css";
 
 :root {
@@ -28,7 +29,7 @@
   --font-stack-brand: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
   --font-stack-code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace`;
 
-  --line-height-looses: 1.6;
+  --line-height-loose: 1.6;
   --line-height-default: 1.4;
   --line-height-tight: 1.2;
 
