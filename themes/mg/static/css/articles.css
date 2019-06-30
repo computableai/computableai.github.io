@@ -29,6 +29,10 @@
   color: var(--color-content-default);
 }
 
+.article-listing img {
+  border-radius: 2px;
+}
+
 /* Header */
 
 .article-header {
