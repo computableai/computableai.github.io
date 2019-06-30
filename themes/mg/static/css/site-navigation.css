@@ -64,7 +64,8 @@
 .site-navigation a.active,
 .site-navigation a.active:hover {
   color: var(--color-background-default);
-  font-weight: var(--font-weight-bold);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: calc(var(--letter-spacing-default) + 0.25ch);
   background: var(--nav-highlight-color);
   border-radius: var(--nav-highlight-radius);
 }

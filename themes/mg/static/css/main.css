@@ -24,7 +24,7 @@
   --color-intent-highlight: var(--color-brand-primary);
   --color-special-rss: hsl(24, 50%, 100%);
 
-  --color-keyline-default: hsla(0,0%,0%,8%);
+  --color-keyline-default: hsla(0,0%,0%,4%);
   --color-shadow-default: hsla(0,0%,0%,4%);
 
   --font-stack-default: system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
@@ -75,7 +75,7 @@
     --color-content-muted: hsla(0, 0%, 100%, 0.55);
     --color-content-nonessential: hsla(0, 0%, 100%, 0.4);
 
-    --color-keyline-default: hsla(0,0%,100%,8%);
+    --color-keyline-default: hsla(0,0%,100%,6%);
     --color-shadow-default: transparent;
 
     --letter-spacing-default: normal;
