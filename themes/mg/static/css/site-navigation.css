@@ -59,13 +59,13 @@
   font-weight: var(--font-weight-bold);
 }
 
-.site-navigation a:hover,
+/* .site-navigation a:hover,
 .site-navigation a:focus {
   filter: brightness(115%);
 }
 .site-navigation a:active {
   filter: brightness(110%) contrast(110%);
-}
+} */
 
 .site-navigation a:after {
   transition: all .3s ease;

@@ -63,7 +63,9 @@ html, body {
 }
 
 * {
-  transition: all 0.3s ease;
+  transition-property: color, background, opacity, border;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
   box-sizing: border-box;
 }
 
