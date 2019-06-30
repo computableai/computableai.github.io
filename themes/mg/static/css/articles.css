@@ -1,9 +1,56 @@
-/* Article Meta */
+/* Article */
+
+.content-article {
+
+}
+
+/* Article Listing */
+
+.article-listing {
+  margin-top: 2rem;
+}
+
+.article-listing > * {
+  display: block;
+  margin: 0.25rem 0 0;
+}
+
+/* Header */
+
+.article-header {
+  margin-bottom: calc(3rem + 2vh);
+}
+
+.article-header > * {
+  margin: 0.25rem 0 0;
+}
+
+.article-header h1 {
+  font-family: var(--font-stack-brand);
+  line-height: var(--line-height-tight);
+  margin: 0;
+}
+
+.uk-article-lead {
+  margin: 0.25rem 0 0;
+}
+
+.article-header .uk-article-meta {
+  margin: 0.25rem 0 0;
+}
+
+.article-header .collab-link {
+  display: block;
+}
+
+
+/* Header Meta */
 
 .uk-article-meta {
   font-weight: var(--font-weight-medium);
   text-transform: uppercase;
   letter-spacing: .05ch;
+  margin-top: 1rem;
 }
 
 .uk-article-meta > a {
@@ -18,7 +65,61 @@
   color: var(--color-content-default);
 }
 
+/* Body */
+
+.article-body {
+  font-size: var(--font-size-text-lg);
+  line-height: var(--line-height-loose);
+}
+
+
+/* Article Typography */
+
+.article-body p {
+  margin: 1em 0 0;
+  max-width: 65ch;
+}
+
+.article-body h2,
+.article-body h3,
+.article-body h4,
+.article-body h5,
+.article-body h6 {
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.015ch;
+}
+
+
+/* Math */
+
+.article-body .MathJax_Display,
+.article-body .MathJax .mo,
+.article-body .MathJax .mi,
+.article-body .MathJax .mn {
+  color: inherit !important;
+}
+
+
+/* Anchor Links */
+
+.anchor-link { 
+  opacity: 0;
+  margin: 0 0.5ch;
+}
+.article-body h2:hover .anchor-link,
+.article-body h3:hover .anchor-link,
+.article-body h4:hover .anchor-link,
+.article-body h5:hover .anchor-link,
+.article-body h6:hover .anchor-link {
+  opacity: 1;
+}
+
+
+
+
+
 /* Cool hack for choosing image alignment in pure markdown */
+
 img[src*="#right"] {
   float: right;
   clear: right;
@@ -37,4 +138,4 @@ img[src*="#center"] {
   float: none !important;
 }
 
-/*# sourceMappingURL=main.css.map */
+sourceMappingURL=main.css.map

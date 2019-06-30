@@ -17,18 +17,9 @@
 
 {% if articles %}
 {% for article in (articles_page.object_list if articles_page else articles) %}
-
-  <article class="uk-article" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    {% if  article.featured_image %}
-    <img src="{{ article.featured_image }}" style="float:right; height:100px;">
-    {% endif %}
-    <a href="{{ SITEURL }}/{{ article.url }}" class="uk-article-title uk-link-muted" itemprop="name">{{ article.title }}</a>
-    <p class="uk-article-lead" itemprop="description">{{ article.summary|striptags }}</p>
-    <p class="uk-article-meta"><time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time> in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% if DISQUS_SITENAME %} • <br class="uk-visible-small"> <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"></a>{% endif %}</p>
-    <hr class="uk-article-divider">
-  </article>
-
+  {% include 'article-listing.html' %}
 {% endfor %}
+
 {% if DEFAULT_PAGINATION  and articles_paginator.num_pages > 1 %}
     <ul class="uk-pagination">
         {% if articles_previous_page %}<li><a href="{{ SITEURL }}/{{ articles_previous_page.url }}"><i class="uk-icon-angle-double-left"></i></a></li>{% endif %}
