@@ -1,32 +1,19 @@
 <!DOCTYPE html>
-
     {% include 'schemas.html' %}
-
     <head>
         {% include 'html-head.html' %}
     </head>
-    
     <body>
         {% include 'old-browser-warning.html' %}
         {% include 'site-header.html' %}
-
         <main class="mg-main">
-
             <div class="uk-container uk-container-center">
-
                 <div class="uk-grid" data-uk-grid-margin>
-
-                    {% block content %}
-                    {% endblock %}
-
+                    {% block content %}{% endblock %}
                     {% include 'site-navigation.html' %}
-
                 </div>
-
             </div>
-
         </main>
-
         {% include 'site-footer.html' %}
         {% include 'nav-offcanvas.html' %}
         {% include 'site-scripts.html' %}
@@ -34,4 +21,3 @@
         {% include 'analytics.html' %}
     </body>
 </html>
-
