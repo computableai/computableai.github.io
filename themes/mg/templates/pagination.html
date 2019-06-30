@@ -1,0 +1,9 @@
+{% if DEFAULT_PAGINATION  and articles_paginator.num_pages > 1 %}
+  <ul class="uk-pagination">
+    {% if articles_previous_page %}<li><a href="{{ SITEURL }}/{{ articles_previous_page.url }}"><i class="uk-icon-angle-double-left"></i></a></li>{% endif %}
+    {% if articles_previous_page %}<li><a href="{{ SITEURL }}/{{ articles_previous_page.url }}">{{ articles_previous_page.number }}</a></li>{% endif %}
+    <li class="uk-active"><span>{{ articles_page.number }}</span></li>
+    {% if articles_next_page %}<li><a href="{{ SITEURL }}/{{ articles_next_page.url }}"><i class="uk-icon-angle-double-right"></i></a></li>{% endif %}
+    {% if articles_next_page %}<li><a href="{{ SITEURL }}/{{ articles_next_page.url }}">{{ articles_next_page.number }}</a></li>{% endif %}
+  </ul>
+{% endif %}

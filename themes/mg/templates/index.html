@@ -1,35 +1,26 @@
 {% extends "base.html" %}
 {% block content_title %}{% endblock %}
 {% block content %}
-<div class="uk-width-medium-4-5">
+  <div class="uk-width-medium-4-5">
 
+    <!--
+    <div class="uk-tile uk-tile-primary">
+      <div class="uk-article-title" itemprop="name">Welcome</div>
+        <section itemprop="articleBody">
+          <br />
+          Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.
+        </section>
+      <hr class="uk-article-divider">
+    </div>
+    -->
 
-  <!--
-<div class="uk-tile uk-tile-primary">
-    <div class="uk-article-title" itemprop="name">Welcome</div>
-    <section itemprop="articleBody">
-      <br />
-      Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.
-    </section>
-    <hr class="uk-article-divider">
-</div>
-  -->
+    {% if articles %}
+      {% for article in (articles_page.object_list if articles_page else articles) %}
+        {% include 'article-listing.html' %}
+      {% endfor %}
 
-{% if articles %}
-{% for article in (articles_page.object_list if articles_page else articles) %}
-  {% include 'article-listing.html' %}
-{% endfor %}
+      {% include 'pagination.html' %}
 
-{% if DEFAULT_PAGINATION  and articles_paginator.num_pages > 1 %}
-    <ul class="uk-pagination">
-        {% if articles_previous_page %}<li><a href="{{ SITEURL }}/{{ articles_previous_page.url }}"><i class="uk-icon-angle-double-left"></i></a></li>{% endif %}
-        {% if articles_previous_page %}<li><a href="{{ SITEURL }}/{{ articles_previous_page.url }}">{{ articles_previous_page.number }}</a></li>{% endif %}
-        <li class="uk-active"><span>{{ articles_page.number }}</span></li>
-        {% if articles_next_page %}<li><a href="{{ SITEURL }}/{{ articles_next_page.url }}"><i class="uk-icon-angle-double-right"></i></a></li>{% endif %}
-        {% if articles_next_page %}<li><a href="{{ SITEURL }}/{{ articles_next_page.url }}">{{ articles_next_page.number }}</a></li>{% endif %}
-    </ul>
-{% endif %}
-
-{% endif %}
-</div>
+    {% endif %}
+  </div>
 {% endblock %}
