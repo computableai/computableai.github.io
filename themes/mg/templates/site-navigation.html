@@ -18,14 +18,14 @@
                 </li>
             {% endfor %}
             {% if DISPLAY_PAGES_ON_MENU != False %}
-                <h2>Pages</h2>
+            <hr />
+                <!-- <h2>Pages</h2> -->
                 {% for p in pages %}
                 <li>
                     <a {% if p == page %}class="active"{% endif %} href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
                 </li>
                 {% endfor %}
             {% endif %}
-            <hr />
             <li><a {% if page_name == 'archives' %}class="active"{% endif %} href="{{ SITEURL }}/archives.html">Archives</a></li>
         </ul>
     </nav>
