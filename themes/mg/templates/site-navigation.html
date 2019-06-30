@@ -14,7 +14,7 @@
             {% for cat, _ in categories %}
                 <li>
                     <a {% if cat == category %}class="active"{% endif %} href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
-                    <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/feeds/{{ cat.slug }}.atom.xml" class="mg-feed"><i class="uk-icon-rss uk-icon-tiny"></i></a>
+                    <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/feeds/{{ cat.slug }}.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
             {% endfor %}
             {% if DISPLAY_PAGES_ON_MENU != False %}
@@ -26,7 +26,7 @@
                 </li>
                 {% endfor %}
             {% endif %}
-            <li><a {% if page_name == 'archives' %}class="active"{% endif %} href="{{ SITEURL }}/archives.html">Archives</a></li>
+            <!-- <li><a {% if page_name == 'archives' %}class="active"{% endif %} href="{{ SITEURL }}/archives.html">Archives</a></li> -->
         </ul>
     </nav>
 
