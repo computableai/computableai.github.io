@@ -8,11 +8,25 @@
 
 .article-listing {
   margin-top: 2rem;
+  background: var(--color-background-2);
+  border-radius: 4px;
+  box-shadow: 0 0.5rem 0.5rem -0.25rem var(--color-shadow-default);
+  padding: 1.8rem 2rem;
 }
 
 .article-listing > * {
-  display: block;
   margin: 0.25rem 0 0;
+}
+
+
+.article-listing .article-title {
+  font-family: var(--font-stack-brand);
+  font-size: var(--font-size-heading-sm);
+}
+
+.article-listing .article-lead {
+  font-size: var(--font-size-subheading-default);
+  color: var(--color-content-default);
 }
 
 /* Header */
@@ -33,14 +47,38 @@
 
 .uk-article-lead {
   margin: 0.25rem 0 0;
+  color: var(--color-content-muted);
 }
 
 .article-header .uk-article-meta {
   margin: 0.25rem 0 0;
 }
 
-.article-header .collab-link {
-  display: block;
+
+.collab-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  border: 1px solid;
+  padding: 0.2em 1.5ch;
+  border-radius: 1000px;
+}
+
+.collab-link:hover {
+  text-decoration: none;
+}
+
+.collab-link svg {
+  width: 0.8em;
+  height: 0.8em;
+  display: inline-block;
+  vertical-align: -3%;
+  overflow: visible;
+}
+
+.collab-link svg * {
+  stroke: currentColor;
+  stroke-width: 1.1px;
+  vector-effect: non-scaling-stroke;
 }
 
 
@@ -48,9 +86,6 @@
 
 .uk-article-meta {
   font-weight: var(--font-weight-medium);
-  text-transform: uppercase;
-  letter-spacing: .05ch;
-  margin-top: 1rem;
 }
 
 .uk-article-meta > a {

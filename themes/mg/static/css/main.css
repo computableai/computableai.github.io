@@ -8,26 +8,31 @@
 @import "pagination.css";
 
 :root {
-  --color-brand-primary: #5AB031;
+  /* --color-brand-primary: #059962; */
+  --color-brand-primary: hsl(158,94%,31%);
   --color-brand-secondary: #0d544e;
 
-  --color-background-default: hsl(0,0%,100%);
-  --color-background-2: hsl(0,0%,97%);
+  --color-background-default: hsl(0,0%,98%);
+  --color-background-2: hsl(0,0%,100%);
   --color-background-3: hsl(0,0%,94%);
 
-  --color-content-default: rgba(0,0,0,0.85);
+  --color-content-default: rgba(0,0,0,0.7);
   --color-content-contrast: rgba(0,0,0,1);
   --color-content-muted: rgba(0,0,0,0.6);
-  --color-content-nonessential: rgba(0,0,0,0.3);
+  --color-content-nonessential: rgba(0,0,0,0.4);
 
   --color-intent-highlight: var(--color-brand-primary);
-  --color-special-rss: #FF6600;
+  --color-special-rss: hsl(24, 50%, 100%);
 
   --color-keyline-default: hsla(0,0%,0%,8%);
+  --color-shadow-default: hsla(0,0%,0%,4%);
 
   --font-stack-default: system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
   --font-stack-brand: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
+  --font-stack-brand: Optima,Segoe,Segoe UI,Candara,Calibri,Arial,sans-serif;
   --font-stack-code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace`;
+
+  --letter-spacing-default: normal;
 
   --line-height-loose: 1.6;
   --line-height-default: 1.4;
@@ -43,15 +48,52 @@
   --font-size-text-default: 14px;
   --font-size-text-sm: 12px;
   --font-size-text-xs: 10px;
+
+  --font-size-page-title: 40px;
+  
+  --font-size-heading-lg: 38px;
+  --font-size-heading-default: 36px;
+  --font-size-heading-sm: 32px;
+  
+  --font-size-subheading-sm: 20px;
+  --font-size-subheading-default: 18px;
+  --font-size-subheading-lg: 16px;
+
+  --font-size-item-title-lg: 16px;
+  --font-size-item-title-default: 14px;
+  --font-size-item-title-sm: 12px;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-default: hsl(158,10%,5%);
+    --color-background-2: hsl(158,10%,7%);
+    --color-background-3: hsl(158,10%,11%);
+
+    --color-content-default: hsla(0,0%,100%, 0.7);
+    --color-content-contrast: hsla(0,0%,100%, 0.9);
+    --color-content-muted: hsla(0, 0%, 100%, 0.55);
+    --color-content-nonessential: hsla(0, 0%, 100%, 0.4);
+
+    --color-keyline-default: hsla(0,0%,100%,8%);
+    --color-shadow-default: transparent;
+
+    --letter-spacing-default: normal;
+  }
+}
+
+
 
 /* Base style */
 
-html {
+html, body {
+  background: var(--color-background-default);
+  color: var(--color-content-default);
   font-weight: var(--font-weight-default);
   line-height: var(--line-height-default);
   font-size: var(--font-size-text-default);
   font-family: var(--font-stack-default);
+  letter-spacing: var(--letter-spacing-default);
 }
 
 html, body {
@@ -91,43 +133,10 @@ a:hover {
   color: var(--color-intent-highlight);
 }
 
-.mg-feed {
-  color: var(--color-special-rss);
-}
-.mg-feed:hover {
-  text-decoration: none;
-  color: var(--color-special-rss);
-}
-
-.mg-list-title {
-  font-size: 2em;
-  line-height: 42px;
-  font-weight: 400;
-  text-transform: none;
-  margin-top: 0.5em;
-}
-
-.mg-icon-link:hover {
-  text-decoration: none;
-}
-
-.mg-icons-small {
-  margin-bottom: 1em;
-}
-
-.mg-icons-small > li > a {
-  color: white;
-}
-.mg-icons-small > li > a:hover {
-  color: white;
-}
-.mg-icons-small .uk-icon-rss {
-  background-color: var(--color-special-rss);
-}
-
-.mg-badges li {
-  float: left;
-  position: relative;
+h1, h2, h3, h4, h5, h6 {
+  color: inherit;
+  font-family: var(--font-stack-brand);
+  font-weight: var(--font-weight-semibold);
 }
 
 .browserupgrade {
