@@ -14,6 +14,8 @@ TIMEZONE = 'America/New_York'
 
 DEFAULT_LANG = 'en'
 
+IPYNB_SKIP_CSS = True
+
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = None
 CATEGORY_FEED_ATOM = None
