@@ -20,6 +20,38 @@
   color: var(--color-brand-primary);
 }
 
+.site-header .uk-navbar-toggle,
+.site-header .uk-navbar-toggle:hover,
+.site-header .uk-navbar-toggle:focus{
+  color: inherit;
+}
+
+.offcanvas-nav-toggle {
+  position: absolute;
+  height: 2rem;
+  width: 2rem;
+  display: block;
+  top: 2rem;
+  left: 2rem;
+}
+
+.offcanvas-nav-toggle:before,
+.offcanvas-nav-toggle:after {
+  content: '';
+  position: absolute;
+  height: 0.15em;
+  border-radius: 100px;
+  left: 0;
+  top: 0.75em;
+  width: 1.8em;
+  background: currentColor;
+}
+
+.offcanvas-nav-toggle:after {
+  top: 1.25em;
+}
+
+
 .mg-brand:before {
   content: none;
 }

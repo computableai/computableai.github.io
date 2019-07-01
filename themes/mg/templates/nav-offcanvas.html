@@ -9,16 +9,16 @@
       </form>
       {% endif %}
 
-      <ul class="uk-nav uk-nav-offcanvas" data-uk-nav>
-          <li class="uk-nav-header">Categories</li>
+      <ul class="offcanvas-nav" data-uk-nav>
+          <h2 class="">Categories</h2>
           {% for cat, _ in categories %}
           <li {% if cat == category %}class="uk-active"{% endif %}>
-            <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/feeds/{{ cat.slug }}.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
             <a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a>
+            <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/feeds/{{ cat.slug }}.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
           {% endfor %}
           {% if DISPLAY_PAGES_ON_MENU != False %}
-          <li class="uk-nav-header">Pages</li>
+          <hr />
           {% for p in pages %}
           <li {% if p == page %}class="uk-active"{% endif %}>
               <a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a>
@@ -26,7 +26,7 @@
           {% endfor %}
           {% endif %}
 
-          <li class="uk-nav-header">Other</li>
+          <!-- <li class="uk-nav-header">Other</li>
           <li><a type="application/atom+xml" href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}">All Feed</a></li>
           {% if SOCIAL %}
           {% for icon, link in SOCIAL %}
@@ -34,7 +34,7 @@
             <a href="{{ link }}">{{ icon | capitalize }}</a>
           </li>
           {% endfor %}
-          {% endif %}
+          {% endif %} -->
 
           <li class="uk-nav-divider"></li>
           <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Archives</a></li>
