@@ -33,6 +33,12 @@
   border-radius: 2px;
 }
 
+@media (prefers-color-scheme: dark) {
+  .article-listing img {
+    background-color: #ddd;
+  }
+}
+
 /* Header */
 
 .article-header {
@@ -109,6 +115,7 @@
 .article-body {
   font-size: var(--font-size-text-lg);
   line-height: var(--line-height-loose);
+  margin-bottom: 10rem;
 }
 
 
@@ -126,6 +133,19 @@
 .article-body h6 {
   font-weight: var(--font-weight-semibold);
   letter-spacing: 0.015ch;
+}
+
+
+/* Images */
+
+.article-body img {
+  border-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .article-body img {
+    background-color: #ddd;
+  }
 }
 
 

@@ -28,9 +28,9 @@
   --color-shadow-default: hsla(0,0%,0%,4%);
 
   --font-stack-default: system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  --font-stack-brand: "Palatino Linotype", Palatino, Palladio, "URW Palladio L", "Book Antiqua", Baskerville, "Bookman Old Style", "Bitstream Charter", "Nimbus Roman No9 L", Garamond, "Apple Garamond", "ITC Garamond Narrow", "New Century Schoolbook", "Century Schoolbook", "Century Schoolbook L", Georgia, serif;
   --font-stack-brand: Optima,Segoe,Segoe UI,Candara,Calibri,Arial,sans-serif;
   --font-stack-code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace`;
+  --font-stack-code: Consolas,monospace,serif;
 
   --letter-spacing-default: normal;
 
@@ -148,4 +148,10 @@ h1, h2, h3, h4, h5, h6 {
 
 em {
   color: inherit;
+}
+
+pre {
+  background-color: var(--color-background-3);
+  color: var(--color-content-default);
+  font-family: var(--font-stack-code);
 }
