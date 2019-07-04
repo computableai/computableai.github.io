@@ -1,0 +1,5 @@
+/* Pagination */
+
+.uk-pagination > .uk-active > span {
+  background: #00967b;
+}

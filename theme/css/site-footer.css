@@ -1,0 +1,13 @@
+/* Site Footer */
+
+.site-footer {
+  margin-top: auto;
+  margin-bottom: 4vh;
+  text-align: center;
+  color: var(--color-content-nonessential);
+  font-size: var(--font-size-text-sm);
+}
+
+.site-footer p {
+  margin: 0;
+}
