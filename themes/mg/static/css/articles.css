@@ -1,0 +1,200 @@
+/* Article */
+
+.content-article {
+
+}
+
+/* Article Listing */
+
+.article-listing {
+  margin-top: 2rem;
+  background: var(--color-background-2);
+  border-radius: 4px;
+  box-shadow: 0 0.25rem 0.5rem -0.25rem var(--color-shadow-default);
+  border: 1px solid var(--color-keyline-default);
+  padding: 1.8rem 2rem;
+}
+
+.article-listing > * {
+  margin: 0.25rem 0 0;
+}
+
+.article-listing .article-title {
+  font-family: var(--font-stack-brand);
+  font-size: var(--font-size-heading-sm);
+}
+
+.article-listing .article-lead {
+  font-size: var(--font-size-subheading-default);
+  color: var(--color-content-default);
+}
+
+.article-listing img {
+  border-radius: 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .article-listing img {
+    background-color: #ddd;
+  }
+}
+
+/* Header */
+
+.article-header {
+  margin-bottom: calc(3rem + 2vh);
+}
+
+.article-header > * {
+  margin: 0.25rem 0 0;
+}
+
+.article-header h1 {
+  font-family: var(--font-stack-brand);
+  line-height: var(--line-height-tight);
+  margin: 0;
+}
+
+.uk-article-lead {
+  margin: 0.25rem 0 0;
+  color: var(--color-content-muted);
+}
+
+.article-header .uk-article-meta {
+  margin: 0.25rem 0 0;
+}
+
+
+.collab-link {
+  display: inline-block;
+  margin-top: 0.5rem;
+  border: 1px solid;
+  padding: 0.2em 1.5ch;
+  border-radius: 1000px;
+}
+
+.collab-link:hover {
+  text-decoration: none;
+}
+
+.collab-link svg {
+  width: 0.8em;
+  height: 0.8em;
+  display: inline-block;
+  vertical-align: -3%;
+  overflow: visible;
+}
+
+.collab-link svg * {
+  stroke: currentColor;
+  stroke-width: 1.1px;
+  vector-effect: non-scaling-stroke;
+}
+
+
+/* Header Meta */
+
+.uk-article-meta {
+  font-weight: var(--font-weight-medium);
+}
+
+.uk-article-meta > a {
+  color: var(--color-content-muted);
+}
+
+.uk-article-meta > a:hover {
+  color: var(--color-content-contrast);
+}
+
+.uk-article-meta > .uk-icon-comment {
+  color: var(--color-content-default);
+}
+
+/* Body */
+
+.article-body {
+  font-size: var(--font-size-text-lg);
+  line-height: var(--line-height-loose);
+  margin-bottom: 10rem;
+}
+
+
+/* Article Typography */
+
+.article-body p {
+  margin: 1em 0 0;
+  max-width: 65ch;
+}
+
+.article-body h2,
+.article-body h3,
+.article-body h4,
+.article-body h5,
+.article-body h6 {
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: 0.015ch;
+}
+
+
+/* Images */
+
+.article-body img {
+  border-radius: 4px;
+}
+
+@media (prefers-color-scheme: dark) {
+  .article-body img {
+    background-color: #ddd;
+  }
+}
+
+
+/* Math */
+
+.article-body .MathJax_Display,
+.article-body .MathJax .mo,
+.article-body .MathJax .mi,
+.article-body .MathJax .mn {
+  color: inherit !important;
+}
+
+
+/* Anchor Links */
+
+.anchor-link { 
+  opacity: 0;
+  margin: 0 0.5ch;
+}
+.article-body h2:hover .anchor-link,
+.article-body h3:hover .anchor-link,
+.article-body h4:hover .anchor-link,
+.article-body h5:hover .anchor-link,
+.article-body h6:hover .anchor-link {
+  opacity: 1;
+}
+
+
+
+
+
+/* Cool hack for choosing image alignment in pure markdown */
+
+img[src*="#right"] {
+  float: right;
+  clear: right;
+}
+
+img[src*="#left"] {
+  float: left;
+  clear: left;
+}
+
+img[src*="#center"] {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  float: none !important;
+}
+
+sourceMappingURL=main.css.map

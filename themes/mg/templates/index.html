@@ -1,44 +1,26 @@
 {% extends "base.html" %}
 {% block content_title %}{% endblock %}
 {% block content %}
-<div class="uk-width-medium-4-5">
+  <div class="uk-width-medium-7-10 ">
 
+    <!--
+    <div class="uk-tile uk-tile-primary">
+      <div class="uk-article-title" itemprop="name">Welcome</div>
+        <section itemprop="articleBody">
+          <br />
+          Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.
+        </section>
+      <hr class="uk-article-divider">
+    </div>
+    -->
 
-  <!--
-<div class="uk-tile uk-tile-primary">
-    <div class="uk-article-title" itemprop="name">Welcome</div>
-    <section itemprop="articleBody">
-      <br />
-      Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.
-    </section>
-    <hr class="uk-article-divider">
-</div>
-  -->
+    {% if articles %}
+      {% for article in (articles_page.object_list if articles_page else articles) %}
+        {% include 'article-listing.html' %}
+      {% endfor %}
 
-{% if articles %}
-{% for article in (articles_page.object_list if articles_page else articles) %}
+      {% include 'pagination.html' %}
 
-  <article class="uk-article" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    {% if  article.featured_image %}
-    <img src="{{ article.featured_image }}" style="float:right; height:100px;">
     {% endif %}
-    <a href="{{ SITEURL }}/{{ article.url }}" class="uk-article-title uk-link-muted" itemprop="name">{{ article.title }}</a>
-    <p class="uk-article-lead" itemprop="description">{{ article.summary|striptags }}</p>
-    <p class="uk-article-meta"><time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time> in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% if DISQUS_SITENAME %} • <br class="uk-visible-small"> <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"></a>{% endif %}</p>
-    <hr class="uk-article-divider">
-  </article>
-
-{% endfor %}
-{% if DEFAULT_PAGINATION  and articles_paginator.num_pages > 1 %}
-    <ul class="uk-pagination">
-        {% if articles_previous_page %}<li><a href="{{ SITEURL }}/{{ articles_previous_page.url }}"><i class="uk-icon-angle-double-left"></i></a></li>{% endif %}
-        {% if articles_previous_page %}<li><a href="{{ SITEURL }}/{{ articles_previous_page.url }}">{{ articles_previous_page.number }}</a></li>{% endif %}
-        <li class="uk-active"><span>{{ articles_page.number }}</span></li>
-        {% if articles_next_page %}<li><a href="{{ SITEURL }}/{{ articles_next_page.url }}"><i class="uk-icon-angle-double-right"></i></a></li>{% endif %}
-        {% if articles_next_page %}<li><a href="{{ SITEURL }}/{{ articles_next_page.url }}">{{ articles_next_page.number }}</a></li>{% endif %}
-    </ul>
-{% endif %}
-
-{% endif %}
-</div>
+  </div>
 {% endblock %}

@@ -1,3 +1,5 @@
+@import "layout.css";
+
 $baseGreen: #0d544e;
 $accentGreen: #00967b;
 $feedOrange: #FF6600;
@@ -10,16 +12,58 @@ $textGrey: #444;
 $ancorBase: #00967b;
 $ancorOver: #0d544e;
 
+
+// Style Variables
+
+:root {
+    --color-brand-primary: #00967b;
+    --color-brand-secondary: #0d544e;
+
+    --color-background-default: hsl(0,0%,100%);
+    --color-background-2: hsl(0,0%,97%);
+    --color-background-3: hsl(0,0%,94%);
+
+    --color-content-default: rgba(0,0,0,0.85);
+    --color-content-contrast: rgba(0,0,0,1);
+    --color-content-muted: rgba(0,0,0,0.6);
+    --color-content-nonessential: rgba(0,0,0,0.3);
+
+    --color-intent-highlight: var(--color-brand-primary);
+
+    --color-keyline-default: hsla(0,0%,0%,8%);
+
+    --font-stack-default: system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    --font-stack-code: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace`;
+
+    --line-height-looses: 1.6;
+    --line-height-default: 1.4;
+    --line-height-tight: 1.2;
+
+    --font-weight-default: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    --font-size-text-xl: 18px;
+    --font-size-text-lg: 16px;
+    --font-size-text-default: 14px;
+    --font-size-text-sm: 12px;
+    --font-size-text-xs: 10px;
+}
+
 // Base style
 
 html {
-    font: 400 14px / 20px "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: var(--font-weight-default);
+    line-height: var(--line-height-default);
+    font-size: var(--font-size-text-default);
+    font-family: var(--font-stack-default);
 }
 
 a {
-    color: $ancorBase;
+    color: var(--color-intent-highlight);
     &:hover {
-        color: $ancorOver;
+        color: var(--color-intent-highlight);
     }
 }
 

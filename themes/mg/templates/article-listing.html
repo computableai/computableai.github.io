@@ -1,0 +1,11 @@
+<article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
+  {% if  article.featured_image %}
+    <img src="{{ article.featured_image }}" style="float:right; height:100px;">
+  {% endif %}
+  <a href="{{ SITEURL }}/{{ article.url }}" class="article-title" itemprop="name">{{ article.title }}</a>
+  <p class="uk-article-lead article-lead" itemprop="description">{{ article.summary|striptags }}</p>
+  <p class="uk-article-meta">
+    {% if article.author %}<span class="uk-author">{{ article.author }}</span> • {% endif %}
+    <time datetime="{{ article.date.strftime('%Y-%m-%d') }}" itemprop="datePublished">{{ article.locale_date }}</time> in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>{% if DISQUS_SITENAME %} • <br class="uk-visible-small"> <a href="{{ SITEURL }}/{{ article.url }}#disqus_thread" itemprop="discussionUrl"></a>{% endif %}
+  </p>
+</article>

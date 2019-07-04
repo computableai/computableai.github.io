@@ -1,0 +1,80 @@
+
+.uk-offcanvas-bar{
+  background-color: var(--color-background-default);
+}
+
+.uk-offcanvas .uk-search-field{
+  border-radius: 100px;
+  color: inherit;
+  background-color: var(--color-background-2);
+  border: 1px solid var(--color-keyline-default);
+}
+
+.uk-offcanvas-bar .uk-search-field{
+  background: transparent;
+}
+
+.offcanvas-nav {
+  list-style: none;
+  padding: 0 2rem;
+
+  --horizontal-padding: 1rem;
+  --vertical-padding: 0.4rem;
+}
+
+.offcanvas-nav h2 {
+  padding: 0 var(--horizontal-padding);
+  font-size: inherit;
+  margin: 0;
+  text-transform: uppercase;
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-text-sm);
+  color: var(--color-content-nonessential);
+  letter-spacing: 0.3ch;
+}
+
+.offcanvas-nav li {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  position: relative;
+  margin: 1px 0 0;
+}
+  
+.offcanvas-nav a {
+  color: inherit;
+  border-radius: var(--nav-highlight-radius);
+  text-decoration: none;
+  padding: var(--vertical-padding) var(--horizontal-padding);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 auto;
+  z-index: 1;
+}
+
+.offcanvas-nav a:hover {
+  color: var(--color-content-default);
+  background: var(--color-background-2);
+}
+
+.offcanvas-nav a.active,
+.offcanvas-nav a.active:hover {
+  color: var(--color-background-default);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: calc(var(--letter-spacing-default) + 0.25ch);
+  background: var(--nav-highlight-color);
+  border-radius: var(--nav-highlight-radius);
+}
+
+.offcanvas-nav li a ~ a {
+  opacity: 0.8;
+  margin-left: auto;
+}
+
+
+.offcanvas-nav hr {
+  margin: var(--vertical-padding) var(--horizontal-padding);
+  border: 0;
+  border-top: 1px solid var(--color-keyline-default);
+}

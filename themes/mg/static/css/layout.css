@@ -1,0 +1,10 @@
+/* Layout */
+
+.mg-main {
+  margin-top: 4rem;
+  margin-bottom: 3rem;
+}
+
+.page-title {
+  font-size: var(--font-size-page-title);
+}

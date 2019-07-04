@@ -1,0 +1,11 @@
+/* Page */
+
+.content-page p {
+  max-width: 64ch;
+  font-size: var(--font-size-text-lg);
+  line-height: var(--line-height-loose);
+}
+
+.content-page .page-title {
+
+}
