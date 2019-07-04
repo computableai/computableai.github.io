@@ -6,7 +6,7 @@ AUTHOR = 'the Computable AI authors'
 SITENAME = 'Computable AI'
 SITEURL = 'http://localhost:8000'
 SITESUBTITLE = 'A Machine Intelligence Blog'
-DESCRIPTION = 'Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.'
+DESCRIPTION = 'Computable AI is a machine intelligence blog from a handful of DRL practitioners, intended to crystalize, internalize, share, and explain.'
 
 PATH = 'content'
 
