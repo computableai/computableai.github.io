@@ -5,29 +5,36 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://computable.ai/</loc>
-<lastmod>2019-07-04T14:05:32-00:00</lastmod>
+<lastmod>2019-07-07T20:45:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/archives.html</loc>
-<lastmod>2019-07-04T14:05:32-00:00</lastmod>
+<lastmod>2019-07-07T20:45:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/categories.html</loc>
-<lastmod>2019-07-04T14:05:32-00:00</lastmod>
+<lastmod>2019-07-07T20:45:09-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/pages/about.html</loc>
-<lastmod>2019-07-04T14:05:32-00:00</lastmod>
+<lastmod>2019-07-07T20:45:09-00:00</lastmod>
 <changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://computable.ai/articles/2019/Jul/07/arxiv-highlights-for-july-1-6.html</loc>
+<lastmod>2019-07-07T00:00:00-04:00</lastmod>
+<changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -46,7 +53,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://computable.ai/category/commentary.html</loc>
+<loc>https://computable.ai/category/arxiv-highlights.html</loc>
+<lastmod>2019-07-07T00:00:00-04:56</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://computable.ai/category/math.html</loc>
 <lastmod>2019-03-10T00:00:00-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>

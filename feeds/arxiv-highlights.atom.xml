@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-07-07T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights for July 1-6</title><link href="https://computable.ai/articles/2019/Jul/07/arxiv-highlights-for-july-1-6.html" rel="alternate"></link><published>2019-07-07T00:00:00-04:00</published><updated>2019-07-07T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-07:/articles/2019/Jul/07/arxiv-highlights-for-july-1-6.html</id><summary type="html">&lt;p&gt;Beginning a new series highlighting a few interesting RL papers on the arXiv each week. This week: Simple curriculum learning, learning to interact with humans, and warm starting RL with propositional logic.&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - arXiv highlights</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/arxiv-highlights.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-07-07T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights for July 1-6</title><link href="https://computable.ai/articles/2019/Jul/07/arxiv-highlights-for-july-1-6.html" rel="alternate"></link><published>2019-07-07T00:00:00-04:00</published><updated>2019-07-07T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-07:/articles/2019/Jul/07/arxiv-highlights-for-july-1-6.html</id><summary type="html">&lt;p&gt;Beginning a new series highlighting a few interesting RL papers on the arXiv each week. This week: Simple curriculum learning, learning to interact with humans, and warm starting RL with propositional logic.&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
@@ -73,112 +73,6 @@
 &lt;li&gt;"Learning to Interactively Learn and Assist" seems like a relevant paper for AI safety, though as far as I could tell in my quick read, it wasn't billed that way. If we train agents that don't have goals of their own necessarily, but take their cues from us in real time, are we safer than if we attempted to craft the perfect reward function, or demonstrated our desires in a one-and-done fashion?&lt;/li&gt;
 &lt;li&gt;I've gotta actually read the ProLoNets paper. There was even more to it than I highlighted, and they included an ablation study which will likely tell me if I can incorporate their concepts piecemeal into my own work.&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
- 
-
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        " linebreaks: { automatic: true, width: '95% container' }, " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
-</content></entry><entry><title>Boltzmann Machines: Differentiation Work</title><link href="https://computable.ai/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html" rel="alternate"></link><published>2019-03-10T00:00:00-05:00</published><updated>2019-03-10T00:00:00-05:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-03-10:/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html</id><summary type="html">&lt;p&gt;My differentiation work while reading Ilya Sutskever on the biological plausibility of Boltzmann machines.&lt;/p&gt;</summary><content type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;I recently read &lt;a href="https://theneural.wordpress.com/2011/07/08/the-miracle-of-the-boltzmann-machine/"&gt;The Miracle of the Boltzmann Machine&lt;/a&gt;, and it's so compelling that I've been thinking about it ever since. I intend to write much more on Boltzmann Machines in the future, but here I'm just going to show my work differentiating the objective function.&lt;/p&gt;
-&lt;h3 id="Given"&gt;Given&lt;a class="anchor-link" href="#Given"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;Objective function $$L(W) := \mathbb{E}_{D(V)} [log P(V)]$$&lt;/li&gt;
-&lt;li&gt;and probability of a given BM state $X=(V,H)$ $$P(X) := P(V,H) := {e^{X^TWX/2}\over {\sum_{X'} e^{X'^TWX'/2}}}$$
-$$P(V) := \sum_H P(V,H) = \frac{\sum_H e^{X^TWX/2}}{\sum_{X'} e^{X'^TWX'/2}}$$ where $W$ is the BM transition matrix, assuming $w_{ij}=w_{ji}$&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h3 id="Want-to-show"&gt;Want to show&lt;a class="anchor-link" href="#Want-to-show"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;$$\frac{\partial L}{\partial w_{ij}} = \mathbb{E}_{D(V)P(H|V)}[x_ix_j]-\mathbb{E}_{P(V,H)}[x_ix_j]$$&lt;h3 id="Proof"&gt;Proof&lt;a class="anchor-link" href="#Proof"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;Definition of expected value $$L(W)=\mathbb{E}_{D(V)} [\log P(V)] = \sum_V D(V)\log P(V)$$&lt;/li&gt;
-&lt;li&gt;Let $f = logP(V)$ $$\frac{\partial L}{\partial f} = \sum_V D(V)\frac{\partial f}{\partial w_{ij}}$$&lt;/li&gt;
-&lt;li&gt;Chain rule $$\frac{\partial f}{\partial w_{ij}} = {\frac{\partial P(V)}{\partial w_{ij}} \over P(V)}$$&lt;/li&gt;
-&lt;li&gt;Expand $P(V)$ $$\frac{\partial P(V)}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}}\left[\sum_H P(V,H)\right] = \frac{\partial}{\partial w_{ij}}\left[\sum_H {e^{X^TWX/2}\over {\sum_{X'} e^{X'^TWX'/2}}}\right] = \sum_H \frac{\partial}{\partial w_{ij}}\left[{e^{X^TWX/2}\over {\sum_{X'} e^{X'^TWX'/2}}}\right]$$&lt;/li&gt;
-&lt;li&gt;Quotient rule $$\frac{\partial P(V)}{\partial w_{ij}} =\sum_H \frac{\frac{\partial}{\partial w_{ij}}\left[e^{X^TWX/2}\right]{\sum_{X'} e^{X'^TWX'/2}}-e^{X^TWX/2} \frac{\partial}{\partial w_{ij}}\left[{\sum_{X'} e^{X'^TWX'/2}}\right]}{\left({\sum_{X'} e^{X'^TWX'/2}}\right)^2}$$&lt;/li&gt;
-&lt;li&gt;Chain rule, and notice $\frac{\partial}{\partial w_{ij}}\left[W\right]$ is $0$ everywhere except $w_{ij}$, so $$\frac{\partial}{\partial w_{ij}}\left[e^{X^TWX/2}\right] = \frac{\partial}{\partial w_{ij}}\left[X^TWX/2\right] e^{X^TWX/2} = x_ix_je^{X^TWX/2}$$&lt;/li&gt;
-&lt;li&gt;So #5 becomes $$\frac{\partial P(V)}{\partial w_{ij}} = \sum_H \frac{x_ix_je^{X^TWX/2}{\sum_{X'} e^{X'^TWX'/2}}-e^{X^TWX/2} \sum_{X'}x'_ix'_je^{X'^TWX'/2}}{\left({\sum_{X'} e^{X'^TWX'/2}}\right)^2}$$&lt;/li&gt;
-&lt;li&gt;Separating terms $$\frac{\partial P(V)}{\partial w_{ij}} = \sum_H\left[\frac{x_ix_je^{X^TWX/2}{\sum_{X'} e^{X'^TWX'/2}}}{\left({\sum_{X'} e^{X'^TWX'/2}}\right)^2}\right]-\sum_H\left[\frac{e^{X^TWX/2} \sum_{X'}x'_ix'_je^{X'^TWX'/2}}{\left({\sum_{X'} e^{X'^TWX'/2}}\right)^2}\right]$$&lt;/li&gt;
-&lt;li&gt;Cancelling and moving factors outside sums $$\frac{\partial P(V)}{\partial w_{ij}} = \sum_H\left[\frac{x_ix_je^{X^TWX/2}}{{\sum_{X'} e^{X'^TWX'/2}}}\right]-\frac{\sum_H\left[e^{X^TWX/2}\right] \sum_{X'}x'_ix'_je^{X'^TWX'/2}}{\left({\sum_{X'} e^{X'^TWX'/2}}\right)^2}$$&lt;/li&gt;
-&lt;li&gt;Definition of $P(V,H)$ and $P(V)$ $$\frac{\partial P(V)}{\partial w_{ij}} = \sum_H\left[x_ix_jP(V,H)\right]-P(V) \sum_{X'}\left[x'_ix'_jP(V',H')\right]$$&lt;/li&gt;
-&lt;li&gt;Substituting #10 into #3 and #3 into #2 we have $$\frac{\partial L}{\partial w_{ij}} = \sum_VD(V)\left[\frac{\sum_H\left[x_ix_jP(V,H)\right]-P(V) \sum_{X'}\left[x'_ix'_jP(V',H')\right]}{P(V)}\right]$$&lt;/li&gt;
-&lt;li&gt;Separating into two terms $$\frac{\partial L}{\partial w_{ij}} = \sum_V\left[D(V)\sum_H\left[\frac{x_ix_jP(V,H)}{P(V)}\right]\right]-\sum_V\left[D(V)P(V)\sum_{X'}\left[x'_ix'_jP(V',H')\right]\right]$$&lt;/li&gt;
-&lt;li&gt;Definition of conditional probability $$\frac{\partial L}{\partial w_{ij}} = \sum_V\sum_H\left[x_ix_jD(V)P(H|V)\right]-\sum_VD(V)\sum_{X'}\left[x'_ix'_jP(V',H')\right]$$&lt;/li&gt;
-&lt;li&gt;$\sum_VD(V)=1$, combining sums, and $X=(V,H)$ $$\frac{\partial L}{\partial w_{ij}} =\sum_{(V,H)}\left[x_ix_jD(V)P(H|V)\right]-\sum_{(V',H')}\left[x'_ix'_jP(V',H')\right]$$&lt;/li&gt;
-&lt;li&gt;Definition of expected value $$\frac{\partial L}{\partial w_{ij}} = \mathbb{E}_{D(V)P(H|V)}[x_ix_j]-\mathbb{E}_{P(V,H)}[x_ix_j]$$ $\square$&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;/div&gt;
-&lt;/div&gt;
-&lt;/div&gt;
- 
-
-
-&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var mathjaxscript = document.createElement('script');
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: 'center'," +
-        "    displayIndent: '0em'," +
-        "    showMathMenu: true," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['$','$'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        " linebreaks: { automatic: true, width: '95% container' }, " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-        "    } " +
-        "}); ";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-&lt;/script&gt;
-</content></entry><entry><title>Inaugural Post</title><link href="https://computable.ai/articles/2019/Feb/16/inaugural-post.html" rel="alternate"></link><published>2019-02-16T00:00:00-05:00</published><updated>2019-02-16T00:00:00-05:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-02-16:/articles/2019/Feb/16/inaugural-post.html</id><summary type="html">&lt;p&gt;The purpose statement and introduction to Computable AI.&lt;/p&gt;</summary><content type="html">
-&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
-&lt;/div&gt;&lt;div class="inner_cell"&gt;
-&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;p&gt;This post begins the Computable AI blog, a machine intelligence blog from a handful of DRL practitioners, intended to crystalize, internalize, share, and explain.&lt;/p&gt;
-&lt;p&gt;I found few beginner resources for DRL when I began, and since I have a passion for teaching, this seemed a likely area in which to make a dent.&lt;/p&gt;
-&lt;p&gt;I also serve as the "Director of Applied Sciences" for a startup software company, and the AI team must occasionally indoctrinate new members. This provides us with a convenient target audience, as well as an expanding pool of co-authors.&lt;/p&gt;
-&lt;p&gt;Finally, my own education in DRL is incomplete, so this will serve partly as a record of my own journey.&lt;/p&gt;
-&lt;p&gt;I hope it helps you.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;

@@ -84,12 +84,12 @@ Computable AI        </a>
 
     <article class="">
       <header class="article-header">
-        <h1 class="uk-heading-large uk-article-title" itemprop="name">Boltzmann Machines: Differentiation Work</h1>
-        <p class="uk-article-lead" itemprop="description">My differentiation work while reading Ilya Sutskever on the biological plausibility of Boltzmann machines.</p>
-        <p class="uk-article-meta"><time datetime="2019-03-10" itemprop="datePublished">Sun 10 March 2019</time> in <a href="https://computable.ai/category/math.html">Math</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html#disqus_thread" itemprop="discussionUrl"></a></p>
-<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/Miracle of the Boltzmann Machine Differentiation Work.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
+        <h1 class="uk-heading-large uk-article-title" itemprop="name">arXiv highlights for July 1-6</h1>
+        <p class="uk-article-lead" itemprop="description">Beginning a new series highlighting a few interesting RL papers on the arXiv each week. This week: Simple curriculum learning, learning to interact with humans, and warm starting RL with propositional logic.</p>
+        <p class="uk-article-meta"><time datetime="2019-07-07" itemprop="datePublished">Sun 07 July 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/07/arxiv-highlights-for-july-1-6.html#disqus_thread" itemprop="discussionUrl"></a></p>
+<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/arXiv highlights for July 1-6.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
 
-<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/Miracle of the Boltzmann Machine Differentiation Work.ipynb">
+<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/arXiv highlights for July 1-6.ipynb">
   Open in Colab
   
   <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -107,28 +107,75 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>I recently read <a href="https://theneural.wordpress.com/2011/07/08/the-miracle-of-the-boltzmann-machine/">The Miracle of the Boltzmann Machine</a>, and it's so compelling that I've been thinking about it ever since. I intend to write much more on Boltzmann Machines in the future, but here I'm just going to show my work differentiating the objective function.</p>
-<h3 id="Given">Given<a class="anchor-link" href="#Given">&#182;</a></h3><ol>
-<li>Objective function $$L(W) := \mathbb{E}_{D(V)} [log P(V)]$$</li>
-<li>and probability of a given BM state $X=(V,H)$ $$P(X) := P(V,H) := {e^{X^TWX/2}\over {\sum_{X'} e^{X'^TWX'/2}}}$$
-$$P(V) := \sum_H P(V,H) = \frac{\sum_H e^{X^TWX/2}}{\sum_{X'} e^{X'^TWX'/2}}$$ where $W$ is the BM transition matrix, assuming $w_{ij}=w_{ji}$</li>
-</ol>
-<h3 id="Want-to-show">Want to show<a class="anchor-link" href="#Want-to-show">&#182;</a></h3>$$\frac{\partial L}{\partial w_{ij}} = \mathbb{E}_{D(V)P(H|V)}[x_ix_j]-\mathbb{E}_{P(V,H)}[x_ix_j]$$<h3 id="Proof">Proof<a class="anchor-link" href="#Proof">&#182;</a></h3><ol>
-<li>Definition of expected value $$L(W)=\mathbb{E}_{D(V)} [\log P(V)] = \sum_V D(V)\log P(V)$$</li>
-<li>Let $f = logP(V)$ $$\frac{\partial L}{\partial f} = \sum_V D(V)\frac{\partial f}{\partial w_{ij}}$$</li>
-<li>Chain rule $$\frac{\partial f}{\partial w_{ij}} = {\frac{\partial P(V)}{\partial w_{ij}} \over P(V)}$$</li>
-<li>Expand $P(V)$ $$\frac{\partial P(V)}{\partial w_{ij}} = \frac{\partial}{\partial w_{ij}}\left[\sum_H P(V,H)\right] = \frac{\partial}{\partial w_{ij}}\left[\sum_H {e^{X^TWX/2}\over {\sum_{X'} e^{X'^TWX'/2}}}\right] = \sum_H \frac{\partial}{\partial w_{ij}}\left[{e^{X^TWX/2}\over {\sum_{X'} e^{X'^TWX'/2}}}\right]$$</li>
-<li>Quotient rule $$\frac{\partial P(V)}{\partial w_{ij}} =\sum_H \frac{\frac{\partial}{\partial w_{ij}}\left[e^{X^TWX/2}\right]{\sum_{X'} e^{X'^TWX'/2}}-e^{X^TWX/2} \frac{\partial}{\partial w_{ij}}\left[{\sum_{X'} e^{X'^TWX'/2}}\right]}{\left({\sum_{X'} e^{X'^TWX'/2}}\right)^2}$$</li>
-<li>Chain rule, and notice $\frac{\partial}{\partial w_{ij}}\left[W\right]$ is $0$ everywhere except $w_{ij}$, so $$\frac{\partial}{\partial w_{ij}}\left[e^{X^TWX/2}\right] = \frac{\partial}{\partial w_{ij}}\left[X^TWX/2\right] e^{X^TWX/2} = x_ix_je^{X^TWX/2}$$</li>
-<li>So #5 becomes $$\frac{\partial P(V)}{\partial w_{ij}} = \sum_H \frac{x_ix_je^{X^TWX/2}{\sum_{X'} e^{X'^TWX'/2}}-e^{X^TWX/2} \sum_{X'}x'_ix'_je^{X'^TWX'/2}}{\left({\sum_{X'} e^{X'^TWX'/2}}\right)^2}$$</li>
-<li>Separating terms $$\frac{\partial P(V)}{\partial w_{ij}} = \sum_H\left[\frac{x_ix_je^{X^TWX/2}{\sum_{X'} e^{X'^TWX'/2}}}{\left({\sum_{X'} e^{X'^TWX'/2}}\right)^2}\right]-\sum_H\left[\frac{e^{X^TWX/2} \sum_{X'}x'_ix'_je^{X'^TWX'/2}}{\left({\sum_{X'} e^{X'^TWX'/2}}\right)^2}\right]$$</li>
-<li>Cancelling and moving factors outside sums $$\frac{\partial P(V)}{\partial w_{ij}} = \sum_H\left[\frac{x_ix_je^{X^TWX/2}}{{\sum_{X'} e^{X'^TWX'/2}}}\right]-\frac{\sum_H\left[e^{X^TWX/2}\right] \sum_{X'}x'_ix'_je^{X'^TWX'/2}}{\left({\sum_{X'} e^{X'^TWX'/2}}\right)^2}$$</li>
-<li>Definition of $P(V,H)$ and $P(V)$ $$\frac{\partial P(V)}{\partial w_{ij}} = \sum_H\left[x_ix_jP(V,H)\right]-P(V) \sum_{X'}\left[x'_ix'_jP(V',H')\right]$$</li>
-<li>Substituting #10 into #3 and #3 into #2 we have $$\frac{\partial L}{\partial w_{ij}} = \sum_VD(V)\left[\frac{\sum_H\left[x_ix_jP(V,H)\right]-P(V) \sum_{X'}\left[x'_ix'_jP(V',H')\right]}{P(V)}\right]$$</li>
-<li>Separating into two terms $$\frac{\partial L}{\partial w_{ij}} = \sum_V\left[D(V)\sum_H\left[\frac{x_ix_jP(V,H)}{P(V)}\right]\right]-\sum_V\left[D(V)P(V)\sum_{X'}\left[x'_ix'_jP(V',H')\right]\right]$$</li>
-<li>Definition of conditional probability $$\frac{\partial L}{\partial w_{ij}} = \sum_V\sum_H\left[x_ix_jD(V)P(H|V)\right]-\sum_VD(V)\sum_{X'}\left[x'_ix'_jP(V',H')\right]$$</li>
-<li>$\sum_VD(V)=1$, combining sums, and $X=(V,H)$ $$\frac{\partial L}{\partial w_{ij}} =\sum_{(V,H)}\left[x_ix_jD(V)P(H|V)\right]-\sum_{(V',H')}\left[x'_ix'_jP(V',H')\right]$$</li>
-<li>Definition of expected value $$\frac{\partial L}{\partial w_{ij}} = \mathbb{E}_{D(V)P(H|V)}[x_ix_j]-\mathbb{E}_{P(V,H)}[x_ix_j]$$ $\square$</li>
+<h1 id="New-series">New series<a class="anchor-link" href="#New-series">&#182;</a></h1><p>This post begins a weekly series highlighting one or more RL papers in the previous week's cs.AI arXiv stream that caught my eye (making no guarantees about the correlation between what catches my eye and what ultimately turns out to be useful, important, etc). I'll be prioritizing sustainability over most other factors, but I do hope to show you some code from time to time.</p>
+<p>I read these papers to differing degrees as I have time, so there will likely be some variability in descriptive volume. However, I do pledge to make only justified statements about them so far as I know, and I welcome errata in the comments. I'm still experimenting with the format and voice, so please leave me feedback early and often to influence the series.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>All of this week's papers piqued my interest because of the sample-efficiency problem in modern DRL. Reinforcement learning algorithms need to interact with the environment quite a bit before they become good at a task, and anything that can shorten this time is of interest. My group is currently working on a learning task with a very low sample rate, so we are actively on the hunt for anything that improves sample efficiency.</p>
+<ul>
+<li><a href="https://arxiv.org/abs/1906.12266">Growing Action Spaces</a>, by Farquhar et al. at Oxford and Facebook AI Research.</li>
+<li><a href="https://arxiv.org/abs/1906.10187v2">Learning to Interactively Learn and Assist</a>, by Woodward et al. at Google Brain.</li>
+<li><a href="https://arxiv.org/abs/1902.06007v2">ProLoNets: Neural-encoding Human Experts' Domain Knowledge to Warm Start Reinforcement Learning</a>, by Silva et al. at Georgia Institute of Technology.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Growing-Action-Spaces">Growing Action Spaces<a class="anchor-link" href="#Growing-Action-Spaces">&#182;</a></h2><p>Growing Action Spaces proposes a form of "curriculum learning", where a more complex task is broken down into a sequence of simpler tasks, sometimes by humans, sometimes automatically. In this case, the authors improved the learning speed of their agent by initially giving it fewer actions to work with, training for a while, and then alternating between giving it more actions to work with and training.</p>
+<p>Interestingly, they were working in Starcraft, which is a real-time strategy (RTS) game, where you have to control multiple units simultaneously in a coordinated fashion to achieve some goal. Thus, in their domain, the size of the action space didn't just come from continuity or a really large discrete action space, but from the fact that the actions they were capable of taking were <em>combinatorial</em>. That is, they had to train an agent to take actions from a space including any combination of primitive actions, as well as any combinations of units; a daunting task.</p>
+<p>Their solution is brilliant, and highly general: The authors broke the action space up into a hierarchy of action spaces by grouping units, and requiring that the same action be taken by all units within the same group. Then as training progressed, more groups were allowed to act independently. This resulted in a tractable problem at each stage of training, and overall high-performance policies that would have been prohibitively complex with conventional DRL algorithms.</p>
+<p>If you or I want to apply this method to our own problems, the key requirement is to come up with a suitable way of breaking large action spaces into hierarchies of progressively smaller ones.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Learning-to-Interactively-Learn-and-Assist">Learning to Interactively Learn and Assist<a class="anchor-link" href="#Learning-to-Interactively-Learn-and-Assist">&#182;</a></h2><p>Reinforcement learning typically depends on a sparse reward signal and random exploration, both of which contribute to poor sample efficiency in modern algorithms. One method of improving sample efficiency and solving the exploration problem is imitation learning, where the agent is pre-trained to mimic expert behavior. However, expert demonstrations are expensive, and it's often difficult to know how much and of what kind will suffice. These are the problems Learning to Interactively Learn and Assist attempts to solve by proposing a different paradigm entirely: without explicit demonstrations or reward function.</p>
+<p>The goal is for an agent and a "principal" (say, a human) to learn to work together to accomplish the principal's purpose. The agent takes its cues from the principal's behavior, and acts helpfully. This requires prior understanding, both of the environment and of what constitutes communication from the principal.</p>
+<p>To get to this point, the authors trained an agent jointly with a "human surrogate" principal on a variety of tasks in the same environment. Each time, the principal knows the task (as part of its observation input), and the agent does not. They receive a joint reward at the end of the episode.</p>
+<blockquote><p>By informing the principal of the current task and withholding rewards and gradient updates until the end of each task, the agents are encouraged to emerge interactive learning behaviors in order to inform the assistant of the task and allow them to contribute to the joint reward.</p>
+</blockquote>
+<p>Prior domain knowledge required to jointly accomplish a given task is trained into the agent ahead of time this way, along with the methods of communication. Actions and observations are restricted to the environment, so that later the principal may be replaced with a human.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="ProLoNets:-Neural-encoding-Human-Experts'-Domain-Knowledge-to-Warm-Start-Reinforcement-Learning">ProLoNets: Neural-encoding Human Experts' Domain Knowledge to Warm Start Reinforcement Learning<a class="anchor-link" href="#ProLoNets:-Neural-encoding-Human-Experts'-Domain-Knowledge-to-Warm-Start-Reinforcement-Learning">&#182;</a></h2><p>ProLoNets stands for "Propositional Logic Nets", which are a neural network architecture and method of initialization that allows a domain expert to encode initial behavior for a DRL agent in the form of propositional logic.</p>
+<p>To give you the flavor:</p>
+<blockquote><p>To illustrate this more practically, we consider the simplest case of a cart pole ProLoNet with a single decision node. Assume we have solicited the following from a domain expert: "If the cart's $x$ position is right of center, move left; otherwise, move right," and that they indicate <code>x_position</code> is the first input feature and that the center is at 0. We therefore initialize our primary node $D_0$ with $w_0=[1,0,0,0]$ and $c_0=0$. We then specify $l_0$ to be a new leaf with a prior of $[1,0]$. Finally, we set the path to $l_0$ to be $D_0$ and the path $l_1$ to be $(1-D_0)$. Consequently for each state, the probability distribution over the agent's two actions is a softmax over $(D_0*l_0+(1-D_0)*l_1)$</p>
+</blockquote>
+<p>I've barely skimmed this paper so I don't know what each of the components means, but I gather that a human-authored decision tree can be translated directly into a correctly-initialized neural network architecture, and an actor-critic algorithm takes over from there to improve beyond the human expert's baseline.</p>
+<p>Something else that caught my eye:</p>
+<blockquote><p>While our initialized ProLoNets are able to follow expert strategies immediately, they may lack expressive capacity to learn more optimal policies once they are deployed into a domain. ... To enable the ProLoNet architecture to continue to grow beyond its initial definition, we introduce a dynamic deepening procedure.</p>
+<p>Upon initialization, a ProLoNet agent maintains two copies of its actor: the shallower, unaltered initialized version and a deeper version, in which each leaf is transformed into a randomly initialized node with two new randomly initialized leaves. As the agent interacts with its environment, it relies on the shallower networks to generate actions and value predictions and to gather experience, After each episode, our off-policy update is run over the shallower and deeper networks. Finally, after the off-policy updates, the agent compares the entropy of the shallower actor's leaves to the entropy of the deeper actor's leaves and selectively deepens when the leaves of the deeper actor are less uniform than those of the shallower actor. We find that this dynamic deepening improves stability and ameliorates policy degradation.</p>
+</blockquote>
+<p>This strikes me as the beginning of the future, where neural network architecture is learned and adjusted dynamically alongside the network parameters.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Parting-thoughts">Parting thoughts<a class="anchor-link" href="#Parting-thoughts">&#182;</a></h1><ol>
+<li>I'm extremely pleased to have finally gotten this off the ground. Please comment on anything and everything, and we'll drive this thing together.</li>
+<li>Growing Action Spaces is immediately relevant to my group, since in the medium-term, we intend to increase our action spaces combinatorially, and will inherit all of the trouble this brings. More on this another time.</li>
+<li>I wonder how often in complex real environments the "Learning to Interactively Learn and Assist" agents will learn to communicate in a way that humans find unintuitive. Since the quickest way to communicate involves some compression, would we need to add some term representing human understandability? How best to do this?</li>
+<li>"Learning to Interactively Learn and Assist" seems like a relevant paper for AI safety, though as far as I could tell in my quick read, it wasn't billed that way. If we train agents that don't have goals of their own necessarily, but take their cues from us in real time, are we safer than if we attempted to craft the perfect reward function, or demonstrated our desires in a one-and-done fashion?</li>
+<li>I've gotta actually read the ProLoNets paper. There was even more to it than I highlighted, and they included an ablation study which will likely tell me if I can incorporate their concepts piecemeal into my own work.</li>
 </ol>
 
 </div>
@@ -199,11 +246,11 @@ $$P(V) := \sum_H P(V,H) = \frac{\sum_H e^{X^TWX/2}}{\sum_{X'} e^{X'^TWX'/2}}$$ w
         <ul>
             <h2>Categories</h2>
                 <li>
-                    <a  href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a>
+                    <a class="active" href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a>
                     <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/arxiv-highlights.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
                 <li>
-                    <a class="active" href="https://computable.ai/category/math.html">Math</a>
+                    <a  href="https://computable.ai/category/math.html">Math</a>
                     <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/math.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
                 <li>
@@ -248,11 +295,11 @@ $$P(V) := \sum_H P(V,H) = \frac{\sum_H e^{X^TWX/2}}{\sum_{X'} e^{X'^TWX'/2}}$$ w
 
       <ul class="offcanvas-nav" data-uk-nav>
           <h2 class="">Categories</h2>
-          <li >
+          <li class="uk-active">
             <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a>
             <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/arxiv-highlights.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
-          <li class="uk-active">
+          <li >
             <a href="https://computable.ai/category/math.html">Math</a>
             <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/math.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
