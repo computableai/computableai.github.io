@@ -116,6 +116,7 @@
   font-size: var(--font-size-text-lg);
   line-height: var(--line-height-loose);
   margin-bottom: 10rem;
+  max-width: 65ch;
 }
 
 
@@ -123,16 +124,26 @@
 
 .article-body p {
   margin: 1em 0 0;
-  max-width: 65ch;
 }
 
+.article-body h1,
 .article-body h2,
 .article-body h3,
 .article-body h4,
 .article-body h5,
 .article-body h6 {
+  margin-top: 2em;
   font-weight: var(--font-weight-semibold);
   letter-spacing: 0.015ch;
+}
+
+.article-body blockquote {
+  padding-left: 1rem;
+  border-left: 2px solid;
+  line-height: inherit;
+  font-size: inherit;
+  font-style: italic;
+  color: var(--color-content-muted);
 }
 
 
