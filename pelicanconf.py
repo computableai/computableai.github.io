@@ -65,6 +65,8 @@ STATIC_PATHS = ['static']
 EXTRA_PATH_METADATA = {
     'static/images/favicon.ico': {'path': 'favicon.ico'},
     }
+FAVICON = 'favicon.ico'
+FAVICON_TYPE = 'image/x-icon'
 IGNORE_FILES = ['.ipynb_checkpoints', 'icebox', '{static}']
 #USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = 'Miscellany'
