@@ -1,4 +1,4 @@
-<div class="uk-width-medium-3-10 uk-width-large-2-10 uk-hidden-small">
+<div class="uk-width-medium-3-10 uk-width-large-2-10 uk-hidden-small site-sidebar">
 
     <!-- {% if not DISABLE_SEARCH %}
     <div class="uk-panel">
@@ -26,19 +26,19 @@
                 </li>
                 {% endfor %}
             {% endif %}
+
             <!-- <li><a {% if page_name == 'archives' %}class="active"{% endif %} href="{{ SITEURL }}/archives.html">Archives</a></li> -->
         </ul>
+        <hr />
     </nav>
 
-    <!-- {% if SOCIAL %}
-    <div class="uk-panel uk-panel-box">
-        <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" class="mg-feed"><i class="uk-icon-rss uk-icon-medium"></i></a>
+    <aside class="extras">
+        <a rel="alternate" type="application/atom+xml" href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}"><i class="uk-icon-rss uk-icon-medium"></i></a>
         {% for icon, link in SOCIAL %}
         <a class="mg-icon-link" href="{{ link }}">
             <i class="uk-icon-{{ icon }} uk-icon-medium"></i>
         </a>
         {% endfor %}
-    </div>
-    {% endif %} -->
+    </aside>
 
 </div>
