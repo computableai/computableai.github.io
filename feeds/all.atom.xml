@@ -1,5 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-07-07T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights for July 1-6</title><link href="https://computable.ai/articles/2019/Jul/07/arxiv-highlights-for-july-1-6.html" rel="alternate"></link><published>2019-07-07T00:00:00-04:00</published><updated>2019-07-07T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-07:/articles/2019/Jul/07/arxiv-highlights-for-july-1-6.html</id><summary type="html">&lt;p&gt;Beginning a new series highlighting a few interesting RL papers on the arXiv each week. This week: Simple curriculum learning, learning to interact with humans, and warm starting RL with propositional logic.&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-07-14T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights July 7-13 2019</title><link href="https://computable.ai/articles/2019/Jul/14/arxiv-highlights-july-7-13-2019.html" rel="alternate"></link><published>2019-07-14T00:00:00-04:00</published><updated>2019-07-14T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-14:/articles/2019/Jul/14/arxiv-highlights-july-7-13-2019.html</id><summary type="html">&lt;p&gt;Way Off-Policy Batch DRL using a generative model of pre-recorded trajectories, and bias correction.&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="This-week"&gt;This week&lt;a class="anchor-link" href="#This-week"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Only one paper this week, &lt;em&gt;not&lt;/em&gt; because &lt;a href="https://arxiv.org/abs/1905.04819"&gt;others&lt;/a&gt; failed to catch my eye, but for brevity. Let me know in the comments if you agree that shorter or more focused articles are more attractive. So this week I'll be examining just one paper: &lt;a href="https://arxiv.org/abs/1907.00456"&gt;Way Off-Policy Batch Deep Reinforcement Learning of Implicit Human Preferences in Dialog&lt;/a&gt;. As with last week's papers, this week's is interesting to me professionally. Batch DRL is a way to solve the sample efficiency problem, from a certain perspective. It's mostly the online learning that costs too much when sample efficiency is low, so solving the problems that come with attempting to train offline might allow us to do many of the same things we could do if we had high online sample efficiency.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="RL-for-open-domain-dialog-generation"&gt;RL for open-domain dialog generation&lt;a class="anchor-link" href="#RL-for-open-domain-dialog-generation"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;The author's domain is dialog generation. They want to build a better chat bot, and they have quite a few recorded conversations. RL is good at refining these processes, but has a cold-start problem, plus they would certainly prefer to make use of the data they have on-hand. For this, they need to be able to make use of offline data, hence "&lt;em&gt;Way&lt;/em&gt; Off-Policy". This data is so off-policy it wasn't even &lt;em&gt;generated&lt;/em&gt; by a policy.&lt;/p&gt;
+&lt;p&gt;So they want to train DRL from samples acquired from some other control of the system (in their case, human interaction data), much like &lt;a href="https://arxiv.org/abs/1704.03732"&gt;Deep Q-learning from Demonstrations&lt;/a&gt;. There are a couple of reasons this is important for others such as myself:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;First, since collecting real-world interaction data can be expensive and time-consuming, algorithms must be able to leverage off-policy data - collected from vastly different systems, far into the past - in order to learn.&lt;/p&gt;
+&lt;p&gt;Second, it is often necessary to carefully test a policy before deploying it to the real world; for example, to ensure its behavior is safe and appropriate for humans. Thus the algorithm must be able to learn offline first, from a static batch of data, without the ability to explore&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="A-generative-model-+-Q-learning"&gt;A generative model + Q learning&lt;a class="anchor-link" href="#A-generative-model-+-Q-learning"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;The authors first pre-train a generative model on the distribution of collected trajectories, and initialize the Q networks from this model. They then sample a fixed number of actions from it, and output the one with the highest Q-value as their policy's decision. In later reinforcement learning, they penalize their model for KL-divergence from this distribution.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;To perform batch Q-learning, we first pre-train a generative model of $p(a|s)$ using a set of known environment trajectories. In our case, this model is then used to generate the batch data via human interaction. The weights of the Q-network and target Q-network are initialized from the pre-trained model, which helps reduce variance in the Q-estimates and works to combat overestimation bias. To train $Q_{θ_π}$ we sample &amp;lt; $s_t$, $a_t$, $r_t$, $s_{t+1}$ &amp;gt; tuples from the batch, and update the weights of the Q-network to approximate Eq. 1. This forms our baseline model, which we call Batch Q&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Overestimation-bias"&gt;Overestimation bias&lt;a class="anchor-link" href="#Overestimation-bias"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;Most deep RL algorithms fail to learn from data that is not heavily correlated with the current policy. Even models based on off-policy algorithms lik Q-learning fail to learn when the model is not able to explore during training. This is due to the fact that such algorithms are inherently optimistic in the face of uncertainty.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;If you’re taking the &lt;code&gt;max&lt;/code&gt; of something (as in Bellman-equation-based algorithms), then the higher the variance, the higher the &lt;code&gt;max&lt;/code&gt; value. This causes an over-estimation bias. We may have seen a really high value for some state once, so now we over-value that state, despite it being atypical. It may not be immediately obvious why this is a &lt;em&gt;problem&lt;/em&gt;, but which states are we likely to overvalue? Precisely the states we haven't visited often. Why is &lt;em&gt;that&lt;/em&gt; a problem? This sounds good for exploration, right? But if we're trying to train our agent with canned data, it's important that the live agent stick pretty close to the states where the canned data does well, and it's counter-productive to have it believe that everywhere &lt;em&gt;but&lt;/em&gt; the pre-explored state space is worth exploring.&lt;/p&gt;
+&lt;p&gt;A popular solution to the overestimation problem in Q-learning algorithms is to train &lt;em&gt;two&lt;/em&gt; Q networks on the same data, put the input through both, and take the minimum value. This helps with the bias because they'll likely disagree unless we can be really &lt;em&gt;certain&lt;/em&gt; of the value of the input, and if they disagree we can go with the least confident. The authors of the current paper take a different tack, training a single neural net with dropout, and using the disagreement with different dropout masks as an estimate of uncertainty.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Parting-thoughts"&gt;Parting thoughts&lt;a class="anchor-link" href="#Parting-thoughts"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;I didn't talk much about their model architecture, which is "Variational Hierarchical Recurrent Encoder Decoder (VHRED)", largely because I think if I ever tried to make use of this directly I would employ transformers instead. They do mention that transformer architectures are a "powerful alternative", but they chose to work with hierarchical architectures so they could extend their work to hierarchical control in the future. That's interesting. In my own work at the moment, the important thing is the "way off-policy" part, not so much the chat bot part.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;It's very interesting to me that both of the methods for correcting overestimation bias make use of uncertainty estimators that I've seen mentioned elsewhere:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1905.09638"&gt;Estimating Risk and Uncertainty in Deep Reinforcement Learning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;&lt;p&gt;...we show that the disagreement between only two neural networks is sufficient to produce a low-variance estimate of the epistemic uncertainty on the return distribution, thus providing a simple and computationally cheap uncertainty metric.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://arxiv.org/abs/1506.02142"&gt;Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;&lt;p&gt;...we develop a new theoretical framework casting dropout training in deep neural networks (NNs) as approximate Bayesian inference in deep Gaussian processes. A direct result of this theory gives us tools to model uncertainty with dropout NNs&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;This article wasn't really shorter than if I had done multiple papers, less deeply. I'll have to practice at that, not least because it's time-consuming, but information is valuable. How does Adrian Colyer do this every &lt;em&gt;day&lt;/em&gt;?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content></entry><entry><title>arXiv highlights July 1-6 2019</title><link href="https://computable.ai/articles/2019/Jul/07/arxiv-highlights-july-1-6-2019.html" rel="alternate"></link><published>2019-07-07T00:00:00-04:00</published><updated>2019-07-07T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-07:/articles/2019/Jul/07/arxiv-highlights-july-1-6-2019.html</id><summary type="html">&lt;p&gt;Beginning a new series highlighting a few interesting RL papers on the arXiv each week. This week: Simple curriculum learning, learning to interact with humans, and warm starting RL with propositional logic.&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
