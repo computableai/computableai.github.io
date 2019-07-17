@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - Look at This</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/look-at-this.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-07-16T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>Look at This: Where We See Shapes, AI Sees Textures</title><link href="https://computable.ai/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html" rel="alternate"></link><published>2019-07-16T00:00:00-04:00</published><updated>2019-07-16T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-16:/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html</id><summary type="html">&lt;p&gt;CNNs trained in "the usual way" tend to learn something different than you might expect. They learn to recognize textures (local structure) rather than shapes (global structure).&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="New-Series"&gt;New Series&lt;a class="anchor-link" href="#New-Series"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src="http://weknowmemes.com/wp-content/uploads/2011/12/look-at-this-duck.jpg#right" style="margin-left:15px" width="350" height="268" /&gt;&lt;/p&gt;
+&lt;p&gt;We're starting a simple new series called Look at This, where we briefly plug an article that taught us something.&lt;/p&gt;
+&lt;p&gt;Our first highlight will be a Quanta article about what CNNs learn when trained in "the usual way":&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://www.quantamagazine.org/where-we-see-shapes-ai-sees-textures-20190701/"&gt;Where We See Shapes, AI Sees Textures&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Textures,-not-shapes"&gt;Textures, not shapes&lt;a class="anchor-link" href="#Textures,-not-shapes"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Training a CNN for object recognition typically involves only showing the algorithm many examples of images that contain or don't contain a target object. Humans also need to see many examples of various objects to get the basic idea. Humans, however, seem to have a bias towards recognition by &lt;em&gt;shape&lt;/em&gt; which is missing from CNNs in general.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Geirhos, Bethge and their colleagues created images that included two conflicting cues, with a shape taken from one object and a texture from another: the silhouette of a cat colored in with the cracked gray texture of elephant skin, for instance, or a bear made up of aluminum cans, or the outline of an airplane filled with overlapping clock faces. Presented with hundreds of these images, humans labeled them based on their shape — cat, bear, airplane — almost every time, as expected. Four different classification algorithms, however, leaned the other way, spitting out labels that reflected the textures of the objects: elephant, can, clock.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is a problem worth solving, since the addition of even a small amount of noise can throw off CNN-based classifiers, where humans aren't fooled. "Adversarial examples" even do this maliciously, adding exactly the right amount of noise to cause misclassification. So how to fix this?&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Geirhos wanted to see what would happen when the team forced their models to ignore texture. The team took images traditionally used to train classification algorithms and “painted” them in different styles, essentially stripping them of useful texture information. When they retrained each of the deep learning models on the new images, the systems began relying on larger, more global patterns and exhibited a shape bias much more like that of humans.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://d2r55xnwy6nx47.cloudfront.net/uploads/2019/07/AI_Textures_2880x1220_LHPA.jpg" alt="Images painted with alien textures"&gt;&lt;/p&gt;
+&lt;p&gt;There were many other insights in this relatively short article, and I commend it to you. It enriched my understanding of what's going on in neural networks, and how far we still need to go to reach parity with humans.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content></entry></feed>

@@ -1,15 +1,8 @@
-<meta property="og:title" content="Computable AI" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://computable.ai" />
-<meta name="twitter:url" content="https://computable.ai" />
-<meta itemprop="name" content="Computable AI">
-<meta itemprop="url" content="https://computable.ai">
-
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <!--<![endif]-->
     <head>
 
   <meta charset="utf-8">
@@ -68,28 +61,110 @@ Computable AI        </a>
 </header>        <main class="mg-main">
             <div class="uk-container uk-container-center">
                 <div class="uk-grid" data-uk-grid-margin>
-  <div class="uk-width-medium-7-10 ">
 
-    <!--
-    <div class="uk-tile uk-tile-primary">
-      <div class="uk-article-title" itemprop="name">Welcome</div>
+<div class="uk-width-medium-7-10 content-article">
+
+    <article class="">
+      <header class="article-header">
+        <h1 class="uk-heading-large uk-article-title" itemprop="name">Look at This: Where We See Shapes, AI Sees Textures</h1>
+        <p class="uk-article-lead" itemprop="description">CNNs trained in "the usual way" tend to learn something different than you might expect. They learn to recognize textures (local structure) rather than shapes (global structure).</p>
+        <p class="uk-article-meta">
+<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-07-16" itemprop="datePublished">Tue 16 July 2019</time> in <a href="https://computable.ai/category/look-at-this.html">Look at This</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html#disqus_thread" itemprop="discussionUrl"></a></p>
+<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/Where We See Shapes AI Sees Textures.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
+
+<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/Where We See Shapes AI Sees Textures.ipynb">
+  Open in Colab
+  
+  <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="arrow-up-right" transform="translate(-19, -19)" fill-rule="nonzero" stroke="#007AFF" stroke-width="2">
+            <path d="M20,44 L44,20 L20,44 Z M24,20 L44,20 L44,40" id="border"></path>
+        </g>
+    </g>
+  </svg>
+</a>      </header>
+
+      <div class="article-body">
         <section itemprop="articleBody">
-          <br />
-          Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.
+          
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="New-Series">New Series<a class="anchor-link" href="#New-Series">&#182;</a></h1><p><img src="http://weknowmemes.com/wp-content/uploads/2011/12/look-at-this-duck.jpg#right" style="margin-left:15px" width="350" height="268" /></p>
+<p>We're starting a simple new series called Look at This, where we briefly plug an article that taught us something.</p>
+<p>Our first highlight will be a Quanta article about what CNNs learn when trained in "the usual way":</p>
+<p><a href="https://www.quantamagazine.org/where-we-see-shapes-ai-sees-textures-20190701/">Where We See Shapes, AI Sees Textures</a></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Textures,-not-shapes">Textures, not shapes<a class="anchor-link" href="#Textures,-not-shapes">&#182;</a></h1><p>Training a CNN for object recognition typically involves only showing the algorithm many examples of images that contain or don't contain a target object. Humans also need to see many examples of various objects to get the basic idea. Humans, however, seem to have a bias towards recognition by <em>shape</em> which is missing from CNNs in general.</p>
+<blockquote><p>Geirhos, Bethge and their colleagues created images that included two conflicting cues, with a shape taken from one object and a texture from another: the silhouette of a cat colored in with the cracked gray texture of elephant skin, for instance, or a bear made up of aluminum cans, or the outline of an airplane filled with overlapping clock faces. Presented with hundreds of these images, humans labeled them based on their shape — cat, bear, airplane — almost every time, as expected. Four different classification algorithms, however, leaned the other way, spitting out labels that reflected the textures of the objects: elephant, can, clock.</p>
+</blockquote>
+<p>This is a problem worth solving, since the addition of even a small amount of noise can throw off CNN-based classifiers, where humans aren't fooled. "Adversarial examples" even do this maliciously, adding exactly the right amount of noise to cause misclassification. So how to fix this?</p>
+<blockquote><p>Geirhos wanted to see what would happen when the team forced their models to ignore texture. The team took images traditionally used to train classification algorithms and “painted” them in different styles, essentially stripping them of useful texture information. When they retrained each of the deep learning models on the new images, the systems began relying on larger, more global patterns and exhibited a shape bias much more like that of humans.</p>
+</blockquote>
+<p><img src="https://d2r55xnwy6nx47.cloudfront.net/uploads/2019/07/AI_Textures_2880x1220_LHPA.jpg" alt="Images painted with alien textures"></p>
+<p>There were many other insights in this relatively short article, and I commend it to you. It enriched my understanding of what's going on in neural networks, and how far we still need to go to reach parity with humans.</p>
+
+</div>
+</div>
+</div>
+ 
+
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
         </section>
-      <hr class="uk-article-divider">
-    </div>
-    -->
+      </div>
+    </article>
 
-<article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/boltzmannexample.png" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html" class="article-title" itemprop="name">Boltzmann Machines: Differentiation Work</a>
-  <p class="uk-article-lead article-lead" itemprop="description">My differentiation work while reading Ilya Sutskever on the biological plausibility of Boltzmann machines.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-03-10" itemprop="datePublished">Sun 10 March 2019</time> in <a href="https://computable.ai/category/math.html">Math</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'computableai'; // required: replace example with your forum shortname
 
-  </div>
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+</div>
 <div class="uk-width-medium-3-10 uk-width-large-2-10 uk-hidden-small site-sidebar">
 
     <!--     <div class="uk-panel">
@@ -107,11 +182,11 @@ Computable AI        </a>
                     <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/arxiv-highlights.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
                 <li>
-                    <a  href="https://computable.ai/category/look-at-this.html">Look at This</a>
+                    <a class="active" href="https://computable.ai/category/look-at-this.html">Look at This</a>
                     <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/look-at-this.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
                 <li>
-                    <a class="active" href="https://computable.ai/category/math.html">Math</a>
+                    <a  href="https://computable.ai/category/math.html">Math</a>
                     <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/math.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
                 <li>
@@ -161,11 +236,11 @@ Computable AI        </a>
             <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a>
             <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/arxiv-highlights.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
-          <li >
+          <li class="uk-active">
             <a href="https://computable.ai/category/look-at-this.html">Look at This</a>
             <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/look-at-this.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
-          <li class="uk-active">
+          <li >
             <a href="https://computable.ai/category/math.html">Math</a>
             <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/math.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
