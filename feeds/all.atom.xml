@@ -1,5 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-07-16T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>Look at This: Where We See Shapes, AI Sees Textures</title><link href="https://computable.ai/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html" rel="alternate"></link><published>2019-07-16T00:00:00-04:00</published><updated>2019-07-16T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-16:/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html</id><summary type="html">&lt;p&gt;CNNs trained in "the usual way" tend to learn something different than you might expect. They learn to recognize textures (local structure) rather than shapes (global structure).&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-07-21T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights July 14-20 2019</title><link href="https://computable.ai/articles/2019/Jul/21/arxiv-highlights-july-14-20-2019.html" rel="alternate"></link><published>2019-07-21T00:00:00-04:00</published><updated>2019-07-21T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-21:/articles/2019/Jul/21/arxiv-highlights-july-14-20-2019.html</id><summary type="html">&lt;p&gt;Better imitation learning with self-correcting policies by negative sampling.&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="This-week"&gt;This week&lt;a class="anchor-link" href="#This-week"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;This week's highlight is a paper on imitation learning: &lt;a href="https://arxiv.org/abs/1907.05634"&gt;Learning Self-Correctable Policies and Value Functions from Demonstrations with Negative Sampling&lt;/a&gt;, chosen again for pragmatic reasons. The problem my team is currently working on has both reasons for wanting high sample efficiency: training would be prohibitively slow without something to kickstart it, and actions taken in the real world can get expensive.&lt;/p&gt;
+&lt;p&gt;I know I said I'd be experimenting with shorter, more bite-sized posts, but... next time. (If you want that, you can just stop reading after the "Key intuition" section.)&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="The-problem"&gt;The problem&lt;a class="anchor-link" href="#The-problem"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Learning from demonstrations is more difficult than it may seem at first glance. The trouble mainly stems from covariate shift: the input distribution your agent will see in production is very likely to be different than that encountered during training. Many machine learning algorithms have this problem, reinforcement learning algorithms included, but imitation learning has it especially bad, for a simple reason: the expert demonstrations you are attempting to follow necessarily explore a very small subset of the state space. The whole &lt;em&gt;point&lt;/em&gt; of them is to stay on good trajectories, meaning bad trajectories never get explored.&lt;/p&gt;
+&lt;p&gt;This causes two issues:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The agent can't in general figure out how to get back into the subset of state space where the expert demonstrations apply, even if it gets only slightly off-course, and&lt;/li&gt;
+&lt;li&gt;Value functions for states and actions are affected by unseen states, making it very &lt;em&gt;likely&lt;/em&gt; that the agent will wander off as soon as it's allowed.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Key-intuition"&gt;Key intuition&lt;a class="anchor-link" href="#Key-intuition"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;The authors solve this problem by pre-training with supervised learning using a loss function that drives down the value of all states outside of those explored in the expert demonstrations $U$, by an amount proportional to their Euclidean distance from the closest state in $U$. In their own words:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Consider a state $s$ in the demonstration and its nearby state $\tilde{s}$ that is not in the demonstration. The key intuition is that $\tilde{s}$ should have a lower value than $s$, because otherwise $\tilde{s}$ likely should have been visited by the demonstrations in the first place. If a value function has this property for most of the pair $(s,\tilde{s})$ of this type, the corresponding policy will tend to correct its errors by driving back to the demonstration states because the demonstration states have locally higher values.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And Figure 1 is a nice visual demonstration:&lt;/p&gt;
+&lt;p&gt;&lt;a href="https://computable.ai/images/VINS_Figure_1.jpeg"&gt;&lt;img alt="VINS Figure 1" src="https://computable.ai/images/VINS_Figure_1.jpeg" /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Value-Iteration-with-Negative-Sampling-(VINS)"&gt;Value Iteration with Negative Sampling (VINS)&lt;a class="anchor-link" href="#Value-Iteration-with-Negative-Sampling-(VINS)"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Into the weeds now.&lt;/p&gt;
+&lt;h2 id="Self-correctable-policy"&gt;Self-correctable policy&lt;a class="anchor-link" href="#Self-correctable-policy"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The first bit of their algorithm is the definition of their self-correcting policy. It's essentially a formalization of what we said above about $s$ and $\tilde{s}$.&lt;/p&gt;
+&lt;p&gt;If $s \in U$ (if $s$ is in the expert demonstrations), then $$V(s) = V^{\pi_e}(s) \pm \delta_V$$ ("just what the value would be in the expert demonstrations, plus some error").&lt;/p&gt;
+&lt;p&gt;But if $s \not\in U$, $$V(s) = V^{\pi_e}(\Pi_U(s)) - \lambda \|s-\Pi_U(s)\| \pm \delta_V$$ (where $\Pi_U$ gives the closest $s \in U$, so $V(s)$ is "the value of the closest $s \in U$, &lt;em&gt;minus the distance to that&lt;/em&gt; $s \in U$, plus some error")&lt;/p&gt;
+&lt;p&gt;Then the induced policy from this value function is $$\pi(s) \triangleq \underset{a: \|a-\pi_{BC}(s)\|\le \zeta}{\operatorname{argmax}} ~V(M(s, a))$$&lt;/p&gt;
+&lt;p&gt;Where $M(s,a)$ is a learned dynamical model of the environment that gives the next state given the current state and action. $\pi_{BC}(s)$ is the "behavioral clone" policy from the expert demonstrations.&lt;/p&gt;
+&lt;h2 id="RL-algorithm"&gt;RL algorithm&lt;a class="anchor-link" href="#RL-algorithm"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;To actually achieve $V(M(s,a))$ with the necessary properties, they select a state $s$ from the demonstrations, perturb it a bit to get $\tilde{s}$ nearby, and use the original state $s$ to approximate $\Pi_U(\tilde{s})$ in the following loss function.&lt;/p&gt;
+$$\mathcal{L}_{ns}(\phi)= \mathbf{E}_{s \sim \rho^{\pi_e}, \tilde{s} \sim perturb(s)} \left(V_{\bar \phi}(s) - \lambda \|s-\tilde{s}\|- V_\phi(\tilde{s}) \right)^2$$&lt;p&gt;Finally, here's the algorithm that uses this and the earlier policy definition:&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://computable.ai/images/VINS_Algorithm_2.jpeg#center" alt="VINS Algorithm 2"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Parting-thoughts"&gt;Parting thoughts&lt;a class="anchor-link" href="#Parting-thoughts"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;I thought it was quite strange that they learned $V(s)$ and a dynamical model $M(s,a)$, and then used $V(M(s,a))$ in the algorithm. I thought, "Why not just learn $Q$?" The answer was given in their Section A appendix, and was quite interesting. I'm not sure it applies to our case, but it's important. TL;DR $Q(s,a)$ learned from demonstrations &lt;em&gt;alone&lt;/em&gt; is degenerate, because there's always a $Q$ that perfectly matches the demonstrations &lt;em&gt;and doesn't depend at all on&lt;/em&gt; $a$. &lt;/li&gt;
+&lt;li&gt;One of my coworkers (and upcoming Computable author!) wondered to me if the induced policy could be made explicit, by explicitly training a policy network to bring the agent back into safe territory. It could be trained with gradient descent, because $V(M(s,a))$ are just networks, and the technique for training deterministic policies just follows the gradient of the $Q$ function. I wonder too.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content></entry><entry><title>Look at This: Where We See Shapes, AI Sees Textures</title><link href="https://computable.ai/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html" rel="alternate"></link><published>2019-07-16T00:00:00-04:00</published><updated>2019-07-16T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-16:/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html</id><summary type="html">&lt;p&gt;CNNs trained in "the usual way" tend to learn something different than you might expect. They learn to recognize textures (local structure) rather than shapes (global structure).&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
