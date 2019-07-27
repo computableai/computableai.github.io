@@ -7,6 +7,8 @@ This repository holds all of the source documents as well as output for [the Com
 Computable AI is powered by [Pelican](http://docs.getpelican.com/en/stable/), a powerful static site generator.
 There are many static site generators, but Pelican was chosen in support of blogging via Jupyter.
 
+Clone this repo with `--recursive` to get the ipynb plugin necessary to convert notebooks into posts. If you already cloned without `--recursive`, do `git submodule update --init --recursive`.
+
 We use [Pipenv](https://docs.pipenv.org/en/latest/) for managing Python dependencies.
 TL;DR:
 
