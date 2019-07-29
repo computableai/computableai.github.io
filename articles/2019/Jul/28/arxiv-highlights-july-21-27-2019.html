@@ -66,13 +66,13 @@ Computable AI        </a>
 
     <article class="">
       <header class="article-header">
-        <h1 class="uk-heading-large uk-article-title" itemprop="name">arXiv highlights July 14-20 2019</h1>
-        <p class="uk-article-lead" itemprop="description">Better imitation learning with self-correcting policies by negative sampling.</p>
+        <h1 class="uk-heading-large uk-article-title" itemprop="name">arXiv highlights July 21-27 2019</h1>
+        <p class="uk-article-lead" itemprop="description">Efficient exploration with self-imitation learning.</p>
         <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-07-21" itemprop="datePublished">Sun 21 July 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/21/arxiv-highlights-july-14-20-2019.html#disqus_thread" itemprop="discussionUrl"></a></p>
-<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/arXiv highlights July 14-20.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
+<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-07-28" itemprop="datePublished">Sun 28 July 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/28/arxiv-highlights-july-21-27-2019.html#disqus_thread" itemprop="discussionUrl"></a></p>
+<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/arXiv highlights July 21-27.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
 
-<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/arXiv highlights July 14-20.ipynb">
+<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/arXiv highlights July 21-27.ipynb">
   Open in Colab
   
   <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -90,33 +90,10 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>This week's highlight is a paper on imitation learning: <a href="https://arxiv.org/abs/1907.05634">Learning Self-Correctable Policies and Value Functions from Demonstrations with Negative Sampling</a>, chosen again for pragmatic reasons. The problem my team is currently working on has both reasons for wanting high sample efficiency: training would be prohibitively slow without something to kickstart it, and actions taken in the real world can get expensive.</p>
-<p>I know I said I'd be experimenting with shorter, more bite-sized posts, but... next time. (If you want that, you can just stop reading after the "Key intuition" section.)</p>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-problem">The problem<a class="anchor-link" href="#The-problem">&#182;</a></h1><p>Learning from demonstrations is more difficult than it may seem at first glance. The trouble mainly stems from covariate shift: the input distribution your agent will see in production is very likely to be different than that encountered during training. Many machine learning algorithms have this problem, reinforcement learning algorithms included, but imitation learning has it especially bad, for a simple reason: the expert demonstrations you are attempting to follow necessarily explore a very small subset of the state space. The whole <em>point</em> of them is to stay on good trajectories, meaning bad trajectories never get explored.</p>
-<p>This causes two issues:</p>
-<ol>
-<li>The agent can't in general figure out how to get back into the subset of state space where the expert demonstrations apply, even if it gets only slightly off-course, and</li>
-<li>Value functions for states and actions are affected by unseen states, making it very <em>likely</em> that the agent will wander off as soon as it's allowed.</li>
-</ol>
-
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Key-intuition">Key intuition<a class="anchor-link" href="#Key-intuition">&#182;</a></h1><p>The authors solve this problem by pre-training with supervised learning using a loss function that drives down the value of all states outside of those explored in the expert demonstrations $U$, by an amount proportional to their Euclidean distance from the closest state in $U$. In their own words:</p>
-<blockquote><p>Consider a state $s$ in the demonstration and its nearby state $\tilde{s}$ that is not in the demonstration. The key intuition is that $\tilde{s}$ should have a lower value than $s$, because otherwise $\tilde{s}$ likely should have been visited by the demonstrations in the first place. If a value function has this property for most of the pair $(s,\tilde{s})$ of this type, the corresponding policy will tend to correct its errors by driving back to the demonstration states because the demonstration states have locally higher values.</p>
+<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>Several paper caught my eye this week, but I'll be discussing only <a href="https://arxiv.org/abs/1907.10247">Efficient Exploration with Self-Imitation Learning via Trajectory-Conditioned Policy</a> in more depth. I'm choosing this paper because, as happens sometimes, I had this idea myself a few weeks ago. It's especially exciting to see something you suspected might improve the world fleshed out and vindicated.</p>
+<p>This is the basic form of my shower-throught idea:</p>
+<blockquote><p>This paper investigates the imitation of diverse past trajectories and how that leads [to] further exploration and avoids getting stuck at a sub-optimal behavior. Specifically, we propose to use a buffer of the past trajectories to cover diverse possible directions. Then we learn a trajectory-conditioned policy to imitate any trajectory from the buffer, treating it as a demonstration. After completing the demonstration, the agent performs random exploration.</p>
 </blockquote>
-<p>And Figure 1 is a nice visual demonstration:</p>
-<p><a href="https://computable.ai/images/VINS_Figure_1.jpeg"><img alt="VINS Figure 1" src="https://computable.ai/images/VINS_Figure_1.jpeg" /></a></p>
 
 </div>
 </div>
@@ -124,16 +101,30 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Value-Iteration-with-Negative-Sampling-(VINS)">Value Iteration with Negative Sampling (VINS)<a class="anchor-link" href="#Value-Iteration-with-Negative-Sampling-(VINS)">&#182;</a></h1><p>Into the weeds now.</p>
-<h2 id="Self-correctable-policy">Self-correctable policy<a class="anchor-link" href="#Self-correctable-policy">&#182;</a></h2><p>The first bit of their algorithm is the definition of their self-correcting policy. It's essentially a formalization of what we said above about $s$ and $\tilde{s}$.</p>
-<p>If $s \in U$ (if $s$ is in the expert demonstrations), then $$V(s) = V^{\pi_e}(s) \pm \delta_V$$ ("just what the value would be in the expert demonstrations, plus some error").</p>
-<p>But if $s \not\in U$, $$V(s) = V^{\pi_e}(\Pi_U(s)) - \lambda \|s-\Pi_U(s)\| \pm \delta_V$$ (where $\Pi_U$ gives the closest $s \in U$, so $V(s)$ is "the value of the closest $s \in U$, <em>minus the distance to that</em> $s \in U$, plus some error")</p>
-<p>Then the induced policy from this value function is $$\pi(s) \triangleq \underset{a: \|a-\pi_{BC}(s)\|\le \zeta}{\operatorname{argmax}} ~V(M(s, a))$$</p>
-<p>Where $M(s,a)$ is a learned dynamical model of the environment that gives the next state given the current state and action. $\pi_{BC}(s)$ is the "behavioral clone" policy from the expert demonstrations.</p>
-<h2 id="RL-algorithm">RL algorithm<a class="anchor-link" href="#RL-algorithm">&#182;</a></h2><p>To actually achieve $V(M(s,a))$ with the necessary properties, they select a state $s$ from the demonstrations, perturb it a bit to get $\tilde{s}$ nearby, and use the original state $s$ to approximate $\Pi_U(\tilde{s})$ in the following loss function.</p>
-$$\mathcal{L}_{ns}(\phi)= \mathbf{E}_{s \sim \rho^{\pi_e}, \tilde{s} \sim perturb(s)} \left(V_{\bar \phi}(s) - \lambda \|s-\tilde{s}\|- V_\phi(\tilde{s}) \right)^2$$<p>Finally, here's the algorithm that uses this and the earlier policy definition:</p>
-<p><img src="https://computable.ai/images/VINS_Algorithm_2.jpeg#center" alt="VINS Algorithm 2"></p>
+<h1 id="The-problem">The problem<a class="anchor-link" href="#The-problem">&#182;</a></h1><p><img src="https://computable.ai/images/maze_icon_map.png#right" alt="Maze"></p>
+<p>The main problem the authors want to solve is insufficient exploration leading to a sub-optimal policy. If you don't explore your environment enough, you will find local rewards, but miss globally optimal rewards. In this maze (their Figure 1), you can see that an agent that fails to explore will collect two apples in the next room, but may miss acquiring the key, unlocking the door, collecting an apple, and discovering the treasure.</p>
+<p>In the notoriously difficult Atari game (for RL agents) Montezuma's Revenge, it is similarly extremely unlikely that random exploration suffices to explore the environment and achieve a high score. The authors report state-of-the-art performance without expert demonstrations on Montezuma's Revenge, netting 25k points.</p>
 
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="SOTA-without-demonstrations">SOTA without demonstrations<a class="anchor-link" href="#SOTA-without-demonstrations">&#182;</a></h1><p>So, more precisely, how did they achieve this, and why does it work?</p>
+<blockquote><p>The main idea of our method is to maintain a buffer of diverse trajectories collected during training and to train a trajectory-conditioned policy by leveraging reinforcement learning and supervised learning to roughly follow demonstration trajectories sampled from the trajectory buffer. Therefore, the agent is encouraged to explore beyond various visited states in the environment and gradually push its exploration frontier further... We name our method as Diverse Trajectory-conditioned Self-Imitation Learning (DTSIL).</p>
+</blockquote>
+<h2 id="The-trajectory-buffer">The trajectory buffer<a class="anchor-link" href="#The-trajectory-buffer">&#182;</a></h2><p>Their trajectory buffer $\mathcal{D}$ contains $N$ 3-tuples $\{\left(e^{(1)}, \tau^{(1)}, n^{(1)}\right), \left(e^{(2)}, \tau^{(2)}, n^{(2)}\right), \ldots \left(e^{(N)}, \tau^{(N)}, n^{(N)}\right) \}$ where $e^{(i)}$ is a high-level state representation, $\tau^{(i)}$ is the shortest trajectory achieving the highest reward and arriving at $e^{(i)}$, and $n^{(i)}$ is the number of times $e^{(i)}$ has been encountered. Whenever they roll out a new episode, they check each high-level state representation encountered against those in $\mathcal{D}$, increment $n$, and if $\tau$ is better they replace $\tau$ for that entry.</p>
+<h2 id="Sampling">Sampling<a class="anchor-link" href="#Sampling">&#182;</a></h2><p>When training their trajectory-conditioned policy, they sample each 3-tuple with weight ${1}\over{\sqrt{n^{(i)}}}$. Notice that this will cause them to sample <em>less</em> frequently-visited states more often, encouraging exploration.</p>
+<h2 id="Imitation-reward">Imitation reward<a class="anchor-link" href="#Imitation-reward">&#182;</a></h2><p>Given a trajectory $g$ sampled from the buffer, and during interaction with the environment, the agent receives a positive reward if the current state has an embedding within some $\Delta t$ of the current timestep in $g$. Otherwise the imitation reward is 0. Once it reaches the end of $g$, there is no further imitation reward, and it explores randomly. The imitation reward is one of two components of the $r^{DTSIL}_{t}$ RL reward, where the other is a simple monotonic function of the reward received at each timestep.</p>
+<h2 id="Policy-architecture">Policy architecture<a class="anchor-link" href="#Policy-architecture">&#182;</a></h2><p>The DTSIL policy architecture is recurrent and attentional, inspired by machine translation!</p>
+<blockquote><p>Inspired by neural machine translation methods, the demonstration trajectory is the source sequence and the incomplete trajectory of the agent’s state representations is the target sequence. We apply a recurrent neural network and an attention mechanism to the sequence data to predict actions that would make the agent to follow the demonstration trajectory.</p>
+</blockquote>
+<h2 id="RL-objective">RL objective<a class="anchor-link" href="#RL-objective">&#182;</a></h2><p>DTSIL is trained using a policy gradient algorithm (PPO, in their experiments), and RL loss</p>
+$$\mathcal L^{RL} = {\mathbb{E}}_{\pi_\theta} [-\log \pi_\theta(a_t|e_{\leq t}, o_t, g) \widehat{A}_t]$$<p>where $$\widehat{A}_t=\sum^{n-1}_{d=0} \gamma^{d}r^\text{DTSIL}_{t+d} + \gamma^n V_\theta(e_{\leq t+n}, o_{t+n}, g) - V_\theta(e_{\leq t}, o_t, g)$$</p>
+<h2 id="SL-objective">SL objective<a class="anchor-link" href="#SL-objective">&#182;</a></h2><p>In each parameter optimization step, they also include a supervised loss designed to maximize the log probability of taking an action that imitates the chosed demonstration exactly to better leverage a past trajectory $g$.</p>
+$$\mathcal L^\text{SL} = - \log \pi_\theta(a_t|e_{\leq t}, o_t, g) \text{, where } g = \{e_0, e_1, \cdots, e_{|g|}\}$$<h2 id="Optimization">Optimization<a class="anchor-link" href="#Optimization">&#182;</a></h2><p>The final parameter update is thus</p>
+$$\theta \gets \theta - \eta \nabla_\theta (\mathcal{L}^\text{RL}+\beta \mathcal{L}^\text{SL})$$
 </div>
 </div>
 </div>
@@ -141,8 +132,8 @@ $$\mathcal{L}_{ns}(\phi)= \mathbf{E}_{s \sim \rho^{\pi_e}, \tilde{s} \sim pertur
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Parting-thoughts">Parting thoughts<a class="anchor-link" href="#Parting-thoughts">&#182;</a></h1><ol>
-<li>I thought it was quite strange that they learned $V(s)$ and a dynamical model $M(s,a)$, and then used $V(M(s,a))$ in the algorithm. I thought, "Why not just learn $Q$?" The answer was given in their Section A appendix, and was quite interesting. I'm not sure it applies to our case, but it's important. TL;DR $Q(s,a)$ learned from demonstrations <em>alone</em> is degenerate, because there's always a $Q$ that perfectly matches the demonstrations <em>and doesn't depend at all on</em> $a$. </li>
-<li>One of my coworkers (and upcoming Computable author!) wondered to me if the induced policy could be made explicit, by explicitly training a policy network to bring the agent back into safe territory. It could be trained with gradient descent, because $V(M(s,a))$ are just networks, and the technique for training deterministic policies just follows the gradient of the $Q$ function. I wonder too.</li>
+<li>I <em>love</em> seeing methods developed for generative language models used in another context entirely, to generate another kind of sequence. I'm overjoyed that it worked well.</li>
+<li>They need a high-level embedding for two reasons: first because storing entire trajectories exactly in memory is expensive, and second because it's quite difficult to re-execute a previously-encountered trajectory exectly, so in order for this method to work at all it's important that an <em>approximate</em> re-execution be possible.</li>
 </ol>
 
 </div>

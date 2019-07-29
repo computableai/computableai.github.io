@@ -1,5 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-07-26T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>Distributional Deep Q-Learning</title><link href="https://computable.ai/articles/2019/Jul/26/distributional-deep-q-learning.html" rel="alternate"></link><published>2019-07-26T00:00:00-04:00</published><updated>2019-07-26T00:00:00-04:00</updated><author><name>Braden Hoagland</name></author><id>tag:computable.ai,2019-07-26:/articles/2019/Jul/26/distributional-deep-q-learning.html</id><summary type="html">&lt;p&gt;Expanding DQN to produce estimates of return distributions, and an exploration into why this helps learning&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-07-28T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights July 21-27 2019</title><link href="https://computable.ai/articles/2019/Jul/28/arxiv-highlights-july-21-27-2019.html" rel="alternate"></link><published>2019-07-28T00:00:00-04:00</published><updated>2019-07-28T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-28:/articles/2019/Jul/28/arxiv-highlights-july-21-27-2019.html</id><summary type="html">&lt;p&gt;Efficient exploration with self-imitation learning.&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="This-week"&gt;This week&lt;a class="anchor-link" href="#This-week"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Several paper caught my eye this week, but I'll be discussing only &lt;a href="https://arxiv.org/abs/1907.10247"&gt;Efficient Exploration with Self-Imitation Learning via Trajectory-Conditioned Policy&lt;/a&gt; in more depth. I'm choosing this paper because, as happens sometimes, I had this idea myself a few weeks ago. It's especially exciting to see something you suspected might improve the world fleshed out and vindicated.&lt;/p&gt;
+&lt;p&gt;This is the basic form of my shower-throught idea:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;This paper investigates the imitation of diverse past trajectories and how that leads [to] further exploration and avoids getting stuck at a sub-optimal behavior. Specifically, we propose to use a buffer of the past trajectories to cover diverse possible directions. Then we learn a trajectory-conditioned policy to imitate any trajectory from the buffer, treating it as a demonstration. After completing the demonstration, the agent performs random exploration.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="The-problem"&gt;The problem&lt;a class="anchor-link" href="#The-problem"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;img src="https://computable.ai/images/maze_icon_map.png#right" alt="Maze"&gt;&lt;/p&gt;
+&lt;p&gt;The main problem the authors want to solve is insufficient exploration leading to a sub-optimal policy. If you don't explore your environment enough, you will find local rewards, but miss globally optimal rewards. In this maze (their Figure 1), you can see that an agent that fails to explore will collect two apples in the next room, but may miss acquiring the key, unlocking the door, collecting an apple, and discovering the treasure.&lt;/p&gt;
+&lt;p&gt;In the notoriously difficult Atari game (for RL agents) Montezuma's Revenge, it is similarly extremely unlikely that random exploration suffices to explore the environment and achieve a high score. The authors report state-of-the-art performance without expert demonstrations on Montezuma's Revenge, netting 25k points.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="SOTA-without-demonstrations"&gt;SOTA without demonstrations&lt;a class="anchor-link" href="#SOTA-without-demonstrations"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;So, more precisely, how did they achieve this, and why does it work?&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;The main idea of our method is to maintain a buffer of diverse trajectories collected during training and to train a trajectory-conditioned policy by leveraging reinforcement learning and supervised learning to roughly follow demonstration trajectories sampled from the trajectory buffer. Therefore, the agent is encouraged to explore beyond various visited states in the environment and gradually push its exploration frontier further... We name our method as Diverse Trajectory-conditioned Self-Imitation Learning (DTSIL).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="The-trajectory-buffer"&gt;The trajectory buffer&lt;a class="anchor-link" href="#The-trajectory-buffer"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Their trajectory buffer $\mathcal{D}$ contains $N$ 3-tuples $\{\left(e^{(1)}, \tau^{(1)}, n^{(1)}\right), \left(e^{(2)}, \tau^{(2)}, n^{(2)}\right), \ldots \left(e^{(N)}, \tau^{(N)}, n^{(N)}\right) \}$ where $e^{(i)}$ is a high-level state representation, $\tau^{(i)}$ is the shortest trajectory achieving the highest reward and arriving at $e^{(i)}$, and $n^{(i)}$ is the number of times $e^{(i)}$ has been encountered. Whenever they roll out a new episode, they check each high-level state representation encountered against those in $\mathcal{D}$, increment $n$, and if $\tau$ is better they replace $\tau$ for that entry.&lt;/p&gt;
+&lt;h2 id="Sampling"&gt;Sampling&lt;a class="anchor-link" href="#Sampling"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;When training their trajectory-conditioned policy, they sample each 3-tuple with weight ${1}\over{\sqrt{n^{(i)}}}$. Notice that this will cause them to sample &lt;em&gt;less&lt;/em&gt; frequently-visited states more often, encouraging exploration.&lt;/p&gt;
+&lt;h2 id="Imitation-reward"&gt;Imitation reward&lt;a class="anchor-link" href="#Imitation-reward"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Given a trajectory $g$ sampled from the buffer, and during interaction with the environment, the agent receives a positive reward if the current state has an embedding within some $\Delta t$ of the current timestep in $g$. Otherwise the imitation reward is 0. Once it reaches the end of $g$, there is no further imitation reward, and it explores randomly. The imitation reward is one of two components of the $r^{DTSIL}_{t}$ RL reward, where the other is a simple monotonic function of the reward received at each timestep.&lt;/p&gt;
+&lt;h2 id="Policy-architecture"&gt;Policy architecture&lt;a class="anchor-link" href="#Policy-architecture"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The DTSIL policy architecture is recurrent and attentional, inspired by machine translation!&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Inspired by neural machine translation methods, the demonstration trajectory is the source sequence and the incomplete trajectory of the agent’s state representations is the target sequence. We apply a recurrent neural network and an attention mechanism to the sequence data to predict actions that would make the agent to follow the demonstration trajectory.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id="RL-objective"&gt;RL objective&lt;a class="anchor-link" href="#RL-objective"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;DTSIL is trained using a policy gradient algorithm (PPO, in their experiments), and RL loss&lt;/p&gt;
+$$\mathcal L^{RL} = {\mathbb{E}}_{\pi_\theta} [-\log \pi_\theta(a_t|e_{\leq t}, o_t, g) \widehat{A}_t]$$&lt;p&gt;where $$\widehat{A}_t=\sum^{n-1}_{d=0} \gamma^{d}r^\text{DTSIL}_{t+d} + \gamma^n V_\theta(e_{\leq t+n}, o_{t+n}, g) - V_\theta(e_{\leq t}, o_t, g)$$&lt;/p&gt;
+&lt;h2 id="SL-objective"&gt;SL objective&lt;a class="anchor-link" href="#SL-objective"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;In each parameter optimization step, they also include a supervised loss designed to maximize the log probability of taking an action that imitates the chosed demonstration exactly to better leverage a past trajectory $g$.&lt;/p&gt;
+$$\mathcal L^\text{SL} = - \log \pi_\theta(a_t|e_{\leq t}, o_t, g) \text{, where } g = \{e_0, e_1, \cdots, e_{|g|}\}$$&lt;h2 id="Optimization"&gt;Optimization&lt;a class="anchor-link" href="#Optimization"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;The final parameter update is thus&lt;/p&gt;
+$$\theta \gets \theta - \eta \nabla_\theta (\mathcal{L}^\text{RL}+\beta \mathcal{L}^\text{SL})$$
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Parting-thoughts"&gt;Parting thoughts&lt;a class="anchor-link" href="#Parting-thoughts"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;I &lt;em&gt;love&lt;/em&gt; seeing methods developed for generative language models used in another context entirely, to generate another kind of sequence. I'm overjoyed that it worked well.&lt;/li&gt;
+&lt;li&gt;They need a high-level embedding for two reasons: first because storing entire trajectories exactly in memory is expensive, and second because it's quite difficult to re-execute a previously-encountered trajectory exectly, so in order for this method to work at all it's important that an &lt;em&gt;approximate&lt;/em&gt; re-execution be possible.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content></entry><entry><title>Distributional Deep Q-Learning</title><link href="https://computable.ai/articles/2019/Jul/26/distributional-deep-q-learning.html" rel="alternate"></link><published>2019-07-26T00:00:00-04:00</published><updated>2019-07-26T00:00:00-04:00</updated><author><name>Braden Hoagland</name></author><id>tag:computable.ai,2019-07-26:/articles/2019/Jul/26/distributional-deep-q-learning.html</id><summary type="html">&lt;p&gt;Expanding DQN to produce estimates of return distributions, and an exploration into why this helps learning&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
