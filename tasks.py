@@ -74,4 +74,3 @@ def publish(c):
         '{} {production}:{dest_path}'.format(
             CONFIG['deploy_path'].rstrip('/') + '/',
             **CONFIG))
-
