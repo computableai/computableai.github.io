@@ -5,29 +5,36 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://computable.ai/</loc>
-<lastmod>2019-07-28T22:56:37-00:00</lastmod>
+<lastmod>2019-08-04T16:34:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/archives.html</loc>
-<lastmod>2019-07-28T22:56:37-00:00</lastmod>
+<lastmod>2019-08-04T16:34:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/categories.html</loc>
-<lastmod>2019-07-28T22:56:37-00:00</lastmod>
+<lastmod>2019-08-04T16:34:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/pages/about.html</loc>
-<lastmod>2019-07-28T22:56:37-00:00</lastmod>
+<lastmod>2019-08-04T16:34:35-00:00</lastmod>
 <changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://computable.ai/articles/2019/Aug/04/arxiv-highlights-july-28-august-3-2019.html</loc>
+<lastmod>2019-08-04T00:00:00-04:00</lastmod>
+<changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -89,7 +96,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://computable.ai/category/arxiv-highlights.html</loc>
-<lastmod>2019-07-28T00:00:00-04:56</lastmod>
+<lastmod>2019-08-04T00:00:00-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
