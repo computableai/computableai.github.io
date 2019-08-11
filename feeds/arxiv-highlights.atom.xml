@@ -1,9 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - arXiv highlights</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/arxiv-highlights.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-08-04T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights July 28-August 3 2019</title><link href="https://computable.ai/articles/2019/Aug/04/arxiv-highlights-july-28-august-3-2019.html" rel="alternate"></link><published>2019-08-04T00:00:00-04:00</published><updated>2019-08-04T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-08-04:/articles/2019/Aug/04/arxiv-highlights-july-28-august-3-2019.html</id><summary type="html">&lt;p&gt;Hierarchical RL for concurrent discovery of compound and composable policies.&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - arXiv highlights</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/arxiv-highlights.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-08-11T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights Aug 4-10 2019</title><link href="https://computable.ai/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html" rel="alternate"></link><published>2019-08-11T00:00:00-04:00</published><updated>2019-08-11T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-08-11:/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html</id><summary type="html">&lt;p&gt;Traffic signal control comparing supervised learning, random search, and deep reinforcement learning&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
-&lt;h1 id="This-week"&gt;This week&lt;a class="anchor-link" href="#This-week"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Just a sketch this week.&lt;/p&gt;
+&lt;h1 id="This-week"&gt;This week&lt;a class="anchor-link" href="#This-week"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;This week's paper, &lt;a href="https://arxiv.org/abs/1908.02673v1"&gt;Large-scale traffic signal control using machine learning: some traffic flow considerations&lt;/a&gt;, caught my eye for several reasons. First, traffic signal control is relevant to my own group's work involving microservice and network traffic management. Second, the authors use cellular automaton rule 184 as their traffic model, which is actually the first time I've seen a cellular automaton used for something serious since &lt;a href="https://www.wolframscience.com/nks/"&gt;A New Kind of Science&lt;/a&gt;, despite that book's claim about the likely broad usefulness of simple programs for complex purposes. Lastly, the authors find that supervised learning and random search outperform deep reinforcement learning for high-occupancies of the traffic flow network,&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;For occupancies &amp;gt; 75% during training, DRL policies perform very poorly for all traffic conditions, which means that DRL methods cannot learn under highly congested conditions.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;and that they recommend practitioners &lt;em&gt;throw away&lt;/em&gt; congested data!&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Our findings imply that it is advisable for current DRL methods in the literature to discard any congested data when training, and that doing this will improve their performance under all traffic conditions.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I also have to admit that I've thought to myself, waiting at empty intersections for a light to turn green, that I could just &lt;em&gt;solve&lt;/em&gt; this problem with DRL. If I'm wrong, that would be very interesting and surprising.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Considerations-in-a-nutshell"&gt;Considerations in a nutshell&lt;a class="anchor-link" href="#Considerations-in-a-nutshell"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;The introduction and background are well summarized in their last paragraph:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;In summary, most recent studies focus on developing effective and robust multi-agent DRL algorithms to achieve coordination among intersections. The number of intersections in those studies are usually limited, thus their results might not apply to large open network. Although the signal control is indeed a continuing problem, it has been always modeled as an episodic process. From the perspective of traffic considerations, expert knowledge has only been incorporated in down-scaling the size of the control problem or designing novel reward functions for DRL algorithm. Few studies have tested their methods given different traffic demands, or shed lights on the learning performance under different traffic conditions, especially the congestion regimes. To fill the gap, our study will treat the large-scale traffic control as a continuing problem and extend classical RL algorithm to fit it. More importantly, noticing the lack of traffic considerations on learning performance, we will train DRL policies under different density levels and explore the results from a traffic flow perspective.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Set-up"&gt;Set up&lt;a class="anchor-link" href="#Set-up"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;h2 id="Traffic"&gt;Traffic&lt;a class="anchor-link" href="#Traffic"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="http://atlas.wolfram.com/01/01/184/01_01_108_184.gif#right" alt="CA Rule 184"&gt;&lt;/p&gt;
+&lt;p&gt;This is elementary cellular automaton (CA) rule 184. Elementary cellular automata operate on a binary vector, producing a new binary vector in each step that's a function of the previous one. For each entry in the previous vector, the new value of the corresponding entry in the resulting vector depends on the previous entry and its neighbors to the left and right. There are 256 possible rules with this formulation, and this picture is of the 184th rule set when ordered in the natural way.&lt;/p&gt;
+&lt;p&gt;Rule 184 can be thought of as a flow of cars along a lane of traffic. Cars move forward (right) by one cell each step only if there is an open space in front of them, otherwise they wait for one to open up. Here's an example:&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing code_cell rendered"&gt;
+&lt;div class="input"&gt;
+&lt;div class="prompt input_prompt"&gt;In&amp;nbsp;[1]:&lt;/div&gt;
+&lt;div class="inner_cell"&gt;
+    &lt;div class="input_area"&gt;
+&lt;div class=" highlight hl-ipython3"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;rule_184&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;lane&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;l&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;lane&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="c1"&gt;# pad&lt;/span&gt;
+    &lt;span class="k"&gt;return&lt;/span&gt; &lt;span class="p"&gt;[(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="ow"&gt;not&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="ow"&gt;or&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt; &lt;span class="ow"&gt;and&lt;/span&gt; &lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt;
+            &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;&lt;span class="nb"&gt;len&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;l&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;)]&lt;/span&gt;
+
+&lt;span class="k"&gt;def&lt;/span&gt; &lt;span class="nf"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;t&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lane&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="nb"&gt;print&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;f&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;t&lt;/span&gt;&lt;span class="si"&gt;{t}&lt;/span&gt;&lt;span class="s1"&gt;:&lt;/span&gt;&lt;span class="se"&gt;\t&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39; &amp;#39;&lt;/span&gt;&lt;span class="o"&gt;.&lt;/span&gt;&lt;span class="n"&gt;join&lt;/span&gt;&lt;span class="p"&gt;([&lt;/span&gt;&lt;span class="s1"&gt;&amp;#39;🚘&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="k"&gt;else&lt;/span&gt; &lt;span class="s1"&gt;&amp;#39;_&amp;#39;&lt;/span&gt; &lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="n"&gt;lane&lt;/span&gt;&lt;span class="p"&gt;])&lt;/span&gt; &lt;span class="p"&gt;)&lt;/span&gt;
+
+&lt;span class="n"&gt;ti&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;True&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="kc"&gt;False&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; &lt;span class="n"&gt;i&lt;/span&gt; &lt;span class="ow"&gt;in&lt;/span&gt; &lt;span class="nb"&gt;range&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;7&lt;/span&gt;&lt;span class="p"&gt;):&lt;/span&gt;
+    &lt;span class="n"&gt;show&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;i&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;ti&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+    &lt;span class="n"&gt;ti&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;rule_184&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;ti&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="output_wrapper"&gt;
+&lt;div class="output"&gt;
+
+
+&lt;div class="output_area"&gt;
+
+    &lt;div class="prompt"&gt;&lt;/div&gt;
+
+
+&lt;div class="output_subarea output_stream output_stdout output_text"&gt;
+&lt;pre&gt;t0:	 🚘 🚘 🚘 🚘 🚘 _ _ 🚘 _ _ _ _ _ _ _
+t1:	 🚘 🚘 🚘 🚘 _ 🚘 _ _ 🚘 _ _ _ _ _ _
+t2:	 🚘 🚘 🚘 _ 🚘 _ 🚘 _ _ 🚘 _ _ _ _ _
+t3:	 🚘 🚘 _ 🚘 _ 🚘 _ 🚘 _ _ 🚘 _ _ _ _
+t4:	 🚘 _ 🚘 _ 🚘 _ 🚘 _ 🚘 _ _ 🚘 _ _ _
+t5:	 _ 🚘 _ 🚘 _ 🚘 _ 🚘 _ 🚘 _ _ 🚘 _ _
+t6:	 _ _ 🚘 _ 🚘 _ 🚘 _ 🚘 _ 🚘 _ _ 🚘 _
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;The cellular automaton simulates a lane of traffic, and the authors wire two of these lanes up between each adjacent traffic light to create a grid network. The network is laid out on a torus, so there are no boundaries.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;The signalized network corresponds to a homogeneous grid network of bidirectional streets, with one lane per direction of length $n = 5$ cells between neighboring traffic lights.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src="https://computable.ai/images/signalized_network.png" alt="Signalized network"&gt;&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;The connecting links to form the torus are shown as dashed directed links; we have omitted the cells on these links to avoid clutter. Each segment has n = 5 cells; an additional cell has been added downstream of each segment to indicate the traffic light color.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Cars arriving at a green traffic light choose a random "direction" in which to continue. Green lights are on for a minimum of three steps.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="Learning"&gt;Learning&lt;a class="anchor-link" href="#Learning"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Each traffic signal is managed by an agent, which has two actions it can take at any time step: turn the light red/green for the North-South approaches, or the opposite. The state observable by each agent is an $8\times n$ matrix of bits corresponding to the four incoming and four outgoing CA vectors, and the output is the probability of turning the light red for the North-South approaches. Only one neural net is actually trained, and used by all agents, since there's no reason for them to be different in this formulation. For the DRL agent, the reward is the &lt;em&gt;incremental&lt;/em&gt; average flow per lane (not the average flow per lane), which the authors mention is lower-variance. The authors use a custom infinite-horizon variant of REINFORCE they call REINFORCE-TD.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Experiments"&gt;Experiments&lt;a class="anchor-link" href="#Experiments"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;The authors use a maximum-queue-first (LQF) greedy algorithm as their baseline for comparison, which services the lane with the longest queue length at all times.&lt;/p&gt;
+&lt;h2 id="Random-policies"&gt;Random policies&lt;a class="anchor-link" href="#Random-policies"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://computable.ai/images/traffic_signals_figure4.png" alt="Figure 4"&gt;&lt;/p&gt;
+&lt;p&gt;They begin by randomly reinitializing the parameters of the neural network, and discover that ~15% of random policies are competitive (that is, they can outperform LQF for some traffic densities). They also note a previously undiscovered pattern that "all policies, no matter how bad, are best when the density exceeds approximately 75%." How odd.&lt;/p&gt;
+&lt;h2 id="Supervised-learning-policies"&gt;Supervised learning policies&lt;a class="anchor-link" href="#Supervised-learning-policies"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://computable.ai/images/traffic_signals_figure5.png" alt="Figure 5"&gt;&lt;/p&gt;
+&lt;p&gt;They then train a policy with supervised learning, and surprisingly, with only the two obvious extreme examples, the resulting policy is near-optimal.&lt;/p&gt;
+&lt;h2 id="DRL-policies"&gt;DRL policies&lt;a class="anchor-link" href="#DRL-policies"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;img src="https://computable.ai/images/traffic_signals_figure6.png" alt="Figure 6"&gt;&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Policies trained with constant demand and random initial parameters $\theta$. The label in each diagram gives the iteration number and the constant density value. First column: NS red probabilities of the extreme states, $\pi(s1)$ in dashed line and $\pi(s2)$ in solid line. The remaining columns show the flow-density diagrams obtained at different iterations, and the last column shows the iteration producing the highest flow at $k = 0.5$, if not reported on a earlier column.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Finally, they run two experiments with DRL policies, as described above. These policies seem to do rather poorly in general compared to random search and supervised learning, and as density increases, they stop learning much of anything.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;We conjecture that this result is a consequence of a property of congested urban networks and has nothing to do with the algorithm to train the DRL policy.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I'm skeptical. See my parting thoughts.&lt;/p&gt;
+&lt;p&gt;The other experiments the authors perform just confirms that average flow per lane does worse than incremental average flow per lane.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Parting-thoughts"&gt;Parting thoughts&lt;a class="anchor-link" href="#Parting-thoughts"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;In the end, I'm way more interested in the experimental setup of this paper than the conclusions. As usual, I learned a ton, and I may actually use rule 184 as a model for traffic flow on something.&lt;/li&gt;
+&lt;li&gt;Isn't it &lt;em&gt;obvious&lt;/em&gt; given their problem formulation that the agents can't learn under conditions of congestion, since it means their input is essentially whited out? I would be more impressed with the conclusion if a neural net with complete visibility had trouble learning with congestion. It also seems to me &lt;em&gt;extremely&lt;/em&gt; suggestive that a supervised policy can learn from only two examples, and I would very much like to see if the major conclusions of this paper explode with a more realistic network topology. Queueing theory contains all sorts of counterintuitive surprises, and it seems likely to me that their results are more indicative of one of those surprises, rather than some deep fact about DRL's ability to manage urban congestion.&lt;/li&gt;
+&lt;li&gt;It's interesting that they formulate the problem as a continuing one, against the prevailing trend in the traffic signal control literature. I agree with them, that even if you get to a state where there's no traffic, that's a function of the demand, not of the agent's choices. I bring this up because I too have found that it's &lt;em&gt;really quite important&lt;/em&gt; to recognize an infinite-horizon problem when you have one, or else your agent learns to rack up debts until the end of the artificial episode when all is "forgiven".&lt;/li&gt;
+&lt;li&gt;It's fascinating that all random policies, no matter how bad, are best around 75% congestion. I have been admonished to avoid scheduling myself at more than 70% capacity to avoid the ringing effect. I wonder if this is an empirical vindication of that...&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content></entry><entry><title>arXiv highlights July 28-August 3 2019</title><link href="https://computable.ai/articles/2019/Aug/04/arxiv-highlights-july-28-august-3-2019.html" rel="alternate"></link><published>2019-08-04T00:00:00-04:00</published><updated>2019-08-04T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-08-04:/articles/2019/Aug/04/arxiv-highlights-july-28-august-3-2019.html</id><summary type="html">&lt;p&gt;Hierarchical RL for concurrent discovery of compound and composable policies.&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="This-week"&gt;This week&lt;a class="anchor-link" href="#This-week"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Just a sketch this week, of &lt;a href="https://arxiv.org/abs/1905.09668"&gt;Hierarchical Reinforcement Learning for Concurrent Discovery of Compound and Composable Policies&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;I've been hearing hierarchical RL mentioned frequently lately, and while I understand it's a way to encode human expertise to achieve otherwise intractible goals, it has also seemed a bit like cheating. However, I have a day job, and this serves as a healthy dose of pragmatism. I also think that even when the goal is fundamental progress, it's often a good idea to achieve the goal &lt;em&gt;in any way possible&lt;/em&gt;, and then follow-up by working the cheats out of the system one by one. So when I read the abstract of this paper, I was feeling more receptive than previously.&lt;/p&gt;
 &lt;p&gt;Part of what made hierarchical RL seem not worth the cheating was how kludgy and inefficient the usual methods were, retraining a whole new policy from scratch for each subtask. That's why this week's paper caught my eye:&lt;/p&gt;
 &lt;blockquote&gt;&lt;p&gt;... we propose an algorithm for learning both compound and composable policies &lt;strong&gt;within the same learning process&lt;/strong&gt; by exploiting the off-policy data generated from the compound policy.&lt;/p&gt;
