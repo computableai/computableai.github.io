@@ -1,5 +1,152 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-08-11T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights Aug 4-10 2019</title><link href="https://computable.ai/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html" rel="alternate"></link><published>2019-08-11T00:00:00-04:00</published><updated>2019-08-11T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-08-11:/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html</id><summary type="html">&lt;p&gt;Traffic signal control comparing supervised learning, random search, and deep reinforcement learning&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-08-12T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>Equivalence between Policy Gradients and Soft Q-Learning</title><link href="https://computable.ai/articles/2019/Aug/12/equivalence-between-policy-gradients-and-soft-q-learning.html" rel="alternate"></link><published>2019-08-12T00:00:00-04:00</published><updated>2019-08-12T00:00:00-04:00</updated><author><name>Braden Hoagland</name></author><id>tag:computable.ai,2019-08-12:/articles/2019/Aug/12/equivalence-between-policy-gradients-and-soft-q-learning.html</id><summary type="html">&lt;p&gt;Inspecting the gradients of entropy-augmented policy updates to show their equivalence&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Introduction"&gt;Introduction&lt;a class="anchor-link" href="#Introduction"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;This article will dive into a lot of the math surrounding the gradients of different maximum entropy RL learning methods. Usually we work in the space of objective functions in practice: with both policy gradients and Q-learning, we'll form an objective function and allow an autodiff library to calculate the gradients for us. We never have to see what's going on behind the scenes, which has its pros and cons. A benefit is that working with objective functions is much easier than calculating gradients by hand. On the other hand, it's easy to lose sight of what's really going on when we work at such an abstract level.&lt;/p&gt;
+&lt;p&gt;This abstraction issue is tackled in the paper &lt;code&gt;Equivalence Between Policy Gradients and Soft Q-Learning&lt;/code&gt; (&lt;a href="https://arxiv.org/abs/1704.06440"&gt;https://arxiv.org/abs/1704.06440&lt;/a&gt;), and I think it provides some pretty eye-opening insights into what the most common RL algorithms are really doing. I'll be working off of version 4 of the paper from Oct. 2018, the most recent version of the paper at the time of writing.&lt;/p&gt;
+&lt;p&gt;First I'll walk through some of the basic definitions in the max-entropy RL setting, then I'll pick out the most important bits of math from the paper that show how entropy-augmented Q-learning is really just a policy gradient method.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Maximum-Entropy-RL-and-the-Boltzmann-Policy"&gt;Maximum Entropy RL and the Boltzmann Policy&lt;a class="anchor-link" href="#Maximum-Entropy-RL-and-the-Boltzmann-Policy"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;In standard RL, we try to maximize expected cumulative reward $\mathbb{E}[\sum_t r_t]$. In the max-entropy setting, we augment this reward signal with an entropy bonus. The expected cumulative reward of a policy $\pi$ is commonly denoted as $\eta(\pi)$&lt;/p&gt;
+\begin{align*}
+\eta(\pi) &amp;amp;= \mathbb{E} \Big[ \sum_t (r_t + \alpha \mathcal{H}(\pi)) \Big] \\
+&amp;amp;= \mathbb{E} \Big[ \sum_t \big( r_t - \alpha \log\pi(a_t | s_t) \big) \Big]
+\end{align*}&lt;p&gt;where $\pi$ is our current policy and $\alpha$ weights how important the entropy is in our reward definition. This intuitively makes the reward seem higher when our policy exhibits high entropy, allowing it to explore its environment more extensively. A key component of this augmented objective is that the entropy is &lt;em&gt;inside&lt;/em&gt; the sum. Thus an optimal policy will not only try to act with high entropy &lt;em&gt;now&lt;/em&gt;, but will act in such a way that it finds highly-entropic states in the &lt;em&gt;future&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;The paper uses slightly different notation, opting to use KL divergence (AKA "relative entropy") instead of just entropy. This uses a reference policy $\bar{\pi}$, which can be thought of as an old, worse policy that we wish to improve on&lt;/p&gt;
+\begin{align*}
+\eta(\pi) &amp;amp;= \mathbb{E} \Big[ \sum_t (r_t - \alpha \log\pi(a_t|s_t) + \alpha \log\bar{\pi}(a_t|s_t) \Big] \\
+&amp;amp;= \mathbb{E} \Big[ \sum_t \big(r_t - \alpha D_{KL}(\pi \,\Vert\, \bar{\pi}) \big) \Big]
+\end{align*}&lt;p&gt;In the max-entropy setting, optimal policies are stochastic and proportional to exponential of the optimal Q-function. This can be expressed formally as&lt;/p&gt;
+$$ \pi^* \propto e^{Q^*(s,a)} $$&lt;p&gt;If this doesn't seem very intuitive, I would recommend a quick scan of the article &lt;a href="https://bair.berkeley.edu/blog/2017/10/06/soft-q-learning/"&gt;https://bair.berkeley.edu/blog/2017/10/06/soft-q-learning/&lt;/a&gt;. It offers a brief introduction to max-entropy RL (specifically for Q-learning) and some helpful intuitions as to why the above relationship is a good property for a policy to have.&lt;/p&gt;
+&lt;p&gt;To actually get a policy in this form, we'll change up the definition slightly&lt;/p&gt;
+$$
+\pi = \frac{\bar{\pi} \, e^{Q(s,a) / \alpha}}{\mathbb{E}_{\bar{a}\sim\bar{\pi}} [e^{Q(s,\bar{a}) / \alpha}]}
+$$&lt;p&gt;The numerator of this expression is simply stating that we want our new policy to be like our old policy, but slightly in the direction of $e^Q$. If $\alpha$ is higher (i.e. we want more entropy), we move less in the direction of $e^Q$. The denominator is a normalization constant that ensures that our entire expression is still a valid probability distribution (i.e. the sum over all possible actions comes out to 1).&lt;/p&gt;
+&lt;p&gt;You may have noticed that the denominator of our policy is really just $e^V$ since $V = \mathbb{E}_{a}[Q]$. We'll use this to simplify our policy&lt;/p&gt;
+\begin{align*}
+V(s) &amp;amp;= \alpha \log \mathbb{E}_{a\sim\bar{\pi}} \big[ e^{Q(s,a)/\alpha} \big] \\
+\pi &amp;amp;= \bar{\pi} \, e^{(Q(s,a) - V(s)) / \alpha}
+\end{align*}&lt;p&gt;This new policy definition shows more directly that our policy is proportional to the exponential of the advantage. If our policy is proportional to $e^Q$, it should also be proportional to $e^A$, so this makes sense. From now on, we'll refer to this policy as the 'Boltzmann Policy' and denote it $\pi^B$.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Soft-Q-Learning-with-Boltzmann-Backups"&gt;Soft Q-Learning with Boltzmann Backups&lt;a class="anchor-link" href="#Soft-Q-Learning-with-Boltzmann-Backups"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;From this point onward, there will inevitably be sections of math that seem to leave out non-trivial amounts of work. This is because I think this paper mainly benefits our intuitions about RL. The math proves these new intuitions, but by itself is hard to read. If you're curious and wish to go through all the derivations, I would highly recommend working through the full paper on your own. With that disclaimer out of the way, we can get started...&lt;/p&gt;
+&lt;p&gt;With normal Q-learning, we define our backup operator $\mathcal{T}$ as follows
+$$
+\mathcal{T}Q = \mathbb{E}_{r,s'} \big[ r + \gamma \mathbb{E}_{a'\sim\pi}[Q(s', a')] \big]
+$$&lt;/p&gt;
+&lt;p&gt;In the max-entropy setting, we'll have to add in an entropy bonus to the reward signal and simplify accordingly&lt;/p&gt;
+\begin{align*}
+\mathcal{T}Q &amp;amp;= \mathbb{E}_{r,s'} \big[ r + \gamma \mathbb{E}_{a'}[Q(s', a')] - \alpha D_{KL} \big( \pi(\cdot|s') \;\Vert\; \bar{\pi}(\cdot|s') \big) \big] \\
+&amp;amp;= \mathbb{E}_{r,s'} \big[ r + \gamma \alpha \log \mathbb{E}_{a'\sim\bar{\pi}}[e^{Q(s',a')/\alpha}] \big]
+\end{align*}&lt;p&gt;See equations 11 and 13 from the paper (which rely on equations 2-6) if you want to see just how exactly that simplication works. To actually perform the optimization step $Q \gets \mathcal{T}Q$, we'll minimize the mean squared error between our current $Q$ and an estimate of $\mathcal{T}Q$. Our regression targets can be defined&lt;/p&gt;
+\begin{align*}
+y &amp;amp;= r + \gamma \alpha \log \mathbb{E}_{a'\sim\bar{\pi}} \big[ e^{Q(s', a') / \alpha} \big] \\
+&amp;amp;= r + \gamma V(s')
+\end{align*}&lt;p&gt;Using Boltzmann backups instead of the traditional Q-learning backups is what transforms normal Q-learning into what's conventionally called "soft" Q-learning. That's really all there is to it.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Policy-Gradients-and-Entropy"&gt;Policy Gradients and Entropy&lt;a class="anchor-link" href="#Policy-Gradients-and-Entropy"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;I'm assuming you have a solid grasp of policy gradients if you're reading this article, so I'm gonna focus on how they usually aren't applied correctly in the max-entropy setting. PG methods are commonly augmented with an entropy term, like with the following example provided from the paper&lt;/p&gt;
+$$
+\mathbb{E}_{t, s,a} \Big[ \nabla_\theta \log\pi_\theta(a|s) \sum_{t' \geq t} r_{t'} - \alpha D_{KL}\big (\pi_\theta(\cdot|s) \;\Vert\; \pi(\cdot|s) \big) \Big]
+$$&lt;p&gt;This example essentially tries to maximize reward-to-go with an entropy for the &lt;em&gt;current&lt;/em&gt; timestep. Maximizing this objective technically isn't what we want, even if it's common practice. What we really want is to maximize a sum over all rewards and entropies that our agent experiences from now into the future.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Soft-Q-Learning-=-Policy-Gradient"&gt;Soft Q-Learning = Policy Gradient&lt;a class="anchor-link" href="#Soft-Q-Learning-=-Policy-Gradient"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;The first of two conclusions that this paper comes to is that Soft Q-Learning and the Policy Gradient have exact first-order equivalence. Using the value function and Boltzmann policy definitions from earlier, we can derive the gradient of $\mathbb{E}_{s,a} \big[ \frac{1}{2} \Vert Q_\theta(s,a) - y \Vert^2 \big]$. The paper is able to produce the following expression&lt;/p&gt;
+$$
+\mathbb{E}_{s,a} \Big[ \color{red}{-\alpha \nabla_\theta \log\pi_\theta(a|s) \Delta_{TD} + \alpha^2 \nabla_\theta D_{KL}\big( \pi_\theta(\cdot|s) \;\Vert\; \bar{\pi}(\cdot|s) \big)} + \color{blue}{\nabla_\theta \frac{1}{2} \Vert V_\theta(s) - \hat{V} \Vert^2} \Big]
+$$&lt;p&gt;where $\Delta_{TD}$ is the discounted n-step TD error and $\hat{V}$ is the value regression target formed by $\Delta_{TD}$.&lt;/p&gt;
+&lt;p&gt;That's kind of a lot, but we can break it down pretty easily. The terms in red represent 1) the usual policy gradient and 2) an additional KL divergence gradient term. The red terms overall represent the gradient you get if you use a policy gradient algorithm with a KL divergence term as your entropy bonus (the actor loss in an actor-critic formulation). The term in blue is quite simply the gradient used to minimize the mean squared error between our current value estimates and our value targets (the critic loss in an actor-critic formulation).&lt;/p&gt;
+&lt;p&gt;Don't forget that we never explicitly tried to calculate these terms. They came about naturally as an effect of minimizing mean squared error of our Q function and a Boltzmann backup target.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Soft-Q-Learning-and-the-Natural-Policy-Gradient"&gt;Soft Q-Learning and the Natural Policy Gradient&lt;a class="anchor-link" href="#Soft-Q-Learning-and-the-Natural-Policy-Gradient"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;The next section of the paper details another connection between Soft Q-learning and policy gradient methods, specifically that damped Q-learning updates are exactly equivalent to natural policy gradient updates.&lt;/p&gt;
+&lt;p&gt;The natural policy gradient weights the policy gradient with the Fisher information matrix $\mathbb{E}_{s,a} \Big[ \big( \nabla_\theta \log\pi_\theta(a|s) \big)^T \big( \nabla_\theta \log\pi_\theta(a|s) \big) \Big]$. The paper shows that the natural policy gradient in the max-entropy setting is equivalent not to soft Q-learning by itself, but instead to a damped version. In this damped version, we calculate a backed-up Q value and then interpolate between it and the current Q value estimate (basically using Polyak averaging instead of running gradient descent on a mean squared error term).&lt;/p&gt;
+&lt;p&gt;Although not nearly as direct, this connection highlights how higher-order connections between soft Q-learning and policy gradient methods exist. Higher-order equalities between functions point to functions that are increasingly similar, so this connection really drives the point home that soft Q-learning is deceptively like the policy gradient methods we've been using all this time.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Experimental-Results"&gt;Experimental Results&lt;a class="anchor-link" href="#Experimental-Results"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;The paper authors decided to be nice to us and actually test the theory they derived on some Atari games.&lt;/p&gt;
+&lt;p&gt;They started out with testing whether or not the usual way of adding entropy bonuses to policy gradient methods is actually worse than the theoretical claims they had just made. As it turns out, using future entropy bonuses $\Big( \text{i.e. } \big( \sum r + \mathcal{H} \big) \Big)$ instead of the simpler, immediate entropy bonus $\Big( \text{i.e. } \big( \sum r \big) + \mathcal{H} \Big)$ results in either similar or superior performance. The below graphs show the results from the experiments, with the future entropy version in blue and the immediate entropy version in red.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://computable.ai/images/proper_entropy.png" alt="image.png"&gt;&lt;/p&gt;
+&lt;p&gt;They then tested how soft Q-learning compared to normal Q-learning. To make traditional DQN into soft Q-learning, they just modified the regression targets for the Q function. They used the normal target, a target with a KL divergence penalty, and a target with just an entropy bonus. They found that just the entropy bonus resulted in the most improvement, although both soft methods outperformed the "hard" DQN.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://computable.ai/images/q_hard_soft.png" alt="image.png"&gt;&lt;/p&gt;
+&lt;p&gt;To round things out, they tested soft Q-learning and the policy gradient on the same Atari environments to see if they were equivalent in practice. After all, the math shows that their expectations are equivalent, but the variance of those expectations could be different. The experiments they ran make it seem like the two methods are pretty close to each other, with no method seeming largely superior.&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://computable.ai/images/pg_ql.png" alt="image.png"&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Conclusion-and-Future-Work"&gt;Conclusion and Future Work&lt;a class="anchor-link" href="#Conclusion-and-Future-Work"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Hopefully this made you reconsider what's really going on under the hood with Q-learning. Personally, it blew my mind that two seemingly disparate learning methods could boil down to the same expected update. The theoretical possibilities that this connection could lead to is also incredibly exciting.&lt;/p&gt;
+&lt;p&gt;Of course, this paper focuses its empirical testing just on environemnts with discrete action spaces. Since the Boltzmann policy is intractable to sample from in continuous action spaces, more advanced soft Q-learning algorithms (such as Soft Actor-Critic) are currently being pioneered to get accurate results in those more complicated settings as well.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content></entry><entry><title>arXiv highlights Aug 4-10 2019</title><link href="https://computable.ai/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html" rel="alternate"></link><published>2019-08-11T00:00:00-04:00</published><updated>2019-08-11T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-08-11:/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html</id><summary type="html">&lt;p&gt;Traffic signal control comparing supervised learning, random search, and deep reinforcement learning&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;

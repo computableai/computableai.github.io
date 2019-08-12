@@ -5,29 +5,36 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://computable.ai/</loc>
-<lastmod>2019-08-11T18:28:47-00:00</lastmod>
+<lastmod>2019-08-12T18:51:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/archives.html</loc>
-<lastmod>2019-08-11T18:28:47-00:00</lastmod>
+<lastmod>2019-08-12T18:51:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/categories.html</loc>
-<lastmod>2019-08-11T18:28:47-00:00</lastmod>
+<lastmod>2019-08-12T18:51:35-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/pages/about.html</loc>
-<lastmod>2019-08-11T18:28:47-00:00</lastmod>
+<lastmod>2019-08-12T18:51:35-00:00</lastmod>
 <changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://computable.ai/articles/2019/Aug/12/equivalence-between-policy-gradients-and-soft-q-learning.html</loc>
+<lastmod>2019-08-12T00:00:00-04:00</lastmod>
+<changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -124,7 +131,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://computable.ai/category/miscellany.html</loc>
-<lastmod>2019-07-26T00:00:00-04:56</lastmod>
+<lastmod>2019-08-12T00:00:00-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
