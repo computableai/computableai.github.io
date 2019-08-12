@@ -4,6 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pylint = "*"
 
 [packages]
 pelican = "==4.0.1"
@@ -14,7 +15,6 @@ jupyter = "==1.0.0"
 matplotlib = "==3.0.2"
 nbconvert = "==5.4.1"
 Markdown = "==3.0.1"
-
 numpy = "*"
 pillow = "*"
 torch = "*"
