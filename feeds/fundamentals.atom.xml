@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - Fundamentals</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/fundamentals.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-08-14T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>Deep RL Fundamentals #0: What is Deep RL and Why It's Worth Learning</title><link href="https://computable.ai/articles/2019/Aug/14/deep-rl-fundamentals-0-what-is-deep-rl-and-why-its-worth-learning.html" rel="alternate"></link><published>2019-08-14T00:00:00-04:00</published><updated>2019-08-14T00:00:00-04:00</updated><author><name>Andrew Farabow</name></author><id>tag:computable.ai,2019-08-14:/articles/2019/Aug/14/deep-rl-fundamentals-0-what-is-deep-rl-and-why-its-worth-learning.html</id><summary type="html">&lt;p&gt;An introduction and statement of purpose for a series on the basics of deep reinforcement learning&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Intro"&gt;Intro&lt;a class="anchor-link" href="#Intro"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Deep reinforcement learning - the fusion of trial-and-error learning and function-approximating neural networks - is one of the hottest areas of machine learning research right now and is the subject of much excitement, largely, I believe, because of how it resembles the endgame of AI research, artificial general intelligence, in a way that neither supervised nor unsupervised learning does. There is, however, a prevailing attitude that RL is not ready to be put to use in practical scenarios and instead belongs solely in the laboratories of universities and tech giants, conquering toy challenges and video games one at a time until it is ready to emerge. While the many present shortcomings of Deep RL provide good evidence for this viewpoint (some of which I will discuss later in the series), I think Deep RL is ready to tackle many real-world challenges and getting hobbyists/companies involved sooner rather than later would accelerate development. My immediate purposes for writing are to explain what reinforcement learning is and to kick off my post series about the major RL algorithms, but ultimately I want to encourage others to begin hacking away with DRL and try applying it to real-world problems.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="What-is-it?"&gt;What is it?&lt;a class="anchor-link" href="#What-is-it?"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Reinforcement learning algorithms attempt to attain a goal by taking actions in their environment, assessing their performance and altering their behavior. The performance assessment comes in the form of a reward signal derived from the environment. This could be the score of Pong game, the time since a humanoid robot last fell over, or a simple binary measure of whether a self-driving car has taken its passenger to the destination successfully or not. In order to maximize reward, any approach to reinforcement learning must have some structure to choose the correct action. In deep reinforcement learning, this is one or more neural networks. Neural networks are ideal because of their ability to generalize in complex, high-dimensional environments. Depending on the approach taken, they can take in the current state of the environment and output either an action to take or the desirability of a certain state.&lt;/p&gt;
+&lt;p&gt;In this post I use reinforcement learning (RL) and deep reinforcement learning (DRL) interchangeably, however, they refer to slightly different concepts. As Sutton and Barto put it:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Reinforcement learning is like many topics with names ending in -ing, such as machine learning, planning, and mountaineering, in that it is simultaneously a problem, a class of solution methods that work well on the class of problems, and the field that studies these problems and their solution methods.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Deep reinforcement learning is one such type of solution method that utilizes neural networks. Other RL solutions exist, including dynamic programming and tabular reinforcement learning, which uses lookup tables to record the reward associated with encountered states instead of neural networks.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="Drawbacks"&gt;Drawbacks&lt;a class="anchor-link" href="#Drawbacks"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;Modern reinforcement learning is not without its shortcomings. The foremost among these is sample efficiency - the number of times that an algorithm must observe a state, take an action, and improve is currently crippling for many use cases. Atari games that take humans minutes to pick up take state-of-the-art DRL algorithms millions of frames to master $^{1}$. In addition, reinforcement learning algorithms assume that the environment is a Markov decision process. This means that they assume that the optimal action to be taken in a certain state can be determined from a single observation. This poses a problem for many real-life problems that people would want to solve with RL. While recurrent and convolutional neural networks can help, they come at the cost of even worse sample efficiency.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h3 id="What&amp;#8217;s-next?"&gt;What&amp;#8217;s next?&lt;a class="anchor-link" href="#What&amp;#8217;s-next?"&gt;&amp;#182;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;While I have experience working on a deep reinforcement learning-powered product, there are many areas in which my knowledge is lacking. In writing this post series, I hope to fill in some of those gaps. In the next post, I plan on elaborating upon the standard formulation of reinforcement learning (as described in the beginning of nearly every RL paper) and covering the major traits that differentiate approaches to DRL. I will be using Sutton and Barto’s Reinforcement Learning as my primary source and I recommend that anyone who is interested pick up a copy or &lt;a href="http://incompleteideas.net/book/the-book-2nd.html"&gt;read the free online version&lt;/a&gt;.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;$^{1}$ &lt;a href="https://arxiv.org/abs/1710.02298"&gt;Rainbow: Combining Improvements in Deep Reinforcement Learning&lt;/a&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content></entry></feed>

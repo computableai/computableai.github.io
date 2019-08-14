@@ -66,13 +66,13 @@ Computable AI        </a>
 
     <article class="">
       <header class="article-header">
-        <h1 class="uk-heading-large uk-article-title" itemprop="name">arXiv highlights July 21-27 2019</h1>
-        <p class="uk-article-lead" itemprop="description">Efficient exploration with self-imitation learning.</p>
+        <h1 class="uk-heading-large uk-article-title" itemprop="name">Deep RL Fundamentals #0: What is Deep RL and Why It's Worth Learning</h1>
+        <p class="uk-article-lead" itemprop="description">An introduction and statement of purpose for a series on the basics of deep reinforcement learning</p>
         <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-07-28" itemprop="datePublished">Sun 28 July 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/28/arxiv-highlights-july-21-27-2019.html#disqus_thread" itemprop="discussionUrl"></a></p>
-<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai.github.io/content/arXiv highlights July 21-27.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
+<span class="uk-author">Andrew Farabow</span> •           <time datetime="2019-08-14" itemprop="datePublished">Wed 14 August 2019</time> in <a href="https://computable.ai/category/fundamentals.html">Fundamentals</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Aug/14/deep-rl-fundamentals-0-what-is-deep-rl-and-why-its-worth-learning.html#disqus_thread" itemprop="discussionUrl"></a></p>
+<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai.github.io/content/DRL Fundamentals #0.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
 
-<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/arXiv highlights July 21-27.ipynb">
+<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/DRL Fundamentals #0.ipynb">
   Open in Colab
   
   <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -90,10 +90,7 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>Several paper caught my eye this week, but I'll be discussing only <a href="https://arxiv.org/abs/1907.10247">Efficient Exploration with Self-Imitation Learning via Trajectory-Conditioned Policy</a> in more depth. I'm choosing this paper because, as happens sometimes, I had this idea myself a few weeks ago. It's especially exciting to see something you suspected might improve the world fleshed out and vindicated.</p>
-<p>This is the basic form of my shower-throught idea:</p>
-<blockquote><p>This paper investigates the imitation of diverse past trajectories and how that leads [to] further exploration and avoids getting stuck at a sub-optimal behavior. Specifically, we propose to use a buffer of the past trajectories to cover diverse possible directions. Then we learn a trajectory-conditioned policy to imitate any trajectory from the buffer, treating it as a demonstration. After completing the demonstration, the agent performs random exploration.</p>
-</blockquote>
+<h3 id="Intro">Intro<a class="anchor-link" href="#Intro">&#182;</a></h3><p>Deep reinforcement learning - the fusion of trial-and-error learning and function-approximating neural networks - is one of the hottest areas of machine learning research right now and is the subject of much excitement, largely, I believe, because of how it resembles the endgame of AI research, artificial general intelligence, in a way that neither supervised nor unsupervised learning does. There is, however, a prevailing attitude that RL is not ready to be put to use in practical scenarios and instead belongs solely in the laboratories of universities and tech giants, conquering toy challenges and video games one at a time until it is ready to emerge. While the many present shortcomings of Deep RL provide good evidence for this viewpoint (some of which I will discuss later in the series), I think Deep RL is ready to tackle many real-world challenges and getting hobbyists/companies involved sooner rather than later would accelerate development. My immediate purposes for writing are to explain what reinforcement learning is and to kick off my post series about the major RL algorithms, but ultimately I want to encourage others to begin hacking away with DRL and try applying it to real-world problems.</p>
 
 </div>
 </div>
@@ -101,9 +98,11 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-problem">The problem<a class="anchor-link" href="#The-problem">&#182;</a></h1><p><img src="https://computable.ai/images/maze_icon_map.png#right" alt="Maze"></p>
-<p>The main problem the authors want to solve is insufficient exploration leading to a sub-optimal policy. If you don't explore your environment enough, you will find local rewards, but miss globally optimal rewards. In this maze (their Figure 1), you can see that an agent that fails to explore will collect two apples in the next room, but may miss acquiring the key, unlocking the door, collecting an apple, and discovering the treasure.</p>
-<p>In the notoriously difficult Atari game (for RL agents) Montezuma's Revenge, it is similarly extremely unlikely that random exploration suffices to explore the environment and achieve a high score. The authors report state-of-the-art performance without expert demonstrations on Montezuma's Revenge, netting 25k points.</p>
+<h3 id="What-is-it?">What is it?<a class="anchor-link" href="#What-is-it?">&#182;</a></h3><p>Reinforcement learning algorithms attempt to attain a goal by taking actions in their environment, assessing their performance and altering their behavior. The performance assessment comes in the form of a reward signal derived from the environment. This could be the score of Pong game, the time since a humanoid robot last fell over, or a simple binary measure of whether a self-driving car has taken its passenger to the destination successfully or not. In order to maximize reward, any approach to reinforcement learning must have some structure to choose the correct action. In deep reinforcement learning, this is one or more neural networks. Neural networks are ideal because of their ability to generalize in complex, high-dimensional environments. Depending on the approach taken, they can take in the current state of the environment and output either an action to take or the desirability of a certain state.</p>
+<p>In this post I use reinforcement learning (RL) and deep reinforcement learning (DRL) interchangeably, however, they refer to slightly different concepts. As Sutton and Barto put it:</p>
+<blockquote><p>Reinforcement learning is like many topics with names ending in -ing, such as machine learning, planning, and mountaineering, in that it is simultaneously a problem, a class of solution methods that work well on the class of problems, and the field that studies these problems and their solution methods.</p>
+</blockquote>
+<p>Deep reinforcement learning is one such type of solution method that utilizes neural networks. Other RL solutions exist, including dynamic programming and tabular reinforcement learning, which uses lookup tables to record the reward associated with encountered states instead of neural networks.</p>
 
 </div>
 </div>
@@ -111,30 +110,23 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="SOTA-without-demonstrations">SOTA without demonstrations<a class="anchor-link" href="#SOTA-without-demonstrations">&#182;</a></h1><p>So, more precisely, how did they achieve this, and why does it work?</p>
-<blockquote><p>The main idea of our method is to maintain a buffer of diverse trajectories collected during training and to train a trajectory-conditioned policy by leveraging reinforcement learning and supervised learning to roughly follow demonstration trajectories sampled from the trajectory buffer. Therefore, the agent is encouraged to explore beyond various visited states in the environment and gradually push its exploration frontier further... We name our method as Diverse Trajectory-conditioned Self-Imitation Learning (DTSIL).</p>
-</blockquote>
-<h2 id="The-trajectory-buffer">The trajectory buffer<a class="anchor-link" href="#The-trajectory-buffer">&#182;</a></h2><p>Their trajectory buffer $\mathcal{D}$ contains $N$ 3-tuples $\{\left(e^{(1)}, \tau^{(1)}, n^{(1)}\right), \left(e^{(2)}, \tau^{(2)}, n^{(2)}\right), \ldots \left(e^{(N)}, \tau^{(N)}, n^{(N)}\right) \}$ where $e^{(i)}$ is a high-level state representation, $\tau^{(i)}$ is the shortest trajectory achieving the highest reward and arriving at $e^{(i)}$, and $n^{(i)}$ is the number of times $e^{(i)}$ has been encountered. Whenever they roll out a new episode, they check each high-level state representation encountered against those in $\mathcal{D}$, increment $n$, and if $\tau$ is better they replace $\tau$ for that entry.</p>
-<h2 id="Sampling">Sampling<a class="anchor-link" href="#Sampling">&#182;</a></h2><p>When training their trajectory-conditioned policy, they sample each 3-tuple with weight ${1}\over{\sqrt{n^{(i)}}}$. Notice that this will cause them to sample <em>less</em> frequently-visited states more often, encouraging exploration.</p>
-<h2 id="Imitation-reward">Imitation reward<a class="anchor-link" href="#Imitation-reward">&#182;</a></h2><p>Given a trajectory $g$ sampled from the buffer, and during interaction with the environment, the agent receives a positive reward if the current state has an embedding within some $\Delta t$ of the current timestep in $g$. Otherwise the imitation reward is 0. Once it reaches the end of $g$, there is no further imitation reward, and it explores randomly. The imitation reward is one of two components of the $r^{DTSIL}_{t}$ RL reward, where the other is a simple monotonic function of the reward received at each timestep.</p>
-<h2 id="Policy-architecture">Policy architecture<a class="anchor-link" href="#Policy-architecture">&#182;</a></h2><p>The DTSIL policy architecture is recurrent and attentional, inspired by machine translation!</p>
-<blockquote><p>Inspired by neural machine translation methods, the demonstration trajectory is the source sequence and the incomplete trajectory of the agent’s state representations is the target sequence. We apply a recurrent neural network and an attention mechanism to the sequence data to predict actions that would make the agent to follow the demonstration trajectory.</p>
-</blockquote>
-<h2 id="RL-objective">RL objective<a class="anchor-link" href="#RL-objective">&#182;</a></h2><p>DTSIL is trained using a policy gradient algorithm (PPO, in their experiments), and RL loss</p>
-$$\mathcal L^{RL} = {\mathbb{E}}_{\pi_\theta} [-\log \pi_\theta(a_t|e_{\leq t}, o_t, g) \widehat{A}_t]$$<p>where $$\widehat{A}_t=\sum^{n-1}_{d=0} \gamma^{d}r^\text{DTSIL}_{t+d} + \gamma^n V_\theta(e_{\leq t+n}, o_{t+n}, g) - V_\theta(e_{\leq t}, o_t, g)$$</p>
-<h2 id="SL-objective">SL objective<a class="anchor-link" href="#SL-objective">&#182;</a></h2><p>In each parameter optimization step, they also include a supervised loss designed to maximize the log probability of taking an action that imitates the chosed demonstration exactly to better leverage a past trajectory $g$.</p>
-$$\mathcal L^\text{SL} = - \log \pi_\theta(a_t|e_{\leq t}, o_t, g) \text{, where } g = \{e_0, e_1, \cdots, e_{|g|}\}$$<h2 id="Optimization">Optimization<a class="anchor-link" href="#Optimization">&#182;</a></h2><p>The final parameter update is thus</p>
-$$\theta \gets \theta - \eta \nabla_\theta (\mathcal{L}^\text{RL}+\beta \mathcal{L}^\text{SL})$$
+<h3 id="Drawbacks">Drawbacks<a class="anchor-link" href="#Drawbacks">&#182;</a></h3><p>Modern reinforcement learning is not without its shortcomings. The foremost among these is sample efficiency - the number of times that an algorithm must observe a state, take an action, and improve is currently crippling for many use cases. Atari games that take humans minutes to pick up take state-of-the-art DRL algorithms millions of frames to master $^{1}$. In addition, reinforcement learning algorithms assume that the environment is a Markov decision process. This means that they assume that the optimal action to be taken in a certain state can be determined from a single observation. This poses a problem for many real-life problems that people would want to solve with RL. While recurrent and convolutional neural networks can help, they come at the cost of even worse sample efficiency.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Parting-thoughts">Parting thoughts<a class="anchor-link" href="#Parting-thoughts">&#182;</a></h1><ol>
-<li>I <em>love</em> seeing methods developed for generative language models used in another context entirely, to generate another kind of sequence. I'm overjoyed that it worked well.</li>
-<li>They need a high-level embedding for two reasons: first because storing entire trajectories exactly in memory is expensive, and second because it's quite difficult to re-execute a previously-encountered trajectory exectly, so in order for this method to work at all it's important that an <em>approximate</em> re-execution be possible.</li>
-</ol>
+<h3 id="What&#8217;s-next?">What&#8217;s next?<a class="anchor-link" href="#What&#8217;s-next?">&#182;</a></h3><p>While I have experience working on a deep reinforcement learning-powered product, there are many areas in which my knowledge is lacking. In writing this post series, I hope to fill in some of those gaps. In the next post, I plan on elaborating upon the standard formulation of reinforcement learning (as described in the beginning of nearly every RL paper) and covering the major traits that differentiate approaches to DRL. I will be using Sutton and Barto’s Reinforcement Learning as my primary source and I recommend that anyone who is interested pick up a copy or <a href="http://incompleteideas.net/book/the-book-2nd.html">read the free online version</a>.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>$^{1}$ <a href="https://arxiv.org/abs/1710.02298">Rainbow: Combining Improvements in Deep Reinforcement Learning</a></p>
 
 </div>
 </div>
@@ -204,11 +196,11 @@ $$\theta \gets \theta - \eta \nabla_\theta (\mathcal{L}^\text{RL}+\beta \mathcal
         <ul>
             <h2>Categories</h2>
                 <li>
-                    <a class="active" href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a>
+                    <a  href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a>
                     <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/arxiv-highlights.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
                 <li>
-                    <a  href="https://computable.ai/category/fundamentals.html">Fundamentals</a>
+                    <a class="active" href="https://computable.ai/category/fundamentals.html">Fundamentals</a>
                     <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/fundamentals.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
                 <li>
@@ -262,11 +254,11 @@ $$\theta \gets \theta - \eta \nabla_\theta (\mathcal{L}^\text{RL}+\beta \mathcal
 
       <ul class="offcanvas-nav" data-uk-nav>
           <h2 class="">Categories</h2>
-          <li class="uk-active">
+          <li >
             <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a>
             <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/arxiv-highlights.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
-          <li >
+          <li class="uk-active">
             <a href="https://computable.ai/category/fundamentals.html">Fundamentals</a>
             <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/fundamentals.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
