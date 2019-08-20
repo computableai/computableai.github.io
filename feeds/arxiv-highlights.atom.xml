@@ -1,5 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - arXiv highlights</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/arxiv-highlights.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-08-11T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights Aug 4-10 2019</title><link href="https://computable.ai/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html" rel="alternate"></link><published>2019-08-11T00:00:00-04:00</published><updated>2019-08-11T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-08-11:/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html</id><summary type="html">&lt;p&gt;Traffic signal control comparing supervised learning, random search, and deep reinforcement learning&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - arXiv highlights</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/arxiv-highlights.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-08-18T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights Aug 11-17 2019</title><link href="https://computable.ai/articles/2019/Aug/18/arxiv-highlights-aug-11-17-2019.html" rel="alternate"></link><published>2019-08-18T00:00:00-04:00</published><updated>2019-08-18T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-08-18:/articles/2019/Aug/18/arxiv-highlights-aug-11-17-2019.html</id><summary type="html">&lt;p&gt;DRL may not be superhuman on Atari after all, and how to avoid making mistakes like that in the future.&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="This-week"&gt;This week&lt;a class="anchor-link" href="#This-week"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Just a sketch this week, calling your attention to &lt;a href="https://arxiv.org/abs/1908.04683v1"&gt;Is Deep Reinforcement Learning Really Superhuman on Atari?&lt;/a&gt;, which concludes not only that DRL is worse than the best humans on most Atari games, but by a &lt;em&gt;wide&lt;/em&gt; margin.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="DRL-isn't-superhuman-on-Atari-yet"&gt;DRL &lt;em&gt;isn't&lt;/em&gt; superhuman on Atari yet&lt;a class="anchor-link" href="#DRL-isn't-superhuman-on-Atari-yet"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Wait, what? I was quite skeptical of this claim. Mnih et al. published the groundbreaking &lt;a href="https://arxiv.org/abs/1312.5602"&gt;Playing Atari with Deep Reinforcement Learning&lt;/a&gt; in &lt;em&gt;2013&lt;/em&gt;, claiming superhuman performance. Surely someone would have noticed by now?&lt;/p&gt;
+&lt;p&gt;Apparently not, and then most DRL algorithms for the next six years used either the same human scores reported in that paper, or human beginners. It's true that DQN significantly outperformed their own human player, but that player was not, by far, &lt;em&gt;the best in the world&lt;/em&gt;. Other recent claims of superhuman performance have proven that claim against the best players in the world (the paper mentions AlphaGo against Lee Sedol, OpenAI Five against OG, and AlphaStar against Mana), but not for the Atari benchmark.&lt;/p&gt;
+&lt;p&gt;The most poignant detail to me in this paper involved the common "normalized human score", where 0% is the score of a random agent, and 100% is the score of the human baseline. &lt;em&gt;On this scale, the median score achieved by the world record holders across all Atari games is 4.4k%&lt;/em&gt;. Clearly you can't claim superhuman performance if there are humans who beat your target by a factor of 44, unless you yourself exceed this score.&lt;/p&gt;
+&lt;p&gt;For reference, the original Rainbow algorithm achieved a median of 200% over all Atari games, and other algorithms seem to do worse. If the normalized human score is fitted to a maximum equal to the human world record for each game, and run with different time limits, a tuned IQN variant of Rainbow receives a median score of less than 4% (there were other problems with the way benchmarks were done, and correcting for them reduces performance even further).&lt;/p&gt;
+&lt;p&gt;We have a long way to go then. The paper has a useful analysis drawing on both previous and original research as to &lt;em&gt;why&lt;/em&gt; DRL algorithms are so bad at Atari, and I encourage a careful reading. Some of them, such as reward clipping, are called out in previous research as explicitly chosen to improve performance, but (to treat this particular example), it has been mentioned that this causes the agent to prefer many small rewards over a single large reward.&lt;/p&gt;
+&lt;p&gt;I encourage anyone working with the Atari benchmark to read the paper for themselves.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Parting-thoughts"&gt;Parting thoughts&lt;a class="anchor-link" href="#Parting-thoughts"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;I actually find it somewhat personally encouraging that there's room for improvement on Atari. It's easy to experiment, and I have some ideas myself.&lt;/li&gt;
+&lt;li&gt;That said, it is rather scary that we could overlook something like this for so long, as a community.&lt;/li&gt;
+&lt;li&gt;Anyway, &lt;em&gt;someone&lt;/em&gt; will take this as a call to arms, and make progress. Peter Drucker said, "If you can't measure it, you can't improve it." Now that we have better measurements, I predict improvements.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content></entry><entry><title>arXiv highlights Aug 4-10 2019</title><link href="https://computable.ai/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html" rel="alternate"></link><published>2019-08-11T00:00:00-04:00</published><updated>2019-08-11T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-08-11:/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html</id><summary type="html">&lt;p&gt;Traffic signal control comparing supervised learning, random search, and deep reinforcement learning&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
