@@ -1,5 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - arXiv highlights</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/arxiv-highlights.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-08-25T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights Aug 18-24 2019</title><link href="https://computable.ai/articles/2019/Aug/25/arxiv-highlights-aug-18-24-2019.html" rel="alternate"></link><published>2019-08-25T00:00:00-04:00</published><updated>2019-08-25T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-08-25:/articles/2019/Aug/25/arxiv-highlights-aug-18-24-2019.html</id><summary type="html">&lt;p&gt;Reward tampering&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - arXiv highlights</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/arxiv-highlights.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-09-09T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>arXiv highlights Aug 25-31 2019</title><link href="https://computable.ai/articles/2019/Sep/09/arxiv-highlights-aug-25-31-2019.html" rel="alternate"></link><published>2019-09-09T00:00:00-04:00</published><updated>2019-09-09T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-09-09:/articles/2019/Sep/09/arxiv-highlights-aug-25-31-2019.html</id><summary type="html">&lt;p&gt;Deep Reinforcement Learning without Catastrophic Forgetting through Pseudo-Rehearsal&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Apologies for missing a week. Today's post is on last-week's paper, and I'm going to skip this week to get back on track. Also experimenting with the format some more to keep things sustainable given my wildly variable weekend free time. If you have thoughts about this, please leave us a comment!&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="This-week"&gt;This week&lt;a class="anchor-link" href="#This-week"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;This (last) week's paper is &lt;a href="https://arxiv.org/abs/1812.02464"&gt;Pseudo-Rehearsal: Achieving Deep Reinforcement Learning without Catastrophic Forgetting&lt;/a&gt;. I'm interested for reasons both professional and personal.&lt;/p&gt;
+&lt;p&gt;First, I have this problem. Our recent (successful) work has gotten neural nets to do some very interesting things, but expanding will require continuous training in production. This makes catastrophic forgetting (CF) a very real problem, since most of the DRL research assumes you're training your agent on a single task, and then enjoying it in inference mode forever after.&lt;/p&gt;
+&lt;p&gt;Second, I'm interested because I've got a little son, (the source of the variability in my weekend free time) I often see him learn something mind-bogglingly fast, and then cement it over the course of a couple days. Pseudo-rehearsal is biologically plausible, and I'm interested in intelligence in its own right.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Catastrophic-Forgetting-and-Pseudo-rehearsal"&gt;Catastrophic Forgetting and Pseudo-rehearsal&lt;a class="anchor-link" href="#Catastrophic-Forgetting-and-Pseudo-rehearsal"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;An agent trained on one task can learn to accomplish that task. If that same agent is then moved to another task, it will learn that other task, but often at the expense of "catastrophically forgetting" the neural net weights learned for the previous task. Several solutions have been proposed, (which are cited in today's paper, and I'll likely be reading them) but most are likely &lt;em&gt;not&lt;/em&gt; what humans and animals do.&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;Researchers have proposed extensions to this method such as utilising previous examples’ gradients during learning, picking a subset of previous samples which best represents the population and using a variational auto-encoder to compress stored items. Such rehearsal methods are cognitively implausible and therefore, do not shine light on how mammal brains might efficiently solve the CF problem.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Pseudo-rehearsal trains a generative model (a GAN) to produce examples from all previous tasks, and uses this to implicitly rehearse foregoing data. Today's paper employes this scheme and a few other tricks to build a system capable of learning multiple tasks.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="The-RePR-model"&gt;The RePR model&lt;a class="anchor-link" href="#The-RePR-model"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;The researchers dub their method RePR, and it works like this: They build short- and long-term memory systems, and transferring learned behaviors from short- to long-term memory while rehearsing past behavior in long-term memory.&lt;/p&gt;
+&lt;p&gt;The STM system:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;The first part of our model is the short- term memory (STM) system, which serves a similar function to the hippocampus and is used to learn the current task. The STM system contains two components, a DQN that learns the current task and an experience replay containing data only from the current task.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The LTM system:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;The second part is the long-term memory (LTM) system, which serves a similar function to the cortex. The LTM system also has two components, a DQN containing knowledge of all tasks learnt and a GAN which can generate sequences representative of these tasks.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;They then do periodic consolidation:&lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;During consolidation, the LTM retains previous knowledge through pseudo-rehearsal, while being taught by the STM how to respond on the current task. All of the networks’ architectures and training parameters used throughout our experiments can be found in the appendices.
+Transferring knowledge between these two systems is achieved through knowledge distillation, where a student network is optimised so that it outputs similar values to a teacher network.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Parting-thoughts"&gt;Parting thoughts&lt;a class="anchor-link" href="#Parting-thoughts"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;This sounds brilliant, and analogous to what mammals do. I'm eager to experiment with it, and to introspect and ponder how my own brain learns, with this new model in mind.&lt;/li&gt;
+&lt;li&gt;I wonder very much what we do in sleep. &lt;a href="https://computable.ai/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html"&gt;As I've mentioned before&lt;/a&gt;, I'm quite attracted to the model described in &lt;a href="https://theneural.wordpress.com/2011/07/08/the-miracle-of-the-boltzmann-machine/"&gt;The Miracle of the Boltzmann Machine&lt;/a&gt;, but off-hand, I don't know how to reconcile that model with the concept of nightly rehearsal of the day's activities. Perhaps the brain is doing &lt;em&gt;two&lt;/em&gt; things during sleep? Ockam's razor impells me to think again.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content></entry><entry><title>arXiv highlights Aug 18-24 2019</title><link href="https://computable.ai/articles/2019/Aug/25/arxiv-highlights-aug-18-24-2019.html" rel="alternate"></link><published>2019-08-25T00:00:00-04:00</published><updated>2019-08-25T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-08-25:/articles/2019/Aug/25/arxiv-highlights-aug-18-24-2019.html</id><summary type="html">&lt;p&gt;Reward tampering&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;

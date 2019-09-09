@@ -1,15 +1,8 @@
-<meta property="og:title" content="Computable AI" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://computable.ai" />
-<meta name="twitter:url" content="https://computable.ai" />
-<meta itemprop="name" content="Computable AI">
-<meta itemprop="url" content="https://computable.ai">
-
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/BlogPosting"> <!--<![endif]-->
     <head>
 
   <meta charset="utf-8">
@@ -68,76 +61,142 @@ Computable AI        </a>
 </header>        <main class="mg-main">
             <div class="uk-container uk-container-center">
                 <div class="uk-grid" data-uk-grid-margin>
-  <div class="uk-width-medium-7-10 ">
 
-    <!--
-    <div class="uk-tile uk-tile-primary">
-      <div class="uk-article-title" itemprop="name">Welcome</div>
+<div class="uk-width-medium-7-10 content-article">
+
+    <article class="">
+      <header class="article-header">
+        <h1 class="uk-heading-large uk-article-title" itemprop="name">arXiv highlights Aug 25-31 2019</h1>
+        <p class="uk-article-lead" itemprop="description">Deep Reinforcement Learning without Catastrophic Forgetting through Pseudo-Rehearsal</p>
+        <p class="uk-article-meta">
+<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-09-09" itemprop="datePublished">Mon 09 September 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Sep/09/arxiv-highlights-aug-25-31-2019.html#disqus_thread" itemprop="discussionUrl"></a></p>
+<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/arXiv highlights Aug 25-31.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
+
+<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/arXiv highlights Aug 25-31.ipynb">
+  Open in Colab
+  
+  <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="arrow-up-right" transform="translate(-19, -19)" fill-rule="nonzero" stroke="#007AFF" stroke-width="2">
+            <path d="M20,44 L44,20 L20,44 Z M24,20 L44,20 L44,40" id="border"></path>
+        </g>
+    </g>
+  </svg>
+</a>      </header>
+
+      <div class="article-body">
         <section itemprop="articleBody">
-          <br />
-          Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.
+          
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Apologies for missing a week. Today's post is on last-week's paper, and I'm going to skip this week to get back on track. Also experimenting with the format some more to keep things sustainable given my wildly variable weekend free time. If you have thoughts about this, please leave us a comment!</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>This (last) week's paper is <a href="https://arxiv.org/abs/1812.02464">Pseudo-Rehearsal: Achieving Deep Reinforcement Learning without Catastrophic Forgetting</a>. I'm interested for reasons both professional and personal.</p>
+<p>First, I have this problem. Our recent (successful) work has gotten neural nets to do some very interesting things, but expanding will require continuous training in production. This makes catastrophic forgetting (CF) a very real problem, since most of the DRL research assumes you're training your agent on a single task, and then enjoying it in inference mode forever after.</p>
+<p>Second, I'm interested because I've got a little son, (the source of the variability in my weekend free time) I often see him learn something mind-bogglingly fast, and then cement it over the course of a couple days. Pseudo-rehearsal is biologically plausible, and I'm interested in intelligence in its own right.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Catastrophic-Forgetting-and-Pseudo-rehearsal">Catastrophic Forgetting and Pseudo-rehearsal<a class="anchor-link" href="#Catastrophic-Forgetting-and-Pseudo-rehearsal">&#182;</a></h1><p>An agent trained on one task can learn to accomplish that task. If that same agent is then moved to another task, it will learn that other task, but often at the expense of "catastrophically forgetting" the neural net weights learned for the previous task. Several solutions have been proposed, (which are cited in today's paper, and I'll likely be reading them) but most are likely <em>not</em> what humans and animals do.</p>
+<blockquote><p>Researchers have proposed extensions to this method such as utilising previous examples’ gradients during learning, picking a subset of previous samples which best represents the population and using a variational auto-encoder to compress stored items. Such rehearsal methods are cognitively implausible and therefore, do not shine light on how mammal brains might efficiently solve the CF problem.</p>
+</blockquote>
+<p>Pseudo-rehearsal trains a generative model (a GAN) to produce examples from all previous tasks, and uses this to implicitly rehearse foregoing data. Today's paper employes this scheme and a few other tricks to build a system capable of learning multiple tasks.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-RePR-model">The RePR model<a class="anchor-link" href="#The-RePR-model">&#182;</a></h1><p>The researchers dub their method RePR, and it works like this: They build short- and long-term memory systems, and transferring learned behaviors from short- to long-term memory while rehearsing past behavior in long-term memory.</p>
+<p>The STM system:</p>
+<blockquote><p>The first part of our model is the short- term memory (STM) system, which serves a similar function to the hippocampus and is used to learn the current task. The STM system contains two components, a DQN that learns the current task and an experience replay containing data only from the current task.</p>
+</blockquote>
+<p>The LTM system:</p>
+<blockquote><p>The second part is the long-term memory (LTM) system, which serves a similar function to the cortex. The LTM system also has two components, a DQN containing knowledge of all tasks learnt and a GAN which can generate sequences representative of these tasks.</p>
+</blockquote>
+<p>They then do periodic consolidation:</p>
+<blockquote><p>During consolidation, the LTM retains previous knowledge through pseudo-rehearsal, while being taught by the STM how to respond on the current task. All of the networks’ architectures and training parameters used throughout our experiments can be found in the appendices.
+Transferring knowledge between these two systems is achieved through knowledge distillation, where a student network is optimised so that it outputs similar values to a teacher network.</p>
+</blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Parting-thoughts">Parting thoughts<a class="anchor-link" href="#Parting-thoughts">&#182;</a></h1><ol>
+<li>This sounds brilliant, and analogous to what mammals do. I'm eager to experiment with it, and to introspect and ponder how my own brain learns, with this new model in mind.</li>
+<li>I wonder very much what we do in sleep. <a href="https://computable.ai/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html">As I've mentioned before</a>, I'm quite attracted to the model described in <a href="https://theneural.wordpress.com/2011/07/08/the-miracle-of-the-boltzmann-machine/">The Miracle of the Boltzmann Machine</a>, but off-hand, I don't know how to reconcile that model with the concept of nightly rehearsal of the day's activities. Perhaps the brain is doing <em>two</em> things during sleep? Ockam's razor impells me to think again.</li>
+</ol>
+
+</div>
+</div>
+</div>
+ 
+
+
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+
         </section>
-      <hr class="uk-article-divider">
-    </div>
-    -->
+      </div>
+    </article>
 
-<article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Sep/09/arxiv-highlights-aug-25-31-2019.html" class="article-title" itemprop="name">arXiv highlights Aug 25-31 2019</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Deep Reinforcement Learning without Catastrophic Forgetting through Pseudo-Rehearsal</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-09-09" itemprop="datePublished">Mon 09 September 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Sep/09/arxiv-highlights-aug-25-31-2019.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Aug/25/arxiv-highlights-aug-18-24-2019.html" class="article-title" itemprop="name">arXiv highlights Aug 18-24 2019</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Reward tampering</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-08-25" itemprop="datePublished">Sun 25 August 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Aug/25/arxiv-highlights-aug-18-24-2019.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Aug/18/arxiv-highlights-aug-11-17-2019.html" class="article-title" itemprop="name">arXiv highlights Aug 11-17 2019</a>
-  <p class="uk-article-lead article-lead" itemprop="description">DRL may not be superhuman on Atari after all, and how to avoid making mistakes like that in the future.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-08-18" itemprop="datePublished">Sun 18 August 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Aug/18/arxiv-highlights-aug-11-17-2019.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html" class="article-title" itemprop="name">arXiv highlights Aug 4-10 2019</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Traffic signal control comparing supervised learning, random search, and deep reinforcement learning</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-08-11" itemprop="datePublished">Sun 11 August 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Aug/04/arxiv-highlights-july-28-august-3-2019.html" class="article-title" itemprop="name">arXiv highlights July 28-August 3 2019</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Hierarchical RL for concurrent discovery of compound and composable policies.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-08-04" itemprop="datePublished">Sun 04 August 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Aug/04/arxiv-highlights-july-28-august-3-2019.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Jul/28/arxiv-highlights-july-21-27-2019.html" class="article-title" itemprop="name">arXiv highlights July 21-27 2019</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Efficient exploration with self-imitation learning.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-07-28" itemprop="datePublished">Sun 28 July 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/28/arxiv-highlights-july-21-27-2019.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Jul/21/arxiv-highlights-july-14-20-2019.html" class="article-title" itemprop="name">arXiv highlights July 14-20 2019</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Better imitation learning with self-correcting policies by negative sampling.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-07-21" itemprop="datePublished">Sun 21 July 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/21/arxiv-highlights-july-14-20-2019.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Jul/14/arxiv-highlights-july-7-13-2019.html" class="article-title" itemprop="name">arXiv highlights July 7-13 2019</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Way Off-Policy Batch DRL using a generative model of pre-recorded trajectories, and bias correction.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-07-14" itemprop="datePublished">Sun 14 July 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/14/arxiv-highlights-july-7-13-2019.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Jul/07/arxiv-highlights-july-1-6-2019.html" class="article-title" itemprop="name">arXiv highlights July 1-6 2019</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Beginning a new series highlighting a few interesting RL papers on the arXiv each week. This week: Simple curriculum learning, learning to interact with humans, and warm starting RL with propositional logic.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-07-07" itemprop="datePublished">Sun 07 July 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/07/arxiv-highlights-july-1-6-2019.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'computableai'; // required: replace example with your forum shortname
 
-  </div>
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+     var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+     dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+</div>
 <div class="uk-width-medium-3-10 uk-width-large-2-10 uk-hidden-small site-sidebar">
 
     <!--     <div class="uk-panel">
