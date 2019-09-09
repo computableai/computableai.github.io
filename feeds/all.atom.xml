@@ -13,7 +13,7 @@
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;h1 id="This-week"&gt;This week&lt;a class="anchor-link" href="#This-week"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;This (last) week's paper is &lt;a href="https://arxiv.org/abs/1812.02464"&gt;Pseudo-Rehearsal: Achieving Deep Reinforcement Learning without Catastrophic Forgetting&lt;/a&gt;. I'm interested for reasons both professional and personal.&lt;/p&gt;
 &lt;p&gt;First, I have this problem. Our recent (successful) work has gotten neural nets to do some very interesting things, but expanding will require continuous training in production. This makes catastrophic forgetting (CF) a very real problem, since most of the DRL research assumes you're training your agent on a single task, and then enjoying it in inference mode forever after.&lt;/p&gt;
-&lt;p&gt;Second, I'm interested because I've got a little son, (the source of the variability in my weekend free time) I often see him learn something mind-bogglingly fast, and then cement it over the course of a couple days. Pseudo-rehearsal is biologically plausible, and I'm interested in intelligence in its own right.&lt;/p&gt;
+&lt;p&gt;Second, I'm interested because I've got a little son, (the source of the variability in my weekend free time) and I often see him learn something mind-bogglingly fast, and then cement it over the course of a couple days. Pseudo-rehearsal is biologically plausible, and I'm interested in intelligence in its own right.&lt;/p&gt;
 
 &lt;/div&gt;
 &lt;/div&gt;
