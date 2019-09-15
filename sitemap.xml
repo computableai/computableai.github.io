@@ -5,48 +5,55 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://computable.ai/</loc>
-<lastmod>2019-09-09T13:16:54-00:00</lastmod>
+<lastmod>2019-09-15T18:16:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/archives.html</loc>
-<lastmod>2019-09-09T13:16:54-00:00</lastmod>
+<lastmod>2019-09-15T18:16:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/categories.html</loc>
-<lastmod>2019-09-09T13:16:54-00:00</lastmod>
+<lastmod>2019-09-15T18:16:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/pages/about.html</loc>
-<lastmod>2019-09-09T13:16:54-00:00</lastmod>
+<lastmod>2019-09-15T18:16:28-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://computable.ai/articles/2019/Sep/09/arxiv-highlights-aug-25-31-2019.html</loc>
+<loc>https://computable.ai/articles/2019/Sep/15/discovery-of-useful-questions-as-auxiliary-tasks.html</loc>
+<lastmod>2019-09-15T00:00:00-04:00</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://computable.ai/articles/2019/Sep/09/deep-reinforcement-learning-without-catastrophic-forgetting.html</loc>
 <lastmod>2019-09-09T00:00:00-04:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://computable.ai/articles/2019/Aug/25/arxiv-highlights-aug-18-24-2019.html</loc>
+<loc>https://computable.ai/articles/2019/Aug/25/reward-tampering.html</loc>
 <lastmod>2019-08-25T00:00:00-04:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://computable.ai/articles/2019/Aug/18/arxiv-highlights-aug-11-17-2019.html</loc>
+<loc>https://computable.ai/articles/2019/Aug/18/drl-not-superhuman-on-atari.html</loc>
 <lastmod>2019-08-18T00:00:00-04:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -67,21 +74,21 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://computable.ai/articles/2019/Aug/11/arxiv-highlights-aug-4-10-2019.html</loc>
+<loc>https://computable.ai/articles/2019/Aug/11/three-method-comparison-for-traffic-signal-control.html</loc>
 <lastmod>2019-08-11T00:00:00-04:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://computable.ai/articles/2019/Aug/04/arxiv-highlights-july-28-august-3-2019.html</loc>
+<loc>https://computable.ai/articles/2019/Aug/04/learning-compound-and-composable-policies.html</loc>
 <lastmod>2019-08-04T00:00:00-04:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://computable.ai/articles/2019/Jul/28/arxiv-highlights-july-21-27-2019.html</loc>
+<loc>https://computable.ai/articles/2019/Jul/28/efficient-exploration-with-self-imitation-learning.html</loc>
 <lastmod>2019-07-28T00:00:00-04:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -95,7 +102,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://computable.ai/articles/2019/Jul/21/arxiv-highlights-july-14-20-2019.html</loc>
+<loc>https://computable.ai/articles/2019/Jul/21/keeping-to-the-narrow-path.html</loc>
 <lastmod>2019-07-21T00:00:00-04:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -109,14 +116,14 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>https://computable.ai/articles/2019/Jul/14/arxiv-highlights-july-7-13-2019.html</loc>
+<loc>https://computable.ai/articles/2019/Jul/14/way-off-policy-batch-drl.html</loc>
 <lastmod>2019-07-14T00:00:00-04:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>https://computable.ai/articles/2019/Jul/07/arxiv-highlights-july-1-6-2019.html</loc>
+<loc>https://computable.ai/articles/2019/Jul/07/a-new-series-arxiv-sampler.html</loc>
 <lastmod>2019-07-07T00:00:00-04:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -138,7 +145,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://computable.ai/category/arxiv-highlights.html</loc>
-<lastmod>2019-09-09T00:00:00-04:56</lastmod>
+<lastmod>2019-09-15T00:00:00-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

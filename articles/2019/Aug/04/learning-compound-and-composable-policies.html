@@ -66,13 +66,13 @@ Computable AI        </a>
 
     <article class="">
       <header class="article-header">
-        <h1 class="uk-heading-large uk-article-title" itemprop="name">arXiv highlights July 21-27 2019</h1>
-        <p class="uk-article-lead" itemprop="description">Efficient exploration with self-imitation learning.</p>
+        <h1 class="uk-heading-large uk-article-title" itemprop="name">Learning Compound and Composable Policies</h1>
+        <p class="uk-article-lead" itemprop="description">Straightforward hierarchical RL for concurrent discovery of sub-policies and their controller.</p>
         <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-07-28" itemprop="datePublished">Sun 28 July 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/28/arxiv-highlights-july-21-27-2019.html#disqus_thread" itemprop="discussionUrl"></a></p>
-<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/arXiv highlights July 21-27.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
+<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-08-04" itemprop="datePublished">Sun 04 August 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Aug/04/learning-compound-and-composable-policies.html#disqus_thread" itemprop="discussionUrl"></a></p>
+<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/Learning Compound and Composable Policies.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
 
-<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/arXiv highlights July 21-27.ipynb">
+<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/Learning Compound and Composable Policies.ipynb">
   Open in Colab
   
   <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -90,10 +90,12 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>Several paper caught my eye this week, but I'll be discussing only <a href="https://arxiv.org/abs/1907.10247">Efficient Exploration with Self-Imitation Learning via Trajectory-Conditioned Policy</a> in more depth. I'm choosing this paper because, as happens sometimes, I had this idea myself a few weeks ago. It's especially exciting to see something you suspected might improve the world fleshed out and vindicated.</p>
-<p>This is the basic form of my shower-throught idea:</p>
-<blockquote><p>This paper investigates the imitation of diverse past trajectories and how that leads [to] further exploration and avoids getting stuck at a sub-optimal behavior. Specifically, we propose to use a buffer of the past trajectories to cover diverse possible directions. Then we learn a trajectory-conditioned policy to imitate any trajectory from the buffer, treating it as a demonstration. After completing the demonstration, the agent performs random exploration.</p>
+<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>Just a sketch this week, of <a href="https://arxiv.org/abs/1905.09668">Hierarchical Reinforcement Learning for Concurrent Discovery of Compound and Composable Policies</a>.</p>
+<p>I've been hearing hierarchical RL mentioned frequently lately, and while I understand it's a way to encode human expertise to achieve otherwise intractible goals, it has also seemed a bit like cheating. However, I have a day job, and this serves as a healthy dose of pragmatism. I also think that even when the goal is fundamental progress, it's often a good idea to achieve the goal <em>in any way possible</em>, and then follow-up by working the cheats out of the system one by one. So when I read the abstract of this paper, I was feeling more receptive than previously.</p>
+<p>Part of what made hierarchical RL seem not worth the cheating was how kludgy and inefficient the usual methods were, retraining a whole new policy from scratch for each subtask. That's why this week's paper caught my eye:</p>
+<blockquote><p>... we propose an algorithm for learning both compound and composable policies <strong>within the same learning process</strong> by exploiting the off-policy data generated from the compound policy.</p>
 </blockquote>
+<p>Their resulting algorithm, "Hierarchical Intentional-Unintentional Soft Actor-Critic" (HIU-SAC), efficiently trains all sub-policies simultaneously, choosing actions to perform in the environment using a weighted average of the "votes" of all sub-policies, with weights given by a learned selector network (which is <em>also</em> simultaneously trained).</p>
 
 </div>
 </div>
@@ -101,30 +103,18 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-problem">The problem<a class="anchor-link" href="#The-problem">&#182;</a></h1><p><img src="https://computable.ai/images/maze_icon_map.png#right" alt="Maze"></p>
-<p>The main problem the authors want to solve is insufficient exploration leading to a sub-optimal policy. If you don't explore your environment enough, you will find local rewards, but miss globally optimal rewards. In this maze (their Figure 1), you can see that an agent that fails to explore will collect two apples in the next room, but may miss acquiring the key, unlocking the door, collecting an apple, and discovering the treasure.</p>
-<p>In the notoriously difficult Atari game (for RL agents) Montezuma's Revenge, it is similarly extremely unlikely that random exploration suffices to explore the environment and achieve a high score. The authors report state-of-the-art performance without expert demonstrations on Montezuma's Revenge, netting 25k points.</p>
+<h1 id="Composable-hierarchical-RL">Composable hierarchical RL<a class="anchor-link" href="#Composable-hierarchical-RL">&#182;</a></h1><h2 id="Architecture">Architecture<a class="anchor-link" href="#Architecture">&#182;</a></h2><p><img alt="Hierarchical policy diagram" src="https://computable.ai/images/policy_network.png#right" height="300px" width="300px" style="margin: 10px" /></p>
+<p>The composite policy consists of the individual policy networks, each with its own reward function, trained to take observations $s$ in and output parameters of a conditional Gaussian. There is also a special activation vector selector network trained on the same states to produce weights corresponding to how much each constituent policy applies to the current state. All of these networks share early layers, since they all benefit from an accurate high-level state representation. Finally, some function $f$ takes all of these outputs and determines what action $a$ to <em>actually</em> take in the environment.</p>
+<p><img alt="Q-value function diagram" src="https://computable.ai/images/q_fcn_network.png#left" height="250px" width="250px" style="margin: 10px" /></p>
+<p>The Q function networks are similarly arranged, sharing early layers which take a state $s$ and an action $a$ to produce a Q function for each subtask, as well as a composite Q function.</p>
+<div style="clear:both">&nbsp;</div><h2 id="Simultaneous-learning">Simultaneous learning<a class="anchor-link" href="#Simultaneous-learning">&#182;</a></h2><blockquote><p>Most methods learn the composable tasks one at a time, and later, the compound task. This procedure is not scalable as all the experience collected for each learning process is only used for that specific process. Also, it is not possible to start learning more complex tasks unless all the compos- able policies have been successfully learned. The method proposed in this section is based on the idea that a single stream of experience can be used to improve not only the policy that is generating the behavior but also, indirectly, many other policies.</p>
+</blockquote>
+<p>The authors refer to the composite policy acting as the "intentional" policy (the "behavior" policy in an off-policy setting), and the composable sub-policies as the "unintentional" policies (each one a "target" policy in an off-policy setting). They use a variation on SAC to train the composite and composable policies simultaneously within the maximum entropy framework.</p>
+<p>The objective function for the Q networks simply maximize the expected sum of all mean-squared Bellman errors for each Q network, for each tuple in the replay buffer $\mathcal{D}$. The objective function for the policy is simply the sum of the objective functions for each intentional and unintentional policy. Each policy objective optimizes the expected difference for each state in $\mathcal{D}$ between the Q value and log-probability of the selected action (adjustable by temperature $\alpha$), over all possible actions. HIU-SAC then alternates between policy evaluation and policy improvement steps following SAC.</p>
+<h2 id="The-importance-of-maximizing-entropy-to-adequate-exploration">The importance of maximizing entropy to adequate exploration<a class="anchor-link" href="#The-importance-of-maximizing-entropy-to-adequate-exploration">&#182;</a></h2><p>It is interesting that the entropy-maximizing RL objective was <em>absolutely necessary</em> for exploring broadly enough to train all of these policies at once.</p>
+<blockquote><p>Note that populating the replay memory buffer with rich experiences is essential for acquiring multiple skills in an off-policy manner. The composable policies learned unintentionally had similar performance than the policies obtained in single-task formulations only when the compound policy was able to efficiently explore the environment. For this reason, the algorithm was built on a maximum entropy RL framework to favor exploration during the learning process.</p>
+</blockquote>
 
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="SOTA-without-demonstrations">SOTA without demonstrations<a class="anchor-link" href="#SOTA-without-demonstrations">&#182;</a></h1><p>So, more precisely, how did they achieve this, and why does it work?</p>
-<blockquote><p>The main idea of our method is to maintain a buffer of diverse trajectories collected during training and to train a trajectory-conditioned policy by leveraging reinforcement learning and supervised learning to roughly follow demonstration trajectories sampled from the trajectory buffer. Therefore, the agent is encouraged to explore beyond various visited states in the environment and gradually push its exploration frontier further... We name our method as Diverse Trajectory-conditioned Self-Imitation Learning (DTSIL).</p>
-</blockquote>
-<h2 id="The-trajectory-buffer">The trajectory buffer<a class="anchor-link" href="#The-trajectory-buffer">&#182;</a></h2><p>Their trajectory buffer $\mathcal{D}$ contains $N$ 3-tuples $\{\left(e^{(1)}, \tau^{(1)}, n^{(1)}\right), \left(e^{(2)}, \tau^{(2)}, n^{(2)}\right), \ldots \left(e^{(N)}, \tau^{(N)}, n^{(N)}\right) \}$ where $e^{(i)}$ is a high-level state representation, $\tau^{(i)}$ is the shortest trajectory achieving the highest reward and arriving at $e^{(i)}$, and $n^{(i)}$ is the number of times $e^{(i)}$ has been encountered. Whenever they roll out a new episode, they check each high-level state representation encountered against those in $\mathcal{D}$, increment $n$, and if $\tau$ is better they replace $\tau$ for that entry.</p>
-<h2 id="Sampling">Sampling<a class="anchor-link" href="#Sampling">&#182;</a></h2><p>When training their trajectory-conditioned policy, they sample each 3-tuple with weight ${1}\over{\sqrt{n^{(i)}}}$. Notice that this will cause them to sample <em>less</em> frequently-visited states more often, encouraging exploration.</p>
-<h2 id="Imitation-reward">Imitation reward<a class="anchor-link" href="#Imitation-reward">&#182;</a></h2><p>Given a trajectory $g$ sampled from the buffer, and during interaction with the environment, the agent receives a positive reward if the current state has an embedding within some $\Delta t$ of the current timestep in $g$. Otherwise the imitation reward is 0. Once it reaches the end of $g$, there is no further imitation reward, and it explores randomly. The imitation reward is one of two components of the $r^{DTSIL}_{t}$ RL reward, where the other is a simple monotonic function of the reward received at each timestep.</p>
-<h2 id="Policy-architecture">Policy architecture<a class="anchor-link" href="#Policy-architecture">&#182;</a></h2><p>The DTSIL policy architecture is recurrent and attentional, inspired by machine translation!</p>
-<blockquote><p>Inspired by neural machine translation methods, the demonstration trajectory is the source sequence and the incomplete trajectory of the agent’s state representations is the target sequence. We apply a recurrent neural network and an attention mechanism to the sequence data to predict actions that would make the agent to follow the demonstration trajectory.</p>
-</blockquote>
-<h2 id="RL-objective">RL objective<a class="anchor-link" href="#RL-objective">&#182;</a></h2><p>DTSIL is trained using a policy gradient algorithm (PPO, in their experiments), and RL loss</p>
-$$\mathcal L^{RL} = {\mathbb{E}}_{\pi_\theta} [-\log \pi_\theta(a_t|e_{\leq t}, o_t, g) \widehat{A}_t]$$<p>where $$\widehat{A}_t=\sum^{n-1}_{d=0} \gamma^{d}r^\text{DTSIL}_{t+d} + \gamma^n V_\theta(e_{\leq t+n}, o_{t+n}, g) - V_\theta(e_{\leq t}, o_t, g)$$</p>
-<h2 id="SL-objective">SL objective<a class="anchor-link" href="#SL-objective">&#182;</a></h2><p>In each parameter optimization step, they also include a supervised loss designed to maximize the log probability of taking an action that imitates the chosed demonstration exactly to better leverage a past trajectory $g$.</p>
-$$\mathcal L^\text{SL} = - \log \pi_\theta(a_t|e_{\leq t}, o_t, g) \text{, where } g = \{e_0, e_1, \cdots, e_{|g|}\}$$<h2 id="Optimization">Optimization<a class="anchor-link" href="#Optimization">&#182;</a></h2><p>The final parameter update is thus</p>
-$$\theta \gets \theta - \eta \nabla_\theta (\mathcal{L}^\text{RL}+\beta \mathcal{L}^\text{SL})$$
 </div>
 </div>
 </div>
@@ -132,8 +122,8 @@ $$\theta \gets \theta - \eta \nabla_\theta (\mathcal{L}^\text{RL}+\beta \mathcal
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Parting-thoughts">Parting thoughts<a class="anchor-link" href="#Parting-thoughts">&#182;</a></h1><ol>
-<li>I <em>love</em> seeing methods developed for generative language models used in another context entirely, to generate another kind of sequence. I'm overjoyed that it worked well.</li>
-<li>They need a high-level embedding for two reasons: first because storing entire trajectories exactly in memory is expensive, and second because it's quite difficult to re-execute a previously-encountered trajectory exectly, so in order for this method to work at all it's important that an <em>approximate</em> re-execution be possible.</li>
+<li>In a way, the methods proposed here seem rather obvious, and I found this paper quite easy to understand given that it violated none of my expectations. I also haven't been paying enough attention to hierarchical RL to know off-hand why training the sub-policies in parallel off of the same recorded environment interactions hasn't been tried before (or whether it has been without my notice). Perhaps it was necessary for off-policy RL to reach a level of maturity sufficient for sub-policies to see enough relevant data to train? In any case, don't hear me faulting the authors for trying the obvious. It is relieving a <em>non</em>-obvious that a straightforward formulation works so well.</li>
+<li>I'd love to see this work combined with imitation learning and inverse RL to figure out what sub-policies are necessary in the first place from demonstrations. That seems like a very practical framework for real-world learning.</li>
 </ol>
 
 </div>

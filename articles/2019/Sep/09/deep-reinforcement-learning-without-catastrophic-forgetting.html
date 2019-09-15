@@ -66,13 +66,13 @@ Computable AI        </a>
 
     <article class="">
       <header class="article-header">
-        <h1 class="uk-heading-large uk-article-title" itemprop="name">arXiv highlights Aug 11-17 2019</h1>
-        <p class="uk-article-lead" itemprop="description">DRL may not be superhuman on Atari after all, and how to avoid making mistakes like that in the future.</p>
+        <h1 class="uk-heading-large uk-article-title" itemprop="name">Deep Reinforcement Learning without Catastrophic Forgetting</h1>
+        <p class="uk-article-lead" itemprop="description">Long-term learning of multiple tasks without forgetting old skills, using a new technique called Pseudo-Rehearsal.</p>
         <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-08-18" itemprop="datePublished">Sun 18 August 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Aug/18/arxiv-highlights-aug-11-17-2019.html#disqus_thread" itemprop="discussionUrl"></a></p>
-<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/arXiv highlights Aug 11-17.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
+<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-09-09" itemprop="datePublished">Mon 09 September 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Sep/09/deep-reinforcement-learning-without-catastrophic-forgetting.html#disqus_thread" itemprop="discussionUrl"></a></p>
+<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/Deep Reinforcement Learning without Catastrophic Forgetting through Pseudo-Rehearsal.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
 
-<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/arXiv highlights Aug 11-17.ipynb">
+<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/Deep Reinforcement Learning without Catastrophic Forgetting through Pseudo-Rehearsal.ipynb">
   Open in Colab
   
   <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -90,7 +90,7 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>Just a sketch this week, calling your attention to <a href="https://arxiv.org/abs/1908.04683v1">Is Deep Reinforcement Learning Really Superhuman on Atari?</a>, which concludes not only that DRL is worse than the best humans on most Atari games, but by a <em>wide</em> margin.</p>
+<p>Apologies for missing a week. Today's post is on last-week's paper, and I'm going to skip this week to get back on track. Also experimenting with the format some more to keep things sustainable given my wildly variable weekend free time. If you have thoughts about this, please leave us a comment!</p>
 
 </div>
 </div>
@@ -98,12 +98,38 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="DRL-isn't-superhuman-on-Atari-yet">DRL <em>isn't</em> superhuman on Atari yet<a class="anchor-link" href="#DRL-isn't-superhuman-on-Atari-yet">&#182;</a></h1><p>Wait, what? I was quite skeptical of this claim. Mnih et al. published the groundbreaking <a href="https://arxiv.org/abs/1312.5602">Playing Atari with Deep Reinforcement Learning</a> in <em>2013</em>, claiming superhuman performance. Surely someone would have noticed by now?</p>
-<p>Apparently not, and then most DRL algorithms for the next six years used either the same human scores reported in that paper, or human beginners. It's true that DQN significantly outperformed their own human player, but that player was not, by far, <em>the best in the world</em>. Other recent claims of superhuman performance have proven that claim against the best players in the world (the paper mentions AlphaGo against Lee Sedol, OpenAI Five against OG, and AlphaStar against Mana), but not for the Atari benchmark.</p>
-<p>The most poignant detail to me in this paper involved the common "normalized human score", where 0% is the score of a random agent, and 100% is the score of the human baseline. <em>On this scale, the median score achieved by the world record holders across all Atari games is 4.4k%</em>. Clearly you can't claim superhuman performance if there are humans who beat your target by a factor of 44, unless you yourself exceed this score.</p>
-<p>For reference, the original Rainbow algorithm achieved a median of 200% over all Atari games, and other algorithms seem to do worse. If the normalized human score is fitted to a maximum equal to the human world record for each game, and run with different time limits, a tuned IQN variant of Rainbow receives a median score of less than 4% (there were other problems with the way benchmarks were done, and correcting for them reduces performance even further).</p>
-<p>We have a long way to go then. The paper has a useful analysis drawing on both previous and original research as to <em>why</em> DRL algorithms are so bad at Atari, and I encourage a careful reading. Some of them, such as reward clipping, are called out in previous research as explicitly chosen to improve performance, but (to treat this particular example), it has been mentioned that this causes the agent to prefer many small rewards over a single large reward.</p>
-<p>I encourage anyone working with the Atari benchmark to read the paper for themselves.</p>
+<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>This (last) week's paper is <a href="https://arxiv.org/abs/1812.02464">Pseudo-Rehearsal: Achieving Deep Reinforcement Learning without Catastrophic Forgetting</a>. I'm interested for reasons both professional and personal.</p>
+<p>First, I have this problem. Our recent (successful) work has gotten neural nets to do some very interesting things, but expanding will require continuous training in production. This makes catastrophic forgetting (CF) a very real problem, since most of the DRL research assumes you're training your agent on a single task, and then enjoying it in inference mode forever after.</p>
+<p>Second, I'm interested because I've got a little son, (the source of the variability in my weekend free time) and I often see him learn something mind-bogglingly fast, and then cement it over the course of a couple days. Pseudo-rehearsal is biologically plausible, and I'm interested in intelligence in its own right.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Catastrophic-Forgetting-and-Pseudo-rehearsal">Catastrophic Forgetting and Pseudo-rehearsal<a class="anchor-link" href="#Catastrophic-Forgetting-and-Pseudo-rehearsal">&#182;</a></h1><p>An agent trained on one task can learn to accomplish that task. If that same agent is then moved to another task, it will learn that other task, but often at the expense of "catastrophically forgetting" the neural net weights learned for the previous task. Several solutions have been proposed, (which are cited in today's paper, and I'll likely be reading them) but most are likely <em>not</em> what humans and animals do.</p>
+<blockquote><p>Researchers have proposed extensions to this method such as utilising previous examples’ gradients during learning, picking a subset of previous samples which best represents the population and using a variational auto-encoder to compress stored items. Such rehearsal methods are cognitively implausible and therefore, do not shine light on how mammal brains might efficiently solve the CF problem.</p>
+</blockquote>
+<p>Pseudo-rehearsal trains a generative model (a GAN) to produce examples from all previous tasks, and uses this to implicitly rehearse foregoing data. Today's paper employes this scheme and a few other tricks to build a system capable of learning multiple tasks.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="The-RePR-model">The RePR model<a class="anchor-link" href="#The-RePR-model">&#182;</a></h1><p>The researchers dub their method RePR, and it works like this: They build short- and long-term memory systems, and transferring learned behaviors from short- to long-term memory while rehearsing past behavior in long-term memory.</p>
+<p>The STM system:</p>
+<blockquote><p>The first part of our model is the short- term memory (STM) system, which serves a similar function to the hippocampus and is used to learn the current task. The STM system contains two components, a DQN that learns the current task and an experience replay containing data only from the current task.</p>
+</blockquote>
+<p>The LTM system:</p>
+<blockquote><p>The second part is the long-term memory (LTM) system, which serves a similar function to the cortex. The LTM system also has two components, a DQN containing knowledge of all tasks learnt and a GAN which can generate sequences representative of these tasks.</p>
+</blockquote>
+<p>They then do periodic consolidation:</p>
+<blockquote><p>During consolidation, the LTM retains previous knowledge through pseudo-rehearsal, while being taught by the STM how to respond on the current task. All of the networks’ architectures and training parameters used throughout our experiments can be found in the appendices.
+Transferring knowledge between these two systems is achieved through knowledge distillation, where a student network is optimised so that it outputs similar values to a teacher network.</p>
+</blockquote>
 
 </div>
 </div>
@@ -112,9 +138,8 @@ Computable AI        </a>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Parting-thoughts">Parting thoughts<a class="anchor-link" href="#Parting-thoughts">&#182;</a></h1><ol>
-<li>I actually find it somewhat personally encouraging that there's room for improvement on Atari. It's easy to experiment, and I have some ideas myself.</li>
-<li>That said, it is rather scary that we could overlook something like this for so long, as a community.</li>
-<li>Anyway, <em>someone</em> will take this as a call to arms, and make progress. Peter Drucker said, "If you can't measure it, you can't improve it." Now that we have better measurements, I predict improvements.</li>
+<li>This sounds brilliant, and analogous to what mammals do. I'm eager to experiment with it, and to introspect and ponder how my own brain learns, with this new model in mind.</li>
+<li>I wonder very much what we do in sleep. <a href="https://computable.ai/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html">As I've mentioned before</a>, I'm quite attracted to the model described in <a href="https://theneural.wordpress.com/2011/07/08/the-miracle-of-the-boltzmann-machine/">The Miracle of the Boltzmann Machine</a>, but off-hand, I don't know how to reconcile that model with the concept of nightly rehearsal of the day's activities. Perhaps the brain is doing <em>two</em> things during sleep? Ockam's razor impells me to think again.</li>
 </ol>
 
 </div>

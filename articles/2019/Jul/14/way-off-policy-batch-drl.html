@@ -66,13 +66,13 @@ Computable AI        </a>
 
     <article class="">
       <header class="article-header">
-        <h1 class="uk-heading-large uk-article-title" itemprop="name">arXiv highlights July 28-August 3 2019</h1>
-        <p class="uk-article-lead" itemprop="description">Hierarchical RL for concurrent discovery of compound and composable policies.</p>
+        <h1 class="uk-heading-large uk-article-title" itemprop="name">Way Off-Policy Batch DRL</h1>
+        <p class="uk-article-lead" itemprop="description">Pre-training using a generative model of pre-recorded trajectories and bias correction.</p>
         <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-08-04" itemprop="datePublished">Sun 04 August 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Aug/04/arxiv-highlights-july-28-august-3-2019.html#disqus_thread" itemprop="discussionUrl"></a></p>
-<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/arXiv highlights July 28-August 3.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
+<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-07-14" itemprop="datePublished">Sun 14 July 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/14/way-off-policy-batch-drl.html#disqus_thread" itemprop="discussionUrl"></a></p>
+<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/Way Off-Policy Batch DRL.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
 
-<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/arXiv highlights July 28-August 3.ipynb">
+<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/Way Off-Policy Batch DRL.ipynb">
   Open in Colab
   
   <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -90,12 +90,7 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>Just a sketch this week, of <a href="https://arxiv.org/abs/1905.09668">Hierarchical Reinforcement Learning for Concurrent Discovery of Compound and Composable Policies</a>.</p>
-<p>I've been hearing hierarchical RL mentioned frequently lately, and while I understand it's a way to encode human expertise to achieve otherwise intractible goals, it has also seemed a bit like cheating. However, I have a day job, and this serves as a healthy dose of pragmatism. I also think that even when the goal is fundamental progress, it's often a good idea to achieve the goal <em>in any way possible</em>, and then follow-up by working the cheats out of the system one by one. So when I read the abstract of this paper, I was feeling more receptive than previously.</p>
-<p>Part of what made hierarchical RL seem not worth the cheating was how kludgy and inefficient the usual methods were, retraining a whole new policy from scratch for each subtask. That's why this week's paper caught my eye:</p>
-<blockquote><p>... we propose an algorithm for learning both compound and composable policies <strong>within the same learning process</strong> by exploiting the off-policy data generated from the compound policy.</p>
-</blockquote>
-<p>Their resulting algorithm, "Hierarchical Intentional-Unintentional Soft Actor-Critic" (HIU-SAC), efficiently trains all sub-policies simultaneously, choosing actions to perform in the environment using a weighted average of the "votes" of all sub-policies, with weights given by a learned selector network (which is <em>also</em> simultaneously trained).</p>
+<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>Only one paper this week, <em>not</em> because <a href="https://arxiv.org/abs/1905.04819">others</a> failed to catch my eye, but for brevity. Let me know in the comments if you agree that shorter or more focused articles are more attractive. So this week I'll be examining just one paper: <a href="https://arxiv.org/abs/1907.00456">Way Off-Policy Batch Deep Reinforcement Learning of Implicit Human Preferences in Dialog</a>. As with last week's papers, this week's is interesting to me professionally. Batch DRL is a way to solve the sample efficiency problem, from a certain perspective. It's mostly the online learning that costs too much when sample efficiency is low, so solving the problems that come with attempting to train offline might allow us to do many of the same things we could do if we had high online sample efficiency.</p>
 
 </div>
 </div>
@@ -103,17 +98,32 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Composable-hierarchical-RL">Composable hierarchical RL<a class="anchor-link" href="#Composable-hierarchical-RL">&#182;</a></h1><h2 id="Architecture">Architecture<a class="anchor-link" href="#Architecture">&#182;</a></h2><p><img alt="Hierarchical policy diagram" src="https://computable.ai/images/policy_network.png#right" height="300px" width="300px" style="margin: 10px" /></p>
-<p>The composite policy consists of the individual policy networks, each with its own reward function, trained to take observations $s$ in and output parameters of a conditional Gaussian. There is also a special activation vector selector network trained on the same states to produce weights corresponding to how much each constituent policy applies to the current state. All of these networks share early layers, since they all benefit from an accurate high-level state representation. Finally, some function $f$ takes all of these outputs and determines what action $a$ to <em>actually</em> take in the environment.</p>
-<p><img alt="Q-value function diagram" src="https://computable.ai/images/q_fcn_network.png#left" height="250px" width="250px" style="margin: 10px" /></p>
-<p>The Q function networks are similarly arranged, sharing early layers which take a state $s$ and an action $a$ to produce a Q function for each subtask, as well as a composite Q function.</p>
-<div style="clear:both">&nbsp;</div><h2 id="Simultaneous-learning">Simultaneous learning<a class="anchor-link" href="#Simultaneous-learning">&#182;</a></h2><blockquote><p>Most methods learn the composable tasks one at a time, and later, the compound task. This procedure is not scalable as all the experience collected for each learning process is only used for that specific process. Also, it is not possible to start learning more complex tasks unless all the compos- able policies have been successfully learned. The method proposed in this section is based on the idea that a single stream of experience can be used to improve not only the policy that is generating the behavior but also, indirectly, many other policies.</p>
+<h1 id="RL-for-open-domain-dialog-generation">RL for open-domain dialog generation<a class="anchor-link" href="#RL-for-open-domain-dialog-generation">&#182;</a></h1><p>The author's domain is dialog generation. They want to build a better chat bot, and they have quite a few recorded conversations. RL is good at refining these processes, but has a cold-start problem, plus they would certainly prefer to make use of the data they have on-hand. For this, they need to be able to make use of offline data, hence "<em>Way</em> Off-Policy". This data is so off-policy it wasn't even <em>generated</em> by a policy.</p>
+<p>So they want to train DRL from samples acquired from some other control of the system (in their case, human interaction data), much like <a href="https://arxiv.org/abs/1704.03732">Deep Q-learning from Demonstrations</a>. There are a couple of reasons this is important for others such as myself:</p>
+<blockquote><p>First, since collecting real-world interaction data can be expensive and time-consuming, algorithms must be able to leverage off-policy data - collected from vastly different systems, far into the past - in order to learn.</p>
+<p>Second, it is often necessary to carefully test a policy before deploying it to the real world; for example, to ensure its behavior is safe and appropriate for humans. Thus the algorithm must be able to learn offline first, from a static batch of data, without the ability to explore</p>
 </blockquote>
-<p>The authors refer to the composite policy acting as the "intentional" policy (the "behavior" policy in an off-policy setting), and the composable sub-policies as the "unintentional" policies (each one a "target" policy in an off-policy setting). They use a variation on SAC to train the composite and composable policies simultaneously within the maximum entropy framework.</p>
-<p>The objective function for the Q networks simply maximize the expected sum of all mean-squared Bellman errors for each Q network, for each tuple in the replay buffer $\mathcal{D}$. The objective function for the policy is simply the sum of the objective functions for each intentional and unintentional policy. Each policy objective optimizes the expected difference for each state in $\mathcal{D}$ between the Q value and log-probability of the selected action (adjustable by temperature $\alpha$), over all possible actions. HIU-SAC then alternates between policy evaluation and policy improvement steps following SAC.</p>
-<h2 id="The-importance-of-maximizing-entropy-to-adequate-exploration">The importance of maximizing entropy to adequate exploration<a class="anchor-link" href="#The-importance-of-maximizing-entropy-to-adequate-exploration">&#182;</a></h2><p>It is interesting that the entropy-maximizing RL objective was <em>absolutely necessary</em> for exploring broadly enough to train all of these policies at once.</p>
-<blockquote><p>Note that populating the replay memory buffer with rich experiences is essential for acquiring multiple skills in an off-policy manner. The composable policies learned unintentionally had similar performance than the policies obtained in single-task formulations only when the compound policy was able to efficiently explore the environment. For this reason, the algorithm was built on a maximum entropy RL framework to favor exploration during the learning process.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="A-generative-model-+-Q-learning">A generative model + Q learning<a class="anchor-link" href="#A-generative-model-+-Q-learning">&#182;</a></h1><p>The authors first pre-train a generative model on the distribution of collected trajectories, and initialize the Q networks from this model. They then sample a fixed number of actions from it, and output the one with the highest Q-value as their policy's decision. In later reinforcement learning, they penalize their model for KL-divergence from this distribution.</p>
+<blockquote><p>To perform batch Q-learning, we first pre-train a generative model of $p(a|s)$ using a set of known environment trajectories. In our case, this model is then used to generate the batch data via human interaction. The weights of the Q-network and target Q-network are initialized from the pre-trained model, which helps reduce variance in the Q-estimates and works to combat overestimation bias. To train $Q_{θ_π}$ we sample &lt; $s_t$, $a_t$, $r_t$, $s_{t+1}$ &gt; tuples from the batch, and update the weights of the Q-network to approximate Eq. 1. This forms our baseline model, which we call Batch Q</p>
 </blockquote>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Overestimation-bias">Overestimation bias<a class="anchor-link" href="#Overestimation-bias">&#182;</a></h1><blockquote><p>Most deep RL algorithms fail to learn from data that is not heavily correlated with the current policy. Even models based on off-policy algorithms lik Q-learning fail to learn when the model is not able to explore during training. This is due to the fact that such algorithms are inherently optimistic in the face of uncertainty.</p>
+</blockquote>
+<p>If you’re taking the <code>max</code> of something (as in Bellman-equation-based algorithms), then the higher the variance, the higher the <code>max</code> value. This causes an over-estimation bias. We may have seen a really high value for some state once, so now we over-value that state, despite it being atypical. It may not be immediately obvious why this is a <em>problem</em>, but which states are we likely to overvalue? Precisely the states we haven't visited often. Why is <em>that</em> a problem? This sounds good for exploration, right? But if we're trying to train our agent with canned data, it's important that the live agent stick pretty close to the states where the canned data does well, and it's counter-productive to have it believe that everywhere <em>but</em> the pre-explored state space is worth exploring.</p>
+<p>A popular solution to the overestimation problem in Q-learning algorithms is to train <em>two</em> Q networks on the same data, put the input through both, and take the minimum value. This helps with the bias because they'll likely disagree unless we can be really <em>certain</em> of the value of the input, and if they disagree we can go with the least confident. The authors of the current paper take a different tack, training a single neural net with dropout, and using the disagreement with different dropout masks as an estimate of uncertainty.</p>
 
 </div>
 </div>
@@ -122,8 +132,22 @@ Computable AI        </a>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Parting-thoughts">Parting thoughts<a class="anchor-link" href="#Parting-thoughts">&#182;</a></h1><ol>
-<li>In a way, the methods proposed here seem rather obvious, and I found this paper quite easy to understand given that it violated none of my expectations. I also haven't been paying enough attention to hierarchical RL to know off-hand why training the sub-policies in parallel off of the same recorded environment interactions hasn't been tried before (or whether it has been without my notice). Perhaps it was necessary for off-policy RL to reach a level of maturity sufficient for sub-policies to see enough relevant data to train? In any case, don't hear me faulting the authors for trying the obvious. It is relieving a <em>non</em>-obvious that a straightforward formulation works so well.</li>
-<li>I'd love to see this work combined with imitation learning and inverse RL to figure out what sub-policies are necessary in the first place from demonstrations. That seems like a very practical framework for real-world learning.</li>
+<li><p>I didn't talk much about their model architecture, which is "Variational Hierarchical Recurrent Encoder Decoder (VHRED)", largely because I think if I ever tried to make use of this directly I would employ transformers instead. They do mention that transformer architectures are a "powerful alternative", but they chose to work with hierarchical architectures so they could extend their work to hierarchical control in the future. That's interesting. In my own work at the moment, the important thing is the "way off-policy" part, not so much the chat bot part.</p>
+</li>
+<li><p>It's very interesting to me that both of the methods for correcting overestimation bias make use of uncertainty estimators that I've seen mentioned elsewhere:</p>
+<ul>
+<li><a href="https://arxiv.org/abs/1905.09638">Estimating Risk and Uncertainty in Deep Reinforcement Learning</a></li>
+</ul>
+<blockquote><p>...we show that the disagreement between only two neural networks is sufficient to produce a low-variance estimate of the epistemic uncertainty on the return distribution, thus providing a simple and computationally cheap uncertainty metric.</p>
+</blockquote>
+<ul>
+<li><a href="https://arxiv.org/abs/1506.02142">Dropout as a Bayesian Approximation: Representing Model Uncertainty in Deep Learning</a></li>
+</ul>
+<blockquote><p>...we develop a new theoretical framework casting dropout training in deep neural networks (NNs) as approximate Bayesian inference in deep Gaussian processes. A direct result of this theory gives us tools to model uncertainty with dropout NNs</p>
+</blockquote>
+</li>
+<li><p>This article wasn't really shorter than if I had done multiple papers, less deeply. I'll have to practice at that, not least because it's time-consuming, but information is valuable. How does Adrian Colyer do this every <em>day</em>?</p>
+</li>
 </ol>
 
 </div>

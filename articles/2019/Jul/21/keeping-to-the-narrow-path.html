@@ -66,13 +66,13 @@ Computable AI        </a>
 
     <article class="">
       <header class="article-header">
-        <h1 class="uk-heading-large uk-article-title" itemprop="name">arXiv highlights Aug 25-31 2019</h1>
-        <p class="uk-article-lead" itemprop="description">Deep Reinforcement Learning without Catastrophic Forgetting through Pseudo-Rehearsal</p>
+        <h1 class="uk-heading-large uk-article-title" itemprop="name">Keeping to the Narrow Path</h1>
+        <p class="uk-article-lead" itemprop="description">Better imitation learning with self-correcting policies by negative sampling.</p>
         <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-09-09" itemprop="datePublished">Mon 09 September 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Sep/09/arxiv-highlights-aug-25-31-2019.html#disqus_thread" itemprop="discussionUrl"></a></p>
-<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/arXiv highlights Aug 25-31.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
+<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-07-21" itemprop="datePublished">Sun 21 July 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Jul/21/keeping-to-the-narrow-path.html#disqus_thread" itemprop="discussionUrl"></a></p>
+<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/Keeping to the Narrow Path.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
 
-<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/arXiv highlights Aug 25-31.ipynb">
+<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/Keeping to the Narrow Path.ipynb">
   Open in Colab
   
   <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -90,7 +90,8 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Apologies for missing a week. Today's post is on last-week's paper, and I'm going to skip this week to get back on track. Also experimenting with the format some more to keep things sustainable given my wildly variable weekend free time. If you have thoughts about this, please leave us a comment!</p>
+<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>This week's highlight is a paper on imitation learning: <a href="https://arxiv.org/abs/1907.05634">Learning Self-Correctable Policies and Value Functions from Demonstrations with Negative Sampling</a>, chosen again for pragmatic reasons. The problem my team is currently working on has both reasons for wanting high sample efficiency: training would be prohibitively slow without something to kickstart it, and actions taken in the real world can get expensive.</p>
+<p>I know I said I'd be experimenting with shorter, more bite-sized posts, but... next time. (If you want that, you can just stop reading after the "Key intuition" section.)</p>
 
 </div>
 </div>
@@ -98,9 +99,12 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="This-week">This week<a class="anchor-link" href="#This-week">&#182;</a></h1><p>This (last) week's paper is <a href="https://arxiv.org/abs/1812.02464">Pseudo-Rehearsal: Achieving Deep Reinforcement Learning without Catastrophic Forgetting</a>. I'm interested for reasons both professional and personal.</p>
-<p>First, I have this problem. Our recent (successful) work has gotten neural nets to do some very interesting things, but expanding will require continuous training in production. This makes catastrophic forgetting (CF) a very real problem, since most of the DRL research assumes you're training your agent on a single task, and then enjoying it in inference mode forever after.</p>
-<p>Second, I'm interested because I've got a little son, (the source of the variability in my weekend free time) and I often see him learn something mind-bogglingly fast, and then cement it over the course of a couple days. Pseudo-rehearsal is biologically plausible, and I'm interested in intelligence in its own right.</p>
+<h1 id="The-problem">The problem<a class="anchor-link" href="#The-problem">&#182;</a></h1><p>Learning from demonstrations is more difficult than it may seem at first glance. The trouble mainly stems from covariate shift: the input distribution your agent will see in production is very likely to be different than that encountered during training. Many machine learning algorithms have this problem, reinforcement learning algorithms included, but imitation learning has it especially bad, for a simple reason: the expert demonstrations you are attempting to follow necessarily explore a very small subset of the state space. The whole <em>point</em> of them is to stay on good trajectories, meaning bad trajectories never get explored.</p>
+<p>This causes two issues:</p>
+<ol>
+<li>The agent can't in general figure out how to get back into the subset of state space where the expert demonstrations apply, even if it gets only slightly off-course, and</li>
+<li>Value functions for states and actions are affected by unseen states, making it very <em>likely</em> that the agent will wander off as soon as it's allowed.</li>
+</ol>
 
 </div>
 </div>
@@ -108,10 +112,11 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Catastrophic-Forgetting-and-Pseudo-rehearsal">Catastrophic Forgetting and Pseudo-rehearsal<a class="anchor-link" href="#Catastrophic-Forgetting-and-Pseudo-rehearsal">&#182;</a></h1><p>An agent trained on one task can learn to accomplish that task. If that same agent is then moved to another task, it will learn that other task, but often at the expense of "catastrophically forgetting" the neural net weights learned for the previous task. Several solutions have been proposed, (which are cited in today's paper, and I'll likely be reading them) but most are likely <em>not</em> what humans and animals do.</p>
-<blockquote><p>Researchers have proposed extensions to this method such as utilising previous examples’ gradients during learning, picking a subset of previous samples which best represents the population and using a variational auto-encoder to compress stored items. Such rehearsal methods are cognitively implausible and therefore, do not shine light on how mammal brains might efficiently solve the CF problem.</p>
+<h1 id="Key-intuition">Key intuition<a class="anchor-link" href="#Key-intuition">&#182;</a></h1><p>The authors solve this problem by pre-training with supervised learning using a loss function that drives down the value of all states outside of those explored in the expert demonstrations $U$, by an amount proportional to their Euclidean distance from the closest state in $U$. In their own words:</p>
+<blockquote><p>Consider a state $s$ in the demonstration and its nearby state $\tilde{s}$ that is not in the demonstration. The key intuition is that $\tilde{s}$ should have a lower value than $s$, because otherwise $\tilde{s}$ likely should have been visited by the demonstrations in the first place. If a value function has this property for most of the pair $(s,\tilde{s})$ of this type, the corresponding policy will tend to correct its errors by driving back to the demonstration states because the demonstration states have locally higher values.</p>
 </blockquote>
-<p>Pseudo-rehearsal trains a generative model (a GAN) to produce examples from all previous tasks, and uses this to implicitly rehearse foregoing data. Today's paper employes this scheme and a few other tricks to build a system capable of learning multiple tasks.</p>
+<p>And Figure 1 is a nice visual demonstration:</p>
+<p><a href="https://computable.ai/images/VINS_Figure_1.jpeg"><img alt="VINS Figure 1" src="https://computable.ai/images/VINS_Figure_1.jpeg" /></a></p>
 
 </div>
 </div>
@@ -119,17 +124,15 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-RePR-model">The RePR model<a class="anchor-link" href="#The-RePR-model">&#182;</a></h1><p>The researchers dub their method RePR, and it works like this: They build short- and long-term memory systems, and transferring learned behaviors from short- to long-term memory while rehearsing past behavior in long-term memory.</p>
-<p>The STM system:</p>
-<blockquote><p>The first part of our model is the short- term memory (STM) system, which serves a similar function to the hippocampus and is used to learn the current task. The STM system contains two components, a DQN that learns the current task and an experience replay containing data only from the current task.</p>
-</blockquote>
-<p>The LTM system:</p>
-<blockquote><p>The second part is the long-term memory (LTM) system, which serves a similar function to the cortex. The LTM system also has two components, a DQN containing knowledge of all tasks learnt and a GAN which can generate sequences representative of these tasks.</p>
-</blockquote>
-<p>They then do periodic consolidation:</p>
-<blockquote><p>During consolidation, the LTM retains previous knowledge through pseudo-rehearsal, while being taught by the STM how to respond on the current task. All of the networks’ architectures and training parameters used throughout our experiments can be found in the appendices.
-Transferring knowledge between these two systems is achieved through knowledge distillation, where a student network is optimised so that it outputs similar values to a teacher network.</p>
-</blockquote>
+<h1 id="Value-Iteration-with-Negative-Sampling-(VINS)">Value Iteration with Negative Sampling (VINS)<a class="anchor-link" href="#Value-Iteration-with-Negative-Sampling-(VINS)">&#182;</a></h1><p>Into the weeds now.</p>
+<h2 id="Self-correctable-policy">Self-correctable policy<a class="anchor-link" href="#Self-correctable-policy">&#182;</a></h2><p>The first bit of their algorithm is the definition of their self-correcting policy. It's essentially a formalization of what we said above about $s$ and $\tilde{s}$.</p>
+<p>If $s \in U$ (if $s$ is in the expert demonstrations), then $$V(s) = V^{\pi_e}(s) \pm \delta_V$$ ("just what the value would be in the expert demonstrations, plus some error").</p>
+<p>But if $s \not\in U$, $$V(s) = V^{\pi_e}(\Pi_U(s)) - \lambda \|s-\Pi_U(s)\| \pm \delta_V$$ (where $\Pi_U$ gives the closest $s \in U$, so $V(s)$ is "the value of the closest $s \in U$, <em>minus the distance to that</em> $s \in U$, plus some error")</p>
+<p>Then the induced policy from this value function is $$\pi(s) \triangleq \underset{a: \|a-\pi_{BC}(s)\|\le \zeta}{\operatorname{argmax}} ~V(M(s, a))$$</p>
+<p>Where $M(s,a)$ is a learned dynamical model of the environment that gives the next state given the current state and action. $\pi_{BC}(s)$ is the "behavioral clone" policy from the expert demonstrations.</p>
+<h2 id="RL-algorithm">RL algorithm<a class="anchor-link" href="#RL-algorithm">&#182;</a></h2><p>To actually achieve $V(M(s,a))$ with the necessary properties, they select a state $s$ from the demonstrations, perturb it a bit to get $\tilde{s}$ nearby, and use the original state $s$ to approximate $\Pi_U(\tilde{s})$ in the following loss function.</p>
+$$\mathcal{L}_{ns}(\phi)= \mathbf{E}_{s \sim \rho^{\pi_e}, \tilde{s} \sim perturb(s)} \left(V_{\bar \phi}(s) - \lambda \|s-\tilde{s}\|- V_\phi(\tilde{s}) \right)^2$$<p>Finally, here's the algorithm that uses this and the earlier policy definition:</p>
+<p><img src="https://computable.ai/images/VINS_Algorithm_2.jpeg#center" alt="VINS Algorithm 2"></p>
 
 </div>
 </div>
@@ -138,8 +141,8 @@ Transferring knowledge between these two systems is achieved through knowledge d
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Parting-thoughts">Parting thoughts<a class="anchor-link" href="#Parting-thoughts">&#182;</a></h1><ol>
-<li>This sounds brilliant, and analogous to what mammals do. I'm eager to experiment with it, and to introspect and ponder how my own brain learns, with this new model in mind.</li>
-<li>I wonder very much what we do in sleep. <a href="https://computable.ai/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html">As I've mentioned before</a>, I'm quite attracted to the model described in <a href="https://theneural.wordpress.com/2011/07/08/the-miracle-of-the-boltzmann-machine/">The Miracle of the Boltzmann Machine</a>, but off-hand, I don't know how to reconcile that model with the concept of nightly rehearsal of the day's activities. Perhaps the brain is doing <em>two</em> things during sleep? Ockam's razor impells me to think again.</li>
+<li>I thought it was quite strange that they learned $V(s)$ and a dynamical model $M(s,a)$, and then used $V(M(s,a))$ in the algorithm. I thought, "Why not just learn $Q$?" The answer was given in their Section A appendix, and was quite interesting. I'm not sure it applies to our case, but it's important. TL;DR $Q(s,a)$ learned from demonstrations <em>alone</em> is degenerate, because there's always a $Q$ that perfectly matches the demonstrations <em>and doesn't depend at all on</em> $a$. </li>
+<li>One of my coworkers (and upcoming Computable author!) wondered to me if the induced policy could be made explicit, by explicitly training a policy network to bring the agent back into safe territory. It could be trained with gradient descent, because $V(M(s,a))$ are just networks, and the technique for training deterministic policies just follows the gradient of the $Q$ function. I wonder too.</li>
 </ol>
 
 </div>
