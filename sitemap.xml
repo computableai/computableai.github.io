@@ -5,29 +5,36 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://computable.ai/</loc>
-<lastmod>2019-09-15T18:16:28-00:00</lastmod>
+<lastmod>2019-09-22T19:17:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/archives.html</loc>
-<lastmod>2019-09-15T18:16:28-00:00</lastmod>
+<lastmod>2019-09-22T19:17:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/categories.html</loc>
-<lastmod>2019-09-15T18:16:28-00:00</lastmod>
+<lastmod>2019-09-22T19:17:26-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>https://computable.ai/pages/about.html</loc>
-<lastmod>2019-09-15T18:16:28-00:00</lastmod>
+<lastmod>2019-09-22T19:17:26-00:00</lastmod>
 <changefreq>monthly</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>https://computable.ai/articles/2019/Sep/22/active-perception-in-adversarial-scenarios.html</loc>
+<lastmod>2019-09-22T00:00:00-04:00</lastmod>
+<changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
@@ -145,7 +152,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>https://computable.ai/category/arxiv-highlights.html</loc>
-<lastmod>2019-09-15T00:00:00-04:56</lastmod>
+<lastmod>2019-09-22T00:00:00-04:56</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
