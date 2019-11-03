@@ -122,7 +122,8 @@
 
 /* Article Typography */
 
-.article-body p {
+.article-body p,
+.article-body pre {
   margin: 1em 0 0;
 }
 
@@ -167,6 +168,35 @@
 .article-body .MathJax .mi,
 .article-body .MathJax .mn {
   color: inherit !important;
+}
+
+
+/* Code */
+.article-body .input {
+  position: relative;
+}
+
+.article-body .input .highlight {
+  background: inherit;
+  color: inherit;
+}
+
+.article-body .input_prompt {
+  float: left;
+  font-size: var(--font-size-text-sm);
+  font-family: var(--font-stack-code);
+  margin: 0 1rem 0 0;
+}
+
+@media all and (min-width: 85em) {
+  .article-body .input_prompt {
+    text-align: right;
+    position: absolute;
+    right: calc(100% + 1em);
+    top: 0;
+    float: none;
+  }
+
 }
 
 
