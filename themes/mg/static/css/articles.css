@@ -154,6 +154,29 @@
   border-radius: 4px;
 }
 
+
+.article-body img[src*="#right"] {
+  float: right;
+  clear: right;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.article-body img[src*="#left"] {
+  float: left;
+  clear: left;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.article-body img[src*="#center"] {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1rem auto;
+  float: none !important;
+}
+
 @media (prefers-color-scheme: dark) {
   .article-body img {
     background-color: #ddd;
@@ -215,27 +238,5 @@
 }
 
 
-
-
-
-/* Cool hack for choosing image alignment in pure markdown */
-
-img[src*="#right"] {
-  float: right;
-  clear: right;
-}
-
-img[src*="#left"] {
-  float: left;
-  clear: left;
-}
-
-img[src*="#center"] {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: auto;
-  float: none !important;
-}
 
 sourceMappingURL=main.css.map
