@@ -1,5 +1,159 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-10-06T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>Comments on Eight Abstracts</title><link href="https://computable.ai/articles/2019/Oct/06/comments-on-eight-abstracts.html" rel="alternate"></link><published>2019-10-06T00:00:00-04:00</published><updated>2019-10-06T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-10-06:/articles/2019/Oct/06/comments-on-eight-abstracts.html</id><summary type="html">&lt;p&gt;An unfocused sweep of eight abstracts from a very busy week in AI research: Emergent tool use, why hierarchical learning can work so well, brain-inspired hardware for artificial neural networks, pretraining and transfer learning for RL, chromatic network compression, semi-supervised reward shaping, WGAN model imitation for model-based RL, and navigation in turbulent flows!&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/all.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-11-03T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>Cox's Theorem: Establishing Probability Theory</title><link href="https://computable.ai/articles/2019/Nov/03/coxs-theorem-establishing-probability-theory.html" rel="alternate"></link><published>2019-11-03T00:00:00-04:00</published><updated>2019-11-03T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-11-03:/articles/2019/Nov/03/coxs-theorem-establishing-probability-theory.html</id><summary type="html">&lt;p&gt;Cox's theorem is the strongest argument for the use of standard probability theory. Here we examine the axioms to establish a firm foundation for the interpretation of probability theory as the unique extension of true-false logic to degrees of belief.&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Ranging-farther-afield"&gt;Ranging farther afield&lt;a class="anchor-link" href="#Ranging-farther-afield"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Today I'll be taking advantage of my stated intention to pull back from the stream of &lt;em&gt;recent&lt;/em&gt; papers, and look at some papers for their impact or fundamental importance as I see it. So today I'm doing something unusual, highlighting a paper not from last week, but from &lt;em&gt;four years&lt;/em&gt; ago, and not directly from AI, but from the field of probability theory: &lt;a href="https://arxiv.org/abs/1507.06597"&gt;Cox's Theorem and the Jaynesian Interpretation of Probability&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I've been reading a book by E. T. Jaynes, called &lt;a href="https://www.amazon.com/Probability-Theory-Science-T-Jaynes/dp/0521592712"&gt;Probability Theory: The Logic of Science&lt;/a&gt;, a brilliant and practical exposition of the Bayesian view of probability theory, partially on &lt;a href="https://www.lesswrong.com/posts/kXSETKZ3X9oidMozA/the-level-above-mine"&gt;the recommendation of another AI researcher&lt;/a&gt;. The thoughts of an ideal reasoner would have Bayesian structure, so I am both personally and professionally interested in mastering the concepts.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Overview"&gt;Overview&lt;a class="anchor-link" href="#Overview"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Cox's theorem is an attempt to derive probability theory from a small, common-sense set of uncontroversial desiderata, and to demonstrate its uniqueness as an extension of two-valued (true/false) logic to degrees of belief. That's a big deal. As today's paper mentions, Peter Cheeseman &lt;a href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-8640.1988.tb00091.x"&gt;has called&lt;/a&gt; Cox's theorem the "strongest argument for the use of standard (Bayesian) probability theory". But Cox's theorem is non-rigorous as originally formulated, and many people have patched up the holes for use in their various fields. Often today, if someone refers to "Cox's theorem", they usually mean one of the fixed-up versions.&lt;/p&gt;
+&lt;p&gt;Jaynes' version unfortunately contains a mistake, and today's paper fixes it by replacing some of the axioms with the simple requirement that probability theory remain consistent with respect to repeated events.&lt;/p&gt;
+&lt;p&gt;It may be difficult without reading the book to see why this paper is important to AI, so perhaps in the near future I'll discuss that at greater length. For today, however, I'll simply be explaining each of the axioms, and setting you up to read the paper more easily. It is certainly worth a close reading, to ground your confidence in the interpretation of probability theory as a &lt;em&gt;logical system&lt;/em&gt; that extends true-false logic to handle uncertainty, so you can reap the associated benefits.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Abstract"&gt;Abstract&lt;a class="anchor-link" href="#Abstract"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;blockquote&gt;&lt;p&gt;There are multiple proposed interpretations of probability theory: one such interpretation is true-false logic under uncertainty. Cox's Theorem is a representation theorem that states, under a certain set of axioms describing the meaning of uncertainty, that every true-false logic under uncertainty is isomorphic to conditional probability theory. This result was used by Jaynes to develop a philosophical framework in which statistical inference under uncertainty should be conducted through the use of probability, via Bayes' Rule. Unfortunately, most existing correct proofs of Cox's Theorem require restrictive assumptions: for instance, many do not apply even to the simple example of rolling a pair of fair dice. We offer a new axiomatization by replacing various technical conditions with an axiom stating that our theory must be consistent with respect to repeated events. We discuss the implications of our results, both for the philosophy of probability and for the philosophy of statistics.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Axioms-$\newcommand{\P}{\mathbb{P}}-\newcommand{\F}{\mathscr{F}}$"&gt;Axioms $\newcommand{\P}{\mathbb{P}} \newcommand{\F}{\mathscr{F}}$&lt;a class="anchor-link" href="#Axioms-$\newcommand{\P}{\mathbb{P}}-\newcommand{\F}{\mathscr{F}}$"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;This paper proposes a new axiomatization of probability theory, with five axioms. As a variant of Cox's theorem, these axioms are supposed to represent a set of "common sense" desiderata for a logical system under uncertainty. That is, each of these axioms are things we naturally want to be true of any logical system under uncertainty. Cox's original axioms were more intuitively essential to me, however, so I'll also try to give justifications for demanding each of the following axioms, as well as explaining them technically.&lt;/p&gt;
+&lt;p&gt;Remember the ultimate goal is to &lt;em&gt;build&lt;/em&gt; probability theory up from a minimal set of absolute requirements for &lt;em&gt;any&lt;/em&gt; logical system. The punchline is that probability theory as described historically by greats like Kolmogorov turns out to be the &lt;em&gt;unique&lt;/em&gt; extension of true-false logic under uncertainty, and we can derive it from "common sense".&lt;/p&gt;
+&lt;p&gt;To emphasize the point that while we're writing these axioms we haven't yet got &lt;em&gt;probability&lt;/em&gt;, following Jaynes I'll refer to our measure of certainty/uncertainty as "plausibility".&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="1.-Plausibility-must-be-representable-by-a-real-number"&gt;1. Plausibility must be representable by a real number&lt;a class="anchor-link" href="#1.-Plausibility-must-be-representable-by-a-real-number"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;Let $\Omega$ be a set and $\mathscr{F}$ be a $\sigma$-algebra on $\Omega$.&lt;/p&gt;
+&lt;p&gt;Let $\P: \F \times (\F \setminus \emptyset) \rightarrow R \subseteq \mathbb{R}$ be a function, written using notation $\P(A|B)$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It makes intuitive sense that we should be able to measure our uncertainty on a smooth, finite scale, so it makes sense to demand that our plausibility scale be chosen from some definite subset of the reals.&lt;/p&gt;
+&lt;p&gt;$\F$ being "&lt;a href="https://en.wikipedia.org/wiki/Sigma-algebra"&gt;a $\sigma$-algebra on $\Omega$&lt;/a&gt;" means that it is the set of every subset of $\Omega$ (including $\Omega$ and $\emptyset$), is closed under complement, and is closed under countable unions. (Being "closed under" some operation means that taking that operation on any element in the set yields an element that's also defined to be in the set.) The idea is that $\Omega$ comprises all primitive events, and $\F$ therefore includes every possible logical combination of these primitive events, in a way that makes it eqivalent to a Boolean algebra.&lt;/p&gt;
+&lt;p&gt;I found it clarifying that $\P(\Omega)=1$. That's what made it click for me that a set in $\F$ represents a disjunction of primitive events, and $\Omega$ contains &lt;em&gt;all&lt;/em&gt; primitive events, so $\P(\Omega)$ is the probability that &lt;em&gt;anything&lt;/em&gt; happens.&lt;/p&gt;
+&lt;p&gt;$\P(A|B)$ is a function of two arguments $A,B \in \mathscr{F}$, and B cannot be empty. The interpretation is, "The probability of some event A, given that event B is true." The second argument cannot be empty, Jaynes often describes it as "the background information", including everything else known (such as the rules of probability themselves, and the number of penguins in Antarctica).&lt;/p&gt;
+&lt;p&gt;The arguments of $\P$ are sets, but as the paper mentions, "by &lt;a href="https://www.jstor.org/stable/1989664"&gt;Stone's Representation Theorem&lt;/a&gt;, every Boolean algebra is isomorphic to an algebra of sets".&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="2.-Sequential-continuity"&gt;2. Sequential continuity&lt;a class="anchor-link" href="#2.-Sequential-continuity"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;We have that
+$$A_1 \subseteq A_2 \subseteq A_3 \subseteq\ldots \text{ such that } A_i \nearrow A \text{ implies } \P (A_i | B)\nearrow \P(A | B )$$
+for all $A, A_i, B$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Another intuitive requirement for a system of logical inference is that our plausibility measure return arbitrarily small differences in plausibility for arbitrarily small changes in truth value. This concept is also known as "continuity".&lt;/p&gt;
+&lt;p&gt;If you can arrange a sequence of events (sets) so that earlier events (e.g., $A_1$) are included in later events (e.g., $A_3$), then there is "sequential continuity" between earlier sets and later sets in this sequence. In the notation of the paper, $A_1 \nearrow A_3$.&lt;/p&gt;
+&lt;p&gt;What this axiom is saying is that as long as there is sequential continuity between two logical propositions, there is also sequential continuity between their plausibilities. This formalizes our requirement for continuity. Also notice that if $\P (A_i | B)\nearrow \mathbb{P}(A | B )$ then $\P (A_i | B) \leq \mathbb{P}(A | B )$, because our definition of sequential continuity also implies that the cardinality of the sets is non-decreasing. This will be useful reading the proof.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="3.-Decomposability"&gt;3. Decomposability&lt;a class="anchor-link" href="#3.-Decomposability"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;$\P(AB | C )$ can be written as
+$$\P(A | C ) \circ \P(B | AC)$$
+for some some function $\circ : (R \times R) \rightarrow R$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This is the first axiom that I had trouble seeing as intuitive, and in fact I thought it was a bit question-begging at first because it looks like the product rule. It represents the demand that plausibilities of compound propositions be decomposable into plausibilities of the their constituents, and that that decomposition has a particular form. It's the demand that it follow a particular form that seems somewhat arbitrary to me at first. Of course we would want to be able to decompose compound uncertainty into more fundamental elements, or else probability theory wouldn't be very useful. But why should it take the form described of $\circ$?&lt;/p&gt;
+&lt;p&gt;The answer is that this form is &lt;em&gt;minimal&lt;/em&gt; for decomposability. That is, it's the weakest statement that could be made about the details of decomposition. In English: "The plausibility of A &lt;em&gt;and&lt;/em&gt; B is a function of the plausibility of one of those (say, $A$), and the plausibility of the other ($B$) once we can assume $A$ is true."&lt;/p&gt;
+&lt;p&gt;Note that logical conjunctions are commutative ($AB = BA$), so by this axiom $\P(AB | C )$ can &lt;em&gt;also&lt;/em&gt; be written as $\P(B | C ) \circ \P(A | BC)$. They prove later also that $\circ$ is commutative, but that is not assumed in the axioms.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="4.-Negation"&gt;4. Negation&lt;a class="anchor-link" href="#4.-Negation"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;There exists a function $N : R \rightarrow R$ such that 
+$$
+\P(A^c | B)= N[ \P(A | B)]
+$$
+for all $A,B$.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This axiom also seemed a bit question-begging to me, because it looks like the sum rule of probability theory, and because it seemed arbitrary that you would want uniquely determined probabilities for the negations of propositions.&lt;/p&gt;
+&lt;p&gt;Upon further reflection, however, this seems like a reasonable demand to be consistent with two-valued logic. Every proposition $A$ in true-false logic has a unique proposition $A^c$ representating its negation, (This superscript complement notation emphasizes the representation as propositions as sets, but is equivalent to $\bar A$, $\neg A$, etc.) so it makes sense that an extension of true-false logic to uncertainty would also include a method of determining the opposite.&lt;/p&gt;
+&lt;p&gt;In actual fact, this &lt;em&gt;may&lt;/em&gt; be the most controversial axiom, since there are logics other than true-false logic that don't require the "law of the excluded middle" (they allow "maybe"). But if you are willing to accept that all well-formed propositions are either true or false, and our system of plausibility represents levels of certainty about their truth or falsehood, then this axiom represents a reasonable and necessary demand.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h2 id="5.-Consistency-under-extension"&gt;5. Consistency under extension&lt;a class="anchor-link" href="#5.-Consistency-under-extension"&gt;&amp;#182;&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;&lt;p&gt;If $(\Omega, \mathscr{F}, \P)$ satisfies the axioms above, then $(\Omega \times \Omega, \mathscr{F} \otimes \mathscr{F}, \P \operatorname{\circ} \P)$ must as well, i.e., the definition $\P(A \times B | C \times D) = \P(A | C) \circ \P(B | D)$ is consistent.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;This axiom represents the core of the authors' contribution. Although there were many correct variants of Cox's theorem, and many ways to axiomatize probability theory, they all had either disappointingly narrow scope, or had lost their intuitive nature in the formalization. The authors' of our paper replace several technical axioms from other axiomatizations with this one demand &lt;em&gt;that their rules be consistent under extention to repeated events&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;In English, this axiom is, "If the rules apply to a single trial (e.g., a single coinflip), then they also apply to a system of two independent trials (e.g., two coinflips)." To me, that's obviously intuitive, so it's delightful to find that it covers so much ground.&lt;/p&gt;
+&lt;p&gt;Examining their formal expression, with the coinflips example, with $A$ meaning "heads on the first coinflip" and B meaning "tails on the second coinflip":&lt;/p&gt;
+&lt;p&gt;$\P(A \times B | C \times D)$ means "the plausibility of heads-then-tails given two piles of background information $C$ and $D$". The axiom states this must equal $\P(A | C) \circ \P(B | D)$, meaning that the plausibility of a pair of coinflips coming up heads-tails is equal to the plausibility of a single coinflip coming up heads (given background information $C$), composed (using $\circ$) with another coinflip coming up tails (given background information $D$).&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;h1 id="Parting-thoughts"&gt;Parting thoughts&lt;a class="anchor-link" href="#Parting-thoughts"&gt;&amp;#182;&lt;/a&gt;&lt;/h1&gt;&lt;ol&gt;
+&lt;li&gt;I hope this exposition of the axioms helps you read the paper yourself, though I realize I may not have provided sufficient motivation to do so yet. That would make it a bit like &lt;a href="https://computable.ai/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html"&gt;my post deriving something surprising about Boltzmann machines&lt;/a&gt; without first explaining what Boltzmann machines &lt;em&gt;are&lt;/em&gt;. I intend to rectify this in the future for both posts.&lt;/li&gt;
+&lt;li&gt;I could make this a lot clearer for people with less set theory, group theory, or probability theory background. If that would be helpful to you, please leave me a comment on what specifically didn't make sense so I can get a feel for my audience.&lt;/li&gt;
+&lt;li&gt;To memorize these and make reading the proof easier, I labeled each of the five axioms with some relevant symbol, and combined them into a mneumonic. In case that helps you too, here it is: $\mathbb{R}$ $\nearrow$ $\circ$ $N$ $\times$.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content></entry><entry><title>Comments on Eight Abstracts</title><link href="https://computable.ai/articles/2019/Oct/06/comments-on-eight-abstracts.html" rel="alternate"></link><published>2019-10-06T00:00:00-04:00</published><updated>2019-10-06T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-10-06:/articles/2019/Oct/06/comments-on-eight-abstracts.html</id><summary type="html">&lt;p&gt;An unfocused sweep of eight abstracts from a very busy week in AI research: Emergent tool use, why hierarchical learning can work so well, brain-inspired hardware for artificial neural networks, pretraining and transfer learning for RL, chromatic network compression, semi-supervised reward shaping, WGAN model imitation for model-based RL, and navigation in turbulent flows!&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
