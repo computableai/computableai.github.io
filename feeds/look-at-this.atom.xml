@@ -1,5 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - Look at This</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/look-at-this.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-07-16T00:00:00-04:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>Look at This: Where We See Shapes, AI Sees Textures</title><link href="https://computable.ai/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html" rel="alternate"></link><published>2019-07-16T00:00:00-04:00</published><updated>2019-07-16T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-16:/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html</id><summary type="html">&lt;p&gt;CNNs trained in "the usual way" tend to learn something different than you might expect. They learn to recognize textures (local structure) rather than shapes (global structure).&lt;/p&gt;</summary><content type="html">
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Computable AI - Look at This</title><link href="https://computable.ai/" rel="alternate"></link><link href="https://computable.ai/feeds/look-at-this.atom.xml" rel="self"></link><id>https://computable.ai/</id><updated>2019-12-08T00:00:00-05:00</updated><subtitle>A Machine Intelligence Blog</subtitle><entry><title>Look at This: AI Dungeon</title><link href="https://computable.ai/articles/2019/Dec/08/look-at-this-ai-dungeon.html" rel="alternate"></link><published>2019-12-08T00:00:00-05:00</published><updated>2019-12-08T00:00:00-05:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-12-08:/articles/2019/Dec/08/look-at-this-ai-dungeon.html</id><summary type="html">&lt;p&gt;AI Dungeon is an endless text adventure game with impressively open natural language interactions, implemented on a fine-tuned GPT-2.&lt;/p&gt;</summary><content type="html">
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;I've been thinking about GPT-2 off and on lately, wondering what near-term value I might put it to. Then a friend pointed me to &lt;a href="http://www.aidungeon.io/"&gt;AI Dungeon&lt;/a&gt;, an exploration from the BYU Perception, Control, and Cognition Lab, which uses GPT-2 to generate an open-world text adventure game. It's not perfect, but it is pretty impressive and fun.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;Here's my first interaction with it:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Generating story...
+You are Daniel, a wizard living in the kingdom of Larion. You have a staff and
+ a spellbook. You finish your long journey and finally arrive at the ruin you've
+ been looking for. You look around and see that it's not much different than
+ when you left it. A few trees here and there, but nothing has changed since
+ then.
+As you enter the ruins, you hear some noise outside. It sounds like voices
+&amp;gt; hide
+You quickly turn to run away from the sound, but you don't get far before you're
+ surrounded by several men with guns. They point their weapons at you as they
+ demand to know where you came from.
+&amp;gt; say "I am Daniel, wizard of Larion! And who, may I ask, are you?"
+"Who are you?" You say, trying to keep calm.
+"We are the guards assigned to protect this place. We have come here because
+ we heard the voices coming from inside". One of them says.
+&amp;gt; say "Certainly then we are friends, for I have sought these ruins for years, only to learn from them their wisdom."
+The man looks at you with surprise. He is obviously surprised that you would
+ seek out the ruins.
+"Friends? What do you mean friend? These ruins were built by an ancient race
+ long dead. How could you possibly be friends with us?" he asks
+&amp;gt; say "I see no conflict. You guard the ruins, and I seek their wisdom as an end in itself. How else did you become their guardians but by valuing them on their own merits and for no mercenary purpose?"
+He seems to take it all in, and nods his head.
+"Very well, we will allow you to pass. But if you find anything strange or dangerous,
+ please tell me immediately. I want to know what has happened here".
+&amp;gt; Walk in
+You enter the building, which is quite large. The walls are made of stone, and
+ there are many doors, each with a different symbol on them. There are also many
+ statues of wizards standing around, some of them holding books&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Things go down-hill from there, though unfortunately I didn't think to save the rest. They have others' recorded sessions at the main site.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;I do notice that, like other GPT-2 examples, it often confuses pronoun referents, (a common NLP problem in general), plurality, and macro-scale plot points, but I think harping on its imperfections is beside the point. The number of times that it gets the above things &lt;em&gt;right&lt;/em&gt; is shocking, and enough for the game to be playable. The PCCL fine-tuned GPT-2 on a text adventure corpus, and it seems likely that further improvements could be made to the game with more fine-tuning and perhaps some post-processing.&lt;/p&gt;
+&lt;p&gt;Now, I don't particularly care about text adventure games &lt;em&gt;per se&lt;/em&gt;, but what really gets me about AI Dungeon is its demonstration of the enormous potential for improved language models to interact naturally with humans.&lt;/p&gt;
+&lt;p&gt;Chat bots are &lt;em&gt;terrible&lt;/em&gt;. Really terrible. But we can improve that with Transformer-based models, apparently. Likewise, search has been pretty terrible at figuring out what a naive searcher wants, but Transformers are being applied to that problem too in actual, popular search engines. In just the past &lt;em&gt;two months&lt;/em&gt;, &lt;a href="https://www.blog.google/products/search/search-language-understanding-bert/"&gt;both Google&lt;/a&gt; &lt;a href="https://azure.microsoft.com/en-us/blog/bing-delivers-its-largest-improvement-in-search-experience-using-azure-gpus/"&gt;and Bing&lt;/a&gt; have both integrated BERT to improve natural-language-search understanding. The original BERT paper was released in October of 2018, so that's under a year from a breakthrough in attentional models, and production code.&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+&lt;/div&gt;&lt;div class="inner_cell"&gt;
+&lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
+&lt;p&gt;One other thing I like is that the game is &lt;a href="https://colab.research.google.com/github/nickwalton/AIDungeon/blob/master/AIDungeon_2.ipynb"&gt;hosted and run from inside Google Colab&lt;/a&gt;. Text adventures (and other text-based human interaction experiments) don't require a lot of UI, so that strikes me as a great idea that many others should emulate.&lt;/p&gt;
+&lt;p&gt;You can peruse the AI Dungeon &lt;a href="https://github.com/nickwalton/AIDungeon"&gt;source code here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Play a quick game yourself and post your results in the comments!&lt;/p&gt;
+
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+ 
+
+
+&lt;script type="text/javascript"&gt;if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['$','$'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        " linebreaks: { automatic: true, width: '95% container' }, " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+&lt;/script&gt;
+</content></entry><entry><title>Look at This: Where We See Shapes, AI Sees Textures</title><link href="https://computable.ai/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html" rel="alternate"></link><published>2019-07-16T00:00:00-04:00</published><updated>2019-07-16T00:00:00-04:00</updated><author><name>Daniel Cox</name></author><id>tag:computable.ai,2019-07-16:/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html</id><summary type="html">&lt;p&gt;CNNs trained in "the usual way" tend to learn something different than you might expect. They learn to recognize textures (local structure) rather than shapes (global structure).&lt;/p&gt;</summary><content type="html">
 &lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;

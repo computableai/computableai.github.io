@@ -66,13 +66,13 @@ Computable AI        </a>
 
     <article class="">
       <header class="article-header">
-        <h1 class="uk-heading-large uk-article-title" itemprop="name">Inaugural Post</h1>
-        <p class="uk-article-lead" itemprop="description">The purpose statement and introduction to Computable AI.</p>
+        <h1 class="uk-heading-large uk-article-title" itemprop="name">Look at This: AI Dungeon</h1>
+        <p class="uk-article-lead" itemprop="description">AI Dungeon is an endless text adventure game with impressively open natural language interactions, implemented on a fine-tuned GPT-2.</p>
         <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-02-16" itemprop="datePublished">Sat 16 February 2019</time> in <a href="https://computable.ai/category/miscellany.html">Miscellany</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Feb/16/inaugural-post.html#disqus_thread" itemprop="discussionUrl"></a></p>
-<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/Inaugural Post.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
+<span class="uk-author">Daniel Cox</span> •           <time datetime="2019-12-08" itemprop="datePublished">Sun 08 December 2019</time> in <a href="https://computable.ai/category/look-at-this.html">Look at This</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Dec/08/look-at-this-ai-dungeon.html#disqus_thread" itemprop="discussionUrl"></a></p>
+<!-- <a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/computableai/content/AI Dungeon.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open in Colab" title="Open in Google Colaboratory"></a> -->
 
-<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/Inaugural Post.ipynb">
+<a class="collab-link" href="https://colab.research.google.com/github/computableai/computableai.github.io/blob/dev/content/AI Dungeon.ipynb">
   Open in Colab
   
   <svg width="26px" height="26px" viewBox="0 0 26 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -90,11 +90,65 @@ Computable AI        </a>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This post begins the Computable AI blog, a machine intelligence blog from a handful of DRL practitioners, intended to crystalize, internalize, share, and explain.</p>
-<p>I found few beginner resources for DRL when I began, and since I have a passion for teaching, this seemed a likely area in which to make a dent.</p>
-<p>I also serve as the "Director of Applied Sciences" for a startup software company, and the AI team must occasionally indoctrinate new members. This provides us with a convenient target audience, as well as an expanding pool of co-authors.</p>
-<p>Finally, my own education in DRL is incomplete, so this will serve partly as a record of my own journey.</p>
-<p>I hope it helps you.</p>
+<p>I've been thinking about GPT-2 off and on lately, wondering what near-term value I might put it to. Then a friend pointed me to <a href="http://www.aidungeon.io/">AI Dungeon</a>, an exploration from the BYU Perception, Control, and Cognition Lab, which uses GPT-2 to generate an open-world text adventure game. It's not perfect, but it is pretty impressive and fun.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Here's my first interaction with it:</p>
+
+<pre><code>Generating story...
+You are Daniel, a wizard living in the kingdom of Larion. You have a staff and
+ a spellbook. You finish your long journey and finally arrive at the ruin you've
+ been looking for. You look around and see that it's not much different than
+ when you left it. A few trees here and there, but nothing has changed since
+ then.
+As you enter the ruins, you hear some noise outside. It sounds like voices
+&gt; hide
+You quickly turn to run away from the sound, but you don't get far before you're
+ surrounded by several men with guns. They point their weapons at you as they
+ demand to know where you came from.
+&gt; say "I am Daniel, wizard of Larion! And who, may I ask, are you?"
+"Who are you?" You say, trying to keep calm.
+"We are the guards assigned to protect this place. We have come here because
+ we heard the voices coming from inside". One of them says.
+&gt; say "Certainly then we are friends, for I have sought these ruins for years, only to learn from them their wisdom."
+The man looks at you with surprise. He is obviously surprised that you would
+ seek out the ruins.
+"Friends? What do you mean friend? These ruins were built by an ancient race
+ long dead. How could you possibly be friends with us?" he asks
+&gt; say "I see no conflict. You guard the ruins, and I seek their wisdom as an end in itself. How else did you become their guardians but by valuing them on their own merits and for no mercenary purpose?"
+He seems to take it all in, and nods his head.
+"Very well, we will allow you to pass. But if you find anything strange or dangerous,
+ please tell me immediately. I want to know what has happened here".
+&gt; Walk in
+You enter the building, which is quite large. The walls are made of stone, and
+ there are many doors, each with a different symbol on them. There are also many
+ statues of wizards standing around, some of them holding books</code></pre>
+<p>Things go down-hill from there, though unfortunately I didn't think to save the rest. They have others' recorded sessions at the main site.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I do notice that, like other GPT-2 examples, it often confuses pronoun referents, (a common NLP problem in general), plurality, and macro-scale plot points, but I think harping on its imperfections is beside the point. The number of times that it gets the above things <em>right</em> is shocking, and enough for the game to be playable. The PCCL fine-tuned GPT-2 on a text adventure corpus, and it seems likely that further improvements could be made to the game with more fine-tuning and perhaps some post-processing.</p>
+<p>Now, I don't particularly care about text adventure games <em>per se</em>, but what really gets me about AI Dungeon is its demonstration of the enormous potential for improved language models to interact naturally with humans.</p>
+<p>Chat bots are <em>terrible</em>. Really terrible. But we can improve that with Transformer-based models, apparently. Likewise, search has been pretty terrible at figuring out what a naive searcher wants, but Transformers are being applied to that problem too in actual, popular search engines. In just the past <em>two months</em>, <a href="https://www.blog.google/products/search/search-language-understanding-bert/">both Google</a> <a href="https://azure.microsoft.com/en-us/blog/bing-delivers-its-largest-improvement-in-search-experience-using-azure-gpus/">and Bing</a> have both integrated BERT to improve natural-language-search understanding. The original BERT paper was released in October of 2018, so that's under a year from a breakthrough in attentional models, and production code.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>One other thing I like is that the game is <a href="https://colab.research.google.com/github/nickwalton/AIDungeon/blob/master/AIDungeon_2.ipynb">hosted and run from inside Google Colab</a>. Text adventures (and other text-based human interaction experiments) don't require a lot of UI, so that strikes me as a great idea that many others should emulate.</p>
+<p>You can peruse the AI Dungeon <a href="https://github.com/nickwalton/AIDungeon">source code here</a>.</p>
+<p>Play a quick game yourself and post your results in the comments!</p>
 
 </div>
 </div>
@@ -172,7 +226,7 @@ Computable AI        </a>
                     <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/fundamentals.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
                 <li>
-                    <a  href="https://computable.ai/category/look-at-this.html">Look at This</a>
+                    <a class="active" href="https://computable.ai/category/look-at-this.html">Look at This</a>
                     <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/look-at-this.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
                 <li>
@@ -180,7 +234,7 @@ Computable AI        </a>
                     <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/math.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
                 <li>
-                    <a class="active" href="https://computable.ai/category/miscellany.html">Miscellany</a>
+                    <a  href="https://computable.ai/category/miscellany.html">Miscellany</a>
                     <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/miscellany.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
                 </li>
             <hr />
@@ -230,7 +284,7 @@ Computable AI        </a>
             <a href="https://computable.ai/category/fundamentals.html">Fundamentals</a>
             <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/fundamentals.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
-          <li >
+          <li class="uk-active">
             <a href="https://computable.ai/category/look-at-this.html">Look at This</a>
             <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/look-at-this.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
@@ -238,7 +292,7 @@ Computable AI        </a>
             <a href="https://computable.ai/category/math.html">Math</a>
             <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/math.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
-          <li class="uk-active">
+          <li >
             <a href="https://computable.ai/category/miscellany.html">Miscellany</a>
             <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/miscellany.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
           </li>
