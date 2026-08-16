@@ -2,6 +2,8 @@ project:
   type: website
   resources:
     - static
+  post-render:
+    - tools/legacy-feed.py
 
 execute:
   enabled: false

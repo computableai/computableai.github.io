@@ -1,5 +1,6 @@
 ---
 pagetitle: "Computable AI — A Machine Intelligence Blog"
+aliases: ["/categories.html", "/archives.html"]
 listing:
   contents: posts
   sort: "date desc"

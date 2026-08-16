@@ -1,6 +1,7 @@
 ---
 title: "About"
 toc: false
+aliases: ["/pages/about.html"]
 ---
 
 Welcome to Computable AI, a machine intelligence blog intended to crystalize, internalize, share, and explain.
