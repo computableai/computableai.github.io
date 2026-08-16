@@ -32,6 +32,7 @@ website:
 
 format:
   html:
+    respect-user-color-scheme: true
     theme:
       light: [flatly, theme-light.scss]
       dark: [darkly, theme-dark.scss]

@@ -1,6 +1,7 @@
 /*-- scss:defaults --*/
 
-// Computable AI brand palette, adjusted for dark backgrounds
+// Computable AI brand palette on the original green-tinted near-black
+// dark scheme (hsl hue 158 = the brand green family)
 $brand-green: #17b899;
 $brand-dark-green: #0d544e;
 
@@ -12,14 +13,20 @@ $primary: $brand-green;
 $link-color: $brand-green;
 $link-hover-color: lighten(#17b899, 15%);
 
-$navbar-bg: #0f1f1d;
+$body-bg: hsl(158, 10%, 5%);
+$body-color: rgba(255, 255, 255, 0.7);
+$headings-color: rgba(255, 255, 255, 0.9);
+
+$navbar-bg: hsl(158, 10%, 5%);
 $navbar-fg: $brand-green;
+
+$card-bg: hsl(158, 10%, 7%);
 
 /*-- scss:rules --*/
 
 .navbar {
   border-top: 4px solid $brand-green;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.06);
 }
 
 .navbar-title {
@@ -28,8 +35,8 @@ $navbar-fg: $brand-green;
 }
 
 div.quarto-post {
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: hsl(158, 10%, 7%);
+  border: 1px solid hsla(0, 0%, 100%, 0.06);
   border-radius: 4px;
   padding: 1.8rem 2rem;
   margin-bottom: 1.5rem;
@@ -41,6 +48,7 @@ div.quarto-post .body h3.listing-title a {
   text-decoration: underline;
 }
 
+// The original dark theme put transparent images on a light backing
 div.quarto-post .thumbnail img {
   border-radius: 2px;
   background-color: #ddd;
