@@ -1,6 +1,5 @@
 ---
-title: "Computable AI"
-subtitle: "A Machine Intelligence Blog"
+pagetitle: "Computable AI — A Machine Intelligence Blog"
 listing:
   contents: posts
   sort: "date desc"

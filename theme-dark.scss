@@ -1,0 +1,47 @@
+/*-- scss:defaults --*/
+
+// Computable AI brand palette, adjusted for dark backgrounds
+$brand-green: #17b899;
+$brand-dark-green: #0d544e;
+
+$font-family-sans-serif: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-stack-brand: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+$headings-font-family: $font-stack-brand;
+
+$primary: $brand-green;
+$link-color: $brand-green;
+$link-hover-color: lighten(#17b899, 15%);
+
+$navbar-bg: #0f1f1d;
+$navbar-fg: $brand-green;
+
+/*-- scss:rules --*/
+
+.navbar {
+  border-top: 4px solid $brand-green;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar-title {
+  color: $brand-green;
+  font-weight: 600;
+}
+
+div.quarto-post {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.5rem;
+  gap: 1.5em;
+}
+
+div.quarto-post .body h3.listing-title a {
+  color: $brand-green;
+  text-decoration: underline;
+}
+
+div.quarto-post .thumbnail img {
+  border-radius: 2px;
+  background-color: #ddd;
+}

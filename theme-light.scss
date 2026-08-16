@@ -1,0 +1,67 @@
+/*-- scss:defaults --*/
+
+// Computable AI brand palette (from the original mg theme)
+$brand-green: #00967b;
+$brand-dark-green: #0d544e;
+
+$font-family-sans-serif: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$font-stack-brand: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
+$headings-font-family: $font-stack-brand;
+
+$primary: $brand-green;
+$link-color: $brand-green;
+$link-hover-color: $brand-dark-green;
+
+$body-bg: hsl(0, 0%, 97%);
+$body-color: rgba(0, 0, 0, 0.85);
+
+$navbar-bg: #fff;
+$navbar-fg: $brand-green;
+$navbar-hl: $brand-dark-green;
+
+/*-- scss:rules --*/
+
+// The original site's signature 4px brand rule across the very top
+.navbar {
+  border-top: 4px solid $brand-green;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.navbar-title {
+  color: $brand-green;
+  font-weight: 600;
+}
+
+// White article cards, as on the original listing page
+div.quarto-post {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  box-shadow: 0 0.25rem 0.5rem -0.25rem rgba(0, 0, 0, 0.2);
+  padding: 1.8rem 2rem;
+  margin-bottom: 1.5rem;
+  gap: 1.5em;
+}
+
+div.quarto-post .body h3.listing-title a {
+  color: $brand-green;
+  text-decoration: underline;
+
+  &:hover {
+    color: $brand-dark-green;
+  }
+}
+
+div.quarto-post .thumbnail img {
+  border-radius: 2px;
+}
+
+// Content pages sit on a white sheet like the old content column
+#quarto-content main.content,
+main.content {
+  background: transparent;
+}
+
+.quarto-title h1.title {
+  line-height: 1.2;
+}
