@@ -1,0 +1,37 @@
+project:
+  type: website
+  resources:
+    - static
+
+execute:
+  enabled: false
+
+website:
+  title: "Computable AI"
+  description: "A machine intelligence blog"
+  site-url: "https://computable.ai"
+  favicon: static/images/favicon.ico
+  navbar:
+    right:
+      - text: "About"
+        href: about.qmd
+      - icon: github
+        href: https://github.com/computableai
+        aria-label: GitHub
+      - icon: rss
+        href: index.xml
+        aria-label: RSS feed
+  search:
+    location: navbar
+    type: overlay
+  page-footer:
+    center: "© 2019–2026 Daniel Cox"
+
+format:
+  html:
+    theme:
+      light: flatly
+      dark: darkly
+    css: styles.css
+    toc: true
+    html-math-method: mathjax

@@ -1,0 +1,16 @@
+---
+title: "Computable AI"
+subtitle: "A Machine Intelligence Blog"
+listing:
+  contents: posts
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: true
+  feed: true
+  fields: [image, date, title, description, categories, reading-time]
+page-layout: full
+title-block-banner: false
+toc: false
+---

@@ -1,0 +1,12 @@
+---
+title: "About"
+toc: false
+---
+
+Welcome to Computable AI, a machine intelligence blog intended to crystalize, internalize, share, and explain.
+
+I found few beginner resources for deep reinforcement learning when I began, and since I have a passion for teaching, this seemed a likely area in which to make a dent.
+
+My own education in machine intelligence is incomplete, so this also serves partly as a record of my own journey.
+
+I hope it helps you.

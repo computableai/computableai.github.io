@@ -1,43 +1,47 @@
 # Computable AI
 
-This repository holds all of the source documents as well as output for [the Computable AI blog](https://computable.ai).
+Source for [computable.ai](https://computable.ai), built with [Quarto](https://quarto.org).
 
-## Development
+## Structure
 
-Computable AI is powered by [Pelican](http://docs.getpelican.com/en/stable/), a powerful static site generator.
-There are many static site generators, but Pelican was chosen in support of blogging via Jupyter.
+- `posts/<slug>/index.ipynb` — blog posts, authored as Jupyter notebooks with Quarto YAML front matter in a leading raw cell
+- `_icebox/` — unpublished material (drafts and retired posts); the leading underscore keeps Quarto from rendering it
+- `static/images/` — images referenced by posts at `/static/images/...`
+- `_quarto.yml` — site configuration
+- `index.qmd` — the blog listing page
+- `about.qmd` — the About page
 
-Clone this repo with `--recursive` to get the ipynb plugin necessary to convert notebooks into posts. If you already cloned without `--recursive`, do `git submodule update --init --recursive`.
+## Writing a post
 
-We use [Pipenv](https://docs.pipenv.org/en/latest/) for managing Python dependencies.
-TL;DR:
+Create `posts/<slug>/index.ipynb`. The first cell must be a **raw** cell containing YAML front matter:
 
-```
-pip install pipenv
-pipenv install
-```
-
-The `dev` branch (default) contains all of the source files. The `master` branch is published by GitHub Pages, and only contains the output.
-
-Start with `pipenv shell` to enter the virtualenv shell for this repo.
-
-Run `make devserver` to start an auto-refreshing local server hosting the site at [http://localhost:8000](http://localhost:8000), then run `jupyter notebook` and use Jupyter to write site content in `content/`, occasionally checking the Pelican-built version of the article to make sure things look right.
-
-Look at an existing post's source to see how metadata works (each source notebook has some YAML in its first cell).
-
-Here's some example metadata. Only the first four keys are required. The default category is "Miscellany". The default image is the first image found in your post. The default status is published.
-
-```
-- title: Title of this post
-- summary: The summary/subtitle of this post
-- author: Joe Blogger
-- date: 2019-03-03
-- category: Example
-- image: /images/someimage.png
-- status: draft
+```yaml
+---
+title: "Title of this post"
+description: "The summary/subtitle of this post"
+author: "Daniel Cox"
+date: 2026-01-01
+categories: ["Some Category"]
+image: /static/images/someimage.png
+---
 ```
 
-Images can be right-justified, left-justified, or centered by appending, e.g., `#right` to a source url in `img` tag src.
+`image` is optional (it illustrates the post in the listing). Add `draft: true` to keep a post out of the published site while still rendering it locally.
 
+Notebook outputs are rendered as-is; Quarto does not re-execute notebooks at build time (`execute: enabled: false`), so run the notebook yourself before committing if you want fresh outputs.
 
-When I'm done, `make publish` publishes the site (by generating a production build and using ghp-import to extract the `output/` into `master`).
+## Local preview
+
+Install [Quarto](https://quarto.org/docs/get-started/), then:
+
+```
+quarto preview
+```
+
+## Publishing
+
+Push to `dev`. A GitHub Actions workflow (`.github/workflows/publish.yml`) renders the site and deploys it to the `master` branch, which GitHub Pages serves at computable.ai. No manual publish step.
+
+## History
+
+The site was originally built with Pelican and the pelican-ipynb plugin (2019); it was migrated to Quarto in 2026. Old article URLs (`/articles/YYYY/Mon/DD/slug.html`) redirect to the new locations via Quarto aliases.
