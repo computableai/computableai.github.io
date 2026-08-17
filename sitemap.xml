@@ -1,216 +1,79 @@
-<?xml version="1.0" encoding="utf-8"?>
-<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd"
-xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-<url>
-<loc>https://computable.ai/</loc>
-<lastmod>2019-12-08T12:37:54-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/archives.html</loc>
-<lastmod>2019-12-08T12:37:54-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/categories.html</loc>
-<lastmod>2019-12-08T12:37:54-00:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/pages/about.html</loc>
-<lastmod>2019-12-08T12:37:54-00:00</lastmod>
-<changefreq>monthly</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Dec/08/look-at-this-ai-dungeon.html</loc>
-<lastmod>2019-12-08T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Nov/27/deep-rl-fundamentals-1-elements-of-rl.html</loc>
-<lastmod>2019-11-27T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Nov/03/coxs-theorem-establishing-probability-theory.html</loc>
-<lastmod>2019-11-03T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Oct/06/comments-on-eight-abstracts.html</loc>
-<lastmod>2019-10-06T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Sep/22/active-perception-in-adversarial-scenarios.html</loc>
-<lastmod>2019-09-22T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Sep/15/discovery-of-useful-questions-as-auxiliary-tasks.html</loc>
-<lastmod>2019-09-15T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Sep/09/deep-reinforcement-learning-without-catastrophic-forgetting.html</loc>
-<lastmod>2019-09-09T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Aug/25/reward-tampering.html</loc>
-<lastmod>2019-08-25T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Aug/18/drl-not-superhuman-on-atari.html</loc>
-<lastmod>2019-08-18T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Aug/14/deep-rl-fundamentals-0-what-is-deep-rl-and-why-its-worth-learning.html</loc>
-<lastmod>2019-08-14T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Aug/12/equivalence-between-policy-gradients-and-soft-q-learning.html</loc>
-<lastmod>2019-08-12T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Aug/11/three-method-comparison-for-traffic-signal-control.html</loc>
-<lastmod>2019-08-11T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Aug/04/learning-compound-and-composable-policies.html</loc>
-<lastmod>2019-08-04T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Jul/28/efficient-exploration-with-self-imitation-learning.html</loc>
-<lastmod>2019-07-28T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Jul/26/distributional-deep-q-learning.html</loc>
-<lastmod>2019-07-26T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Jul/21/keeping-to-the-narrow-path.html</loc>
-<lastmod>2019-07-21T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Jul/16/look-at-this-where-we-see-shapes-ai-sees-textures.html</loc>
-<lastmod>2019-07-16T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Jul/14/way-off-policy-batch-drl.html</loc>
-<lastmod>2019-07-14T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Jul/07/a-new-series-arxiv-sampler.html</loc>
-<lastmod>2019-07-07T00:00:00-04:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Mar/10/boltzmann-machines-differentiation-work.html</loc>
-<lastmod>2019-03-10T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/articles/2019/Feb/16/inaugural-post.html</loc>
-<lastmod>2019-02-16T00:00:00-05:00</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/category/arxiv-highlights.html</loc>
-<lastmod>2019-11-03T00:00:00-04:56</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/category/fundamentals.html</loc>
-<lastmod>2019-11-27T00:00:00-04:56</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/category/look-at-this.html</loc>
-<lastmod>2019-12-08T00:00:00-04:56</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/category/math.html</loc>
-<lastmod>2019-03-10T00:00:00-04:56</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
-<loc>https://computable.ai/category/miscellany.html</loc>
-<lastmod>2019-08-12T00:00:00-04:56</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://computable.ai/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.479Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/about.html</loc>
+    <lastmod>2026-08-17T02:23:38.479Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/keeping-to-the-narrow-path/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/look-at-this-ai-dungeon/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/boltzmann-machines-differentiation-work/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/way-off-policy-batch-drl/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.481Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/three-method-comparison-for-traffic-signal-control/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.481Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/look-at-this-where-we-see-shapes-ai-sees-textures/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/learning-compound-and-composable-policies/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/inaugural-post/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/drl-not-superhuman-on-atari/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/a-new-series-arxiv-sampler/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/comments-on-eight-abstracts/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/deep-reinforcement-learning-without-catastrophic-forgetting/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/coxs-theorem-establishing-probability-theory/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/efficient-exploration-with-self-imitation-learning/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/active-perception-in-adversarial-scenarios/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/discovery-of-useful-questions-as-auxiliary-tasks/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.480Z</lastmod>
+  </url>
+  <url>
+    <loc>https://computable.ai/posts/reward-tampering/index.html</loc>
+    <lastmod>2026-08-17T02:23:38.481Z</lastmod>
+  </url>
 </urlset>

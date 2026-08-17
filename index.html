@@ -1,285 +1,1286 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html lang="en" class="no-js lt-ie9 lt-ie8 lt-ie7" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if IE 7]>         <html lang="en" class="no-js lt-ie9 lt-ie8" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if IE 8]>         <html lang="en" class="no-js lt-ie9" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <![endif]-->
-<!--[if gt IE 8]><!--> <html lang="en" class="no-js" prefix="og: http://ogp.me/ns#" itemscope itemtype="http://schema.org/Blog"> <!--<![endif]-->
-    <head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Computable AI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Computable AI is a machine intelligence blog from a handful of DRL practitioners, intended to crystalize, internalize, share, and explain.">
-  <link rel="shortcut icon" href="https://computable.ai/favicon.ico" type="image/x-icon">
-  <meta name="author" content="the Computable AI authors">
-  <meta name="copyright" content="the Computable AI authors">
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:site" content="@computableai" />
-  <meta property="og:site_name" content="Computable AI" />
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.34">
 
-  <meta property="og:title" content="Computable AI" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://computable.ai" />
-  <meta name="twitter:url" content="https://computable.ai" />
-  <meta itemprop="name" content="Computable AI" />
-  <meta itemprop="url" content="https://computable.ai"/>
-  <meta property="og:description" content="Computable AI is a machine intelligence blog from a handful of DRL practitioners, intended to crystalize, internalize, share, and explain." />
-  <meta name="twitter:description" content="Computable AI is a machine intelligence blog from a handful of DRL practitioners, intended to crystalize, internalize, share, and explain." />
-  <meta itemprop="description" content="Computable AI is a machine intelligence blog from a handful of DRL practitioners, intended to crystalize, internalize, share, and explain." />
-  <link href="https://computable.ai/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Computable AI ATOM Feed"/>
-  <link href='//fonts.googleapis.com/css?family=Open+Sans:800italic' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/css/uikit.min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/css/components/search.min.css">
-  <link rel="stylesheet" href="https://computable.ai/theme/css/tipuesearch.css">
-  <link rel="stylesheet" href="https://computable.ai/theme/css/solarized.css">
-  <link rel="stylesheet" href="https://computable.ai/theme/css/main.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
-    </head>
-    <body>
-<!--[if lt IE 7]>
-    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]--><header class="site-header">
 
-    <div class="uk-container uk-container-center">
+<title>Computable AI — A Machine Intelligence Blog – Computable AI</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
 
-        <a class="mg-brand uk-navbar-brand uk-hidden-small" href="https://computable.ai">
-          <img src="https://computable.ai/theme/images/logo-disc.png" height=50 width=50 />
-Computable AI        </a>
 
-        <p class="mg-tagline uk-hidden-small">A Machine Intelligence Blog</p>
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./static/images/favicon.ico" rel="icon">
+<script src="site_libs/quarto-listing/list.min.js"></script>
+<script src="site_libs/quarto-listing/quarto-listing.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-befe23ebd2f54d8af2c8a89d1a1611f1.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-c8ad9e5dbd60b7b70b38521ab19b7da4.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-502ef6b436561d90ba325ec2ef96a3df.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-6c01ea80805f5dd0388e36738e60437e.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-502ef6b436561d90ba325ec2ef96a3df.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script>
 
-        <a class="offcanvas-nav-toggle uk-visible-small" href="#mg-offcanvas" data-uk-offcanvas></a>
+  window.document.addEventListener("DOMContentLoaded", function (_event) {
+    const listingTargetEl = window.document.querySelector('#listing-listing .list');
+    if (!listingTargetEl) {
+      // No listing discovered, do not attach.
+      return; 
+    }
 
-        <a class="mg-brand uk-navbar-brand uk-navbar-center uk-visible-small" href="https://computable.ai">
-          <img src="https://computable.ai/theme/images/logo-disc.png" height=50 width=50 />
-Computable AI        </a>
+    const options = {
+      valueNames: ['listing-image','listing-date','listing-title','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      
+      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
+    };
 
-    </div>
+    window['quarto-listings'] = window['quarto-listings'] || {};
+    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
 
-</header>        <main class="mg-main">
-            <div class="uk-container uk-container-center">
-                <div class="uk-grid" data-uk-grid-margin>
-  <div class="uk-width-medium-7-10 ">
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  });
 
-    <!--
-    <div class="uk-tile uk-tile-primary">
-      <div class="uk-article-title" itemprop="name">Welcome</div>
-        <section itemprop="articleBody">
-          <br />
-          Computable AI is a personal journal on machine intelligence intended to crystalize, internalize, share, and explain what I have learned about machine learning, specifically artificial neural networks, and especially through deep reinforcement learning.
-        </section>
-      <hr class="uk-article-divider">
-    </div>
-    -->
+  window.addEventListener('hashchange',() => {
+    if (window['quarto-listing-loaded']) {
+      window['quarto-listing-loaded']();
+    }
+  })
+  </script>
 
-<article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="https://pcc4318.files.wordpress.com/2018/02/asset-1.png" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Dec/08/look-at-this-ai-dungeon.html" class="article-title" itemprop="name">Look at This: AI Dungeon</a>
-  <p class="uk-article-lead article-lead" itemprop="description">AI Dungeon is an endless text adventure game with impressively open natural language interactions, implemented on a fine-tuned GPT-2.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-12-08" itemprop="datePublished">Sun 08 December 2019</time> in <a href="https://computable.ai/category/look-at-this.html">Look at This</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Dec/08/look-at-this-ai-dungeon.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="https://spinningup.openai.com/en/latest/_images/rl_diagram_transparent_bg.png" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Nov/27/deep-rl-fundamentals-1-elements-of-rl.html" class="article-title" itemprop="name">Deep RL Fundamentals #1: Elements of RL</a>
-  <p class="uk-article-lead article-lead" itemprop="description">A breakdown of the various parts of the reinforcement learning problem and algorithms that solve them</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Andrew Farabow</span> •     <time datetime="2019-11-27" itemprop="datePublished">Wed 27 November 2019</time> in <a href="https://computable.ai/category/fundamentals.html">Fundamentals</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Nov/27/deep-rl-fundamentals-1-elements-of-rl.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Nov/03/coxs-theorem-establishing-probability-theory.html" class="article-title" itemprop="name">Cox's Theorem: Establishing Probability Theory</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Cox's theorem is the strongest argument for the use of standard probability theory. Here we examine the axioms to establish a firm foundation for the interpretation of probability theory as the unique extension of true-false logic to degrees of belief.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-11-03" itemprop="datePublished">Sun 03 November 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Nov/03/coxs-theorem-establishing-probability-theory.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Oct/06/comments-on-eight-abstracts.html" class="article-title" itemprop="name">Comments on Eight Abstracts</a>
-  <p class="uk-article-lead article-lead" itemprop="description">An unfocused sweep of eight abstracts from a very busy week in AI research: Emergent tool use, why hierarchical learning can work so well, brain-inspired hardware for artificial neural networks, pretraining and transfer learning for RL, chromatic network compression, semi-supervised reward shaping, WGAN model imitation for model-based RL, and navigation in turbulent flows!</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-10-06" itemprop="datePublished">Sun 06 October 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Oct/06/comments-on-eight-abstracts.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Sep/22/active-perception-in-adversarial-scenarios.html" class="article-title" itemprop="name">Active Perception in Adversarial Scenarios</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Accumulating evidence about peers to discriminate potential threats.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-09-22" itemprop="datePublished">Sun 22 September 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Sep/22/active-perception-in-adversarial-scenarios.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Sep/15/discovery-of-useful-questions-as-auxiliary-tasks.html" class="article-title" itemprop="name">Discovery of Useful Questions as Auxiliary Tasks</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Learning more like a human, and more like a scientist, by actively seeking useful auxiliary questions during learning.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-09-15" itemprop="datePublished">Sun 15 September 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Sep/15/discovery-of-useful-questions-as-auxiliary-tasks.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Sep/09/deep-reinforcement-learning-without-catastrophic-forgetting.html" class="article-title" itemprop="name">Deep Reinforcement Learning without Catastrophic Forgetting</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Long-term learning of multiple tasks without forgetting old skills, using a new technique called Pseudo-Rehearsal.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-09-09" itemprop="datePublished">Mon 09 September 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Sep/09/deep-reinforcement-learning-without-catastrophic-forgetting.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Aug/25/reward-tampering.html" class="article-title" itemprop="name">Reward tampering</a>
-  <p class="uk-article-lead article-lead" itemprop="description">Improving safety and control by preventing all manner of reward tampering by the agent itself.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-08-25" itemprop="datePublished">Sun 25 August 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Aug/25/reward-tampering.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-    <img src="/static/images/arXiv.gif" style="float:right; height:100px;">
-  <a href="https://computable.ai/articles/2019/Aug/18/drl-not-superhuman-on-atari.html" class="article-title" itemprop="name">DRL Not Superhuman on Atari</a>
-  <p class="uk-article-lead article-lead" itemprop="description">DRL may not be superhuman on Atari after all, and how to avoid making mistakes like that in the future.</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Daniel Cox</span> •     <time datetime="2019-08-18" itemprop="datePublished">Sun 18 August 2019</time> in <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Aug/18/drl-not-superhuman-on-atari.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article><article class="uk-article article-listing" itemtype="http://schema.org/BlogPosting" itemscope="itemscope" itemprop="blogPost">
-  <a href="https://computable.ai/articles/2019/Aug/14/deep-rl-fundamentals-0-what-is-deep-rl-and-why-its-worth-learning.html" class="article-title" itemprop="name">Deep RL Fundamentals #0: What is Deep RL and Why It's Worth Learning</a>
-  <p class="uk-article-lead article-lead" itemprop="description">An introduction and statement of purpose for a series on the basics of deep reinforcement learning</p>
-  <p class="uk-article-meta">
-<span class="uk-author">Andrew Farabow</span> •     <time datetime="2019-08-14" itemprop="datePublished">Wed 14 August 2019</time> in <a href="https://computable.ai/category/fundamentals.html">Fundamentals</a> • <br class="uk-visible-small"> <a href="https://computable.ai/articles/2019/Aug/14/deep-rl-fundamentals-0-what-is-deep-rl-and-why-its-worth-learning.html#disqus_thread" itemprop="discussionUrl"></a>  </p>
-</article>
-  <ul class="uk-pagination">
-    <li class="uk-active"><span>1</span></li>
-<li><a href="https://computable.ai/index2.html"><i class="uk-icon-angle-double-right"></i></a></li><li><a href="https://computable.ai/index2.html">2</a></li>  </ul>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+<link rel="alternate" type="application/rss+xml" title="Computable AI" href="index.xml" data-external="1"></head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const queryPrefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    const darkModeDefault = queryPrefersDark.matches;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    queryPrefersDark.addEventListener("change", e => {
+      if(window.localStorage.getItem("quarto-color-scheme") !== null)
+        return;
+      const alternate = e.matches
+      toggleColorMode(alternate);
+      localAlternateSentinel = e.matches ? 'alternate' : 'default'; // this is used alongside local storage!
+      toggleGiscusIfUsed(alternate, darkModeDefault);
+    });
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <img src="./static/images/brand/logo-disc.png" alt="Computable AI logo" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Computable AI</span>
+    </a>
   </div>
-<div class="uk-width-medium-3-10 uk-width-large-2-10 uk-hidden-small site-sidebar">
-
-    <!--     <div class="uk-panel">
-        <form class="uk-search" action="/search.html" data-uk-search>
-            <input class="uk-search-field tipue_search" type="search" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
-        </form>
-    </div>
- -->
-
-    <nav class="site-navigation">
-        <ul>
-            <h2>Categories</h2>
-                <li>
-                    <a  href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a>
-                    <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/arxiv-highlights.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
-                </li>
-                <li>
-                    <a  href="https://computable.ai/category/fundamentals.html">Fundamentals</a>
-                    <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/fundamentals.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
-                </li>
-                <li>
-                    <a  href="https://computable.ai/category/look-at-this.html">Look at This</a>
-                    <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/look-at-this.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
-                </li>
-                <li>
-                    <a  href="https://computable.ai/category/math.html">Math</a>
-                    <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/math.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
-                </li>
-                <li>
-                    <a  href="https://computable.ai/category/miscellany.html">Miscellany</a>
-                    <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/miscellany.atom.xml" class="feed-link"><i class="uk-icon-rss uk-icon-tiny"></i></a>
-                </li>
-            <hr />
-                <!-- <h2>Pages</h2> -->
-                <li>
-                    <a  href="https://computable.ai/pages/about.html">About</a>
-                </li>
-
-            <!-- <li><a  href="https://computable.ai/archives.html">Archives</a></li> -->
-        </ul>
-        <hr />
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/computableai"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img" aria-label="RSS feed">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
     </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(17)</span></div><div class="category" data-category="YXJYaXYlMjBoaWdobGlnaHRz">arXiv highlights <span class="quarto-category-count">(13)</span></div><div class="category" data-category="TG9vayUyMGF0JTIwVGhpcw==">Look at This <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TWF0aA==">Math <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWlzY2VsbGFueQ==">Miscellany <span class="quarto-category-count">(1)</span></div></div></div>
+<!-- main -->
+<main class="content column-page-left" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
-    <aside class="extras">
-        <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/all.atom.xml"><i class="uk-icon-rss uk-icon-medium"></i></a>
-        <a class="mg-icon-link" href="https://twitter.com/computableai">
-            <i class="uk-icon-twitter uk-icon-medium"></i>
-        </a>
-        <a class="mg-icon-link" href="https://github.com/computableai">
-            <i class="uk-icon-github uk-icon-medium"></i>
-        </a>
-    </aside>
 
-</div>                </div>
-            </div>
-        </main>
 
-<footer class="site-footer">
-    <p>Copyright © 2019 the Computable AI authors. All rights reserved.</p>
-    <p>Powered by <a href="http://blog.getpelican.com">Pelican</a>.<br class="uk-visible-small"> Theme based on <a href="https://github.com/lucachr/pelican-mg">mg</a>.</p>
+
+
+
+
+
+
+<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
+<div class="listing-actions-group">
+    <div class="input-group input-group-sm quarto-listing-filter">
+      <span class="input-group-text"><i class="bi bi-search"></i></span>
+      <input type="text" class="search form-control" placeholder="Filter">
+    </div>
+</div>
+<div class="list quarto-listing-default">
+<div class="quarto-post image-right" data-index="0" data-categories="TG9vayUyMGF0JTIwVGhpcw==" data-listing-date-sort="1575763200000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="684">
+<div class="thumbnail"><a href="./posts/look-at-this-ai-dungeon/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/ai-dungeon.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/look-at-this-ai-dungeon/index.html" class="no-external">Look at This: AI Dungeon</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TG9vayUyMGF0JTIwVGhpcw=='); return false;">Look at This</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/look-at-this-ai-dungeon/index.html" class="no-external">
+<p>AI Dungeon is an endless text adventure game with impressively open natural language interactions, implemented on a fine-tuned GPT-2.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/look-at-this-ai-dungeon/index.html" class="no-external">
+<div class="listing-date">
+Dec 8, 2019
+</div>
+<div class="listing-reading-time">4 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="1" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1572739200000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1969">
+<div class="thumbnail"><a href="./posts/coxs-theorem-establishing-probability-theory/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/coxs-theorem-establishing-probability-theory/index.html" class="no-external">Cox’s Theorem: Establishing Probability Theory</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/coxs-theorem-establishing-probability-theory/index.html" class="no-external">
+<p>Cox’s theorem is the strongest argument for the use of standard probability theory. Here we examine the axioms to establish a firm foundation for the interpretation of probability theory as the unique extension of true-false logic to degrees of belief.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/coxs-theorem-establishing-probability-theory/index.html" class="no-external">
+<div class="listing-date">
+Nov 3, 2019
+</div>
+<div class="listing-reading-time">10 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="2" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1570320000000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3528">
+<div class="thumbnail"><a href="./posts/comments-on-eight-abstracts/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/comments-on-eight-abstracts/index.html" class="no-external">Comments on Eight Abstracts</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/comments-on-eight-abstracts/index.html" class="no-external">
+<p>An unfocused sweep of eight abstracts from a very busy week in AI research: Emergent tool use, why hierarchical learning can work so well, brain-inspired hardware for artificial neural networks, pretraining and transfer learning for RL, chromatic network compression, semi-supervised reward shaping, WGAN model imitation for model-based RL, and navigation in turbulent flows!</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/comments-on-eight-abstracts/index.html" class="no-external">
+<div class="listing-date">
+Oct 6, 2019
+</div>
+<div class="listing-reading-time">18 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="3" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1569110400000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="922">
+<div class="thumbnail"><a href="./posts/active-perception-in-adversarial-scenarios/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/active-perception-in-adversarial-scenarios/index.html" class="no-external">Active Perception in Adversarial Scenarios</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/active-perception-in-adversarial-scenarios/index.html" class="no-external">
+<p>Accumulating evidence about peers to discriminate potential threats.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/active-perception-in-adversarial-scenarios/index.html" class="no-external">
+<div class="listing-date">
+Sep 22, 2019
+</div>
+<div class="listing-reading-time">5 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="4" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1568505600000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1265">
+<div class="thumbnail"><a href="./posts/discovery-of-useful-questions-as-auxiliary-tasks/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/discovery-of-useful-questions-as-auxiliary-tasks/index.html" class="no-external">Discovery of Useful Questions as Auxiliary Tasks</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/discovery-of-useful-questions-as-auxiliary-tasks/index.html" class="no-external">
+<p>Learning more like a human, and more like a scientist, by actively seeking useful auxiliary questions during learning.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/discovery-of-useful-questions-as-auxiliary-tasks/index.html" class="no-external">
+<div class="listing-date">
+Sep 15, 2019
+</div>
+<div class="listing-reading-time">7 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="5" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1567987200000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="657">
+<div class="thumbnail"><a href="./posts/deep-reinforcement-learning-without-catastrophic-forgetting/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/deep-reinforcement-learning-without-catastrophic-forgetting/index.html" class="no-external">Deep Reinforcement Learning without Catastrophic Forgetting</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/deep-reinforcement-learning-without-catastrophic-forgetting/index.html" class="no-external">
+<p>Long-term learning of multiple tasks without forgetting old skills, using a new technique called Pseudo-Rehearsal.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/deep-reinforcement-learning-without-catastrophic-forgetting/index.html" class="no-external">
+<div class="listing-date">
+Sep 9, 2019
+</div>
+<div class="listing-reading-time">4 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="6" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1566691200000" data-listing-file-modified-sort="1786933418481" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="890">
+<div class="thumbnail"><a href="./posts/reward-tampering/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/reward-tampering/index.html" class="no-external">Reward tampering</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/reward-tampering/index.html" class="no-external">
+<p>Improving safety and control by preventing all manner of reward tampering by the agent itself.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/reward-tampering/index.html" class="no-external">
+<div class="listing-date">
+Aug 25, 2019
+</div>
+<div class="listing-reading-time">5 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="7" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1566086400000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="485">
+<div class="thumbnail"><a href="./posts/drl-not-superhuman-on-atari/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/drl-not-superhuman-on-atari/index.html" class="no-external">DRL Not Superhuman on Atari</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/drl-not-superhuman-on-atari/index.html" class="no-external">
+<p>DRL may not be superhuman on Atari after all, and how to avoid making mistakes like that in the future.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/drl-not-superhuman-on-atari/index.html" class="no-external">
+<div class="listing-date">
+Aug 18, 2019
+</div>
+<div class="listing-reading-time">3 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="8" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1565481600000" data-listing-file-modified-sort="1786933418481" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="7" data-listing-word-count-sort="1358">
+<div class="thumbnail"><a href="./posts/three-method-comparison-for-traffic-signal-control/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/three-method-comparison-for-traffic-signal-control/index.html" class="no-external">Three Method Comparison for Traffic Signal Control</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/three-method-comparison-for-traffic-signal-control/index.html" class="no-external">
+<p>Comparing supervised learning, random search, and deep reinforcement learning on traffic signal control.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/three-method-comparison-for-traffic-signal-control/index.html" class="no-external">
+<div class="listing-date">
+Aug 11, 2019
+</div>
+<div class="listing-reading-time">7 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="9" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1564876800000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="861">
+<div class="thumbnail"><a href="./posts/learning-compound-and-composable-policies/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/learning-compound-and-composable-policies/index.html" class="no-external">Learning Compound and Composable Policies</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/learning-compound-and-composable-policies/index.html" class="no-external">
+<p>Straightforward hierarchical RL for concurrent discovery of sub-policies and their controller.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/learning-compound-and-composable-policies/index.html" class="no-external">
+<div class="listing-date">
+Aug 4, 2019
+</div>
+<div class="listing-reading-time">5 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="10" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1564272000000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="776">
+<div class="thumbnail"><a href="./posts/efficient-exploration-with-self-imitation-learning/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/efficient-exploration-with-self-imitation-learning/index.html" class="no-external">Efficient exploration with self-imitation learning</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/efficient-exploration-with-self-imitation-learning/index.html" class="no-external">
+<p>I wonder if that happens every time…</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/efficient-exploration-with-self-imitation-learning/index.html" class="no-external">
+<div class="listing-date">
+Jul 28, 2019
+</div>
+<div class="listing-reading-time">4 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="11" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1563667200000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="4" data-listing-word-count-sort="756">
+<div class="thumbnail"><a href="./posts/keeping-to-the-narrow-path/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/keeping-to-the-narrow-path/index.html" class="no-external">Keeping to the Narrow Path</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/keeping-to-the-narrow-path/index.html" class="no-external">
+<p>Better imitation learning with self-correcting policies by negative sampling.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/keeping-to-the-narrow-path/index.html" class="no-external">
+<div class="listing-date">
+Jul 21, 2019
+</div>
+<div class="listing-reading-time">4 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="12" data-categories="TG9vayUyMGF0JTIwVGhpcw==" data-listing-date-sort="1563235200000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="372">
+<div class="thumbnail"><a href="./posts/look-at-this-where-we-see-shapes-ai-sees-textures/index.html" class="no-external">
+
+<img loading="lazy" src="https://d2r55xnwy6nx47.cloudfront.net/uploads/2019/07/AI_Textures_2880x1220_LHPA.jpg" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/look-at-this-where-we-see-shapes-ai-sees-textures/index.html" class="no-external">Look at This: Where We See Shapes, AI Sees Textures</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TG9vayUyMGF0JTIwVGhpcw=='); return false;">Look at This</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/look-at-this-where-we-see-shapes-ai-sees-textures/index.html" class="no-external">
+<p>CNNs trained in “the usual way” tend to learn something different than you might expect. They learn to recognize textures (local structure) rather than shapes (global structure).</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/look-at-this-where-we-see-shapes-ai-sees-textures/index.html" class="no-external">
+<div class="listing-date">
+Jul 16, 2019
+</div>
+<div class="listing-reading-time">2 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="13" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1563062400000" data-listing-file-modified-sort="1786933418481" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1020">
+<div class="thumbnail"><a href="./posts/way-off-policy-batch-drl/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/way-off-policy-batch-drl/index.html" class="no-external">Way Off-Policy Batch DRL</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/way-off-policy-batch-drl/index.html" class="no-external">
+<p>Pre-training using a generative model of pre-recorded trajectories and bias correction.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/way-off-policy-batch-drl/index.html" class="no-external">
+<div class="listing-date">
+Jul 14, 2019
+</div>
+<div class="listing-reading-time">6 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="14" data-categories="YXJYaXYlMjBoaWdobGlnaHRz" data-listing-date-sort="1562457600000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="8" data-listing-word-count-sort="1444">
+<div class="thumbnail"><a href="./posts/a-new-series-arxiv-sampler/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/arXiv.gif" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/a-new-series-arxiv-sampler/index.html" class="no-external">A New Series arXiv Sampler</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXYlMjBoaWdobGlnaHRz'); return false;">arXiv highlights</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/a-new-series-arxiv-sampler/index.html" class="no-external">
+<p>Beginning a new series highlighting a few interesting RL papers on the arXiv each week. This week: Simple curriculum learning, learning to interact with humans, and warm starting RL with propositional logic.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/a-new-series-arxiv-sampler/index.html" class="no-external">
+<div class="listing-date">
+Jul 7, 2019
+</div>
+<div class="listing-reading-time">8 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="15" data-categories="TWF0aA==" data-listing-date-sort="1552176000000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="282">
+<div class="thumbnail"><a href="./posts/boltzmann-machines-differentiation-work/index.html" class="no-external">
+
+<img loading="lazy" src="./static/images/boltzmannexample.png" class="thumbnail-image">
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/boltzmann-machines-differentiation-work/index.html" class="no-external">Boltzmann Machines: Differentiation Work</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TWF0aA=='); return false;">Math</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/boltzmann-machines-differentiation-work/index.html" class="no-external">
+<p>My differentiation work while reading Ilya Sutskever on the biological plausibility of Boltzmann machines.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/boltzmann-machines-differentiation-work/index.html" class="no-external">
+<div class="listing-date">
+Mar 10, 2019
+</div>
+<div class="listing-reading-time">2 min</div>
+</a>
+</div>
+</div>
+<div class="quarto-post image-right" data-index="16" data-categories="TWlzY2VsbGFueQ==" data-listing-date-sort="1550275200000" data-listing-file-modified-sort="1786933418480" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="113">
+<div class="thumbnail"><a href="./posts/inaugural-post/index.html" class="no-external">
+
+<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+
+</a></div>
+<div class="body">
+<h3 class="no-anchor listing-title">
+<a href="./posts/inaugural-post/index.html" class="no-external">Inaugural Post</a>
+</h3>
+<div class="listing-categories">
+
+<div class="listing-category" onclick="window.quartoListingCategory('TWlzY2VsbGFueQ=='); return false;">Miscellany</div>
+
+</div>
+<div class="delink listing-description"><a href="./posts/inaugural-post/index.html" class="no-external">
+<p>The purpose statement and introduction to Computable AI.</p>
+</a></div>
+</div>
+<div class="metadata">
+<a href="./posts/inaugural-post/index.html" class="no-external">
+<div class="listing-date">
+Feb 16, 2019
+</div>
+<div class="listing-reading-time">1 min</div>
+</a>
+</div>
+</div>
+</div>
+<div class="listing-no-matching d-none">No matching items</div>
+</div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/computable\.ai");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2019–2026 Daniel Cox</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
 </footer>
 
-<div id="mg-offcanvas" class="uk-offcanvas">
-  <div class="uk-offcanvas-bar">
 
-      <form class="uk-search" action="search.html" data-uk-search>
-          <input class="uk-search-field" type="search" name="q" id="tipue_search_input" autocomplete="off" placeholder="Search...">
-      </form>
 
-      <ul class="offcanvas-nav" data-uk-nav>
-          <h2 class="">Categories</h2>
-          <li >
-            <a href="https://computable.ai/category/arxiv-highlights.html">arXiv highlights</a>
-            <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/arxiv-highlights.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
-          </li>
-          <li >
-            <a href="https://computable.ai/category/fundamentals.html">Fundamentals</a>
-            <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/fundamentals.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
-          </li>
-          <li >
-            <a href="https://computable.ai/category/look-at-this.html">Look at This</a>
-            <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/look-at-this.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
-          </li>
-          <li >
-            <a href="https://computable.ai/category/math.html">Math</a>
-            <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/math.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
-          </li>
-          <li >
-            <a href="https://computable.ai/category/miscellany.html">Miscellany</a>
-            <a rel="alternate" type="application/atom+xml" href="https://computable.ai/feeds/miscellany.atom.xml" class="mg-feed" style="float:right"><i class="uk-icon-rss uk-icon-tiny"></i></a>
-          </li>
-          <hr />
-          <li >
-              <a href="https://computable.ai/pages/about.html">About</a>
-          </li>
 
-          <!-- <li class="uk-nav-header">Other</li>
-          <li><a type="application/atom+xml" href="https://computable.ai/feeds/all.atom.xml">All Feed</a></li>
-          <li>
-            <a href="https://twitter.com/computableai">Twitter</a>
-          </li>
-          <li>
-            <a href="https://github.com/computableai">Github</a>
-          </li>
- -->
-
-          <li class="uk-nav-divider"></li>
-          <li><a href="https://computable.ai/">Archives</a></li>
-
-      </ul>
-  </div>
-</div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/js/uikit.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/uikit/2.23.0/js/components/search.min.js"></script>
-<script src="https://computable.ai/theme/js/tipuesearch_set.js"></script>
-<script src="https://computable.ai/theme/js/tipuesearch.js"></script>
-<script src="https://computable.ai/theme/js/jquery.sticky-kit.js"></script>
-<script src="https://computable.ai/theme/js/plugins.js"></script>
-<script src="https://computable.ai/theme/js/main-search.js"></script>
-<script type="text/javascript">
-/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-var disqus_shortname = 'computableai'; // required: replace example with your forum shortname
-
-/* * * DON'T EDIT BELOW THIS LINE * * */
-(function () {
- var s = document.createElement('script'); s.async = true;
- s.type = 'text/javascript';
- s.src = '//' + disqus_shortname + '.disqus.com/count.js';
- (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
- }());
-</script>
-
-<script>
-(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-                                                        function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
- e=o.createElement(i);r=o.getElementsByTagName(i)[0];
- e.src='//www.google-analytics.com/analytics.js';
- r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-ga('create','UA-134681874-1');ga('send','pageview');
-</script>
-
-    </body>
-</html>
+</body></html>

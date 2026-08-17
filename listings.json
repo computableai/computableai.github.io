@@ -1,0 +1,24 @@
+[
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/look-at-this-ai-dungeon/index.html",
+      "/posts/coxs-theorem-establishing-probability-theory/index.html",
+      "/posts/comments-on-eight-abstracts/index.html",
+      "/posts/active-perception-in-adversarial-scenarios/index.html",
+      "/posts/discovery-of-useful-questions-as-auxiliary-tasks/index.html",
+      "/posts/deep-reinforcement-learning-without-catastrophic-forgetting/index.html",
+      "/posts/reward-tampering/index.html",
+      "/posts/drl-not-superhuman-on-atari/index.html",
+      "/posts/three-method-comparison-for-traffic-signal-control/index.html",
+      "/posts/learning-compound-and-composable-policies/index.html",
+      "/posts/efficient-exploration-with-self-imitation-learning/index.html",
+      "/posts/keeping-to-the-narrow-path/index.html",
+      "/posts/look-at-this-where-we-see-shapes-ai-sees-textures/index.html",
+      "/posts/way-off-policy-batch-drl/index.html",
+      "/posts/a-new-series-arxiv-sampler/index.html",
+      "/posts/boltzmann-machines-differentiation-work/index.html",
+      "/posts/inaugural-post/index.html"
+    ]
+  }
+]
