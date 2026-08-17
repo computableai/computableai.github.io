@@ -1,5 +1,40 @@
-/* Legacy Pelican image-alignment convention: posts append #right/#left/#center
-   to image srcs; browsers ignore the fragment when loading the file. */
+/* ---- Self-hosted fonts (no third-party requests) ---- */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/static/fonts/fraunces-var.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/static/fonts/fraunces-var-italic.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/static/fonts/inter-var.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/static/fonts/inter-var-italic.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ---- Legacy Pelican image-alignment convention: posts append
+   #right/#left/#center to image srcs; browsers ignore the fragment. ---- */
+
 img[src$="#right"] {
   float: right;
   margin: 0 0 1em 1.5em;
@@ -20,4 +55,43 @@ img[src$="#center"] {
 article img {
   max-width: 100%;
   height: auto;
+}
+
+/* ---- Tagline strip above the listing ---- */
+
+.site-tagline {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  opacity: 0.75;
+  margin: 0.25rem 0 1.75rem;
+}
+
+/* ---- Listing card geometry (colors live in the theme SCSS) ---- */
+
+div.quarto-post {
+  transition: border-color 160ms ease, box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+div.quarto-post .thumbnail img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+div.quarto-post .body h3.listing-title {
+  font-weight: 560;
+  line-height: 1.25;
+  letter-spacing: 0.005em;
+}
+
+div.quarto-post .listing-categories .listing-category {
+  font-family: "Inter", system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  border-radius: 100px;
+  padding: 0.22em 0.75em;
 }

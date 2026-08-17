@@ -5,22 +5,22 @@
 $brand-green: #17b899;
 $brand-dark-green: #0d544e;
 
-$font-family-sans-serif: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-stack-brand: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
-$headings-font-family: $font-stack-brand;
+$font-family-sans-serif: "Inter", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$headings-font-family: "Fraunces", Optima, Georgia, serif;
+$headings-font-weight: 550;
 
 $primary: $brand-green;
 $link-color: $brand-green;
 $link-hover-color: lighten(#17b899, 15%);
 
 $body-bg: hsl(158, 10%, 5%);
-$body-color: rgba(255, 255, 255, 0.7);
-$headings-color: rgba(255, 255, 255, 0.9);
+$body-color: rgba(255, 255, 255, 0.72);
+$headings-color: rgba(255, 255, 255, 0.92);
 
 $navbar-bg: hsl(158, 10%, 5%);
 $navbar-fg: $brand-green;
 
-$card-bg: hsl(158, 10%, 7%);
+$card-bg: hsl(158, 10%, 8%);
 
 /*-- scss:rules --*/
 
@@ -30,26 +30,61 @@ $card-bg: hsl(158, 10%, 7%);
 }
 
 .navbar-title {
+  font-family: $headings-font-family;
   color: $brand-green;
   font-weight: 600;
 }
 
 div.quarto-post {
-  background: hsl(158, 10%, 7%);
-  border: 1px solid hsla(0, 0%, 100%, 0.06);
-  border-radius: 4px;
+  background: hsl(158, 10%, 8%);
+  border: 1px solid hsla(0, 0%, 100%, 0.09);
+  border-radius: 6px;
   padding: 1.8rem 2rem;
   margin-bottom: 1.5rem;
   gap: 1.5em;
+
+  &:hover {
+    border-color: rgba(23, 184, 153, 0.5);
+    box-shadow: 0 0.5rem 1.25rem -0.4rem rgba(0, 0, 0, 0.6);
+    transform: translateY(-2px);
+  }
 }
 
 div.quarto-post .body h3.listing-title a {
   color: $brand-green;
-  text-decoration: underline;
+  text-decoration: none;
+
+  &:hover {
+    color: lighten(#17b899, 15%);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+}
+
+div.quarto-post .listing-categories .listing-category {
+  color: #7fd8c6;
+  background: rgba(23, 184, 153, 0.1);
+  border: 1px solid rgba(23, 184, 153, 0.3);
 }
 
 // The original dark theme put transparent images on a light backing
 div.quarto-post .thumbnail img {
-  border-radius: 2px;
   background-color: #ddd;
+}
+
+blockquote {
+  border-left: 3px solid $brand-green;
+  background: rgba(23, 184, 153, 0.06);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 4px 4px 0;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.quarto-title-block {
+  margin-bottom: 2.5rem;
+}
+
+.quarto-title h1.title {
+  line-height: 1.15;
+  font-weight: 560;
 }
