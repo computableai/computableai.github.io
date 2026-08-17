@@ -10,63 +10,7 @@
 <atom:link href="https://computable.ai/index.xml" rel="self" type="application/rss+xml"/>
 <description>A machine intelligence blog</description>
 <generator>quarto-1.7.34</generator>
-<lastBuildDate>Sun, 08 Dec 2019 00:00:00 GMT</lastBuildDate>
-<item>
-  <title>Look at This: AI Dungeon</title>
-  <dc:creator>Daniel Cox</dc:creator>
-  <link>https://computable.ai/posts/look-at-this-ai-dungeon/</link>
-  <description><![CDATA[ 
-
-
-
-
-
-<p>I’ve been thinking about GPT-2 off and on lately, wondering what near-term value I might put it to. Then a friend pointed me to <a href="http://www.aidungeon.io/">AI Dungeon</a>, an exploration from the BYU Perception, Control, and Cognition Lab, which uses GPT-2 to generate an open-world text adventure game. It’s not perfect, but it is pretty impressive and fun.</p>
-<p>Here’s my first interaction with it:</p>
-<pre><code>Generating story...
-You are Daniel, a wizard living in the kingdom of Larion. You have a staff and
- a spellbook. You finish your long journey and finally arrive at the ruin you've
- been looking for. You look around and see that it's not much different than
- when you left it. A few trees here and there, but nothing has changed since
- then.
-As you enter the ruins, you hear some noise outside. It sounds like voices
-&gt; hide
-You quickly turn to run away from the sound, but you don't get far before you're
- surrounded by several men with guns. They point their weapons at you as they
- demand to know where you came from.
-&gt; say "I am Daniel, wizard of Larion! And who, may I ask, are you?"
-"Who are you?" You say, trying to keep calm.
-"We are the guards assigned to protect this place. We have come here because
- we heard the voices coming from inside". One of them says.
-&gt; say "Certainly then we are friends, for I have sought these ruins for years, only to learn from them their wisdom."
-The man looks at you with surprise. He is obviously surprised that you would
- seek out the ruins.
-"Friends? What do you mean friend? These ruins were built by an ancient race
- long dead. How could you possibly be friends with us?" he asks
-&gt; say "I see no conflict. You guard the ruins, and I seek their wisdom as an end in itself. How else did you become their guardians but by valuing them on their own merits and for no mercenary purpose?"
-He seems to take it all in, and nods his head.
-"Very well, we will allow you to pass. But if you find anything strange or dangerous,
- please tell me immediately. I want to know what has happened here".
-&gt; Walk in
-You enter the building, which is quite large. The walls are made of stone, and
- there are many doors, each with a different symbol on them. There are also many
- statues of wizards standing around, some of them holding books</code></pre>
-<p>Things go down-hill from there, though unfortunately I didn’t think to save the rest. They have others’ recorded sessions at the main site.</p>
-<p>I do notice that, like other GPT-2 examples, it often confuses pronoun referents, (a common NLP problem in general), plurality, and macro-scale plot points, but I think harping on its imperfections is beside the point. The number of times that it gets the above things <em>right</em> is shocking, and enough for the game to be playable. The PCCL fine-tuned GPT-2 on a text adventure corpus, and it seems likely that further improvements could be made to the game with more fine-tuning and perhaps some post-processing.</p>
-<p>Now, I don’t particularly care about text adventure games <em>per se</em>, but what really gets me about AI Dungeon is its demonstration of the enormous potential for improved language models to interact naturally with humans.</p>
-<p>Chat bots are <em>terrible</em>. Really terrible. But we can improve that with Transformer-based models, apparently. Likewise, search has been pretty terrible at figuring out what a naive searcher wants, but Transformers are being applied to that problem too in actual, popular search engines. In just the past <em>two months</em>, <a href="https://www.blog.google/products/search/search-language-understanding-bert/">both Google</a> <a href="https://azure.microsoft.com/en-us/blog/bing-delivers-its-largest-improvement-in-search-experience-using-azure-gpus/">and Bing</a> have both integrated BERT to improve natural-language-search understanding. The original BERT paper was released in October of 2018, so that’s under a year from a breakthrough in attentional models, and production code.</p>
-<p>One other thing I like is that the game is <a href="https://colab.research.google.com/github/nickwalton/AIDungeon/blob/master/AIDungeon_2.ipynb">hosted and run from inside Google Colab</a>. Text adventures (and other text-based human interaction experiments) don’t require a lot of UI, so that strikes me as a great idea that many others should emulate.</p>
-<p>You can peruse the AI Dungeon <a href="https://github.com/nickwalton/AIDungeon">source code here</a>.</p>
-<p>Play a quick game yourself and post your results in the comments!</p>
-
-
-
- ]]></description>
-  <category>Look at This</category>
-  <guid>https://computable.ai/posts/look-at-this-ai-dungeon/</guid>
-  <pubDate>Sun, 08 Dec 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/ai-dungeon.png" medium="image" type="image/png" height="156" width="144"/>
-</item>
+<lastBuildDate>Sun, 03 Nov 2019 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Cox’s Theorem: Establishing Probability Theory</title>
   <dc:creator>Daniel Cox</dc:creator>
@@ -159,7 +103,7 @@ You enter the building, which is quite large. The walls are made of stone, and
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/coxs-theorem-establishing-probability-theory/</guid>
   <pubDate>Sun, 03 Nov 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/coxs-theorem-establishing-probability-theory.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Comments on Eight Abstracts</title>
@@ -323,7 +267,7 @@ You enter the building, which is quite large. The walls are made of stone, and
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/comments-on-eight-abstracts/</guid>
   <pubDate>Sun, 06 Oct 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/comments-on-eight-abstracts.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Active Perception in Adversarial Scenarios</title>
@@ -387,7 +331,7 @@ You enter the building, which is quite large. The walls are made of stone, and
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/active-perception-in-adversarial-scenarios/</guid>
   <pubDate>Sun, 22 Sep 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/active-perception-in-adversarial-scenarios.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Discovery of Useful Questions as Auxiliary Tasks</title>
@@ -462,7 +406,7 @@ You enter the building, which is quite large. The walls are made of stone, and
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/discovery-of-useful-questions-as-auxiliary-tasks/</guid>
   <pubDate>Sun, 15 Sep 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/discovery-of-useful-questions-as-auxiliary-tasks.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Deep Reinforcement Learning without Catastrophic Forgetting</title>
@@ -519,7 +463,7 @@ You enter the building, which is quite large. The walls are made of stone, and
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/deep-reinforcement-learning-without-catastrophic-forgetting/</guid>
   <pubDate>Mon, 09 Sep 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/deep-reinforcement-learning-without-catastrophic-forgetting.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Reward tampering</title>
@@ -593,7 +537,7 @@ You enter the building, which is quite large. The walls are made of stone, and
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/reward-tampering/</guid>
   <pubDate>Sun, 25 Aug 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/reward-tampering.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>DRL Not Superhuman on Atari</title>
@@ -633,7 +577,7 @@ You enter the building, which is quite large. The walls are made of stone, and
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/drl-not-superhuman-on-atari/</guid>
   <pubDate>Sun, 18 Aug 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/drl-not-superhuman-on-atari.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Three Method Comparison for Traffic Signal Control</title>
@@ -911,7 +855,7 @@ t6:  _ _ 🚘 _ 🚘 _ 🚘 _ 🚘 _ 🚘 _ _ 🚘 _</code></pre>
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/three-method-comparison-for-traffic-signal-control/</guid>
   <pubDate>Sun, 11 Aug 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/three-method-comparison-for-traffic-signal-control.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Learning Compound and Composable Policies</title>
@@ -975,7 +919,7 @@ The Q function networks are similarly arranged, sharing early layers which take 
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/learning-compound-and-composable-policies/</guid>
   <pubDate>Sun, 04 Aug 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/learning-compound-and-composable-policies.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Efficient exploration with self-imitation learning</title>
@@ -1062,7 +1006,7 @@ The Q function networks are similarly arranged, sharing early layers which take 
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/efficient-exploration-with-self-imitation-learning/</guid>
   <pubDate>Sun, 28 Jul 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/efficient-exploration-with-self-imitation-learning.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Keeping to the Narrow Path</title>
@@ -1135,7 +1079,7 @@ The Q function networks are similarly arranged, sharing early layers which take 
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/keeping-to-the-narrow-path/</guid>
   <pubDate>Sun, 21 Jul 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/keeping-to-the-narrow-path.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Look at This: Where We See Shapes, AI Sees Textures</title>
@@ -1154,23 +1098,8 @@ The Q function networks are similarly arranged, sharing early layers which take 
 <p>Our first highlight will be a Quanta article about what CNNs learn when trained in “the usual way”:</p>
 <p><a href="https://www.quantamagazine.org/where-we-see-shapes-ai-sees-textures-20190701/">Where We See Shapes, AI Sees Textures</a></p>
 </section>
-<section id="textures-not-shapes" class="level1">
-<h1>Textures, not shapes</h1>
-<p>Training a CNN for object recognition typically involves only showing the algorithm many examples of images that contain or don’t contain a target object. Humans also need to see many examples of various objects to get the basic idea. Humans, however, seem to have a bias towards recognition by <em>shape</em> which is missing from CNNs in general.</p>
-<blockquote class="blockquote">
-<p>Geirhos, Bethge and their colleagues created images that included two conflicting cues, with a shape taken from one object and a texture from another: the silhouette of a cat colored in with the cracked gray texture of elephant skin, for instance, or a bear made up of aluminum cans, or the outline of an airplane filled with overlapping clock faces. Presented with hundreds of these images, humans labeled them based on their shape — cat, bear, airplane — almost every time, as expected. Four different classification algorithms, however, leaned the other way, spitting out labels that reflected the textures of the objects: elephant, can, clock.</p>
-</blockquote>
-<p>This is a problem worth solving, since the addition of even a small amount of noise can throw off CNN-based classifiers, where humans aren’t fooled. “Adversarial examples” even do this maliciously, adding exactly the right amount of noise to cause misclassification. So how to fix this?</p>
-<blockquote class="blockquote">
-<p>Geirhos wanted to see what would happen when the team forced their models to ignore texture. The team took images traditionally used to train classification algorithms and “painted” them in different styles, essentially stripping them of useful texture information. When they retrained each of the deep learning models on the new images, the systems began relying on larger, more global patterns and exhibited a shape bias much more like that of humans.</p>
-</blockquote>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="https://d2r55xnwy6nx47.cloudfront.net/uploads/2019/07/AI_Textures_2880x1220_LHPA.jpg" class="img-fluid figure-img"></p>
-<figcaption>Images painted with alien textures</figcaption>
-</figure>
-</div>
-<p>There were many other insights in this relatively short article, and I commend it to you. It enriched my understanding of what’s going on in neural networks, and how far we still need to go to reach parity with humans.</p>
+<section id="textures-not-shapestraining-a-cnn-for-object-recognition-typically-involves-only-showing-the-algorithm-many-examples-of-images-that-contain-or-dont-contain-a-target-object.-humans-also-need-to-see-many-examples-of-various-objects-to-get-the-basic-idea.-humans-however-seem-to-have-a-bias-towards-recognition-by-shape-which-is-missing-from-cnns-in-general.-geirhos-bethge-and-their-colleagues-created-images-that-included-two-conflicting-cues-with-a-shape-taken-from-one-object-and-a-texture-from-another-the-silhouette-of-a-cat-colored-in-with-the-cracked-gray-texture-of-elephant-skin-for-instance-or-a-bear-made-up-of-aluminum-cans-or-the-outline-of-an-airplane-filled-with-overlapping-clock-faces.-presented-with-hundreds-of-these-images-humans-labeled-them-based-on-their-shape-cat-bear-airplane-almost-every-time-as-expected.-four-different-classification-algorithms-however-leaned-the-other-way-spitting-out-labels-that-reflected-the-textures-of-the-objects-elephant-can-clock.this-is-a-problem-worth-solving-since-the-addition-of-even-a-small-amount-of-noise-can-throw-off-cnn-based-classifiers-where-humans-arent-fooled.-adversarial-examples-even-do-this-maliciously-adding-exactly-the-right-amount-of-noise-to-cause-misclassification.-so-how-to-fix-this-geirhos-wanted-to-see-what-would-happen-when-the-team-forced-their-models-to-ignore-texture.-the-team-took-images-traditionally-used-to-train-classification-algorithms-and-painted-them-in-different-styles-essentially-stripping-them-of-useful-texture-information.-when-they-retrained-each-of-the-deep-learning-models-on-the-new-images-the-systems-began-relying-on-larger-more-global-patterns-and-exhibited-a-shape-bias-much-more-like-that-of-humans.the-illustration-of-images-painted-with-alien-textures-that-originally-appeared-here-is-no-longer-hosted-by-quanta-see-the-original-article-for-the-imagery.there-were-many-other-insights-in-this-relatively-short-article-and-i-commend-it-to-you.-it-enriched-my-understanding-of-whats-going-on-in-neural-networks-and-how-far-we-still-need-to-go-to-reach-parity-with-humans." class="level1">
+<h1>Textures, not shapesTraining a CNN for object recognition typically involves only showing the algorithm many examples of images that contain or don’t contain a target object. Humans also need to see many examples of various objects to get the basic idea. Humans, however, seem to have a bias towards recognition by <em>shape</em> which is missing from CNNs in general.&gt; Geirhos, Bethge and their colleagues created images that included two conflicting cues, with a shape taken from one object and a texture from another: the silhouette of a cat colored in with the cracked gray texture of elephant skin, for instance, or a bear made up of aluminum cans, or the outline of an airplane filled with overlapping clock faces. Presented with hundreds of these images, humans labeled them based on their shape — cat, bear, airplane — almost every time, as expected. Four different classification algorithms, however, leaned the other way, spitting out labels that reflected the textures of the objects: elephant, can, clock.This is a problem worth solving, since the addition of even a small amount of noise can throw off CNN-based classifiers, where humans aren’t fooled. “Adversarial examples” even do this maliciously, adding exactly the right amount of noise to cause misclassification. So how to fix this?&gt; Geirhos wanted to see what would happen when the team forced their models to ignore texture. The team took images traditionally used to train classification algorithms and “painted” them in different styles, essentially stripping them of useful texture information. When they retrained each of the deep learning models on the new images, the systems began relying on larger, more global patterns and exhibited a shape bias much more like that of humans.<em>(The illustration of images painted with alien textures that originally appeared here is no longer hosted by Quanta — see <a href="https://www.quantamagazine.org/where-we-see-shapes-ai-sees-textures-20190701/">the original article</a> for the imagery.)</em>There were many other insights in this relatively short article, and I commend it to you. It enriched my understanding of what’s going on in neural networks, and how far we still need to go to reach parity with humans.</h1>
 
 
 </section>
@@ -1179,7 +1108,7 @@ The Q function networks are similarly arranged, sharing early layers which take 
   <category>Look at This</category>
   <guid>https://computable.ai/posts/look-at-this-where-we-see-shapes-ai-sees-textures/</guid>
   <pubDate>Tue, 16 Jul 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://d2r55xnwy6nx47.cloudfront.net/uploads/2019/07/AI_Textures_2880x1220_LHPA.jpg" medium="image" type="image/jpeg"/>
+  <media:content url="https://computable.ai/static/images/thumbs/look-at-this-where-we-see-shapes-ai-sees-textures.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Way Off-Policy Batch DRL</title>
@@ -1250,7 +1179,7 @@ The Q function networks are similarly arranged, sharing early layers which take 
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/way-off-policy-batch-drl/</guid>
   <pubDate>Sun, 14 Jul 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/way-off-policy-batch-drl.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>A New Series arXiv Sampler</title>
@@ -1327,7 +1256,7 @@ The Q function networks are similarly arranged, sharing early layers which take 
   <category>arXiv highlights</category>
   <guid>https://computable.ai/posts/a-new-series-arxiv-sampler/</guid>
   <pubDate>Sun, 07 Jul 2019 00:00:00 GMT</pubDate>
-  <media:content url="https://computable.ai/static/images/arXiv.gif" medium="image" type="image/gif"/>
+  <media:content url="https://computable.ai/static/images/thumbs/a-new-series-arxiv-sampler.svg" medium="image" type="image/svg+xml"/>
 </item>
 <item>
   <title>Boltzmann Machines: Differentiation Work</title>
@@ -1402,6 +1331,7 @@ The Q function networks are similarly arranged, sharing early layers which take 
   <category>Miscellany</category>
   <guid>https://computable.ai/posts/inaugural-post/</guid>
   <pubDate>Sat, 16 Feb 2019 00:00:00 GMT</pubDate>
+  <media:content url="https://computable.ai/static/images/thumbs/inaugural-post.svg" medium="image" type="image/svg+xml"/>
 </item>
 </channel>
 </rss>
