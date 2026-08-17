@@ -2,7 +2,7 @@ name: Publish site
 
 on:
   push:
-    branches: [dev, claude/computable-ai-repo-update-x9j1i7]
+    branches: [dev]
   workflow_dispatch:
 
 permissions:
