@@ -1,0 +1,33 @@
+name: Publish site
+
+on:
+  push:
+    branches: [dev, claude/computable-ai-repo-update-x9j1i7]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Set up Quarto
+        uses: quarto-dev/quarto-actions/setup@v2
+        with:
+          version: 1.7.34
+
+      - name: Render site
+        run: quarto render
+
+      - name: Deploy to master (GitHub Pages branch)
+        if: github.ref == 'refs/heads/dev'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./_site
+          publish_branch: master
+          cname: computable.ai

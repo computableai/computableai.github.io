@@ -1,0 +1,6 @@
+---
+title: "Page not found"
+toc: false
+---
+
+That page doesn't exist (or has been retired). Try the [home page](/index.qmd) or the search in the navigation bar.

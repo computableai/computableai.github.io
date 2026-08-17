@@ -1,0 +1,23 @@
+/* Legacy Pelican image-alignment convention: posts append #right/#left/#center
+   to image srcs; browsers ignore the fragment when loading the file. */
+img[src$="#right"] {
+  float: right;
+  margin: 0 0 1em 1.5em;
+  max-width: 50%;
+}
+
+img[src$="#left"] {
+  float: left;
+  margin: 0 1.5em 1em 0;
+  max-width: 50%;
+}
+
+img[src$="#center"] {
+  display: block;
+  margin: 1em auto;
+}
+
+article img {
+  max-width: 100%;
+  height: auto;
+}
