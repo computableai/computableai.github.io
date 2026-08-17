@@ -14,3 +14,7 @@ page-layout: full
 title-block-banner: false
 toc: false
 ---
+
+::: {.site-tagline}
+A machine intelligence blog — notes on deep reinforcement learning, probability, and the mathematics of learning machines.
+:::

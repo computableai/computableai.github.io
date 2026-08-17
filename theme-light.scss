@@ -4,9 +4,9 @@
 $brand-green: #00967b;
 $brand-dark-green: #0d544e;
 
-$font-family-sans-serif: system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
-$font-stack-brand: Optima, Segoe, "Segoe UI", Candara, Calibri, Arial, sans-serif;
-$headings-font-family: $font-stack-brand;
+$font-family-sans-serif: "Inter", system-ui, "Helvetica Neue", Helvetica, Arial, sans-serif;
+$headings-font-family: "Fraunces", Optima, Georgia, serif;
+$headings-font-weight: 550;
 
 $primary: $brand-green;
 $link-color: $brand-green;
@@ -28,6 +28,7 @@ $navbar-hl: $brand-dark-green;
 }
 
 .navbar-title {
+  font-family: $headings-font-family;
   color: $brand-green;
   font-weight: 600;
 }
@@ -36,32 +37,51 @@ $navbar-hl: $brand-dark-green;
 div.quarto-post {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 4px;
-  box-shadow: 0 0.25rem 0.5rem -0.25rem rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  box-shadow: 0 0.25rem 0.5rem -0.25rem rgba(0, 0, 0, 0.12);
   padding: 1.8rem 2rem;
   margin-bottom: 1.5rem;
   gap: 1.5em;
+
+  &:hover {
+    border-color: rgba(0, 150, 123, 0.45);
+    box-shadow: 0 0.5rem 1rem -0.4rem rgba(13, 84, 78, 0.25);
+    transform: translateY(-2px);
+  }
 }
 
 div.quarto-post .body h3.listing-title a {
   color: $brand-green;
-  text-decoration: underline;
+  text-decoration: none;
 
   &:hover {
     color: $brand-dark-green;
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 }
 
-div.quarto-post .thumbnail img {
-  border-radius: 2px;
+div.quarto-post .listing-categories .listing-category {
+  color: $brand-dark-green;
+  background: rgba(0, 150, 123, 0.09);
+  border: 1px solid rgba(0, 150, 123, 0.25);
 }
 
-// Content pages sit on a white sheet like the old content column
-#quarto-content main.content,
-main.content {
-  background: transparent;
+// Quotes (paper abstracts, mostly) in the brand voice
+blockquote {
+  border-left: 3px solid $brand-green;
+  background: rgba(0, 150, 123, 0.05);
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 4px 4px 0;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+// A little more air around post titles
+.quarto-title-block {
+  margin-bottom: 2.5rem;
 }
 
 .quarto-title h1.title {
-  line-height: 1.2;
+  line-height: 1.15;
+  font-weight: 560;
 }

@@ -34,10 +34,21 @@ website:
 
 format:
   html:
+    include-in-header:
+      # Quarto 1.7 bug workaround: with a light/dark highlight-style map, the
+      # inline color-scheme script does
+      #   querySelector('link#quarto-text-highlighting-styles...').rel = ...
+      # but that link is never emitted when token styles are embedded in the
+      # theme bundles (our case). The null deref kills the script and with it
+      # dark mode. A disabled dummy link satisfies the selector harmlessly.
+      text: '<link id="quarto-text-highlighting-styles" class="quarto-color-scheme-extra" rel="disabled-stylesheet">'
     respect-user-color-scheme: true
     theme:
       light: [flatly, theme-light.scss]
       dark: [darkly, theme-dark.scss]
     css: styles.css
+    highlight-style:
+      light: solarized
+      dark: zenburn
     toc: true
     html-math-method: mathjax
