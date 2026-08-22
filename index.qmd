@@ -5,16 +5,16 @@ listing:
   contents: posts
   sort: "date desc"
   type: default
-  categories: true
+  categories: false
   sort-ui: false
   filter-ui: true
   feed: true
-  fields: [image, date, title, description, categories, reading-time]
+  fields: [image, date, title, description, reading-time]
 page-layout: full
 title-block-banner: false
 toc: false
 ---
 
 ::: {.site-tagline}
-A machine intelligence blog — notes on deep reinforcement learning, probability, and the mathematics of learning machines.
+A personal blog on machine intelligence, probability, and whatever else.
 :::
