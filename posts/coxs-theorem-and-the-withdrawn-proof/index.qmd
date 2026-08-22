@@ -1,0 +1,128 @@
+---
+title: "Cox's Theorem and the Withdrawn Proof"
+description: "The paper I highlighted in 2019 was quietly withdrawn three months later. Here I dig into why, walk through Halpern's counterexample that every rigorous version of Cox's theorem has to dodge, and take stock of what survives for probability as the extension of logic to uncertainty."
+author: Daniel Cox
+date: 2026-08-22
+image: /static/images/thumbs/coxs-theorem-and-the-withdrawn-proof.svg
+image-alt: "Abstract geometric composition in the Computable AI brand palette"
+---
+
+::: {.hidden}
+$$
+\newcommand{\P}{\mathbb{P}}
+\newcommand{\F}{\mathscr{F}}
+\newcommand{\R}{\mathbb{R}}
+$$
+:::
+
+*Full disclosure: this post was heavily Claude-assisted — the source-chasing, several of the arguments, and a good deal of the prose came out of a long back-and-forth. Credit where it's due. The judgments, and any errors that survive, are mine.*
+
+# A correction, years late
+
+Back in [November 2019](/posts/coxs-theorem-establishing-probability-theory/) I wrote about a paper called [Cox's Theorem and the Jaynesian Interpretation of Probability](https://arxiv.org/abs/1507.06597), by Alexander Terenin and David Draper, and spent the whole post explaining their five axioms so you'd be set up to read the proof yourself. I liked the paper because its fifth axiom, *Consistency under Extension*, promised to fix the known holes in Cox's theorem with nothing more exotic than "if the rules apply to one coin flip, they apply to two."
+
+Three months later, in February 2020, the authors withdrew it. I only just noticed. The arXiv comment now reads:
+
+> This work is withdrawn due to a critical error which we are unable to repair without completely changing the framework. The first author deeply regrets this error, which was committed when he was still obtaining his master's degree and had yet to learn a proper degree of carefulness needed when devising theoretical arguments.
+
+That's the entire public explanation. There's no erratum, and I couldn't find a follow-up from either author saying which step failed. So this post is three things: the timeline as best I can reconstruct it, my best guess at where the argument breaks — the authors never said, so treat that section as one reader's diagnosis — and, more usefully, a proper look at the problem the paper was trying to solve in the first place. I skated over that problem last time, and it turns out to be the interesting part.
+
+# The timeline
+
+The arXiv history has three versions, and they're not minor revisions of one another.
+
+**v1 (July 2015)** was a fifty-page manuscript formatted as a journal submission. Its fifth axiom was called *Comparative Extendability*: either the range of your plausibility function is already dense in an interval, or you're allowed to bolt on an independent, uniformly distributed coordinate. The authors themselves admitted in the text that this is at least as strong as the density assumption other proofs use, and that a better fix "has not yet been found." Dan Simpson reviewed this version on [Xi'an's Og](https://xianblog.wordpress.com/2015/08/04/conditional-love-guest-post/) and flagged exactly that admission as odd.
+
+**v2 (April 2017)** was a ground-up rewrite, twelve pages, with the axiom replaced by *Consistency under Extension*. This is the version I read and wrote about. It made the stronger claim: no density assumption, and the theorem finally covers the case of rolling a pair of fair dice.
+
+**v3 (February 2020)** is the withdrawal.
+
+The phrase "without completely changing the framework" is telling. It suggests the problem isn't a typo in a lemma but the new axiom itself and the argument built on it.
+
+# The fair dice problem
+
+To see what went wrong, you need to see what Cox's proof actually needs, which I didn't explain properly the first time.
+
+The heart of the proof is a functional equation. You assume the plausibility of "$A$ and $B$" is some function $\circ$ of two plausibilities (the paper's Axiom 3, Decomposability), and you use the fact that "$A$ and $B$ and $C$" can be grouped two ways. Writing out both groupings gives
+
+$$ (x \circ y) \circ z = x \circ (y \circ z). $$
+
+Then you reach for a classical theorem of Aczél: a continuous, cancellative function satisfying that equation *on a whole interval of reals* is, after a change of scale, ordinary multiplication. That's the product rule, and everything else falls out.
+
+The catch is in "on a whole interval." The associativity equation is only forced to hold on the *specific* triples of numbers that actually show up as plausibilities in your problem: triples of the form $x = \P(A \mid BCD)$, $y = \P(B \mid CD)$, $z = \P(C \mid D)$. Call these *constrained triples*. If your problem is two fair dice, plausibilities are all multiples of $1/36$, there are finitely many constrained triples, and they leave enormous gaps in the cube $[0,1]^3$. Nothing in the axioms says anything about what $\circ$ does in the gaps.
+
+Every rigorous version of Cox's theorem plugs this hole by fiat. Paris (1994) adds a *Density* axiom, which essentially says the constrained triples are dense in the cube. That's rigorous, but it's embarrassing: your derivation of probability from common sense now needs an axiom that rules out the dice you'd use to teach probability. Terenin and Draper's idea was to *earn* density instead of assuming it. If the axioms hold for one die roll, they hold for a hundred; a hundred rolls generate a lot of values; maybe the gaps fill in.
+
+# Halpern's counterexample
+
+Before looking at whether they earned it, it's worth seeing that the gap is real and not a pedant's worry. In [A Counterexample to Theorems of Cox and Fine](https://arxiv.org/abs/1105.5450) (JAIR, 1999), Halpern builds a finite space where every Cox-style assumption holds, in *stronger* form than anyone required, and yet the plausibility function is not a rescaled probability.
+
+The construction is a forgery rather than an alternative theory. Take a space $W$ of twelve points with a genuine probability measure $\Pr$, defined by weights spanning eighteen orders of magnitude: $3, 2, 6$; then $5, 6, 8 \times 10^4$; then $3, 8, 8 \times 10^8$; then $3, 2, 14 \times 10^{18}$. Now define $\mathrm{Bel}_0$ to be exactly $\Pr$ *except* when you condition on a set containing the three heaviest points $\{w_{10}, w_{11}, w_{12}\}$, where two of the weights are nudged by a tiny $\delta$, one up and one down.
+
+Because $\delta$ is tiny, $\mathrm{Bel}_0$ is within $\delta$ of an honest probability everywhere, and preserves all the same orderings. Negation is literally $1 - x$. Disjoint union is literally $x + y$. And there does exist a continuous, commutative, strictly increasing conjunction function $F$ with $\mathrm{Bel}_0(V \cap V' \mid U) = F(\mathrm{Bel}_0(V' \mid V \cap U), \mathrm{Bel}_0(V \mid U))$ on every triple of sets in $W$.
+
+What $F$ can't be is associative. The weights are rigged so that certain conditional values coincide across unrelated corners of the space:
+
+$$
+\begin{aligned}
+\Pr(w_1 \mid \{w_1, w_2\}) &= \Pr(w_{10} \mid \{w_{10}, w_{11}\}) = 3/5 \\
+\Pr(\{w_1,w_2\} \mid \{w_1,w_2,w_3\}) &= \Pr(w_4 \mid \{w_4, w_5\}) = 5/11 \\
+\Pr(\{w_4,w_5\} \mid \{w_4,w_5,w_6\}) &= \Pr(\{w_7,w_8\} \mid \{w_7,w_8,w_9\}) = 11/19
+\end{aligned}
+$$
+
+and so on. Chasing these through the decomposability axiom, the pair $(3/5, 5/11)$ occurs as a nested conditional in one corner, and $(5/11, 11/19)$ occurs in another, so both $F(3/5, 5/11)$ and $F(5/11, 11/19)$ are pinned down. But the *triple* $(3/5, 5/11, 11/19)$ never occurs as one nested chain, so nothing forces the two bracketings to agree, and the $\delta$ perturbation is placed exactly where it makes them disagree:
+
+$$
+F\big(3/5, F(5/11, 11/19)\big) = \tfrac{3 - \delta}{19}, \qquad F\big(F(3/5, 5/11), 11/19\big) = \tfrac{3}{19}.
+$$
+
+No associative $F$ exists, so no rescaling to a probability exists. Cox's original proof, and Jaynes' presentation of it, silently assumed the constrained triples fill the cube. On a finite space they don't, and Halpern slipped a non-multiplicative $F$ through the gap.
+
+# Where the 2017 proof goes wrong (my reading)
+
+I went back to the v2 manuscript and reread the proofs with all this in mind. Since the authors never said which step failed, take what follows as one reader's diagnosis.
+
+The load-bearing lemma is the one titled *Associativity Equation: Interval*. Its whole job is to get from associativity on constrained triples to associativity on a closed interval, so that Aczél's theorem can be invoked. This is precisely where Paris assumes Density, and precisely what the paper claimed to derive instead.
+
+The proof picks a $C$ with $\P(\emptyset \mid D) < \P(C \mid D) < \P(\Omega \mid D)$, forms the $n$-fold product $C \times \cdots \times C$ using Consistency under Extension, and shows that its plausibility decreases to the bottom of the range as $n$ grows. Negating gives values near the top. Fine so far. Then:
+
+> But Axiom 5 requires that $\circ$ is closed under composition, and since it is also continuous, we must have that $\circ$ is well-defined for $(x,y,z) \in [\P(\emptyset \mid B), \P(\Omega \mid B)]^3$, which is the desired result.
+
+(That's verbatim, down to the $B$ where you'd expect a $D$ — the proof's setup and its conclusion don't agree on a letter, which in hindsight was a tell.)
+
+That sentence is the entire theorem, asserted rather than proved. Having plausibilities that pile up near both endpoints doesn't make them dense in between; and even a dense range only gives associativity on a dense set of triples, with a uniform-continuity argument still owed to close it. This is exactly the density gap Halpern exploited, and it's exactly the thing the abstract advertised as fixed.
+
+Two smaller problems feed into it. First, the Monotonicity lemma claims $\circ$ is *strictly* increasing, but Sequential Continuity only gives non-strict monotonicity along increasing sequences of events (I even said so in my original post: $\nearrow$ means $\leq$). The argument that there exists *some* strictly increasing subsequence shows non-constancy, not strict monotonicity, and Cancellativity, which is used repeatedly downstream, rests on strictness. Second, Axiom 5 itself is not well-formed as stated: it defines $\P \circ \P$ only on rectangles $A \times B$ given $C \times D$, then asserts that $(\Omega \times \Omega, \F \otimes \F, \P \circ \P)$ satisfies all the axioms, which requires a function defined on every element of the product $\sigma$-algebra. Assuming such an extension exists, with the stated factorization, is close to assuming a product measure exists, and it quietly builds in independence of repeated trials, which Jaynes would call a modeling assumption rather than a desideratum. I suspect this is what "changing the framework" refers to.
+
+Whether the *theorem* is false, or merely unproved from these axioms, is a different question. The extension axiom is strong enough that I wouldn't bet on a counterexample. But the proof doesn't establish the density it needs, and that is the same wall every previous attempt hit.
+
+# So is there an alternative to probability for finite problems?
+
+This is the question I found myself asking, and the answer is a relief: no, not really.
+
+Halpern is explicit that he isn't proposing to replace probability. $\mathrm{Bel}_0$ is a one-off perturbation, not a calculus. It's consistent with the finite list of constraints Cox's axioms happen to impose on that particular twelve-point space, and with nothing else. There's no general rule generating it, and nobody would ever *reason* with it. Halpern's own conjecture is that everything satisfying Cox's assumptions is "close" to a probability in some sense yet to be made precise, and he closes with "there are many other justifications for [probability's] use."
+
+The genuine rivals live elsewhere, and they all escape Cox by rejecting an axiom outright rather than by exploiting finiteness. Possibility theory (Dubois and Prade) takes $\circ = \min$ and negation $1 - x$; it satisfies Cox's weak assumptions but is blocked by any smoothness or strict-monotonicity requirement. Dempster–Shafer belief functions use intervals, violating "plausibility is a single real number." Friedman and Halpern's *plausibility measures* take values in a partial order and drop comparability entirely. Interestingly, Jaynes himself, in Appendix A of *Probability Theory: The Logic of Science*, allows that a lattice-valued plausibility might be a reasonable alternative. If you want off the probability train, those are the doors, and each of them costs you something you can name.
+
+# What survives for the Jaynesian interpretation
+
+Less is lost than I feared when I first saw the withdrawal, but more than nothing.
+
+Cox's theorem, in its rigorous forms (Paris, Van Horn, Arnborg and Sjödin), is still true. Grant a density-type assumption, or Arnborg and Sjödin's *refinability* (you can always conceive of a proposition with plausibility strictly between two others), and real-valued plausibility that respects the structure of logic is provably isomorphic to probability. Nothing in this episode touches that. Jaynes' book stands as an exposition of *what* the rules are and how to use them.
+
+What's weakened is the "no assumptions" pitch. The strong rhetorical claim, that probability is *forced* on any reasoner by common sense alone, has to be qualified: it's forced on any reasoner whose space of propositions is rich enough. A reasoner who only ever considers two dice, in strict isolation, is not compelled. They also have nothing better available; only a loophole.
+
+And Halpern points at the most natural way to close the loophole, one Paris landed on independently: uniformity across domains. Don't ask whether Cox's theorem holds for *this* finite problem. Ask for a single $\circ$ and a single $N$ that govern reasoning about *every* problem you might pose. Then the constrained triples from all problems taken together are dense, and the theorem goes through. Halpern observes that this is basically what Jaynes was implicitly assuming with his finite-sets policy of "start finite, take well-defined limits." The cost is that you give up the possibility of a belief scale with only finitely many gradations. That seems a small price to me. The robot isn't built for one problem.
+
+So the honest one-sentence version for anyone who read my 2019 post: probability is the unique extension of logic to uncertainty for a reasoner who applies one uniform calculus across all problems and admits arbitrarily fine gradations of belief; the 2017 attempt to drop that qualifier was withdrawn.
+
+# Parting thoughts
+
+1. Mea culpa. In 2019 I explained the axioms and told you to go read the proof; I should have read the proof myself with more skepticism. Some of the ingredients were even in my own post: I noted that $\nearrow$ only gives $\leq$, and then didn't notice that the Monotonicity lemma needs $<$. Lesson taken. When a paper's abstract claims to remove an assumption that everyone before needed, the place to look is the exact lemma where that assumption used to be invoked.
+
+2. I have real respect for the way this ended. A withdrawal note that names the error as the author's own carelessness, five years after the fact, with no attempt to bury it, is how this is supposed to work.
+
+3. My mnemonic from last time, $\R \nearrow \circ N \times$ — plausibility is a real number, sequentially continuous, decomposable, with negation, consistent under extension — still holds. It just describes a set of axioms that don't quite do what they were meant to do. Perhaps that's a lesson too.
+
+4. Halpern's paper is short, self-contained, and much more fun than the phrase "a counterexample to a theorem of Cox" suggests. If you read one thing from this post, read that.
